@@ -1,0 +1,481 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: STANLEY - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+
+@font-face {
+    font-family: 'maven_promedium';
+    src: url('mavenpro-medium.eot');
+    src: url('mavenpro-medium.eot?#iefix') format('embedded-opentype'),
+         url('mavenpro-medium.woff2') format('woff2'),
+         url('mavenpro-medium.woff') format('woff'),
+         url('mavenpro-medium.ttf') format('truetype'),
+         url('mavenpro-medium.svg#maven_promedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'maven_problack';
+    src: url('mavenpro-black.eot');
+    src: url('mavenpro-black.eot?#iefix') format('embedded-opentype'),
+         url('mavenpro-black.woff2') format('woff2'),
+         url('mavenpro-black.woff') format('woff'),
+         url('mavenpro-black.ttf') format('truetype'),
+         url('mavenpro-black.svg#maven_problack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('opensans-light.eot');
+    src: url('opensans-light.eot?#iefix') format('embedded-opentype'),
+         url('opensans-light.woff2') format('woff2'),
+         url('opensans-light.woff') format('woff'),
+         url('opensans-light.ttf') format('truetype'),
+         url('opensans-light.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('opensans-bold-webfont.eot');
+    src: url('opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('opensans-bold-webfont.woff') format('woff'),
+         url('opensans-bold-webfont.ttf') format('truetype'),
+         url('opensans-bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'maven_probold';
+    src: url('mavenpro-bold.eot');
+    src: url('mavenpro-bold.eot?#iefix') format('embedded-opentype'),
+         url('mavenpro-bold.woff2') format('woff2'),
+         url('mavenpro-bold.woff') format('woff'),
+         url('mavenpro-bold.ttf') format('truetype'),
+         url('mavenpro-bold.svg#maven_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'GothamHTF-Medium';
+    src: url('GothamHTF-Medium.otf');
+    src: url('GothamHTF-Medium.otf?#iefix') format('embedded-opentype'),
+        url('GothamHTF-Medium.otf') format('woff'),
+        url('GothamHTF-Medium.otf') format('truetype'),
+        url('GothamHTF-Medium.otf#GothamHTF-Medium') format('otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'GothamHTF-Bold';
+    src: url('GothamHTF-Bold.otf');
+    src: url('GothamHTF-Bold.otf?#iefix') format('embedded-opentype'),
+        url('GothamHTF-Bold.otf') format('woff'),
+        url('GothamHTF-Bold.otf') format('truetype'),
+        url('GothamHTF-Bold.otf#GothamHTF-Bold') format('otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'GothamHTF-BoldCondensed';
+    src: url('GothamHTF-BoldCondensed.otf');
+    src: url('GothamHTF-BoldCondensed.otf?#iefix') format('embedded-opentype'),
+        url('GothamHTF-BoldCondensed.otf') format('woff'),
+        url('GothamHTF-BoldCondensed.otf') format('truetype'),
+        url('GothamHTF-BoldCondensed.otf#GothamHTF-BoldCondensed') format('otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+
+body {
+    font-family: 'open_sanslight';
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+
+h1 {
+	font-size: 35px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+/*    margin-bottom: 25px;
+*/    font-size: 16px;
+}
+
+.container {
+max-width: 1170px;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.navbar-nav > li{
+	text-align:center;}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li:hover > a{
+    font-family: 'maven_promedium';
+		color:#ffffff;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+	background:none;
+		border-color: #7d7d7d;
+}
+.navbar-default .navbar-toggle{
+	border-color: #7d7d7d;
+	}
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #7d7d7d;}
+ .home_top_sec{
+	 background:url(/images/home_banner.jpg) no-repeat center top;}
+.top_sec{
+	background:url(/images/inner_top.jpg) center top no-repeat;
+	/* background-size: 100% auto;*/}
+.pg_hdg{    font-family: 'maven_problack';
+color:#fff;
+text-transform:uppercase;
+text-align:center;
+}
+.content{
+	text-align:center;
+	}
+.content_area{
+	padding:30px 0;}
+.sign_up_content_area{
+	padding:50px 0;
+	background:#f7f7f7;}
+.hdg{
+	color:#8a8d94;
+	font-size:24px;
+	text-align:center;
+	font-family: 'open_sansbold';
+	padding-top:10px;
+}
+.btm_sec{
+	background:#272727;
+	color:#b2b2b2;
+	padding:30px 0;
+	}
+.btm_hdg{
+	    font-family: 'maven_probold';
+		font-size:16px;
+		text-transform:uppercase;
+		color:#fff;
+		padding-bottom:15px;
+}
+.btm_cont{
+	line-height:24px;}
+.social_icon{
+	padding-top:20px;}
+.social_icon a{
+	padding:0 5px;}
+.social_icon a:first-child{
+	padding-left:0;}
+.txtfld{
+	background:#e9e9e9;
+	border:none;
+	width:90%;
+	height:30px;
+	padding:20px;
+	font-style:italic;
+	}
+.news_letter{
+	margin:20px 0 10px 0 ;}
+.submit{
+	border-radius:20px;
+	color:#fff;
+	background:#484848;
+	border:none;
+	padding:10px 25px;
+	font-family: 'open_sansbold';
+	margin-top:20px;
+	}
+.pricing_box{
+	border:1px solid #f1f3f6;}
+.pricing_box ul{
+	margin:0;
+	padding:0;
+	}
+.pricing_box ul li{
+	text-align:center;
+	list-style-type:none;
+	border-bottom:1px solid #f1f3f6;
+	line-height:50px;}
+.hdg_top, .hdg_top_mid, .hdg_top_gold, .hdg_top_plat{
+	text-align:center;
+	background:#0098d0;
+	color:#fff;
+	}
+.hdg_top_mid, .hdg_top_gold{
+	background:#ec9d5d;}
+.hdg_top_plat {
+    background:#ccc;
+}
+.hdg_txt1{
+    font-family: 'maven_probold';
+		font-size:18px;
+}
+.hdg_txt2{
+	font-size:38px;
+    font-family: 'maven_probold';
+	text-transform:uppercase;
+}
+.hdg_txt3{
+	font-size:14px;
+	font-family: 'maven_promedium';
+
+	}
+.free_btn, .free_btn_mid, .free_btn_gold, .free_btn_plat{
+	border-radius:30px;
+	background:#0098d0;
+	color:#fff;
+	font-family: 'maven_probold';
+	font-size:14px;
+	margin:30px auto;
+	width:150px;
+	
+}
+.free_btn_mid{
+	background:#ec9d5d;}
+.free_btn_gold{
+	background:#ec9d5d;}
+.free_btn_plat{
+	background:#ccc;}
+.free_btn a, .free_btn_mid a, .free_btn_gold a, .free_btn_plat a{
+	color:#fff;
+	text-align:center;
+	display:block;
+	padding:13px 22px;
+}
+.free_btn a:hover, .free_btn_mid a:hover, .free_btn_gold a:hover, .free_btn_plat a:hover{
+	text-decoration:none;}
+.cont_top{
+	text-align:center;
+	margin:0 auto;
+	float:none;
+	}
+
+.cont_hdg{
+	font-size:26px;
+		font-family: 'maven_probold';
+		text-transform:uppercase;
+}
+.lft_hdg{
+	font-family: 'maven_probold';
+	text-transform:uppercase;
+	margin:0;
+	padding:0;
+}
+.lft_txt{
+	margin:45px 0;}
+.form-control{
+	height:50px;
+	background:#fbfcfe;
+	border-radius:0;
+	border:1px solid #ccc;
+	color:#000;
+	font-weight:bold;}
+.form-control input{
+	border:none;}
+.frm_sec{
+	margin-top:50px;}
+.submit_btn{
+	background:#0098d0;
+	border-radius:30px;
+	padding:10px 50px;
+	text-transform:uppercase;
+	color:#fff;
+	font-family: 'maven_probold';
+	border:none;
+}
+.submit_btn:hover{
+	color:#fff;}
+.input_fld{
+	background:#fff;}
+.input-group-addon{
+	background:#fff;}
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn{
+	border-radius:0;
+	height:16px;
+	padding:0;
+	}
+.frm_ctrl{
+	height:30px;
+	background:#fff;
+	padding-top:3px;}
+.frm_hdg{
+	font-size:35px;
+	text-align:center;
+	font-family: 'maven_probold';
+	padding:40px 0 20px 0;}
+.input_fld{
+	height:30px;}
+.frm_btm{
+	color:#8a8d94;
+	font-size:20px;
+	text-align:center;
+	padding:20px 0;}
+.glyphicon{ color:#a2a2a2;}
+.banner{
+	color:#fff;}
+.banner_para1{
+	font-family: 'maven_probold';
+	font-size:28px;
+	text-transform:uppercase;
+}
+.banner_para2{
+	font-family: 'maven_problack';
+	text-transform:uppercase;
+}
+.banner_para3{
+    font-family: 'open_sanslight';
+	float:right;
+}
+	
+.free_sign_up{
+	background: #0098d0;
+	border-radius: 30px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: 'maven_probold';
+	border: none;
+	margin-right:20px;
+	border:2px solid #0098d0;
+
+	float:left;
+	/*width:30%;*/
+}
+.learn_more{
+	border-radius: 30px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: 'maven_probold';
+	border: none;
+	float:left;
+	background-color: Transparent;
+	border:2px solid #fff;
+}
+.free_sign_up a, .learn_more a{
+	padding: 10px 25px;
+	color:#fff;
+	display:block;
+	text-align:center;
+	text-decoration:none;
+}
+.box_sec{
+	background:#fbfcfe;
+	border:1px solid #f1f3f6;
+	padding:20px;}
+.box_in{
+	text-align:center;}
+.box_hdg{
+	font-family: 'maven_probold';
+	font-size:16px;
+	text-transform:uppercase;
+}
+.box_para{
+	color:#8a8d94;
+	font-size:15px;}
+.testimonia_sec{
+	background:#fbfcfe;
+	border-top:1px solid #f1f3f6;
+	padding:30px 0;
+	}
+.slide-custom {
+    min-height:200px;
+    padding:20px;
+    line-height:30px;
+}
+
+
+.testimonia_sec h4 {
+    line-height:30px;
+	color:#8a8d94;
+	font-size:20px;
+	font-family: 'open_sanslight';
+	text-align:center;
+
+}
+.testimonia_sec h5{
+	font-size:14px;
+	color:#8a8d94;
+	padding:40px 0;}
+.testimonia_sec h5 span{
+	color:#0098d0;}
+.pad-top {
+     padding-top:80px;
+}
+#carousel-example {
+    margin-top:50px;
+
+}
+
+.text-center {
+    text-align:center;
+}
+.carousel-indicators li{
+	border-radius:0;
+	background:#cdcfd4;}
+.carousel-indicators .active{
+	background:#0098d0;}
+.testimonial_hdg{
+	text-align:center;
+	font-family: 'maven_probold';
+	font-size:26px;
+	text-transform: uppercase;
+}
+.bottom_sec{
+	background:##fbfcfe;}
+.btm_para{
+	font-family: 'maven_probold';
+	text-transform:uppercase;
+	color:#fff;
+	text-align:center;
+	font-size:20px;
+	padding:10px 0 20px 0;
+
+}
+.btm_btn a:hover{
+	text-decoration:none;
+	}
+
+

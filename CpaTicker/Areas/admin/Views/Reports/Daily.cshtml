@@ -1,0 +1,479 @@
+﻿@model CpaTicker.Areas.admin.Models.DailyViewModel
+@using CpaTicker.Areas.admin.Models
+
+@{
+    Layout = null;
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Daily Report</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-togglebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+                            <div class="dataTables_overlay"></div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+                                <div class="smart-form">
+
+                                    <div class="row">
+                                        <div class="fieldset">
+
+                                            <section>
+                                                <label class="label">Interval:</label>
+                                                <div class="inline-group">
+                                                    @Html.CheckBoxSmart("Date", "Date", Model.StatisticsEnum.HasFlag(StatisticsEnum.Date), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Date }) @* @value = (int)StatisticsEnum.Date *@
+                                                    @Html.CheckBoxSmart("Year", "Year", Model.StatisticsEnum.HasFlag(StatisticsEnum.Year), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Year })
+                                                    @Html.CheckBoxSmart("Month", "Month", Model.StatisticsEnum.HasFlag(StatisticsEnum.Month), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Month })
+                                                    @Html.CheckBoxSmart("Day", "Day", Model.StatisticsEnum.HasFlag(StatisticsEnum.Day), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Day })
+                                                </div>
+                                            </section>
+
+                                            <section>
+                                                <label class="label">Statistics:</label>
+                                                <div class="inline-group">
+                                                    @Html.CheckBoxSmart("Impressions", "Impressions", Model.StatisticsEnum.HasFlag(StatisticsEnum.Impressions), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Impressions })
+                                                    @Html.CheckBoxSmart("Clicks", "Clicks", Model.StatisticsEnum.HasFlag(StatisticsEnum.Clicks), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Clicks })
+                                                    @Html.CheckBoxSmart("Conversions", "Conversions", Model.StatisticsEnum.HasFlag(StatisticsEnum.Conversions), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Conversions })
+                                                    @Html.CheckBoxSmart("Cost", "Cost", Model.StatisticsEnum.HasFlag(StatisticsEnum.Cost), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Cost })
+                                                    @Html.CheckBoxSmart("Revenue", "Revenue", Model.StatisticsEnum.HasFlag(StatisticsEnum.Revenue), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Revenue })
+                                                    @Html.CheckBoxSmart("Profit", "Profit", Model.StatisticsEnum.HasFlag(StatisticsEnum.Profit), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Profit })
+                                                    @Html.CheckBoxSmart("Country", "Country", Model.StatisticsEnum.HasFlag(StatisticsEnum.Country), new { @class = "togglerefresh stat", @data_value = (long)StatisticsEnum.Country })
+                                                </div>
+                                            </section>
+
+                                            <section>
+                                                <label class="label">Calculation:</label>
+                                                <div class="inline-group">
+                                                    @Html.CheckBoxSmart("CR", "CR", Model.StatisticsEnum.HasFlag(StatisticsEnum.CR), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.CR })
+                                                    @Html.CheckBoxSmart("CPC", "CPC", Model.StatisticsEnum.HasFlag(StatisticsEnum.CPC), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.CPC })
+                                                    @Html.CheckBoxSmart("RPC", "RPC", Model.StatisticsEnum.HasFlag(StatisticsEnum.RPC), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.RPC })
+                                                </div>
+                                            </section>
+
+                                            @Html.Partial("_Sound")
+
+                                            @Html.Partial("_Filter")
+
+
+
+                                            <section class="col-sm-6 col-md-6">
+                                                <label class="label">TimeZone:</label>
+                                                <label class="select">
+                                                    <i></i>
+                                                    @Html.DropDownList("rzone", new SelectList(@ViewBag.CustomTimeZone, "Value", "Text", ViewBag.TimeZone), new { @class = "select2" })
+                                                </label>
+                                            </section>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+
+                                <div class="widget-body-toolbar clearfix">
+                                    @Html.Partial("_ViewData")
+                                </div>
+
+                                <table class="table table-striped rtable display wrap" id="rtable">
+                                    <thead>
+                                        <tr>
+                                            <th class="all">Date</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Year)? "desktop" : "never")" data-class="desktop">Year</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Month)? "desktop" : "never")" data-class="desktop">Month</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Day)? "desktop" : "never")" data-class="desktop">Day</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Country)? "desktop" : "never")" data-class="desktop">Country</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Impressions)? "min-tablet-p" : "never")" data-class="min-tablet-p">Impressions</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Clicks)? "all" : "never")" data-class="all">Clicks</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Conversions)? "all" : "never")" data-class="all">Conversions</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.CR)? "desktop" : "never")" data-class="desktop">CR</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Cost)? "min-tablet-l" : "never")" data-class="min-tablet-l">Cost</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.CPC)? "desktop" : "never")" data-class="desktop">CPC</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Revenue)? "min-tablet-l" : "never")" data-class="min-tablet-l">Revenue</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.RPC)? "desktop" : "never")" data-class="desktop">RPC</th>
+                                            <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Profit)? "desktop" : "never")" data-class="desktop">Profit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Year</th>
+                                            <th>Month</th>
+                                            <th>Day</th>
+                                            <th>Country</th>
+                                            <th>Impressions</th>
+                                            <th>Clicks</th>
+                                            <th>Conversions</th>
+                                            <th>CR</th>
+                                            <th>Cost</th>
+                                            <th>CPC</th>
+                                            <th>Revenue</th>
+                                            <th>RPC</th>
+                                            <th>Profit</th>
+                                        </tr>
+
+
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+
+    // PAGE RELATED SCRIPTS
+    //updateBreadCrumb('Daily Report');
+    var table = null;
+    loadDataTables();
+
+    var getURL = function (url) {
+        return url + '?timezone=' + encodeURIComponent($('#rzone').val()) +
+                 '&viewdata=' + encodeURIComponent($('#selectedview').val()) +
+                 '&fromdate=' + encodeURIComponent($('#fromdate').val()) +
+                 '&todate=' + encodeURIComponent($('#todate').val()) +
+                 '&dataview=' + getDataView() +
+                getUrlFilterPart();
+    };
+
+    var getDataView = function () {
+
+        var result = 0;
+
+        $('.stat').filter(':checked').each(function () {
+            result += $(this).data("value");
+        });
+        return result;
+
+    };
+
+    var test = function () {
+        console.log("fdfsdf");
+    }
+
+    function runDataTables() {
+
+        oldjson = null;
+        compare = false;
+
+        apiurl = '/api/reports/daily';
+        reporturl = '@Url.Action("daily")';
+
+        table = $('#rtable').DataTable({
+            "ajax": {
+                "url": getURL(apiurl),
+                "dataSrc": ""
+
+            },
+            responsive: true,
+            "iDisplayLength": 25,
+            "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25, 50, 100, 500, 1000, "All"]],
+            "deferRender": true,
+            "autoWidth": false, // if true it doesn't get 100%
+            "initComplete": function (settings, json) { // just called once
+                oldjson = json;
+                oldfilter = getUrlFilterPart();
+
+                compare = true; // is always executed when we reload the table ? NO this is always just once
+
+                //count++;
+
+            },
+            "bFilter": false,
+            "columns": [
+                {
+                    data: "Date",
+                    name: "Date"
+                },
+                {
+                    data: "Date",
+                    name: "Year",
+                    render: function (data, type, full, meta) {
+                        return data.split('/')[2];
+                    }
+                },
+                {
+                    data: "Date",
+                    name: "Month",
+                    render: function (data, type, full, meta) {
+                        return data.split('/')[0];
+                    }
+                },
+                {
+                    data: "Date",
+                    name: "Day",
+                    render: function (data, type, full, meta) {
+                        return data.split('/')[1];
+                    }
+                },
+                {
+                    data: "Country",
+                    name: "Country"
+                },
+                {
+                    data: "Impressions",
+                    name: "Impressions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Impressions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: "Clicks",
+                    name: "Clicks",
+                    render: function (data, type, full, meta) {
+                        //console.log(compare);
+                        if (compare && oldjson != null) {
+
+                            if (oldjson[meta.row] === undefined) {
+
+                                // hightlight the entire row
+                                console.log(meta.row);
+                                var api = new $.fn.dataTable(meta.settings);
+
+
+                                api.rows(meta.row)
+                                           .nodes()
+                                           .to$()
+                                           .addClass('highlight');
+
+                                clickchange = true;
+                                var playsound = $.cookie("ct_sound");
+                                if (playsound == "1")
+                                    playClick();
+                                return data;
+                            }
+                            else if (data > oldjson[meta.row].Clicks) {
+                                clickchange = true;
+                                var playsound = $.cookie("ct_sound");
+                                if (playsound == "1")
+                                    playClick();
+                                return '<span class="highlight">' + data + '</span>';
+                            }
+
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: "Conversions",
+                    name: "Conversions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Conversions) {
+
+                            //var api = this.api();
+                            //api.row(meta.row).css(
+                            convchange = true;
+                            var playConsound = $.cookie("ct_cv_sound");
+                            if (playConsound == "1")
+                            playConversion();
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: null,
+                    name: "CR",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks == 0) {
+                            return (data.Conversions * 100).toFixed(2) + '%';
+                        }
+                        return ((data.Conversions / data.Clicks) * 100).toFixed(2) + '%';
+                    }
+                },
+                {
+                    data: "Cost",
+                    name: "Cost",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "CPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks == 0) {
+                            return '$' + data.Cost.toFixed(2);
+                        }
+                        return '$' + (data.Cost / data.Clicks).toFixed(2);
+                    }
+                },
+                {
+                    data: "Revenue",
+                    name: "Revenue",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "RPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks == 0) {
+                            return '$' + data.Revenue.toFixed(2);
+                        }
+                        return '$' + (data.Revenue / data.Clicks).toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "Profit",
+                    render: function (data, type, full, meta) {
+
+                        return '$' + (data.Revenue - data.Cost).toFixed(2);
+                    }
+                }
+
+
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+                $('.dataTables_overlay').hide();
+                oldjson = data;
+                var api = this.api();
+                if (data.length > 0) {
+                    //if (end > start) {
+
+                    var setfooter = function (name, formatter) {
+                        // Total over all pages
+                        total = api
+                            .column(name + ':name')
+                            .data()
+                            .reduce(function (a, b) {
+                                return a + b;
+                            });
+
+                        // Update footer
+                        ftotal = total;
+                        if (formatter) {
+                            ftotal = formatter(total);
+                        }
+                        $(api.column(name + ':name').footer()).html(ftotal);
+
+                        return total;
+                    }
+
+                    var priceformatter = function (val) {
+                        return '$' + val.toFixed(2);
+                    }
+
+                    var totalimpressions = setfooter("Impressions");
+                    var totalclicks = setfooter("Clicks");
+                    var totalconversions = setfooter("Conversions");
+                    var totalcost = setfooter("Cost", priceformatter);
+                    var totalrevenue = setfooter("Revenue", priceformatter);
+
+                    var cr = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalconversions / totalclicks) * 100).toFixed(2);
+                    var cpc = totalclicks == 0 ? (totalcost * 100).toFixed(2) : ((totalcost / totalclicks) * 100).toFixed(2);
+                    var rpc = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalrevenue / totalclicks) * 100).toFixed(2);
+                    var pf = (totalrevenue - totalcost).toFixed(2);
+
+                    // set conversion rate
+                    $(api.column('CR:name').footer()).html(cr + '%');
+                    $(api.column('CPC:name').footer()).html('$' + cpc);
+                    $(api.column('Profit:name').footer()).html('$' + pf);
+                    $(api.column('RPC:name').footer()).html('$' + rpc);
+                }
+                else {
+
+                    // clear all tfoot
+                    api.columns().eq(0).each(function (idx) {
+                        var column = api.column(idx);
+                        var name = $(column.header()).html();
+
+                        if (idx == 0)
+                        { $(column.footer()).html("Totals"); }
+                        else { $(column.footer()).html(""); }
+                    });
+                }
+            }
+
+        });
+
+        $('#run').click(function (e) {
+            //e.preventDefault();
+            //window.location.hash = getURL(reporturl);
+            $('.dataTables_overlay').show();
+            refreshTable();
+        });
+        $("#rzone").change(function(e)
+        {
+            e.preventDefault();
+            window.location.hash = getURL(reporturl);
+        });
+        $('#export').click(function (e) {
+            e.preventDefault();
+            window.location = getURL(reporturl) + '&state=1';
+        });
+
+        $('.togglerefresh').change(function () {
+            $('.dataTables_overlay').show();
+            refreshTable(this.name);
+        });
+
+        $('.toggle').change(function () {
+            updateHash(getURL(reporturl));
+            toggleColumn(this.name);
+        });
+
+        // setReportTimer();
+    }
+
+
+
+</script>

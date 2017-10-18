@@ -1,0 +1,125 @@
+﻿@model CpaTicker.Areas.admin.Classes.ConversionPixel
+
+@{
+    ViewBag.Title = "Campaigns";
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-th"></i>
+            @Html.ActionLink("Conversion Pixels", "index")
+            <span>
+                >
+                Campaigns
+            </span>
+        </h1>
+    </div>
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    <div class="row">
+       <!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-togglebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-th"></i> </span>
+					<h2>Conversion Pixel Campaigns</h2>
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+                       
+						<table class="table table-hover" id="dt_basic">
+							<thead>
+								<tr>
+                                    <th>Campaign</th>
+									<th style="text-align:center;">Status</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model.Campaigns.Where(c => !((IEnumerable<int>)ViewBag.HiddenCampaigns).Contains(c.CampaignId))) {
+            
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink(
+                                                String.Format("{0} - {1}", item.Campaign.CampaignId, item.Campaign.CampaignName), "details",
+                                                "campaign", new { id = item.Campaign.CampaignId } , null)
+                                            </td>
+                                            <td>
+                                                <div class="camp-status @item.PixelStatus.ToString().ToLower()">
+                                               @Html.DisplayFor(modelItem => item.PixelStatus)
+                                                </div>
+                                                @*@Html.DisplayFor(modelItem => item.PixelStatus)*@
+                                            </td>
+                                            <td style=" text-align: center;">
+                                                <nav style="display:inline;">
+                                                    @Html.ActionLink("Edit Status", "editstatus", new { id = item.Id }) |
+                                                    @Html.ActionLink("Delete", "deletecampaign", "helper", new { id = item.Id }, null)
+                                                 </nav>
+                                            </td>
+                                        </tr>
+                                    }
+							</tbody>
+						</table>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+			
+
+		</article>
+		<!-- WIDGET END -->
+    </div>
+</section>
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+	updateBreadCrumb('Conversion Pixels Campaigns');
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+	            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+	        });
+	    });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [2] },
+                { "bSearchable": false, "aTargets": [2] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+                    //+
+					//"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        $("div.toolbar").html('<div class="text-right"><nav>@Html.ActionLink("Back", "index", "conversionpixel", null, new { @class = "btn btn-default" })<a href="@Url.Action("addcampaign", new { id = ViewContext.RouteData.Values["id"] })" class="btn btn-primary"><i class="fa fa-plus"></i> Add Campaigns</a></nav></div>');
+    }
+
+</script>

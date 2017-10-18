@@ -1,0 +1,206 @@
+﻿@model CpaTicker.Areas.admin.Classes.AddCustomTimeZone
+@{
+    ViewBag.hash = Url.Action("Index");
+    Layout = null;
+
+}
+<style>
+    .icon-append.fa.fa-calendar {
+        margin-top: 20px;
+    }
+    #IsdstSupport {
+        display: inherit;
+    }
+</style>
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Edit TimeZone</div>
+
+                <!-- NEW COL START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("EditCustomTimeZone", "settings", FormMethod.Post, new { @id = "addtimezone", @class = "smart-form" }))
+                                {
+                                    @*@Html.AntiForgeryToken()*@
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(mode => mode.UserID)
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button"><i class="fa fa-check"></i> Edit TimeZone</button>
+                                            @*@Html.ActionLink("Back", "index", null, new { @class = "btn btn-default", @id = "back_button" })*@
+                                            <button class="btn btn-default" type="button" onclick="window.history.back();"> Back </button>
+                                        </nav>
+                                    </footer>
+
+                                    <div class="fieldset">
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.DisplayName, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-ticket"></i>
+                                                    @Html.EditorFor(model => model.DisplayName)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.DisplayName)
+                                            </section>
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.DisplayID, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-ticket"></i>
+                                                    @Html.EditorFor(model => model.DisplayID)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.DisplayID)
+                                            </section>
+
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <div class="col col-3">
+                                                    @Html.LabelFor(model => model.offsetHour, new { @class = "label" })
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-clock-o"></i>
+                                                        @Html.TextBoxFor(model => model.offsetHour, new { @type = "number", min = -23, max = 23 })
+                                                    </label>
+                                                    @Html.ValidationMessageFor(model => model.offsetHour)
+                                                </div>
+                                                <div class="col col-3">
+                                                    @Html.LabelFor(model => model.offsetMinute, new { @class = "label" })
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-clock-o"></i>
+                                                        @Html.TextBoxFor(model => model.offsetMinute, new { @type = "number", min = -59, max = 59 })
+                                                    </label>
+                                                    @Html.ValidationMessageFor(model => model.offsetMinute)
+                                                </div>
+
+                                            </section>
+                                            <section class="col col-6">
+                                                <div class="col col-3">
+                                                    @Html.LabelFor(model => model.dstoffsetHour, new { @class = "label" })
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-clock-o"></i>
+                                                        @Html.TextBoxFor(model => model.dstoffsetHour, new { @type = "number", min = -23, max = 23 })
+                                                    </label>
+                                                    @Html.ValidationMessageFor(model => model.dstoffsetHour)
+                                                </div>
+                                                <div class="col col-3">
+                                                    @Html.LabelFor(model => model.dstoffsetMinute, new { @class = "label" })
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-clock-o"></i>
+                                                        @Html.TextBoxFor(model => model.dstoffsetMinute, new { @type = "number", min = -59, max = 59 })
+                                                    </label>
+                                                    @Html.ValidationMessageFor(model => model.dstoffsetMinute)
+                                                </div>
+
+                                            </section>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.IsdstSupport, "DayLight Saving Time Support")
+                                                @*<label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>*@
+                                                @Html.CheckBoxFor(model => model.IsdstSupport)
+                                                @*</label>*@
+                                                @*@Html.ValidationMessageFor(model => model.IsdstSupport)*@
+                                            </section>
+                                        </div>
+                                        <div id="dstdiv" class="row">
+                                            <section class="col col-6">
+                                                @*@Html.LabelFor(model => model.dstStart, new { @class = "label" })*@
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-calendar"></i>
+                                                    @Html.EditorFor(model => model.dstStart)
+
+                                                </label>
+                                                @*@Html.ValidationMessageFor(model => model.IsdstSupport)*@
+                                            </section>
+
+                                            <section class="col col-6">
+                                                @*@Html.LabelFor(model => model.dstEnd, new { @class = "label" })*@
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-calendar"></i>
+                                                    @Html.EditorFor(model => model.dstEnd)
+                                                </label>
+                                                @*@Html.ValidationMessageFor(model => model.IsdstSupport)*@
+                                            </section>
+
+
+                                        </div>
+
+                                    </div>
+
+                                }
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- END COL -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script type="text/javascript">
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Settings/Edit Timezone');
+
+    container = $('#content');
+    $.validator.unobtrusive.parse(container);
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+        var f = this.form;
+        container = $('#content');
+        //$.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+        if ($(f).valid()) {
+            pajaxSubmit(f, container, '@ViewBag.hash');
+        }
+        return false; // keeps the page from not refreshing
+    });
+
+    if ($("#IsdstSupport").is(":checked")) {
+        $("#dstdiv").show();
+    } else
+    { $("#dstdiv").hide(); }
+    $('#IsdstSupport').change(function () {
+        if ($(this).is(":checked")) { $("#dstdiv").show(); }
+        else { $("#dstStart").val(''); $("#dstEnd").val(''); $("#dstdiv").hide(); }
+    });
+
+</script>

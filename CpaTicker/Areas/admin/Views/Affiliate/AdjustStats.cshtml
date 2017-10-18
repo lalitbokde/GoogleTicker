@@ -1,0 +1,73 @@
+﻿@model CpaTicker.Areas.admin.Models.AdjustModel
+
+@{
+    ViewBag.Title = "Adjust Stats";
+    Layout = null;
+}
+
+<div class="row tspark">
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+    
+    <div class="row">
+
+        <div class="table-section col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Adjust Stats</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <div class="smart-form">
+
+                                    <footer>
+                                        <nav>
+                                            @Html.ActionLink("Back", "adjust", null, new { @class = "btn btn-default", @id = "back_button" })
+                                        </nav>
+                                    </footer>
+
+                                    <div style="padding:10px;">
+                                        <h4 class="alert alert-info">
+                                            <i class="fa-fw fa fa-check"></i>
+                                            <strong>Success</strong> @Model.Text
+                                        </h4>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Affiliate/Adjust Stats');
+
+</script>

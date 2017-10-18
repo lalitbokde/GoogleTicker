@@ -1,0 +1,17 @@
+*.suo
+*.user
+CpaTicker/bin/CpaTicker.dll
+CpaTicker/bin/CpaTicker.pdb
+[Tt]humbs.db
+CpaTicker/obj/
+CpaTicker.Tests/obj/
+CpaTicker.Tests/bin/
+CpaTicker/TestResults/
+
+*.dbmdl
+*.dacpac
+SQLHelper/obj/
+SQLHelper/bin/Debug/SQLHelper.dll
+SQLHelper/bin/Debug/SQLHelper.pdb
+SQLHelper/bin/Debug/SQLHelper.dacpac
+

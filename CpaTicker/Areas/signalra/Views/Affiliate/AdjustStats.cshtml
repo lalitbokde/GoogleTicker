@@ -1,0 +1,74 @@
+﻿@model CpaTicker.Areas.admin.Models.AdjustModel
+
+@{
+    ViewBag.Title = "Adjust Stats";
+    Layout = null;
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-user fa-fw "></i>
+            @Html.ActionLink("Affiliate", "index")
+            <span>
+                >
+                @ViewBag.Title
+            </span>
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    
+    <!-- NEW WIDGET START -->
+	<article class="col-sm-12 col-md-12 col-lg-12">
+        <!-- Widget ID (each widget will need unique ID)-->
+		<div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false">
+				
+			<header>
+				<h2>Adjust Stats</h2>				
+			</header>
+
+			<!-- widget div-->
+			<div>
+					
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+                    <div class="smart-form">
+					
+                         <footer>
+                    <nav>
+                        @Html.ActionLink("Back", "adjust",  null, new { @class = "btn btn-default", @id = "back_button" })
+                    </nav>
+                       </footer>
+                    
+                        <div style="padding:10px;">
+                    <h4 class="alert alert-info"> <i class="fa-fw fa fa-check"></i>
+                        <strong>Success</strong> @Model.Text </h4>
+                    </div>
+                  
+                        </div>
+
+				</div>
+				<!-- end widget content -->
+					
+			</div>
+			<!-- end widget div -->
+				
+		</div>
+		<!-- end widget -->
+    </article>
+	<!-- WIDGET END -->
+
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Affiliate/Adjust Stats');
+
+</script>

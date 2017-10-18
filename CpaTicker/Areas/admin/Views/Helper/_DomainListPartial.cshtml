@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Domain>
+
+@{
+    ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+}
+
+    
+@*<div class="widget-body-toolbar">
+
+    @if(ViewBag.IsAdmin)
+    {
+        <nav style="margin-left:190px;padding:1px 0px;float:right;">
+            @Html.ActionLink("Add Domain", "AddCustomerDomain", "settings", null, new { @class = "btn btn-primary bn-sm" }) 
+        </nav>
+        <div style="clear: right;"></div>
+    }
+    else
+    {
+        <div style="margin-top:15px;">&nbsp;</div>
+    }
+</div>*@
+
+<table class="table table-hover simple-dt1" id="table_domain">
+    <thead>
+        <tr>
+            <th>Domain Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            
+            <td>
+                <div class="smart-form">
+                    @*@ViewBag.DefaultDomain*@
+
+                    <span class="hidden">@ViewBag.DefaultDomain</span>
+                    <div class="rating">
+                        <input type="radio" name="stars-rating" id="fdomain-0">
+                        <label for="fdomain-0"><i class="fa fa-star"></i></label>
+                        @ViewBag.DefaultDomain
+                    </div>
+
+                </div>
+            </td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    <div class="smart-form">
+                        @*@item.DomainName*@
+                        <span class="hidden">@item.DomainName</span>
+                        <div class="rating">
+                            <input type="radio" name="stars-rating" id="fdomain-@item.Id">
+                            <label for="fdomain-@item.Id"><i class="fa fa-star"></i></label>
+                            @item.DomainName
+                        </div>
+                    </div>
+                    
+                </td>
+                <td>
+                @if (ViewBag.IsAdmin)
+                {
+                     @Html.ActionLink("Remove", "RemoveCustomerDomain", "helper", new { id = item.Id }, new { @class = "btn btn-danger btn-xs rlink" })
+                }
+                </td>
+            </tr>
+            }
+    </tbody>
+    
+    
+</table>
+
+
+<script>
+
+    // set the favorite domain
+    //var fdomain = $.fdomain;
+    //var f = "#fdomain-" + fdomain.value();
+    //console.log(f);
+   
+    var $domain = $("#fdomain-" + fdomain.value());
+    if ($domain.length > 0) {
+        $domain.prop("checked", true);
+    }
+    else {
+        $("#fdomain-0").prop("checked", true);
+        $.cookie("ct_domain", 0, { expires: 365 });
+    }
+    //$("#fdomain-" + fdomain.value()).prop("checked", true);
+
+
+    $("input[name=stars-rating]:radio").change(function () {
+
+        // fdomain-id
+        var dvalue = this.id.substr(8);
+
+        $.cookie("ct_domain", dvalue, { expires: 365 });
+    });
+
+   
+
+</script>
+
+
+
+
+
+    

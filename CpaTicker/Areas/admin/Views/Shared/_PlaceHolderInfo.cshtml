@@ -1,0 +1,81 @@
+﻿ <section id="vars">
+    <div class="placeholder-list">
+        <ul class="list-unstyled text-left">
+            <li><strong id="campaign_id">{campaign_id}</strong> ID of campaign. </li>
+            <li><strong id="campaign_name">{campaign_name}</strong> Name of campaign.</li>
+            <li><strong id="affiliate_id">{affiliate_id}</strong> ID of affiliate.</li>
+            <li><strong id="affiliate_name">{affiliate_name}</strong> Company name of affiliate.</li>
+
+            <li><strong id="country">{country}</strong> Country.</li>
+            <li><strong id="state">{state}</strong> State.</li>
+
+            <li><strong id="source">{source}</strong> Source value specified in the tracking link.</li>
+            <li><strong id="ip">{ip}</strong> IP address that made the conversion request.</li>
+            <li><strong id="date">{date}</strong> Current date of conversion formatted as YYYY-MM-DD.</li>
+            <li><strong id="time">{time}</strong> Current time of conversion formatted as HH:MM:SS.</li>
+            <li><strong id="datetime">{datetime}</strong> Current date and time of conversion formatted as YYYY-MM-DD HH:MM:SS.</li>
+            <li><strong id="transaction_id">{transaction_id}</strong> ID of the transaction for your network. Don't get confused with an ID an affiliate passes into aff_sub.</li>
+            <li><strong id="request_id">{request_id}</strong> Encoded ID of the transaction for your network. Don't get confused with an ID an affiliate passes into aff_sub.</li>
+            <li><strong id="payout">{payout}</strong> Revenue of the conversion.</li>
+
+            <li><strong id="aff_sub1">{aff_sub1}</strong> Affiliate sub 1 specified in the tracking link.</li>
+            <li><strong id="aff_sub2">{aff_sub2}</strong> Affiliate sub 2 specified in the tracking link.</li>
+            <li><strong id="aff_sub3">{aff_sub3}</strong> Affiliate sub 3 specified in the tracking link.</li>
+            <li><strong id="aff_sub4">{aff_sub4}</strong> Affiliate sub 4 specified in the tracking link.</li>
+            <li><strong id="aff_sub5">{aff_sub5}</strong> Affiliate sub 5 specified in the tracking link.</li>
+            
+           
+
+        </ul>
+    </div>
+
+    <div style="clear:both;"></div>
+</section>
+
+<script type="text/javascript">
+
+    $('#var_info').click(function (e) {
+        e.preventDefault();
+        vars = $('#vars');
+        if (vars.is(':visible')) {
+            vars.fadeOut('fast');
+        }
+        else {
+            vars.fadeIn('fast');
+        }
+    });
+
+    $('#vars li').click(function (e) {
+        input = $('#OfferUrl');
+        //alert(input.val());
+        input.val(input.val() + $(this).find('strong').text());
+
+    });
+
+</script>
+
+<style>
+    .placeholder-list li + li {
+        /*margin-top: 10px;*/
+    }
+    .placeholder-list {
+        color:#666;
+        padding-bottom:10px;
+        float:left;
+    }
+
+    .placeholder-list li {
+        float:left;
+        margin:0px 5px 5px;
+    }
+
+    #vars {
+        display:none;
+    }
+    
+    .placeholder-list li:hover {
+        cursor:pointer;
+        color: #214e75;
+        text-decoration:underline;
+    }
+</style>

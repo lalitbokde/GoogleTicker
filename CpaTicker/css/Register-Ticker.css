@@ -1,0 +1,623 @@
+﻿
+
+/*=======================================================================================================================*/
+
+.tickerContainer {
+   background-color:rgb(0, 0, 0);
+   color:white;
+   position:absolute;    
+   font-family: "Open Sans",Arial,Helvetica,Sans-Serif;   
+   overflow:hidden;
+   z-index:1;
+}
+.ticker {
+    position:absolute;
+}
+.ticker .asc {
+    background-image:url("../../Images/arrow-up.png");
+}
+.ticker .desc {
+    background-image:url("../../Images/arrow-down.png");
+}
+.ticker table {
+    text-align:center;    
+    margin:auto;
+    text-transform: uppercase;    
+}
+.ticker td {
+    padding: 0 5px;
+    white-space: nowrap;
+}
+td.arrow {
+    padding:0; 
+    background-repeat: no-repeat;    
+}
+.mtickerContainer .ticker {
+    margin-top:2px;
+}
+.mtickerContainer {
+    background-color:#4d4d4d;
+}
+#mv2tk {
+    background-color:white;
+    color:rgb(0, 0, 0);
+}
+
+
+
+/* Large desktops and laptops */
+@media (min-width: 992px) {
+
+    /*desktop*/
+    #bwtk {
+       top:12.8%;
+       left:40%;
+       width:52.1%;
+       height:9%;   
+       font-size: 8px;
+       line-height: 1.19;
+       font-weight:500;	     
+    }
+    #bwtk .lb {
+        font-size:4px;
+    }
+    #bwtk .val {
+        font-size:13px;
+    }
+    #bwtk td.arrow {
+        background-size:75%;
+        min-width:20px;
+        background-position: 100% 40%;
+    }
+
+     /*laptop*/
+    #lptk {
+       top:56%;
+       left:18%;
+       width:33.3%;
+       height:6%;   
+       font-size:6px;
+       line-height: 1.19;
+       font-weight:500;	 
+    }
+    #lptk .lb {
+        font-size:2px;
+    }
+    #lptk .val {
+        font-size:8px;
+    }
+    #lptk td.arrow {
+        background-size:75%;
+        min-width:14px;
+        background-position: 100% 40%;
+    }
+
+    /*table*/
+    #tbtk {
+       top:25.6%;
+       left:24%;
+       width:22%;
+       height:11%;   
+       font-size:7px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    #tbtk .lb {
+        font-size:5px;
+    }
+    #tbtk .val {
+        font-size:14px;
+    }
+    #tbtk td.arrow {
+        background-size:75%;
+        min-width:14px;
+        background-position: 100% 40%;
+    }
+
+    /*movils*/
+    .mtickerContainer {       
+       left:4.9%;
+       width:17.4%;
+       height:11%;   
+       font-size: 9px;
+       line-height: 1.19;
+       font-weight:500;	 
+    }
+    .mtickerContainer .lb {
+        font-size:8px;
+    }
+    .mtickerContainer .val {
+        font-size:20px;
+    }
+    .mtickerContainer td.arrow {
+        background-size:75%;
+        min-width:20px;
+        background-position: 100% 40%;
+    }
+    #mv1tk {
+        top:53.4%;
+		    }
+    #mv2tk {
+        top:64.5%;		   
+    }
+    #mv3tk {
+        top:74.8%;
+    }
+    
+    .rgt_banner_cont {
+        text-align:right;
+    }
+    .gfbtn {
+        text-align:left;
+    }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+   #bwtk {
+       top:12.8%;
+       left:40%;
+       width:52.1%;
+       height:9%;   
+       font-size: 8px;
+       line-height: 1.19;
+       font-weight:500;	     
+    }
+    #bwtk .lb {
+        font-size:3px;
+    }
+    #bwtk .val {
+        font-size:13px;
+    }
+    #bwtk td.arrow {
+        background-size:75%;
+        min-width:17px;
+        background-position: 100% 40%;
+    }
+
+     /*laptop*/
+    #lptk {
+       top:56%;
+       left:18%;
+       width:33.3%;
+       height:6%;   
+       font-size:6px;
+       line-height: 1.19;
+       font-weight:500;	 
+    }
+    #lptk .lb {
+        font-size:2px;
+    }
+    #lptk .val {
+        font-size:8px;
+    }
+    #lptk td.arrow {
+        background-size:75%;
+        min-width:10px;
+        background-position: 100% 40%;
+    }
+
+    /*table*/
+    #tbtk {
+       top:31.6%;
+       left:33%;
+       width:29.9%;
+       height:6.0%;   
+       font-size:7px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    #tbtk .lb {
+        font-size:5px;
+    }
+    #tbtk .val {
+        font-size:12px;
+    }
+    #tbtk td.arrow {
+        background-size:75%;
+        min-width:12px;
+        background-position: 100% 40%;
+    }
+
+    /*movils*/
+   .mtickerContainer {       
+       left:6.9%;
+       width:23.4%;
+       height:9%;   
+       font-size: 9px;
+       line-height: 1.19;
+       font-weight:500;	 
+    }
+    .mtickerContainer .lb {
+        font-size:8px;
+    }
+    .mtickerContainer .val {
+        font-size:20px;
+    }
+    .mtickerContainer td.arrow {
+        background-size:75%;
+        min-width:20px;
+        background-position: 100% 40%;
+    }
+    #mv1tk {
+        top:53.2%;
+		    }
+    #mv2tk {
+        top:61.7%;		   
+    }
+    #mv3tk {
+        top:70.4%;
+    }
+	
+    .rgt_banner_cont {
+        text-align:right;
+    }
+    .gfbtn {
+        text-align:left;
+    }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    #bwtk {
+       top:11.5%;
+       left:40%;
+       width:51.1%;
+       height:8%;   
+       font-size: 8px;
+       line-height: 1.0;
+       font-weight:500;	     
+    }
+    #bwtk .lb {
+        font-size:2px;
+    }
+    #bwtk .val {
+        font-size:7px;
+    }
+    #bwtk td.arrow {
+        background-size:75%;
+        min-width:11px;
+        background-position: 100% 40%;
+    }
+
+     /*laptop*/
+    #lptk {
+       top:55%;
+       left:19%;
+       width:32.3%;
+       height:6%;   
+       font-size:6px;
+       line-height: 1.0;
+       font-weight:500;	 
+    }
+    #lptk .lb {
+        font-size:2px;
+    }
+    #lptk .val {
+        font-size:6px;
+    }
+    #lptk td.arrow {
+        background-size:75%;
+        min-width:8px;
+        background-position: 100% 40%;
+    }
+
+    /*table*/
+   #tbtk {
+       top:32.6%;
+       left:25%;
+       width:21.9%;
+       height:10.0%;   
+       font-size:7px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    #tbtk .lb {
+        font-size:3px;
+    }
+    #tbtk .val {
+        font-size:10px;
+    }
+    #tbtk td.arrow {
+        background-size:75%;
+        min-width:8px;
+        background-position: 100% 40%;
+    }
+
+    /*movils*/
+    .mtickerContainer {       
+       left:5.8%;
+       width:17.4%;
+       height:10%;   
+       font-size: 9px;
+       line-height: 1.19;
+       font-weight:500;	 
+    }
+     .mtickerContainer .lb {
+        font-size:3px;
+    }
+    .mtickerContainer .val {
+        font-size:12px;
+    }
+    .mtickerContainer td.arrow {
+        background-size:75%;
+        min-width:10px;
+        background-position: 100% 40%;
+    }
+    #mv1tk {
+        top:55.5%;
+		    }
+    #mv2tk {
+        top:66%;		   
+    }
+    #mv3tk {
+        top:76%;
+    }
+
+    .rgt_banner_cont {
+        text-align:right;
+    }
+    .gfbtn {
+        text-align:left;
+    }
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+     #bwtk {
+       top:10.5%;
+       left:43.9%;
+       width:31.4%;
+       height:8%;   
+       font-size: 8px;
+       line-height: 1.10;
+       font-weight:500;	     
+    }
+    #bwtk .lb {
+        font-size:3px;
+    }
+    #bwtk .val {
+        font-size:7px;
+    }
+    #bwtk td.arrow {
+        background-size:75%;
+        min-width:11px;
+        background-position: 100% 40%;
+    }
+
+    /*laptop*/
+     #lptk {
+       top:54.7%;
+       left:30.5%;
+       width:20.3%;
+       height:6%;   
+       font-size:6px;
+       line-height: 1.0;
+       font-weight:500;	 
+    }
+    #lptk .lb {
+        font-size:2px;
+    }
+    #lptk .val {
+        font-size:7px;
+    }
+    #lptk td.arrow {
+        background-size:75%;
+        min-width:7px;
+        background-position: 100% 40%;
+    }
+
+    /*table*/
+    #tbtk {
+       top:22.3%;
+       left:85.0%;
+       width:10.8%;
+       height:5.5%;   
+       font-size:4px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    #tbtk .lb {
+        font-size:2px;
+    }
+    #tbtk .val {
+        font-size:8px;
+    }
+    #tbtk td.arrow {
+        background-size:75%;
+        min-width:6px;
+        background-position: 100% 40%;
+    }
+
+    /*movils*/
+    .mtickerContainer {       
+       left:3.4%;
+       width:10.3%;
+       height:8.7%;   
+       font-size: 5px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    .mtickerContainer .lb {
+        font-size:3px;
+    }
+    .mtickerContainer .val {
+        font-size:12px;
+    }
+    .mtickerContainer td.arrow {
+        background-size:75%;
+        min-width:10px;
+        background-position: 100% 40%;
+    }
+    #mv1tk {
+        top:50%;
+    }
+    #mv2tk {
+        top:58.7%;
+    }
+    #mv3tk {
+        top:67.4%;
+    }
+
+    .rgt_banner_cont {
+        text-align:center;
+    }
+    .gfbtn {
+        margin-top:5px;
+        text-align:center;
+    }
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
+     #bwtk {
+       top:10.5%;
+       left:43.9%;
+       width:30.4%;
+       height:9%;   
+       /*font-size: 6px;*/
+       line-height: 1.0;
+       font-weight:500;	     
+    }
+    #bwtk .lb {
+        font-size:3px;
+    }
+    #bwtk .val {
+        font-size:3px;
+    }
+    #bwtk td.arrow {
+        background-size:75%;
+        min-width:3px;
+        background-position: 100% 40%;
+    }
+
+    /*laptop*/
+    #lptk {
+       top:54.7%;
+       left:31.5%;
+       width:19.3%;
+       height:6%;   
+      /* font-size:6px;*/
+       line-height: 1.0;
+       font-weight:500;	 
+    }
+    #lptk .lb {
+        font-size:2px;
+    }
+    #lptk .val {
+        font-size:2px;
+    }
+    #lptk td.arrow {
+        background-size:75%;
+        min-width:4px;
+        background-position: 100% 40%;
+    }
+
+    /*table*/
+    #tbtk {
+       top:22.3%;
+       left:84.0%;
+       width:10.0%;
+       height:5.5%;   
+       font-size:2px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    #tbtk .lb {
+        font-size:1px;
+    }
+    #tbtk .val {
+        font-size:6px;
+    }
+    #tbtk td.arrow {
+        background-size:75%;
+        min-width:4px;
+        background-position: 100% 40%;
+    }
+
+    /*movils*/
+    .mtickerContainer {       
+       left:6.5%;
+       width:9.5%;
+       height:8.7%;   
+       font-size: 2px;
+       line-height: 1.19;
+       font-weight:500;   
+    }
+    .mtickerContainer .lb {
+        font-size:1px;
+    }
+    .mtickerContainer .val {
+        font-size:4px;
+    }
+    .mtickerContainer td.arrow {
+        background-size:75%;
+        min-width:4px;
+        background-position: 100% 40%;
+    }
+    #mv1tk {
+        top:50%;
+    }
+    #mv2tk {
+        top:58.7%;
+    }
+    #mv3tk {
+        top:67.4%;
+    }
+    
+    .rgt_banner_cont {
+        text-align:center;
+    }
+    .gfbtn {
+        margin-top:5px;
+        text-align:center;
+    }
+
+}
+ @media (min-width: 768px) and (max-width: 820px) {
+     .section1.container {
+            width: 698px;
+        }  
+     
+ }
+@media (max-width: 980px) {
+    ul.whatsul li {
+        font-size: 24px;
+        line-height:32px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

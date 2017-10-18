@@ -1,0 +1,209 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Ticker>
+
+@{
+    var many = Model.Count() > 1;
+}
+
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Tickers</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-togglebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @*<div class="widget-body-toolbar">
+
+                                        <nav style="margin-left:190px;padding:1px 0px;float:right;">
+                                            @Html.ActionLink("Back", "dashboard", "home", null, new { @class = "btn btn-default" })
+                                            <a href="@Url.Action("settings")" class="btn btn-success">
+                                                <i class="fa fa-gear"></i> Color Settings
+                                            </a>
+                                            <a href="@Url.Action("create")" class="btn btn-primary">
+                                                <i class="fa fa-plus"></i> Add Ticker
+                                            </a>
+                                        </nav>
+                                        <div style="clear: right;"></div>
+
+                                    </div>*@
+
+                                @*<nav class="btns">
+                                        @Html.ActionLink("Back", "dashboard", "home", null, new { @class = "btn btn-default"})
+                                        <a href="@Url.Action("settings")" class="btn btn-success">
+                                            <i class="fa fa-gear"></i> Color Settings
+                                        </a>
+                                        <a href="@Url.Action("create")" class="btn btn-primary">
+                                            <i class="fa fa-plus"></i> Add Ticker
+                                        </a>
+                                    </nav>
+                                    <div style="clear:right;"></div>*@
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.TickerId)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Speed)</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TickerId)
+                                                </td>
+                                                <td>
+                                                    @( item.Speed / 100.0)
+                                                    @* @Html.DisplayFor(modelItem => item.Speed)*@
+                                                </td>
+                                                <td style=" text-align: center;">
+                                                    <nav style="display:inline;">
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editTicker"))
+                                                        {
+                                                            @Html.ActionLink("Edit", "edit", new { id = item.TickerId })
+                                                        }
+
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "elementsTicker"))
+                                                        {@:|
+                                                            @Html.ActionLink("Elements", "elements", new { id = item.TickerId })
+                                                        }
+
+                                                    </nav>
+                                                    @if (many)
+                                                    {
+                                                        @:|
+                                                        @Html.ActionLink("Delete", "deleteticker", "helper", new { id = item.TickerId }, new { @class = "rlink" })
+                                                    }
+
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- WIDGET END -->
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Tickers');
+
+    $('.rlink').click(function (e) {
+        @*e.preventDefault();
+	    //doAjax = 0;
+	    url = $(this).attr('href');
+	    container = $('#content');
+	    loadURL(url, container);
+	    window.location.hash = '@Url.Action("index")';
+	    //doAjax = 1;
+	    refreshTicker();*@
+
+        e.preventDefault();
+        url = $(this).attr('href');
+        container = $('#content');
+        loadURL(url, container);
+        refreshTicker();
+
+        //$.ajax({
+        //    type: "GET",
+        //    url: $(this).attr('href'),
+        //    dataType: 'html',
+        //    cache: false,
+        //    async: false,
+        //    success: function (data) {
+        //        container.css({
+        //            opacity: '0.0'
+        //        }).html(data).delay(50).animate({
+        //            opacity: '1.0'
+        //        }, 300);
+        //        refreshTicker();
+        //    }
+        //});
+
+    });
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [2] },
+                { "bSearchable": false, "aTargets": [2] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "createTicker"))
+        {
+            <text>$("div.toolbar").html('<div class="text-right"><nav>@Html.ActionLink("Back", "dashboard", "home", null, new { @class = "btn btn-default" })<a href="@Url.Action("create")" class="btn btn-primary"><i class="fa fa-plus"></i> Add Ticker</a></nav></div>');</text>
+        
+        }
+        else
+        {
+        <text>$("div.toolbar").html('<div class="text-right"><nav>@Html.ActionLink("Back", "dashboard", "home", null, new { @class = "btn btn-default" })</nav></div>');</text>
+        }
+
+    }
+
+</script>

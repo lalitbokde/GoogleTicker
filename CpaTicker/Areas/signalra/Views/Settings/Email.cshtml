@@ -1,0 +1,76 @@
+﻿@model CpaTicker.Areas.admin.Classes.UserProfile
+
+@{
+    ViewBag.Title = "Email";
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-user fa-fw "></i>
+            @Html.ActionLink("Settings", "index")
+            <span>
+                >
+                @ViewBag.Title
+            </span>
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    
+    <!-- NEW WIDGET START -->
+	<article class="col-sm-12 col-md-12 col-lg-12">
+        <!-- Widget ID (each widget will need unique ID)-->
+		<div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false">
+				
+			<header>
+				<h2>Email APIKey</h2>				
+			</header>
+
+			<!-- widget div-->
+			<div>
+					
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+                    <div class="smart-form">
+
+                        <footer>
+                            <nav>
+                                <button class="btn btn-default" type="button" onclick="window.history.back();">Back</button>
+                            </nav>
+                        </footer>
+                        
+                        @if (ViewBag.Error)
+                        {
+                            <div style="padding: 10px;">
+                                <h4 class="alert alert-warning">
+                                    <i class="fa-fw fa fa-warning"></i>
+                                    <strong>Warning</strong> The email couldn't be sent to user @Model.UserName
+                                </h4>
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="padding: 10px;">
+                                <h4 class="alert alert-info">
+                                    <i class="fa-fw fa fa-check"></i>
+                                    <strong>Success</strong> The email has been sent to user @Model.UserName 
+                                </h4>
+                            </div>
+                        }
+                    </div>
+
+				</div>
+				<!-- end widget content -->
+					
+			</div>
+			<!-- end widget div -->
+				
+		</div>
+		<!-- end widget -->
+    </article>
+	<!-- WIDGET END -->
+
+</section>

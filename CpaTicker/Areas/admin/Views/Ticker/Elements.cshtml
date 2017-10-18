@@ -1,0 +1,227 @@
+﻿@model CpaTicker.Areas.admin.Classes.Ticker
+
+@{
+    ViewBag.Title = "Elements";
+    ViewBag.columns = ViewBag.IsAdmin ? 2 : 1;
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-8">
+            <div class="table-content">
+                <div class="table-title">Ticker <strong>@Model.TickerId</strong> Elements</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table class="table table-hover etable" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>Campaign</th>
+                                            @if (ViewBag.IsAdmin)
+                                            {
+                                            <th>Affiliate</th>
+                                            }
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.TickerElements)
+                                        {
+                                        <tr>
+                                            <td>
+                                                @if (item.CampaignId.HasValue)
+                                                    {
+                                                    @Html.ActionLink(string.Format("{0} - {1}", item.Campaign.CampaignId, item.Campaign.CampaignName), "details", "campaign", new { id = item.Campaign.CampaignId }, null)
+                                                    }
+                                            </td>
+                                            @if (ViewBag.IsAdmin)
+                                                {
+                                                <td>
+                                                    @if (item.AffiliateId.HasValue)
+                                                        {
+                                                        @Html.ActionLink(string.Format("{0} - {1}", item.Affiliate.AffiliateId, item.Affiliate.Company), "details", "affiliate", new { id = item.Affiliate.AffiliateId }, null)
+                                                        }
+                                                </td>
+                                                }
+                                            <td>
+                                                <nav style="display:inline;">
+                                                    @* @Html.ActionLink("Edit", "edit", new { id = item.Id }) |
+                                                        @Html.ActionLink("Pixels", "pixels", new { id = item.Id }) | *@
+                                                </nav>
+                                                @Html.ActionLink("Remove", "removetickerelement", "helper", new { id = item.Id }, new { @class = "rlink btn btn-danger btn-xs rlink" })
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-4">
+            <div class="table-content">
+                <div class="table-title">Add Element</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("elements", "ticker", FormMethod.Post, new { @id = "elements", @class = "smart-form" }))
+                                {
+                                    <div class="fieldset">
+
+                                        <section>
+                                            @Html.Label("Campaign", new { @class = "label" })
+                                            <label class="select">
+                                                <i></i>
+                                                @Html.DropDownList("campaignid", new SelectList(ViewBag.Campaigns, "Value", "Text"), "")
+                                            </label>
+                                        </section>
+
+                                        @if (ViewBag.IsAdmin)
+                                        {
+                                            <section>
+                                                @Html.Label("Affiliate", new { @class = "label" })
+                                                <label class="select">
+                                                    <i></i>
+                                                    @Html.DropDownList("affiliateid", new SelectList(ViewBag.Affiliates, "Value", "Text"), "")
+                                                </label>
+                                            </section>
+                                        }
+
+
+                                    </div>
+
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button">@*<i class="fa fa-check"></i>*@ Add</button>
+                                        </nav>
+                                    </footer>
+
+
+                                }
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+	updateBreadCrumb('Ticker @Model.TickerId/Elements');
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+
+        if ($("#campaignid").val() != "" || $("#affiliateid").val() != "")
+        {
+            var f = this.form;
+            container = $('#content');
+            pajaxSubmit(f, container, '');
+
+            refreshTicker();
+        }
+       
+        return false; // keeps the page from not refreshing 
+    });
+
+    $('.etable a').click(function (e) {
+        e.preventDefault();
+        var $this = $(e.currentTarget);
+
+        if ($this.hasClass("rlink")) {
+            //doAjax = 0;
+            url = $(this).attr('href');
+            container = $('#content');
+            loadURL(url, container);
+            //doAjax = 1;
+
+            refreshTicker();
+        }
+        else
+         window.location.hash = $this.attr('href');
+     });
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+	            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+	        });
+	    });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            //"bSortable": false,
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [@ViewBag.columns] },
+                { "bSearchable": false, "aTargets": [@ViewBag.columns] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+                    //+
+					//"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("index", "ticker")" class="btn btn-default">Back</a></nav></div>');
+    }
+
+</script>

@@ -1,0 +1,353 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+.clear {
+	clear: both;
+}
+#header {
+	background-color: #17242a !important;
+	color: #fff;
+	background-image: none;
+	border-bottom: #2291cd solid 5px;
+	height: 60px;
+}
+#logo {
+	margin-left: 40px;
+	width: 140px;
+}
+.login-info {
+	width: auto;
+	border: none;
+	box-shadow: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 23px;
+	color: #fff;
+	font-weight: 300;
+}
+.login-info > span {
+	border: none;
+}
+.login-info a span {
+	font-size: 23px;
+	color: #fff;
+	font-weight: 300;
+}
+#logout > span {
+	background: none repeat scroll 0 0 #137cb4;
+	border-top: 5px solid #2291cd;
+	display: inline-block;
+	padding: 8px 15px;
+}
+.btn-header > *:first-child > a, .btn-header > *:first-child > a:active, .btn-header > *:first-child > a:hover {
+	-moz-user-select: none;
+	background-color: transparent;
+	background-image: none;
+	border: medium none;
+	border-radius: 2px;
+	color: #fff;
+	display: inline-block;
+	margin: 5px 0 0;
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 18px;
+}
+.btn-header > *:first-child > a .fa {
+	font-size: 18px;
+	margin-right: 10px;
+	float: left;
+}
+#header #fullscreen > span /*, #header #hide-menu > span */{ /*njhones here*/
+	display: inline-block;
+	margin: 10px 15px 0 0;
+}
+:-moz-full-screen #fullscreen > *:first-child > a {
+background:none;
+background-image:none;
+}
+#header #fullscreen .fa {
+	color: #137cb4;
+}
+#left-panel {
+	padding-top: 60px;
+	background: #fff;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+#left-panel .fa-fw {
+	color: #3284bf;
+	font-size: 24px;
+}
+#left-panel a, #left-panel a span {
+	color: #333333;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+#left-panel li.active, #left-panel li:hover {
+	background: #137cb4;
+}
+#left-panel li.active a, #left-panel li.active a span, #left-panel li a:hover, #left-panel li a:hover span, #left-panel li:hover a, #left-panel li:hover a span {
+	color: #fff;
+}
+#left-panel li.active .fa-fw, #left-panel li a:hover .fa-fw, #left-panel li:hover .fa-fw {
+	color: #fff;
+}
+.minified #left-panel nav > ul > li > a, .minified nav > ul > li > a > .menu-item-parent {
+	background: #137cb4;
+	color: #fff;
+}
+.minified #left-panel nav > ul > li > a .fa.fa-fw {
+	color: #fff;
+}
+.page-footer {
+	background: none repeat scroll 0 0 #162329;
+	border-top: none;
+}
+#content {
+	padding: 10px 30px;
+	position: relative;
+}
+.page-title .fa-fw {
+	font-size: 44px;
+	color: #137cb4;
+	float: left;
+}
+.page-title {
+	color: #1a2026;
+	font-size: 43px;
+	line-height: 44px;
+}
+.jarviswidget > header > .widget-icon {
+	background: none repeat scroll 0 0 #137cb4;
+	display: block;
+	float: left;
+	font-size: 24px;
+	height: 50px;
+	line-height: 28px;
+	margin-right: 0px;
+	padding: 10px;
+	position: relative;
+	text-align: center;
+	min-width: 50px;
+	width: auto;
+}
+.jarviswidget > header {
+	background: none repeat scroll 0 0 #162329;
+	border: medium none;
+	color: #fff;
+	font-size: 20px;
+	border-top: #2291cd solid 5px;
+	height: 55px;
+}
+.jarviswidget > header h2 {
+	font-size: 20px;
+	color: #fff;
+}
+.jarviswidget > header h2 {
+	color: #fff;
+	font-size: 20px;
+	height: auto;
+	margin: 5px 0 0 15px;
+}
+.jarviswidget-color-blueDark > header, .jarviswidget-color-blue > header {
+	border-color: #2291cd !important;
+}
+.jarviswidget-ctrls .button-icon {
+	height: 50px;
+	min-width: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	color: #fff;
+}
+.widget-toolbar {
+	padding-top: 8px;
+	height: 50px
+}
+nav > ul > li > a b {
+	font-size: 24px;
+	position: absolute !important;
+	right: 10px;
+	top: 2px;
+	color: #d6d6d6;
+}
+.top-actions {
+	width: 100%;
+	float: left;
+	background: #eff0f2;
+	color: #353e49;
+	font-size: 14px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+.btn-blue {
+	background: #137cb4;
+	color: #fff;
+}
+.btn-green {
+	background: #61b81a;
+	color: #fff;
+}
+.btn-blue:hover {
+	background: #137cb4;
+	color: #fff;
+}
+.btn-green:hover {
+	background: #61b81a;
+	color: #fff;
+}
+.btn {
+	border-radius: 0;
+	margin-left: 0px;
+}
+/*---------new css code here-----------*/
+.fa-refresh, .fa-cog {
+	margin: 0 10px 0 0;
+}
+.green-bdr-top {
+	border-top: 3px solid #61b81a;
+}
+.progress-meter{ 
+	margin-bottom:40px;
+}
+.performance-wrap {
+	box-shadow: 0 7px 30px #999 inset;
+}
+.head-area {
+	background: #1278b1;
+}
+.head-area h2 {
+	color: #ffffff;
+	font-family: roboto;
+	font-size: 16px;
+	font-weight: 500;
+	margin: 0;
+	padding: 8px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+.content-part ul {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+.content-part ul li {
+	float: left;
+	list-style: none outside none;
+	margin: 20px 0;
+	padding: 0 20px;
+	text-align: center;
+	width: 33%;
+}
+.show-performance {
+	background:##efefef;
+	border: medium none;
+	border-radius: 5px;
+	box-shadow: 0 3px 6px #999 inset;
+	color:#333333;
+	font-family: roboto;
+	font-size: 30px;
+	font-weight: 400;
+	padding: 0;
+	text-align: center;
+	width: 100% !important;
+}
+.user-interface {
+    color: #5b5b5b;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.view-by h3 {
+    margin: 0 10px 0 0;
+}
+
+/*njhones commented*/
+/*label.input, label.select {
+    border: 1px solid #cecece;
+    border-radius: 5px;
+	padding:0 8px;
+}*/
+.datepicker.hasDatepicker {
+    border: medium none;
+    padding: 6px 3px;
+	border-right:1px solid #cecece;
+}
+.btn-group.date-picker {
+    margin: 0 0 0 15px;
+}
+#fullscreen span a{ 
+	cursor:pointer !important;
+}
+.smart-form .state-success select + i {
+    background: none repeat scroll 0 0 #f0fff0;
+    box-shadow: 0 0 0 9px #f0fff0;
+}
+.smart-form .select i {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 0 0 9px #fff;
+    height: 11px;
+    position: absolute;
+    right: 11px;
+    top: 10px;
+    width: 5px;
+}
+.line-chart-content {
+    clear: both;
+    width: 100%;
+}
+.legendColorBox > div{ border:0px !important; }
+.legendLabel {  padding-left: 4px; padding-top: 4px; }
+
+
+@media (max-width:1166px) and (min-width:768px) { 
+	.content-part ul li {
+		padding: 0 2px;
+		width: 33%;
+	}
+}  
+@media (max-width:980px) {
+#header > *:first-child, aside {
+	max-width: 220px;
+	width: auto;
+}
+.btn-header > *:first-child > a .fa {
+	float: none;
+	margin: 0;
+}
+#logout > span {
+	padding: 5.5px 5px;
+}
+.btn-header.transparent a {
+	margin: 0 !important;
+	padding: 0;
+	width: 100% !important;
+}
+.login-info a span {
+	font-size: 18px;
+}
+.top-actions{ 
+	float:none;
+}
+}
+@media (max-width:768px) {
+.action-bttn{ 
+	float:none !important;
+	margin:20px 0 0 !important;
+}
+}
+@media (max-width:447px) {
+.login-info a span {
+	color: #000;
+	font-size: 16px;
+}
+#logout > span {
+	border: medium none;
+	margin: 10px 0 0;
+	padding: 0 5px;
+}
+#show-shortcut span {
+    display: none;
+}
+.btn { font-size: 10px;margin: 0 5px !important; padding: 6px 12px;}
+}

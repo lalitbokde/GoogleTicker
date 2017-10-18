@@ -1,0 +1,156 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.UserCustomReport>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Manage Reports</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-togglebutton="false" data-widget-collapsed="false" data-widget-editbutton="false">
+                        <div class="dataTables_overlay"></div>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+
+                                <div class="widget-body-toolbar">
+                                    <div class="row">
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 npadding-leftt">
+                                            <nav style="float:right;">
+                                                <a href="@Url.Action("CustomReport")" class="btn btn-primary">
+                                                    <i class="fa fa-plus"></i>
+                                                    <span class="atext"> Add Report</span>
+                                                </a>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>ReportName</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ID)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ReportName)
+                                                </td>
+
+
+                                                @* <td>
+                                                         @Html.DisplayFor(modelItem => item.PixelStatus)
+                                                    </td>*@
+                                                <td style=" text-align: center;">
+                                                    <nav style="display:inline;">
+                                                        @{string URLdesc = "admin#/admin/reports/CustomReport" + item.ReportData + "&ReportID=" + item.ID;}
+                                                        <a href='@URLdesc' target="_top">Edit | </a>
+                                                        @*@Html.ActionLink("Edit", "CustomReport", new { id = item.ID }) |*@
+                                                        @Html.ActionLink("Delete", "DeleteManageReport", new { id = item.ID })
+                                                    </nav>
+                                                </td>
+                                            </tr>
+                                                            }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- WIDGET END -->
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Manage Reports');
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+    //LoadDataTablesCustomReport();
+
+    $(".customreportsMenu").remove();
+    @foreach (var item in Model)
+    {
+        <text>
+    var reporttext = '@item.ReportData';
+    var ReportID = '@item.ID';
+    var ReportName = '@item.ReportName';
+    var URLdesc = "admin#/admin/reports/CustomReport " + reporttext + " &ReportID= " + ReportID;
+    $("#MainMenu").append("<li class='customreportsMenu'><a target='_top' href='" + URLdesc + "'>" + ReportName + " <i class='fa fa-lg fa-fw fa-file-text nav-icon'></i></a></li>");
+    </text>
+
+      }
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            //"bFilter": false,
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [2] },
+                { "bSearchable": false, "aTargets": [2] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        //  $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("create")" class="btn btn-primary"><i class="fa fa-plus"></i> Add Pixel</a></nav></div>');
+    }
+
+</script>

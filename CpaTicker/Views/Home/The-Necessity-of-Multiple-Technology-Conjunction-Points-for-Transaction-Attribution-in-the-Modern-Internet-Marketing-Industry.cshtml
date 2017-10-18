@@ -1,0 +1,156 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ClickTicker&trade;</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+
+<body>
+    @Html.Partial("_GoogleAnalytics")
+    <div class="abt_top_sec">
+        <div class="top_in">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 hidden-xs">
+                        <ul class="topslsec">
+                            <!--<li><a href="#"><img src="images/sl1.png" width="20" height="20" alt=""></a></li>
+                            <li><a href="#"><img src="images/sl2.png" width="20" height="20" alt=""></a></li>
+                            <li><a href="#"><img src="images/sl3.png" width="20" height="20" alt=""></a></li>
+                            <li><a href="#"><img src="images/sl4.png" width="20" height="20" alt=""></a></li>
+                            <li><a href="#"><img src="images/sl5.png" width="20" height="20" alt=""></a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            <a class="navbar-brand logo" href="@Url.Action("index")"><img src="images/logo.png" alt="Logo" class="img-responsive" /></a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li> <a href="@Url.Action("index")">HOME</a> </li>
+                                <li> <a href="@Url.Action("features")">FEATURES</a> </li>
+                                <li> <a href="@Url.Action("contact")">CONTACT</a> </li>
+                                <li> <a href="@Url.Action("pricing")">PRICING</a> </li>
+                                <li> <a href="@Url.Action("RequestDemo")">Request Demo</a> </li>
+                                <li> <a href="@Url.Action("register", "account", new { level = "Gold" })" class="sign_in">FREE SIGN UP</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container banner">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <p class="abt_bnrtxt1">@*LOREM IPSUM <span>DOLOR</span>*@</p>
+                    <p class="abt_bnrtxt2">@*LOREM IPSUM DOLOR*@</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="abtsec1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 abtsec1txt abtsec1bdr">
+                    <h1>The Necessity of Multiple Technology Conjunction Points for Transaction Attribution in the Modern Internet Marketing Industry</h1>
+                    First, is it is necessary to identify the primary means of transaction attribution that are presently accessible to users of major modern marketing platforms.
+                    <h2>Client-Based Tracking</h2>
+                    <p>All user reliant attribution technology depends on a pixel-based method whether an iframe, an image, or a JavaScript snippet. While tracking pixels is a client-side methodology, the tracking is still recorded by a server. This process occurs by means of a user’s client making a request over HTTP. The recording occurs on page load after the transaction is completed. The primary distinction is regarding the use of cookies.</p>
+                    <p></p><strong>Cookie-Based Tracking</strong> – The user receives a cookie when the referral link is clicked. This cookie is then accessed when the user reaches the page where the tracking pixel has been placed to associate the user with their original click session.</p>
+                    <p></p><strong>Cookieless Tracking</strong> – A unique identifier or token follows the user from the referral page to the transaction completion page utilizing server-side technology that is integrated into the transaction by the offer page. The unique identifier or token is then passed back to the tracking server via the tracking pixel eliminating the need for a cookie.</p>
+                    <h2>Server-Based Tracking</h2>
+                    <p>While there are many ways to integrate server-based tracking (postback, HTTP, or an API), the common denominator is that the host server of the offer page triggers the action by means of direct server-to-server communication without being limited by client technology.</p>
+                    <h2>Multiple Technologies Create Accuracy</h2>
+                    <p>Each of the methodologies noted above comes with its own list of pros and cons that ultimately make it clear the only way to avoid breaks in legitimate transactions between platforms is to integrate multiple tracking technologies.</p>
+                    <p>For example, cookie-based tracking relies on the client’s ability to store a cookie. However, cookie storage is subject to browser, device type, and even third-party software specifically designed to inhibit tracking information. While cookieless tracking solves those issues, it still relies on the client page loading as expected and the loading of the pixel, which is a third-party or cross-site request. Many high-volume platforms restrict this process based on non-matching security protocols or other reasons.</p>
+                    <p>On the server side, a large portion of media purchasing platforms do not even offer server-to-server integration. Publishers may require client-side tracking to piggyback their sub affiliate’s tracking requirements. While using pure server-to-server integration bumps accuracy to over 98% and rcetains the ability to fire chained server-to-server or postback actions, you still cannot rely solely on this method because of the many networks, publishers, and individual affiliates who require pixels, thanks to the aforementioned advertisor network restrictions.</p>
+                    <p>Integrating these three primary tracking methods can create issues such as duplicate attribution and multiple non-unique click sessions that can skew data points. Because of this, it is imperative that balance is struck between accuracy and the complication of integrating various technologies into the same transaction flow to create the highest priority feature set for any next-age affiliate tracking platform.</p>
+                    <p>That is why ClickTicker includes patented technology such as live streaming, self-updating reporting (with visual and audible alerts), and true “push” reporting creating the simplest procedure for tracking diagnostic functionality in the industry.</p>
+
+                    <p>References:</p>
+                    <p>
+                        <a href="http://clickadder.com/2015/01/the-dummies-guide-to-conversion-tracking/#more-1" target="_blank">http://clickadder.com/2015/01/the-dummies-guide-to-conversion-tracking/#more-1</a>
+                        <br />
+                        <a href="http://www.google.com/patents/US8244584" target="_blank">http://www.google.com/patents/US8244584</a>
+                    </p>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btm_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="btm_box">
+                        <div class="btm_hdg">about us</div>
+                        <div class="btm_cont"> ClickTicker is the cutting-edge solution developed by marketers, for marketers. Our experienced management team is dedicated to helping optimize your marketing initiatives.   </div>
+                        <div class="social_icon"> <a href="#"><img src="images/sl1.png" alt=""></a> <a href="#"><img src="images/sl2.png" alt=""></a> <a href="#"><img src="images/sl3.png" alt=""></a> <a href="#"><img src="images/sl4.png" alt=""></a> <a href="#"><img src="images/sl5.png" alt=""></a> </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="btm_box">
+                        <div class="btm_hdg">get in touch</div>
+                        <div class="btm_cont">
+                            <ul class="contactdetail">
+                                <li class="mail">sales@clickticker.com</li>
+                                <li class="support">support@clickticker.com</li>
+                                <li class="phone"><span style="color:#fff;">888-683-4872</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="btm_box">
+                        <div class="newsletter">newsletter</div>
+                        <div class="btm_cont">
+                            Recieve news & updates about
+                            ClickTicker™.<br>
+                            <div class="news_letter">
+                                <form>
+                                    <input type="text" value="" id="email" name="email" class="txtfld" placeholder="Your email">
+                                    <input type="submit"
+                                           class="submit" value="SUBSCRIBE">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>© @DateTime.UtcNow.Year ClickTicker™ US Patent US 8,244,584 B1</footer>
+    <script>
+    $('.carousel').carousel({
+        interval: 2000 //TIME IN MILLI SECONDS
+    })
+    </script>
+    <a title="Web Analytics" href="http://clicky.com/100857864"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100857864); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100857864ns.gif" /></p></noscript>
+</body>
+</html>
+

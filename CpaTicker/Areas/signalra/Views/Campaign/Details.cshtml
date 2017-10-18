@@ -1,0 +1,441 @@
+﻿@model CpaTicker.Areas.admin.Classes.Campaign
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+    Layout = null;
+    bool warning = ((IEnumerable<SelectListItem>)ViewBag.Affiliates).Count() == 0;
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-bar-chart-o fa-fw "></i>
+            @Html.ActionLink("Campaign", "index")
+            <span>
+                >
+                @ViewBag.Title
+            </span>
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid" class="">
+    <div class="row">
+        <!-- NEW WIDGET START -->
+		<article class="col-sm-12 col-md-12 col-lg-8">
+            <!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-2" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false">
+				
+				<header>
+					<h2>Generate Links </h2>				
+				</header>
+
+				<!-- widget div-->
+				<div>
+					
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+						@* begin virtual form *@
+                        <div class="smart-form">
+						    <div class="fieldset">
+
+                                @if (warning)
+                                {
+                                    <div class="alert alert-warning fade in">
+                                        <button class="close" data-dismiss="alert"> × </button>
+                                        <i class="fa-fw fa fa-warning"></i>
+                                        <strong>Warning</strong>
+                                        For the traking link to work you need to have affiliates!
+                                    </div>
+                                }
+
+								<div class="row">
+									<section class="col col-@(ViewBag.MultipleURLs ? 4 : 6)">
+                                        <label  class="label">Affiliate</label>
+										<label class="select">
+                                              @Html.DropDownList("Affiliates", "")
+                                            <i></i>
+										</label>
+									</section>
+
+                                    @if (ViewBag.MultipleURLs)
+                                    {
+                                        <section class="col col-4">
+                                            <label  class="label">URL</label>
+                                            <label class="select">
+
+                                            @if (ViewBag.SelectedURLId != null)
+                                            {
+                                                @* Why da fuck the selected object doesn't work!!!! FUCK
+                                                @Html.DropDownList("Actions", new SelectList(ViewBag.Actions, "ActionId", "ActionId", ViewBag.SelectedActionId))
+                                                *@
+                                                
+                                                //var urls = (IEnumerable<CpaTicker.Areas.admin.Classes.URL)ViewBag.URLs;
+                                                <select name="URLs" id="URLs">
+                                                    
+                                                    @foreach (var item in ViewBag.URLs)
+                                                    {
+                                                        <option value="@item.PreviewId"
+                                                        @if (item.Id == ViewBag.SelectedURLId)
+                                                        {
+		                                                    @:selected="selected"
+	                                                    }>@item.PreviewId - @item.Name</option>
+                                                    }
+                                                    <option value="0">Random</option>
+                                                </select>
+                                            }
+                                            else
+                                            {
+                                                //@Html.DropDownList("URLs", new SelectList(ViewBag.URLs, "Id", "Id"), "")
+                                                //@Html.DropDownList("URLs", new SelectList(ViewBag.URLs, "PreviewId", "PreviewId"), "")
+                                                
+                                                <select name="URLs" id="URLs">
+                                                    
+                                                    @foreach (var item in ViewBag.URLs)
+                                                    {
+                                                        <option value="@item.PreviewId">@item.PreviewId - @item.Name</option>
+                                                    }
+                                                    <option value="0">Random</option>
+                                                </select>
+                                            }
+                                            <i></i>
+                                            </label>
+                                        </section>
+                                    }
+
+                                    <section class="col col-@(ViewBag.MultipleURLs ? 4 : 6)">
+                                        <label class="label">Banner</label>
+										<label class="select">
+                                              @Html.DropDownList("Banners", "")
+                                            <i></i>
+										</label>
+									</section>
+
+									
+								</div>
+
+                                <div class="row">
+
+                                    <section class="col col-6">
+                                        <label class="label">Domain</label>
+										<label class="select">
+                                              @Html.DropDownList("CustomerDomains")
+                                            <i></i>
+										</label>
+									</section>
+
+                                    <section class="col col-6">
+                                        <label class="label">Tracking Type</label>
+                                        <label class="select">
+                                            @Html.DropDownList("trackingtype", CpaTicker.Areas.admin.Classes.TrackingType.HttpiFrame.ToSelectList())
+                                            <i></i>
+                                        </label>
+                                    </section>
+
+                                </div>
+
+                                @* Tracking Link *@
+                                <section>
+                                    <label  class="label">Tracking Link</label>
+                                    <label class="input">
+                                        <i class="icon-prepend fa fa-globe"></i>
+                                        @Html.TextBox("trackinglink", null, new { @onclick = "this.select();", @readonly = "true", @class = "njh-extralong" })
+                                    </label>
+                                </section>
+
+                                @* Tracking Code *@
+                                <section>
+                                    <label  class="label">Tracking Code</label>
+                                    <label class="textarea">
+                                        <i class="icon-prepend fa fa-globe"></i>
+                                        @Html.TextArea("trackingcode", new { @onclick = "this.select();", @readonly = "true", @class = "html" })
+                                    </label>
+                                     <div class="note">
+                                        <i class="fa fa-info"></i>
+                                        This code will fire the pixels associated with default action of this campaign.
+                                    </div>
+                                </section>
+
+                                <div class="row">
+									<section class="col col-2">
+                                        <label  class="label">Source</label>
+										<label class="input">
+                                             @Html.TextBox("hitid")
+										</label>
+                                     </section>
+
+                                    <section class="col col-8" id="labelsubid">
+                                        <label  class="label">SubId</label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="subid">
+                                            <i></i>
+                                            &nbsp;
+                                        </label>
+										 <div class="note">  
+                                             <strong>Note:</strong>  Pass in unique user information for conversion tracking   
+										 </div>
+                                     </section>
+
+                                    <section class="col col-10" id="subidtext1" style="display:none;">
+                                        <label  class="label">Sub Id 1</label>
+										<label class="input">
+                                              @Html.TextBox("subid1")
+										</label>
+										 <div class="note">  
+                                             <strong>Note:</strong>  A Sub ID allows affiliates to pass unique values (I.e. a user ID or any other user information) into the tracking link. The Conversion Report provides a list of conversions by Affiliate Sub ID. Standard alpha numeric characters can only be used. 
+                                             <a id="more" href="#">Add More</a>
+										 </div>
+                                     </section>
+
+                                    <div id="subidcontainer"></div>
+
+								</div>
+
+                           </div>
+
+                            </div>
+                            <!-- end form div -->
+					</div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+        </article>
+		<!-- WIDGET END -->
+
+       <!-- NEW WIDGET START -->
+		<article class="col-sm-12 col-md-12 col-lg-4">
+            <!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false" data-widget-collapsed="false" >
+				
+				<header>
+					<h2>Campaign Details</h2>				
+				</header>
+
+				<!-- widget div-->
+				<div>
+					<!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <section class="col col-12">
+                            <ul class="list-unstyled text-left" id="detailbox">
+                                <li>
+                                    @Html.LabelFor(model => model.CampaignName)
+                                    @Html.DisplayFor(model => model.CampaignName)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(model => model.Id)
+                                    @Html.DisplayFor(model => model.CampaignId)
+                                </li>
+
+                                <li>
+                                    @Html.LabelFor(model => model.Status)
+                                    <span class="camp-status @Model.Status.ToString().ToLower()">@Html.DisplayFor(model => model.Status)</span>
+                                </li>
+                                @*<li>
+                                    @Html.LabelFor(model => model.TrackingType) @Html.DisplayEnumFor(model => model.TrackingType)<br />
+                                </li>*@
+                                <li>
+                                    @Html.LabelFor(model => model.Description)
+                                    @Html.DisplayFor(model => model.Description)
+                                </li>
+                                @foreach (var item in ViewBag.CustomFields)
+                                {
+                                    <li class="cf">
+                                        <label>@item.CustomField.FieldName</label>
+                                        @item.Value
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+
+                    </div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+        </article>
+		<!-- WIDGET END -->
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+	updateBreadCrumb('Campaign/Details');
+
+    // set the favorite domain
+	$("#CustomerDomains").val(fdomain.value());
+       
+    $('#CustomerDomains').change(function () {
+        generateLink();
+        conversion.update();
+    });
+
+    $('#trackingtype').change(function () {
+        conversion.update();
+    });
+
+    $('#Affiliates').change(function () {
+        generateLink();
+    });
+    $('#Banners').change(function () {
+        generateLink();
+    });
+    @if (ViewBag.MultipleURLs)
+	{
+		 <text>
+            $('#URLs').change(function () {
+                generateLink();
+            });
+        </text>
+	}
+   
+    $('#hitid').change(function () {
+        generateLink();
+    });
+    $('#subidtext1').change(function () {
+        generateLink();
+    });
+           
+    $('#labelsubid').click(function () {
+        $('#labelsubid').hide();
+        $('#subidtext1').show();
+    });
+
+    $('#subid').click(function () {
+        $('#labelsubid').hide();
+        $('#subidtext1').show();
+    });
+            
+    var subindex = 2;
+    $('#more').click(function (e) {
+        e.preventDefault();
+
+        for (i = 0; i < 4; i++) {
+            $('#subidcontainer').append("<section class='col col-3'><label class='label'>Sub Id " + subindex + "</label><label class='input'><input name='subid" + subindex + "' type='text'/></label></section>");
+            subindex += 1;
+        }
+    });
+
+    $("#subidcontainer").on("change", "input", function () {
+        generateLink();
+    });
+
+    var conversion =
+        {
+            update: function () 
+            {
+                @*url = '@Url.Action("generateconversionpixel", "helper", new { @campaignid = Model.Id })&did=';
+                url += $('#CustomerDomains').val();
+                
+                $.get(url, function (data) {
+                    $('#trackingcode').val(data);
+                });*@
+
+                $trackingcode = $('#trackingcode');
+                domain = $("#CustomerDomains option:selected").text();
+                trackingtype = $('#trackingtype').val();
+               
+                switch (trackingtype) {
+
+                    case 'HttpiFrame':
+                        $trackingcode.val('<iframe scrolling="no" frameborder="0" width="1" height="1" src="http://'+ domain +'/cpa/conversion/?cpid=@Model.CampaignId"></iframe>');
+                        break;
+                    case 'HttpsiFrame':
+                        $trackingcode.val('<iframe scrolling="no" frameborder="0" width="1" height="1" src="https://'+ domain +'/cpa/conversion/?cpid=@Model.CampaignId"></iframe>');
+                        break;
+                    case 'HttpImage':
+                        $trackingcode.val('<img scrolling="no" frameborder="0" width="1" height="1" src="http://'+ domain +'/cpa/conversion/?cpid=@Model.CampaignId">');
+                        break;
+                    case 'HttpsImage':
+                        $trackingcode.val('<img scrolling="no" frameborder="0" width="1" height="1" src="https://'+ domain +'/cpa/conversion/?cpid=@Model.CampaignId">');
+                        break;
+                    default:
+                        $trackingcode.val('https://'+ domain +'/cpa/conversion/?cpid=@Model.CampaignId');
+                        break;
+
+                }
+            }
+        }
+
+    conversion.update();
+
+    function generateLink()
+    {
+        var link = '';
+        if ($('#Affiliates').val() != '')
+        {
+            link = 'http://' + $("#CustomerDomains option:selected").text() + '/cpa/click/?affiliateid=' + $('#Affiliates').val();
+            link += "&campaignid=@Model.CampaignId";
+            
+            if ('@ViewBag.MultipleURLs' == 'True') {
+                
+                $urls = $('#URLs');
+
+                if ($urls.val() == '0') {
+                    link += '&random=1';
+                    
+                }
+                else if ($urls.val() > '1'){
+                    link += '&urlid=' + $('#URLs').val();
+                }
+            }
+
+            link += cfield;
+
+            if ($('#Banners').val() != '') {
+                link += '&bannerid=' + $('#Banners').val();
+            }
+            if ($('#hitid').val().trim() != '') {
+                link += '&source=' + encodeURIComponent($('#hitid').val().trim());
+            }
+            if ($('#subid1').val().trim() != '') {
+                link += '&subid1=' + encodeURIComponent($('#subid1').val().trim());
+            }
+
+            $("#subidcontainer input").each(function () {
+                if (this.value.trim() != '') {
+                    link += '&' + this.name + "=" + encodeURIComponent(this.value.trim());
+                }
+            });
+        }
+
+        $('#trackinglink').val(link);
+    }
+
+    var cfield = cfields();
+    function cfields()
+    {
+        var array = @Html.Raw(
+                        Json.Encode(
+                            ((IEnumerable<CpaTicker.Areas.admin.Classes.CustomFieldValue>)ViewBag.CustomFields)
+                             .Select(f => new
+                             {
+                                 fieldname = f.CustomField.FieldName,
+                                 value = f.Value
+                             })
+                        )
+                    );
+        var result = '';
+        $.each(array, function(i, value) {
+            result += '&' + array[i].fieldname + '=' + array[i].value ; 
+        });
+        return result;
+    }
+
+</script>

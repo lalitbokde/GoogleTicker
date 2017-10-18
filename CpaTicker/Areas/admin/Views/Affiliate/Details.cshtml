@@ -1,0 +1,219 @@
+﻿@model CpaTicker.Areas.admin.Classes.ConversionPixel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    ViewBag.hash = Url.Action("Index");
+}
+
+
+<div class="row tspark">
+	@Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-sm-12 col-md-12 col-lg-8">
+            <div class="table-content">
+                <div class="table-title">Conversion Pixels</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-2" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("details", "affiliate", FormMethod.Post, new { @id = "CreatePixel", @class = "smart-form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button"><i class="fa fa-check"></i>Add Pixel </button>
+                                            <button class="btn btn-default" onclick="window.history.back();" type="button"> Back</button>
+                                        </nav>
+                                        @*@Html.ActionLink("Back1", "index", null, new { @class = "btn btn-default", @id = "back_button" })*@
+                                    </footer>
+
+                                    <input type="hidden" name="AffiliateId" id="AffiliateId" value="@ViewBag.AffiliateId" />
+
+
+                                    @*@Html.HiddenFor(model => model.AffiliateId, new { @value = ViewBag.AffiliateId}) *@
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label>Campaign</label>
+                                                <label class="select">
+                                                    @Html.DropDownList("CampaignId", (IEnumerable<SelectListItem>)ViewBag.CampaignId, new { @class = "select2" })
+                                                    @*<i></i>*@
+                                                </label>
+
+                                            </section>
+
+                                            <section class="col col-6">
+                                                <label>Pixel Type:</label>
+                                                <label class="select">
+                                                    @Html.EnumDropDownListFor(model => model.TrackingType)
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                        </div>
+                                        <section>
+                                            @Html.LabelFor(model => model.PixelCode, new { @class = "label" })
+                                            <label class="textarea">
+                                                <i class="icon-append fa fa-comment"></i>
+                                                @Html.TextAreaFor(model => model.PixelCode)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.PixelCode)
+                                        </section>
+                                    </fieldset>
+                                }
+
+
+
+                                <table class="table">
+                                    <tr>
+                                        <th>Campaign Name</th>
+                                        <th>Campaign Id</th>
+                                        <th>Type</th>
+                                        <th class="center">View</th>
+                                        <th class="center">Edit</th>
+                                    </tr>
+                                    @foreach (var item in ViewBag.ConversionPixels)
+                                    {
+                                        <tr>
+                                            <td>@item.CampaignName</td>
+                                            <td>@item.CampaignId</td>
+                                            <td>@item.TrackingType</td>
+                                            <td class="center" onmouseover="mouseoverPixel(this, '@item.PixelCode');" onmouseout="mouseoutPixel(this);"><span class="view-pixel"><i class="fa fa-desktop"></i>Preview</span></td>
+                                            <td class="center"><span class="edit-pixel"><i class="fa fa-edit"></i>Edit</span></td>
+                                        </tr>
+                                    }
+                                </table>
+
+
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+            </div>
+        </div>
+
+        <div class="table-section col-sm-12 col-md-12 col-lg-4">
+            <div class="table-content">
+                <div class="table-title">Affiliate Details</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false" data-widget-collapsed="false">
+
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <div style="padding:10px 5px 0;">
+                                    <table class="table">
+
+                                        <tr>
+                                            <th>Company</th>
+                                            <td>@ViewBag.Company</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address 1</th>
+                                            <td>@ViewBag.Address1</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone</th>
+                                            <td>@ViewBag.Phone</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <td>
+                                                <div class="camp-status @ViewBag.Status.ToString().ToLower()">
+                                                    @ViewBag.Status
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Affiliate/Conversion Pixel');
+
+    function mouseoverPixel(span, pixelCode) {
+        $(span).append("<div class=\"previewcontainer\"><span class=\"preview\">" + pixelCode + "</span></div>");
+    }
+
+    function mouseoutPixel(span) {
+        $(span).find("div:last").remove();
+    }
+
+    container = $('#content');
+    $.validator.unobtrusive.parse(container);
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+        var f = this.form;
+        container = $('#content');
+        //$.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+        if ($(f).valid()) {
+            pajaxSubmit(f, container, '@ViewBag.hash');
+            }
+        
+        return false; // keeps the page from not refreshing 
+    });
+        
+
+</script>
+
+
+
+    
+
+
+

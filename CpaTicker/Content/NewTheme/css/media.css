@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Jan, 2015, 7:01:00 PM
+    Author     : jitendra
+*/
+
+
+@media (min-width: 1100px) and (max-width: 1300px){
+    .h2, h2, h1{font-size: 25px;}
+    .mini-box .box-icon{
+        font-size: 26px;
+        width: 47px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .h2, h2{font-size: 22px;}
+    .btn-group .fa-bars, .btn-group .fa-repeat, .btn-group .fa-arrows{font-size: 20px;}
+    .view-by{ width: 55px;}
+    .padding{margin: 5px 0;}
+
+    .panel-heading .accordion-toggle:after{ right: 6%;}
+    .loadcls{right: 12%;}
+}
+
+
+@media(max-width: 767px){
+    #top .topnav{
+        padding-bottom: 20px;
+    }
+    #content{ margin-left: 0;}
+
+    .widget-body-toolbar .btn-group{margin: 10px 0;}
+
+    .sidebar-left-mini #content{margin-left: 0;}
+    .view-by{ width: 55px;}
+    .padding{margin: 5px 0;}
+
+    #customer-support, #news-letter{display: none;}
+    #left{height: auto; min-height: auto; z-index: 9999;}
+    .user-wrapper{padding: 0;}
+
+    /*.sidebar-left-opened #left{left: 15px;}*/
+
+    #top .topnav{padding: 0;}
+    #ticker-bg{margin: 10px 0;}
+    #right-buttons{margin-bottom: 10px;}
+
+    .panel-heading .accordion-toggle:after{ right: 5%;}
+    .loadcls{right: 9%;}
+
+    #left-align{text-align: left !important;}
+    .table-responsive{border: none;}
+    .btn{margin-bottom: 8px;}
+
+}
+
+@media(max-width: 480px){
+    #top .topnav #right-buttons .btn-group a{font-size: 12px;}
+    #top .topnav #left-buttons{margin: 10px 0;}
+    #rgt-icon .fa-minus, #rgt-icon .fa-expand{font-size: 13px;}
+    .panel-title span{font-size: 15px;}
+    .panel-heading{padding: 5px 15px;}
+    .widget-body-toolbar .btn-group{margin: 10px 0;}
+    #menu, #menu ul, #menu li, #menu a{font-size: 13px;}
+
+    #left, #right{width: 250px;}
+    footer{font-size: 14px;}
+
+    .panel-heading .accordion-toggle:after{ right: 8%; font-size: 13px;}
+    .loadcls{right: 15%;font-size: 13px;}
+}
+
+@media(max-width: 340px){
+    .panel-title span{font-size: 14px;}
+    #rgt-icon .fa-minus, #rgt-icon .fa-expand{font-size: 11px;}
+    footer{font-size: 12px;}
+}
+
+
+
+

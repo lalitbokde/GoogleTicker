@@ -1,0 +1,164 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+}
+
+body#splash {
+    background-color: white;/*#0771bc;*/
+    font-family: "Open Sans", Verdana, Helvetica, Sans-Serif;
+    /*color: #fff;*/
+    padding: 0px;
+    margin: 0px;
+    color: #000;
+}
+
+div#wrap {
+    width: 100%;
+    height: 800px;
+    /*background: -webkit-gradient(radial, 500 50,0,500 50,500, from(rgba(255,255,255,.4)),to(transparent)) transparent;
+    background: -moz-radial-gradient(500px 50px, rgba(255,255,255,.4), transparent) transparent;*/
+}
+
+div.clear {
+    clear: both;
+}
+
+.bpdotssquares {
+    z-index: 150;
+}
+
+#content {
+    position: absolute;
+    width: 800px;
+    height: 75%;
+    margin: auto;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+#tickerContainer {
+    border-radius: 4px;
+    /*background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .2);*/
+    background: rgb(64, 64, 64);
+    color: #fff;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+#ticker {
+    padding: 10px;
+    top: -30px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+#logo {
+    text-align: center;
+    position: relative;
+}
+
+    #logo form {
+        border: 1px solid #333;
+        box-shadow: 5px 5px 5px #333;
+        border-radius: 5px;
+        width: 60%;
+        margin: 0 auto;
+        color: #0771bc;
+        background-color: #fff;
+        font-size: 13px;
+    }
+
+        #logo form a {
+            color: #0771bc;
+        }
+
+            #logo form a:hover {
+                text-decoration: none;
+            }
+
+
+input {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 -1px 0 rgba(0,0,0,0.05) inset;
+    background-color: #f7f7f7;
+    border: solid 1px;
+    border-radius: 3px;
+}
+
+#login {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#editdetails {
+
+}
+#registrationTable {
+    clear: both;
+    padding-bottom: 35px;
+    border :groove;
+    float: inherit;
+    
+   
+   
+}
+#registrationTable div{
+   margin-left:60px;
+}
+
+#login:hover {
+    border: 1px solid lightgray;
+}
+
+.validation-summary-errors, .field-validation-error {
+    color: #eb6d5e;
+}
+
+    .validation-summary-errors li {
+        list-style: none;
+    }
+
+#footer-container {
+    width: 100%;
+}
+
+footer {
+    width: 900px;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+    footer ul {
+        text-align: center;
+        list-style: none;
+        margin: 0 auto;
+    }
+
+        footer ul li {
+            float: left;
+            padding-left: 25px;
+        }
+
+        footer ul.left {
+            float: left;
+        }
+
+        footer ul.right {
+            float: right;
+        }
+.hidden {
+    display:none;
+     visibility:hidden;
+}

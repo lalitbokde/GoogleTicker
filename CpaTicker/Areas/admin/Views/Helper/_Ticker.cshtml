@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Ticker>
+
+
+@foreach (var item in Model)
+{
+    <div class="tickerContainer">
+        <div class="ticker" id="tk_@item.TickerId" data-tickerid="@item.TickerId" data-speed="@item.Speed" data-dir="@item.Direction"
+            data-bgcolor="@item.BackgroundColor"
+            data-cpcolor="@item.CampaignColor"
+            data-imcolor="@item.ImpressionColor"
+            data-ckcolor="@item.ClickColor"
+            data-cvcolor="@item.ConversionColor"></div>
+    </div>
+}
+  

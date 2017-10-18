@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Enum fields";
+    int i = 0;
+    Layout = null;
+}
+
+<div id="maincontent">
+    <div class="adminGrid">
+        <h2>tmp</h2>
+
+        <ul>
+            @foreach (var item in ViewBag.values)
+            {
+                <li>@i <span>@item</span> </li>
+                i++;
+            }
+        </ul>
+        @{
+            i = 0;    
+        }
+        <h2>tmp1</h2>
+        <ul>
+            @foreach (var item in ViewBag.values1)
+            {
+                
+                <li>@i <span>@item</span> </li>
+                i++;
+            }
+        </ul>
+
+    </div>
+</div>
+

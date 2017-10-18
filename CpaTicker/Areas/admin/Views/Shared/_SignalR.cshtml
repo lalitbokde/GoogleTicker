@@ -1,0 +1,102 @@
+﻿@*@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>        
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+       
+        $.connection.hub.start();
+        hubstart();
+
+    });
+
+    function hubstart() {
+        $.ajax({
+            type: 'Get',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/api/signalr/SignalRMaster',
+            success: function (res) {
+               
+            }
+        });
+    }
+</script>*@
+
+
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+    <ul id="sparks" class="">
+        <li class="sparks-info">
+            <div class="desc">
+                <p> My Revenue </p>
+                <span class="txt-color-blue">
+                    <i class="fa fa-money"></i>
+                    <span style="display:inline;" data-bind="text: revenue()[revenue().length - 1]"></span>
+                </span>
+
+            </div>
+            <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm" data-bind="text: revenue().join(',')"></div>
+        </li>
+        <li class="sparks-info">
+            <div class="desc">
+                <p>Clicks Events</p>
+                <span class="txt-color-purple">
+                    <i data-rel="bootstrap-tooltip" title="Increased" data-bind="css: arrow"></i>
+                    <span style="display:inline;" data-bind="text: clicks()[clicks().length - 1]"></span>
+                </span>
+            </div>
+            <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm" data-bind="text: clicks().join(',')"></div>
+        </li>
+        <li class="sparks-info">
+            <div class="desc">
+                <p>Conversions</p>
+                <span class="txt-color-greenDark">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span style="display:inline;" data-bind="text: conversions()[conversions().length - 1]"></span>
+                </span>
+            </div>
+            <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm" data-bind="text: conversions().join(',')"></div>
+        </li>
+    </ul>
+</div>
+@*<script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>*@
+<script type="text/javascript">
+
+    (function ($) {
+
+        // clearTimeout(spktimer); // to prevent multiple in the adjust page
+
+        skmodel = new Spark();
+        ko.cleanNode(document.getElementById("sparks"));
+        ko.applyBindings(skmodel, document.getElementById("sparks"));
+        ////setSparkTimer(skmodel);
+
+        //var job = $.connection.trickerHub;
+
+        //job.client.displaySparks = function () {
+        //    ko.cleanNode(document.getElementById("sparks"));
+        //    ko.applyBindings(skmodel, document.getElementById("sparks"));
+        //    skmodel.loadData();
+        //};
+
+        //if ($.connection.hub.state == 3 || $.connection.hub.state == 4) {
+        //    // Start the connection
+        //    $.connection.hub.start();
+        //}
+    }(jQuery));
+
+</script>
+@*@Scripts.Render("~/bundles/signalr")*@

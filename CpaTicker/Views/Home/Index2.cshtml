@@ -1,0 +1,668 @@
+﻿@model CpaTicker.Models.RequestDemo
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>ClickTicker&trade;</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/css/HomePage/CSS/foundation.css" rel="stylesheet" />
+
+    <link href="~/css/HomePage/CSS/style.css" rel="stylesheet" />
+    
+    <link href="~/css/HomePage/Fonts/stylesheet.css" rel="stylesheet" />
+    <script src="~/css/HomePage/JS/modernizr.js"></script>
+    <link href="~/css/HomePage/NewTicker.css" rel="stylesheet" />
+    <link href="~/css/HomePage/CSS/media.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <section id="banner">
+        <div class="row">
+
+            <center><a href='@Url.Action("Index", "home")'><img src="~/css/HomePage/Images/logo.jpg" alt="Logo" class="logo" /></a></center>
+            <h1>ClickTicker.com For Patented Real Time Ad Tracking.</h1>
+            <h2>Take control of your ad spending today, because the bottom line is what lines your pockets.</h2>
+
+            <div class="small-12 medium-7 large-8 columns">
+                <!--                    <div class="pc">
+
+                                    </div>-->
+                <div class="iss-television">
+                    <video style="" poster="~/Images/click-ticker.png" controls>
+                        <source src="~/Content/Videos/CTICKERSampler5-SD.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <img src="~/css/HomePage/Images/pc.png" />
+                <center><img src="~/css/HomePage/Images/arrow.png" class="hide-for-small-only" /></center>
+            </div>
+
+            <div class="small-12 medium-5 large-4 columns">
+                <div id="frm-box">
+                    <h2>Try 45 Days FREE<span>Start Your Free Trial Today</span></h2>
+                    <div class="frm-container">
+                        @*<form data-abide>
+                                <input type="text" placeholder="Email" required pattern="[a-zA-Z]+" />
+                                <input type="text" placeholder="First Name" />
+                                <input type="text" placeholder="Last Name" />
+                                <input type="text" placeholder="Phone" />
+                                <textarea placeholder="Message"></textarea>
+                                <center><input type="image" src="~/css/HomePage/Images/submit-bt.png" /></center>
+                            </form>*@
+
+                        @if (string.IsNullOrEmpty(ViewBag.Message))
+                        {
+                            <form method="POST">
+
+
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            @*  <input type="text" class="form-control inputshort" id="email" placeholder="Email">*@
+                                            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @class = "form-control inputshort" })
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            @*<input type="text" class="form-control inputshort" id="name" placeholder="Name">*@
+                                            @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "FirstName", @class = "form-control inputshort" })
+                                            @Html.ValidationMessageFor(model => model.FirstName)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            @*  <input type="text" class="form-control inputshort" id="email" placeholder="Email">*@
+                                            @Html.TextBoxFor(model => model.LastName, new { @placeholder = "LastName", @class = "form-control inputshort" })
+                                            @Html.ValidationMessageFor(model => model.LastName)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Phone, new { @placeholder = "Phone", @class = "form-control inputlong" })
+                                            @Html.ValidationMessageFor(model => model.Phone)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            @* <textarea class="form-control textarea" rows="3" placeholder="Message"></textarea>*@
+                                            @Html.TextAreaFor(model => model.Message, new { @placeholder = "Message", @class = "form-control textarea", rows = 3 })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+
+                                        <div class="form-group req-demo-btn">
+
+                                            <button type="submit" style="border: 0; background: transparent; width:100%">
+                                                <img src="~/css/HomePage/Images/submit-bt.png" alt="submit" />
+                                            </button>
+
+                                            @*<center><button type="submit" class="requestdemosub"></button></center>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        }
+                        else
+                        {
+                            <p class="conthding">@ViewBag.Message</p>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="row">
+            <div class="small-12 medium-4 large-4 columns feature-1">
+                <img src="~/css/HomePage/Images/icon-1.jpg" alt="img-1" />
+                <h3>Get Real-Time Transparency from True “Push” Analytics</h3>
+                <div class="clearfix show-for-small"></div>
+            </div>
+
+            <div class="small-12 medium-4 large-4 columns feature-1">
+                <img src="~/css/HomePage/Images/icon-2.jpg" alt="img-2" />
+                <h3>Revolutionary Affiliate Reporting</h3>
+                <div class="clearfix show-for-small"></div>
+            </div>
+
+            <div class="small-12 medium-4 large-4 columns feature-1">
+                <img src="~/css/HomePage/Images/icon-3.jpg" alt="img-3" />
+                <h3>Confidence. Speed. Profits.</h3>
+                <div class="clearfix show-for-small"></div>
+            </div>
+        </div>
+
+        <center><img src="~/css/HomePage/Images/shadow.jpg" /></center>
+
+        <div class="row">
+            <div class="show-for-small-only">
+                <h1>Try 45 Days FREE</h1>
+            </div>
+            <div class="medium-5 large-5 columns">
+                <div class="tickerContainer" id="bwtk2">
+                    <div class="ticker" style="right: -435.6px;">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo) / Affiliate</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4451</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">229</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">12</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">21639</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">1206</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">58</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">yahoo.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4205</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">378</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">62</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tbtk" class="tickerContainer">
+                    <div class="ticker">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo) / Affiliate</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4451</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">229</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">12</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">21639</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">1206</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">58</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">yahoo.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4205</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">378</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">62</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="mv1tk" class="tickerContainer mtickerContainer">
+                    <div class="ticker">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo) / Affiliate</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4451</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">229</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">12</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="mv2tk" class="tickerContainer mtickerContainer">
+                    <div class="ticker">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">google.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">21639</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">1206</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">58</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="mv3tk" class="tickerContainer mtickerContainer">
+                    <div class="ticker">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="c">yahoo.com(demo)</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="im">
+                                                                        <div class="val">4205</div>
+                                                                        <div class="lb">IMPRESSIONS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="cl">
+                                                                        <div class="val">378</div>
+                                                                        <div class="lb">CLICKS</div>
+                                                                    </td>
+                                                                    <td class="arrow asc"></td>
+                                                                    <td class="co">
+                                                                        <div class="val">62</div>
+                                                                        <div class="lb">CONVERSIONS</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @*<img src="../images/NewTicker.jpg" alt="" class="img-responsive sec1lftimg">*@
+                <img src="~/css/HomePage/Images/computer.jpg" class="img-responsive sec1lftimg" />
+
+            </div>
+
+
+                @*<center><img src="~/css/HomePage/Images/computer.jpg" /></center>*@
+           
+
+            <div class="medium-7 large-7 columns">
+                <div class="hide-for-small-only">
+                    <h1>Try 45 Days FREE</h1>
+                </div>
+                <p>
+                    ClickTicker.com is your ticket to raising your online marketing game. Let your competitors “pull” reports and “refresh” stats, while you enjoy real-time updates from the device of your choosing. Quantify Internet traffic with ClickTicker, and enjoy the revolutionary transparency that comes from customized ad tracking.
+                    <br /><br />
+                    Don’t settle for false promises of real-time data. Most services only offer a few useless analytics in real-time just so that they can make the claim. If you want something usable, you have to wait for the critical KPIs to refresh so that you can pull a report. ClickTicker lives up to our promise of real-time data. Leave “pulling” and “refreshing” to another advertiser. Stream your critical campaign data in real-time with ClickTicker!
+                    <br /><br />
+                    ClickTicker is the cutting edge solution to real-time data management. With this kind of precision and transparency, even the dimmest Neckbeard can optimize their ad buys. Imagine what it will do for you. ClickTicker – making the weak, strong and the strong, strongest.
+                    <br /><br />
+                    Take control of your ad spending today, because the bottom line is what lines your pockets.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="medium-4 large-4 columns">
+                <h2><span>abou</span>t us</h2>
+                <p>ClickTicker is the cutting-edge solution developed by marketers, for marketers. Our experienced management team is dedicated to helping optimize your marketing initiatives. </p>
+
+                <div class="social-icon">
+                    <ul class="inline-list">
+                        <li><a href="#"><img src="~/css/HomePage/Images/sl1.png" /></a></li>
+                        <li><a href="#"><img src="~/css/HomePage/Images/sl2.png" /></a></li>
+                        <li><a href="#"><img src="~/css/HomePage/Images/sl3.png" /></a></li>
+                        <li><a href="#"><img src="~/css/HomePage/Images/sl4.png" /></a></li>
+                        <li><a href="#"><img src="~/css/HomePage/Images/sl5.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="medium-4 large-4 columns">
+                <h2><span>get in</span> touch</h2>
+
+                <ul class="list">
+                    <li><img src="~/css/HomePage/Images/mail.png" alt="mail" /> sales@clickticker.com</li>
+                    <li> <img src="~/css/HomePage/Images/support.png" alt="support" /> support@clickticker.com</li>
+                    <li><img src="~/css/HomePage/Images/phone.png" alt="phone" /> 888-683-4872</li>
+                </ul>
+
+            </div>
+
+            <div class="medium-4 large-4 columns">
+                <h2 class="size20"><img src="~/css/HomePage/Images/newsletter.png" /> newsletter</h2>
+                <p> Recieve news & updates about ClickTicker™.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" style="border-radius: 0;" />
+                    <input type="submit" value="Subscribe" class="button round" />
+                </form>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/jquery-1.11.0.js"></script>
+    <script src="~/js/jquery-ticker.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="~/css/HomePage/JS/foundation.js"></script>
+
+    <script>
+        $(document).foundation();
+    </script>
+
+    <script>
+        //$('.carousel').carousel({
+        //    interval: 4000 //TIME IN MILLI SECONDS
+        //})
+
+        $('#bwtk .ticker').ticker({
+            duration: 15000
+        });
+
+        $('#bwtk2 .ticker').ticker({
+            duration: 15000
+        });
+
+        $('#lptk .ticker').ticker({
+            duration: 10000,
+            direction: false
+        });
+
+        $('#tbtk .ticker').ticker({
+            duration: 20000
+        });
+
+        $('#mv1tk .ticker').ticker({
+            duration: 25000
+        });
+
+        $('#mv2tk .ticker').ticker({
+            duration: 20000,
+            direction: false
+        });
+
+        $('#mv3tk .ticker').ticker({
+            duration: 25000
+        });
+
+
+
+    </script>
+    <a title="Web Analytics" href="http://clicky.com/100857864"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try { clicky.init(100857864); } catch (e) { }</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100857864ns.gif" /></p></noscript>
+</body>
+</html>
+
+

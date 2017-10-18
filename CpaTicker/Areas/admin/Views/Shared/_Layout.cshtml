@@ -1,0 +1,942 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Click Ticker</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/css/smartadmin-production.min.css">
+    <link href="~/Content/css/smartadmin-skins.css" rel="stylesheet" />
+
+    <link href="~/Content/NewTheme/css/jquery.datetimepicker.css" rel="stylesheet" />
+
+
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/css/smartadmin-rtl.min.css">
+
+    @*<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />   *@
+    @*<link href="~/Content/css/dataTables.bootstrap.css" rel="stylesheet" />*@
+    <link href="~/Content/css/dataTables.responsive.nightly.css" rel="stylesheet" />
+
+
+
+
+    @Styles.Render("~/Content/admincss")
+
+    @*<link rel="shortcut icon" href="img/favicon/favicon.png" type="image/x-icon">*@
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    <link href="~/Content/js/plugin/file-uploader/css/jquery.fileupload-noscript.css" rel="stylesheet" />
+    <link href="~/Content/js/plugin/file-uploader/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
+    <link href="~/Content/js/plugin/file-uploader/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="~/Content/js/plugin/file-uploader/css/jquery.fileupload.css" rel="stylesheet" />
+
+
+    <style>
+        .btn.fileinput-button > img {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body class="smart-style-2">
+
+
+
+    <aside id="left-panel">
+        @*
+        <div id="logo-group">
+
+            <span id="logo"> <img src="/img/cpaticker/mLOGO.png" alt="ClickTicker"> </span>
+        </div>
+        *@
+        <div class="menu-title">Main</div>
+        
+        <nav>
+            <ul id="menu" class="bg-blue dker">
+                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "dashboardHome"))
+                {
+                    <li class="active icon-dashboard">
+                        <a title="Dashboard" href="@Url.Action("dashboard", "home")">
+                            <!-- <i class="fa fa-lg fa-fw fa-dashboard nav-icon"></i> -->
+                            <i></i>
+                            <span class="menu-item-parent">Dashboard</span>
+                        </a>
+                    </li>
+                }
+
+                <li class="icon-campaigns">
+                    <a href="#">
+                        <!-- <i class="fa fa-lg fa-fw fa-bullhorn nav-icon"></i> -->
+                        <i></i>
+                        <span class="menu-item-parent">Campaigns</span>
+                    </a>
+                    <ul>
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexCampaign"))
+                        {
+                            <li>
+                                <a href="@Url.Action("index", "campaign")"> Manage Campaigns</a>
+                            </li>
+                        }
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "indexPAGE"))
+                        {
+                            <li>
+                                <a href="@Url.Action("index", "page")">Pages</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+               
+                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexBanner"))
+                {
+                    <li class="icon-banners">
+                        <a href="@Url.Action("index", "banner")">
+                            <i></i>
+                            <!-- <i class="fa fa-lg fa-fw fa-picture-o nav-icon"></i> -->
+                            <span class="menu-item-parent">Banners</span>
+                        </a>
+                    </li>
+                }
+                
+                <li class="icon-affiliates">
+                    <a href="#">
+                        <i></i>
+                        <!-- <i class="fa fa-lg fa-fw fa-users nav-icon"></i> --> 
+                        <span class="menu-item-parent">Affiliates</span>
+                    </a>
+                    <ul>
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexAffiliate"))
+                        {
+                            <li>
+                                <a href="@Url.Action("index", "affiliate")">
+                                    <span class="menu-item-parent">Manage Affiliates</span>
+                                </a>
+                                    @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexConversionPixel"))
+                                    {<ul>
+                                        <li>
+                                            <a href="@Url.Action("index", "conversionpixel")">
+                                                Conversion Pixels
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    }
+                            </li>
+                        }
+
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "adjustAffiliate"))
+                        {
+                            <li>
+                                <a href="@Url.Action("adjust", "affiliate")">Adjust Stats</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+                <li class="icon-reports">
+                    <a href="#">
+                        <i></i>
+                        <!-- <i class="fa fa-lg fa-fw fa-bar-chart-o nav-icon"></i> --> 
+                        <span class="menu-item-parent">Reports</span>
+                    </a>
+                    <ul id="MainMenu" style="display: none;">
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                        {
+                            <li>
+                                @*<a href="@Url.Action("hourly", "reports")">Hourly Report</a>*@
+                                <a href="admin#/admin/reports/CustomReport?ReportType=hourly" target="_top">Hourly Report</a>
+                            </li>
+                        }
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                        {
+                            <li>
+                                @*<a href="@Url.Action("daily", "reports")">Daily Report</a>*@
+                                <a href="admin#/admin/reports/CustomReport?ReportType=daily" target="_top">Daily Report</a>
+                            </li>
+                        }
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                        {
+                            <li>
+                                @*<a href="@Url.Action("affiliate", "reports")">Affiliates Report</a>*@
+                                <a href="admin#/admin/reports/CustomReport?ReportType=affiliate" target="_top">Affiliates Report</a>
+                            </li>
+                        }
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                        {
+                            <li>
+                                @*<a href="@Url.Action("conversion", "reports")">Conversions Report</a>*@
+                                <a href="admin#/admin/reports/CustomReport?ReportType=conversion" target="_top">Conversions Report</a>
+                            </li>
+                        }
+                        @*@if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "274877906944"))
+                            {
+                                <li>
+                                    <a href="@Url.Action("conversionstatus", "reports")">Conversions Status</a>
+                            <a href="admin#/admin/reports/CustomReport?ReportType=hourly" target="_top">Hourly Report</a>
+                                </li>
+                            }*@
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                        {
+                            <li>
+                                @*<a href="@Url.Action("campaign", "reports")">Campaign Report</a>*@
+                                <a href="admin#/admin/reports/CustomReport?ReportType=campaign" target="_top">Campaign Report</a>
+                            </li>
+                        }
+                        @*@if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "4398046511104"))
+                            {
+                                <li>
+                                    <a href="@Url.Action("adcampaign", "reports")">Ad Campaign Report</a>
+                            <a href="admin#/admin/reports/CustomReport?ReportType=hourly" target="_top">Hourly Report</a>
+                                </li>
+                            }*@
+                            @*@if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "35184372088832"))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("traffic", "reports")">Traffic Referrals</a>
+                                <a href="admin#/admin/reports/CustomReport?ReportType=hourly" target="_top">Hourly Report</a>
+                                    </li>
+                                }*@
+                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                            {
+                                <li>
+                                    @*<a href="@Url.Action("ClicksDetailsLog", "reports")">Clicks Logs</a>*@
+                                    <a href="admin#/admin/reports/CustomReport?ReportType=clicksdetailslog" target="_top">Clicks Logs</a>
+                                </li>
+                            }
+                            @*@if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermission", "1024"))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("CustomReport", "reports")">Custom Reports</a>
+                                    </li>
+                                }*@
+                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "customreportReports"))
+                            {
+                                <li>
+                                    @*@Html.ActionLink("CTR Report", "ctr", "reports")*@
+                                    <a href="admin#/admin/reports/CustomReport?ReportType=ctr" target="_top">CTR Report</a>
+                                </li>
+                            }
+
+                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "managereportReports"))
+                            {
+                                @*<li class="">
+                                    <a href="#"><i class="fa fa-lg fa-fw fa-file-text nav-icon"></i> <span class="menu-item-parent">Custom Reports</span></a>
+                                    <ul id="ManageReportTab" style="display: none;">*@
+
+                                <li>
+                                    <a href="@Url.Action("ManageReport", "reports")">Manage Reports</a>
+                                </li>
+
+                                foreach (var item in ViewBag.CustomReportData)
+                                {
+                                    string URLdesc = "admin#/admin/reports/CustomReport" + item.ReportData + "&ReportID=" + item.ID;
+                                    <li class="customreportsMenu">
+                                        <a href='@URLdesc' target="_top">@item.ReportName <i class="fa fa-lg fa-fw fa-file-text nav-icon"></i></a>
+                                    </li>
+
+                                }
+                                @*</ul>
+                                    </li>*@
+                            }
+                        </ul>
+                    </li>
+
+                    @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexSettings"))
+                    {
+                        <li class="icon-settings">
+                            <a href="@Url.Action("index", "settings")">
+                                <i></i>
+                                <!-- <i class="fa fa-cog fa-lg fa-fw nav-icon"></i> --> 
+                                <span class="menu-item-parent">Settings</span>
+                            </a>
+                        </li>
+
+                    }
+                </ul>
+            </nav>
+            <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+        </aside>
+
+
+        <!-- MAIN PANEL -->
+        <div id="main" role="main">
+
+            <!-- HEADER -->
+            <header id="header">
+
+
+                <div class="nav_menu" style="width: 100%">
+                    <nav class="" role="navigation">
+                        <div class="breadcrumbContainer navbar-left">
+                            <ol class="breadcrumb"></ol>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { @id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <li class="nav-item">
+                                        <a href="#" class="user-profile dropdown-toggle user-link" data-toggle="dropdown">
+                                            <img id="Profilepic" src="@ViewBag.ImageData" alt="">
+                                            <span style="color: black" class="fa fa-angle-down"></span>
+                                        </a>
+                                        <!-- profile image upload dropdown -->
+                                        <div id="divupload" class="image-upload-dropdown col-md-4">
+                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                            <span class="btn fileinput-button">
+                                                <img id="btnphotoupload" width="50" src="~/Content/img/uploadphoto.png" />
+                                                <!-- <div id="btnphotoupload" class="upload-button"></div> -->
+
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                <span>Select files...</span>
+
+                                                <!-- The file input field used as target for the file upload widget -->
+                                                <input id="fileupload" type="file" name="files[]" multiple>
+                                            </span>
+                                        </div>
+
+                                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                            <li>
+                                                <!--<a href="#">Settings</a></li>-->
+                                                @Html.ActionLink("Settings", "Index", "Settings")
+                                            <li>
+                                                <!--<a href=""><span>Change password</span></a>-->
+                                                @Html.ActionLink("Change Password", "ChangePwd", "Settings")
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:document.getElementById('logoutForm').submit()" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser" title="Sign Out">
+                                                    <i class="fa fa-sign-out pull-right"></i>
+                                                    <span>Log Out</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    <li class="nav-item">
+                                        <div class="divider-vertical"></div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <i class="fa fa-bell-o icon-notification-count"></i>
+                                        <span class="badge badge-notify">8</span>
+                                    </li>
+
+                            </li>
+                            }
+                            <!-- SEARCH text input -->
+                            <li class="nav-item">
+                                <form action="#" class="header-search pull-right search-container">
+                                    <input id="search-fld" name="param" placeholder="Search..." type="text">
+                                    <button type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+
+
+
+                <div class="pull-right">
+                    <!--
+                    <div id="hide-menu" class="btn-header transparent pull-right">
+                        <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+                    </div>
+                    <div id="fullscreen" class="btn-header transparent pull-right">
+                        <span><a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+                    </div>
+                    -->
+                </div>
+            </header>
+            <!-- END HEADER -->
+
+
+            
+            <div id="outsideContent">
+
+                <div id="tkcontent"></div>
+                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexTicker"))
+                {
+                    @Html.Action("DisplayTopActions", "helper")
+                }
+              
+
+            </div>
+            
+
+            <!-- MAIN CONTENT -->
+            <div id="content">
+                @RenderBody()
+            </div>
+            <!-- END MAIN CONTENT -->
+
+        </div>
+        <!-- END MAIN PANEL -->
+        <!--=====================Sripts============================= -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            if (!window.jQuery) {
+                document.write('<script src="@Url.Content("~/Content/js/libs/jquery-2.1.1.min.js")"><\/script>');
+            }
+        </script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script>
+            if (!window.jQuery.ui) {
+                document.write('<script src="@Url.Content("~/Content/js/libs/jquery-ui-1.10.3.min.js")"><\/script>');
+            }
+        </script>
+
+        <script src="~/Content/js/app.config.js"></script>
+
+        <script src="~/Content/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+
+        <script src="~/Content/js/bootstrap/bootstrap.min.js"></script>
+
+        <script src="~/Content/js/notification/SmartNotification.min.js"></script>
+
+        <script src="~/Content/js/smartwidgets/jarvis.widget.min.js"></script>
+
+        <script src="~/Content/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+        <script src="~/Content/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+        <script src="~/Content/js/plugin/select2/select2.min.js"></script>
+
+        <script src="~/Content/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+        <script src="~/Content/js/plugin/fastclick/fastclick.min.js"></script>
+
+        <script src="~/Content/js/plugin/jquery-form/jquery-form.min.js"></script>
+
+        <script src="~/Scripts/knockout-3.2.0.js"></script>
+        <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+
+        <!-- JQUERY VALIDATE -->
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/signalr")
+
+        <script src="~/Content/js/plugin/jquery-cookie/jquery.cookie.js"></script>
+        @*<script src="~/Content/js/plugin/jquery-timepicker-addon/jquery-ui-timepicker-addon.js"></script>
+            <script src="~/Content/js/plugin/jquery-timepicker-addon/jquery-ui-sliderAccess.js"></script>*@
+
+        <script src="~/Content/NewTheme/js/jquery.datetimepicker.js"></script>
+        <script src="~/Content/js/DateFormat.js"></script>
+        @Scripts.Render("~/bundles/ticker")
+
+        <!--[if IE 8]>
+            <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+        <![endif]-->
+        <!-- MAIN APP JS FILE -->
+        @*<script src="~/Content/js/app.min.js"></script>*@
+        <script src="~/Content/js/signalrclickticker.js"></script>
+        <script src="~/Content/js/app.js"></script>
+
+
+
+
+
+        @*Scripts for jquery file uploader*@
+        <script src="~/Content/js/plugin/file-uploader/js/jquery.fileupload.js"></script>
+
+        <script src="~/Content/js/plugin/file-uploader/js/main.js"></script>
+        <script src="~/Content/js/plugin/file-uploader/js/jquery.fileupload-process.js"></script>
+        <script src="~/Content/js/plugin/file-uploader/js/jquery.fileupload-image.js"></script>
+        <script src="~/Content/js/plugin/file-uploader/js/load-image.min.js"></script>
+
+
+        @*Scripts for jquery file uploader*@
+
+
+
+        <script type="text/javascript">
+            var isTableRefreshComplete = true;
+            var isSparkRefreshComplete = true;
+            $(".user-link ").mouseenter(function () {
+                $("#btnphotoupload").css("display", "block");
+            });
+
+            $("#divupload").mouseenter(function () {
+                $("#btnphotoupload").css("display", "block");
+            });
+
+            $(".user-link").mouseleave(function () {
+                $("#btnphotoupload").css("display", "none");
+            });
+
+            $("#divupload").mouseleave(function () {
+                $("#btnphotoupload").css("display", "none");
+            });
+
+            $("#Profilepic").attr("src", '@ViewBag.ImageData');
+            var SignalR_ConnectionID = "";
+            var loadunloadCount = 0;
+            //refreshTicker();
+            startTicker();
+            if ($.connection.hub.state != 4) {
+                $.connection.hub.stop();
+            }
+            if ($.connection.hub.state == 4) {
+                $.connection.hub.start().done(function () {
+                    SignalR_ConnectionID = $.connection.hub.id;
+                    NotifyHourly();
+                })
+            }
+            $.connection.hub.disconnected(function () {
+
+                console.log('reconnecting signalr');
+                setTimeout(function () {
+                    $.connection.hub.start().done(function () {
+                        SignalR_ConnectionID = $.connection.hub.id;
+                        NotifyHourly();
+                    })
+                }, 5000); // Restart connection after 5 seconds.
+            });
+            // comment this njhones
+            //setInterval(function () {
+            //    if ($.connection.hub.state != 1) {
+            //        $.connection.hub.start().done(function () {
+            //            SignalR_ConnectionID = $.connection.hub.id;
+            //            NotifyHourly();
+            //        })
+            //    }
+            //}, 10000);
+
+            //--------------------- Iphone Safari browser check minimize----------------------------
+
+            document.addEventListener("visibilitychange", function () {
+                // alert(document.visibilityState);
+                if ((/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
+                    //alert(document.hidden, document.visibilityState);
+                    if (!document.hidden) {
+                        //alert("refresh");
+                        var url = window.location.href;
+                        if (url.toLowerCase().indexOf("dashboard") < 0) {
+                            skmodel.loadData();
+                        }
+                        else {
+                            DashBoardSparks();
+                            TrafficChartSignalR();
+                        }
+                        if (url.toLowerCase().indexOf("admin/reports") > 0) {
+                            table.ajax.reload();
+                        }
+                    }
+                    console.log(document.hidden, document.visibilityState);
+                }
+
+            }, false);
+
+
+
+            //window.addEventListener('pageshow', myPageShowListenerFunc, false);
+
+            //function myPageShowListenerFunc() {
+            //    try {
+            //        //alert("refresh");
+            //        if (loadunloadCount > 0) {
+            //            var url = window.location.href;
+            //            if (url.toLowerCase().indexOf("dashboard") < 0) {
+            //                skmodel.loadData();
+            //            }
+            //            else {
+            //                DashBoardSparks();
+            //                TrafficChartSignalR();
+            //            }
+            //            if (url.toLowerCase().indexOf("admin/reports") > 0) {
+            //                table.ajax.reload();
+            //            }
+
+            //        }
+            //        loadunloadCount = loadunloadCount + 1;
+            //    }
+            //    catch(ex)
+            //    { alert(ex);}
+
+            //}
+
+            //--------------------- Iphone Safari browser check minimize----------------------------
+            //var TickerGlobal = null;
+
+            //changeHashChangeHandler();
+
+
+            @* Set Ticker Color Var before call app.js *@
+            @*$.bgcolor = '@ViewBag.TickerSetting.BackgroundColor';
+        $.cpcolor = '@ViewBag.TickerSetting.CampaignColor';
+        $.imcolor = '@ViewBag.TickerSetting.ImpressionColor';
+        $.ckcolor = '@ViewBag.TickerSetting.ClickColor';
+        $.cvcolor = '@ViewBag.TickerSetting.ConversionColor';
+        $.ctcolor = '@ViewBag.TickerSetting.CostColor';
+        $.rvcolor = '@ViewBag.TickerSetting.RevenueColor';*@
+
+            $.sound_path = '@Url.Content("~/Content/sound/")';
+            //var flagticker = true;
+            @*function tickersetu(ticker) {
+                tickerColor(ticker);
+                TickerGlobal = ticker;
+                tickerID = ticker.data('tickerid');
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("buildticker", "helper")?&tickerid=' + ticker.data('tickerid'),
+                    success: function (data) {
+
+                        //ticker.html(tickertransform(data));
+                        ticker.html(tickerformat(data));
+                        // set the colorconfig
+                        //setTickerColors();
+
+                        if (flagticker)
+                        { ticker.trigger('ticker'); }
+
+                    },
+                    async: true
+                });
+            };*@
+
+            function refreshTicker() {
+                
+                $('#tkcontent').load('@Url.Action("displayticker", "helper")', function () {
+                    //$('.tickerContainer').css('backgroundColor', $.bgcolor);
+                    ticker_update_start();
+                    NotifyTicker();
+                    // njhones here!
+                    //updateSparkPos();
+
+                });
+
+            }
+
+            function startTicker()
+            {
+                $('#tkcontent').load('@Url.Action("displayticker", "helper")', function () {
+                    //$('.tickerContainer').css('backgroundColor', $.bgcolor);
+                    ticker_update_start();
+
+                    // njhones here!
+                    //updateSparkPos();
+
+                });
+            }
+
+            
+
+
+
+            //-----------------------------------Start SignalR Notification -------------------------------------------------
+            //  var table = null;
+            var job = $.connection.trickerHub;
+            //debugger;
+
+
+
+
+            job.client.displaySparks = function () {
+                var url = window.location.href;
+                if (url.toLowerCase().indexOf("admin/campaign") > 0 || url.toLowerCase().indexOf("affiliate") > 0) {
+                    localStorage.setItem('hourlyreprt', '0');
+                }
+                if (url.toLowerCase().indexOf("dashboard") < 0) {
+                    if (isSparkRefreshComplete) {
+                        skmodel.loadData();
+                    }
+                }
+                else {
+                    DashBoardSparks();
+                    TrafficChartSignalR();
+                }
+
+            };
+
+
+
+            job.client.displayTicker = function () {
+                //flagticker = false;
+                //tickersetu(TickerGlobal);
+                updateTickerSignalr();
+            };
+
+            job.client.displayhourlyreport = function () { // all this is for not updating statics in the past. What about time zones?
+
+                var url = (window.location.href).toLowerCase();
+                if (url.indexOf("admin/reports") > 0) {
+                    var dateToCompare;
+                    var currentDate = new Date();
+                    
+                    if (url.indexOf("customreport") > 0) {
+
+                        var SelectedViews = $("#selectedview option:selected").text().toLowerCase().trim();
+                        if (SelectedViews == "today" || SelectedViews == "last 7 days" || SelectedViews == "this month" || SelectedViews == "last six months" || SelectedViews == "all time on reports") {
+                            if (isTableRefreshComplete) {
+                                isTableRefreshComplete = false;
+                                table.ajax.reload(function () {
+                                    table.columns('.never').visible(false);
+                                    isTableRefreshComplete = true;
+                                }, false);
+                            }
+                            // else { isTableRefreshComplete = true; }
+                        }
+                        else {
+                            if (SelectedViews == "yesterday" || SelectedViews == "last month") {
+
+                            }
+                            else {
+                                dateToCompare = new Date($("#todate").val());
+                                if (dateToCompare >= currentDate) {
+
+                                    if (isTableRefreshComplete) {
+                                        isTableRefreshComplete = false;
+                                        table.ajax.reload(function () {
+                                            table.columns('.never').visible(false);
+                                            isTableRefreshComplete = true;
+                                        }, false);
+                                    }
+                                    // else { isTableRefreshComplete = true; }
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+            };
+
+            //job.client.displayaffiliatereport = function () {
+            //    var url = window.location.href;
+            //    if (url.toLowerCase().indexOf("reports/affiliate") > 0) {
+
+            //        NotifyAffiliate();
+            //        var dateToCompare = new Date($("#todate").val());
+            //        var currentDate = new Date();
+
+            //        var SelectedViews = $("#selectedview option:selected").text().toLowerCase().trim();
+            //        if (SelectedViews == "today" || SelectedViews == "last 7 days" || SelectedViews == "this month" || SelectedViews == "last six months" || SelectedViews == "all time on reports") {
+            //            table.ajax.reload();
+            //        }
+            //        else {
+            //            if (SelectedViews == "yesterday" || SelectedViews == "last month") {
+
+            //            }
+            //            else {
+            //                if (dateToCompare >= currentDate) {
+            //                    table.ajax.reload();
+            //                }
+            //            }
+
+            //        }
+
+            //    }
+            //};
+            //job.client.displayconversionstatusreport = function () {
+            //    var url = window.location.href;
+            //    if (url.toLowerCase().indexOf("reports/conversionstatus") > 0) {
+
+            //        NotifyConversionStatus();
+            //        var dateToCompare = new Date($("#todate").val());
+            //        var currentDate = new Date();
+            //        var SelectedViews = $("#selectedview option:selected").text().toLowerCase().trim();
+            //        if (SelectedViews == "today" || SelectedViews == "last 7 days" || SelectedViews == "this month" || SelectedViews == "last six months" || SelectedViews == "all time on reports") {
+            //            table.ajax.reload();
+            //        }
+            //        else {
+            //            if (SelectedViews == "yesterday" || SelectedViews == "last month") {
+
+            //            }
+            //            else {
+            //                if (dateToCompare >= currentDate) {
+            //                    table.ajax.reload();
+            //                }
+            //            }
+
+            //        }
+            //    }
+            //};
+            //job.client.displayCTRreport = function () {
+            //    var url = window.location.href;
+            //    if (url.toLowerCase().indexOf("reports/ctr") > 0) {
+            //        //var dateToCompare = new Date($("#todate").val());
+            //        //var currentDate = new Date();
+            //        //var SelectedViews = $("#selectedview option:selected").text().toLowerCase().trim();
+            //        //if (SelectedViews == "today" || SelectedViews == "last 7 days" || SelectedViews == "this month" || SelectedViews == "last six months" || SelectedViews == "all time on reports") {
+            //        //    table.ajax.reload();
+            //        //}
+            //        //else {
+            //        //    if (SelectedViews == "yesterday" || SelectedViews == "last month") {
+
+            //        //    }
+            //        //    else {
+            //        //        if (dateToCompare >= currentDate) {
+            //        //            table.ajax.reload();
+            //        //        }
+            //        //    }
+
+            //        //}
+            //    }
+            //};
+
+            function NotifySparks() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/SignalRNotify/NotifySparks",
+                    data: "{ConnectionID:'" + SignalR_ConnectionID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+
+                    }
+                });
+            }
+
+
+            function NotifyHourly() {
+                var URL = (window.location.href).toLowerCase();
+                var d = new Date($('#todate').val());
+                if (URL.indexOf("hourly") > 0)
+                { d = new Date($('#fromdate').val()); }
+                var month = d.getMonth() + 1;
+                var day = d.getDate();
+                var FromDate2 = d.getFullYear() + '/' +
+                    (('' + month).length < 2 ? '0' : '') + month + '/' +
+                    (('' + day).length < 2 ? '0' : '') + day;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/SignalRNotify/NotifyHourlyReport",
+                    data: "{timezone:'" + $('#rzone').val() + "',viewdata:'" + $('#selectedview').val() + "',fromdate:'" + FromDate2 + "',todate:'" + $('#todate').val() + "',dataview:'testing',ConnectionID:'" + SignalR_ConnectionID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                    }
+                });
+                //////////////////// Hourly Notification /////////////
+            }
+
+            function NotifyCTRReport() {
+                $.ajax({
+                    type: "POST",
+                    url: "/SignalRNotify/NotifyCTRReport",
+                    data: "{timezone:'" + $('#rzone').val() + "',viewdata:'" + $('#selectedview').val() + "',fromdate:'" + $('#fromdate').val() + "',todate:'" + $('#todate').val() + "',dataview:'testing',ConnectionID:'" + SignalR_ConnectionID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                    }
+                });
+            }
+
+            function DashBoardSparks() {
+                console.log("DashboardSparks");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DashBoardSparks",
+                    //data: "{ID:'" + ID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#totalCampains").text(data.Campains);
+                        $("#totalRevenue").text(data.Revenue);
+                        $("#totalClick").text(data.Click);
+                        $("#totalConversion").text(data.Conversion);
+                    }
+                });
+            }
+
+            function TrafficChartSignalR() {
+                var url = null;
+                var urltraffic = null;
+                var urlrevenue = null;
+                var urlrbycampaign = null;
+                var urlcbycampaign = null;
+
+                urltraffic = typeof urltraffic !== 'undefined' && urltraffic != null ? '/chart/gettraffic/?' + urltraffic : '/chart/gettraffic';
+                urlrevenue = typeof urlrevenue !== 'undefined' && urlrevenue != null ? '/chart/GetRevenue/?' + urlrevenue : '/chart/GetRevenue';
+                urlrbycampaign = typeof urlrbycampaign !== 'undefined' && urlrbycampaign != null ? '/chart/rbycampaign/?' + urlrbycampaign : '/chart/rbycampaign';
+                urlcbycampaign = typeof urlcbycampaign !== 'undefined' && urlcbycampaign != null ? '/chart/cbycampaign/?' + urlcbycampaign : '/chart/cbycampaign';
+
+                $.get(urltraffic, function (data) {
+
+                    var obj = JSON.parse(data);
+                    var chart = $('#dailychart').highcharts();
+                    chart.xAxis.categories = obj.Xaxis;
+                    chart.series[0].setData(obj.Serie1);
+                    chart.series[1].setData(obj.Serie2);
+                });
+                $.getJSON(urlrevenue, function (data) {
+
+                    var chart = $('#grossincome').highcharts();
+                    chart.xAxis.categories = data.Xaxis;
+                    chart.series[0].setData(data.Serie1);
+                    chart.series[1].setData(data.Serie2);
+
+                });
+
+                $.getJSON(urlrbycampaign, function (data) {
+                    var chart = $('#piechartrevenue').highcharts();
+                    chart.series[0].data = data;
+                    // make the second call to get the cost pie
+                    urlcbycampaign = typeof url !== 'undefined' && url != null ? '/chart/cbycampaign/?' + url : '/chart/cbycampaign';
+                    $.getJSON(urlcbycampaign, function (data) {
+                        var piechart = $('#piechartcost').highcharts();
+                        if (piechart != 'undefined')
+                        { piechart.series[0].data = data; }
+
+
+                    });
+
+
+                });
+            }
+
+            function NotifyTicker() {
+
+
+                $.ajax({
+                    type: "Post",
+                    url: "/SignalRNotify/TickerNotify",
+                    data: "{ConnectionID:'" + SignalR_ConnectionID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        // $("#totalCampains").text(data);
+                    }
+                });
+            }
+
+
+            setInterval(function () {
+                isSparkRefreshComplete = true;
+                isTableRefreshComplete = true;
+            }, 60000);
+            //------------------------------------------ End SignalR Notification ---------------------
+
+
+
+        </script>
+        <!--=====================End Sripts============================= -->
+
+
+    </body>
+
+
+
+</html>

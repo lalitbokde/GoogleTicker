@@ -1,0 +1,3163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CpaTicker</name>
+    </assembly>
+    <members>
+        <member name="T:Resources.EditorLocalization">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Bold">
+            <summary>
+              Looks up a localized string similar to Bold.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.CreateLink">
+            <summary>
+              Looks up a localized string similar to Insert hyperlink.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.DeleteFile">
+            <summary>
+              Looks up a localized string similar to Are you sure you want to delete &quot;{0}&quot;?.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.DirectoryNotFound">
+            <summary>
+              Looks up a localized string similar to A directory with this name was not found..
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.EmptyFolder">
+            <summary>
+              Looks up a localized string similar to Empty Folder.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.FontName">
+            <summary>
+              Looks up a localized string similar to Select font family.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.FontNameInherit">
+            <summary>
+              Looks up a localized string similar to (inherited font).
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.FontSize">
+            <summary>
+              Looks up a localized string similar to Select font size.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.FontSizeInherit">
+            <summary>
+              Looks up a localized string similar to (inherited size).
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.FormatBlock">
+            <summary>
+              Looks up a localized string similar to Select block type.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Indent">
+            <summary>
+              Looks up a localized string similar to Indent.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.InsertHtml">
+            <summary>
+              Looks up a localized string similar to Insert HTML.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.InsertImage">
+            <summary>
+              Looks up a localized string similar to Insert image.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.InsertOrderedList">
+            <summary>
+              Looks up a localized string similar to Insert ordered list.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.InsertUnorderedList">
+            <summary>
+              Looks up a localized string similar to Insert unordered list.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.InvalidFileType">
+            <summary>
+              Looks up a localized string similar to The selected file \&quot;{0}\&quot; is not valid. Supported file types are {1}..
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Italic">
+            <summary>
+              Looks up a localized string similar to Italic.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.JustifyCenter">
+            <summary>
+              Looks up a localized string similar to Center text.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.JustifyFull">
+            <summary>
+              Looks up a localized string similar to Justify.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.JustifyLeft">
+            <summary>
+              Looks up a localized string similar to Align text left.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.JustifyRight">
+            <summary>
+              Looks up a localized string similar to Align text right.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.OrderBy">
+            <summary>
+              Looks up a localized string similar to Arrange by:.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.OrderByName">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.OrderBySize">
+            <summary>
+              Looks up a localized string similar to Size.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Outdent">
+            <summary>
+              Looks up a localized string similar to Outdent.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.OverwriteFile">
+            <summary>
+              Looks up a localized string similar to &apos;A file with name &quot;{0}&quot; already exists in the current directory. Do you want to overwrite it?.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Strikethrough">
+            <summary>
+              Looks up a localized string similar to Strikethrough.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Style">
+            <summary>
+              Looks up a localized string similar to Styles.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Underline">
+            <summary>
+              Looks up a localized string similar to Underline.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.Unlink">
+            <summary>
+              Looks up a localized string similar to Remove hyperlink.
+            </summary>
+        </member>
+        <member name="P:Resources.EditorLocalization.UploadFile">
+            <summary>
+              Looks up a localized string similar to Upload.
+            </summary>
+        </member>
+        <member name="T:Resources.GridLocalization">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.AddNew">
+            <summary>
+              Looks up a localized string similar to Add new record.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Cancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.CancelChanges">
+            <summary>
+              Looks up a localized string similar to Cancel changes.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Delete">
+            <summary>
+              Looks up a localized string similar to Delete.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.DeleteConfirmation">
+            <summary>
+              Looks up a localized string similar to Are you sure you want to delete this record?.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.DisplayingItems">
+            <summary>
+              Looks up a localized string similar to Displaying items {0} - {1} of {2}.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Edit">
+            <summary>
+              Looks up a localized string similar to Edit.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Filter">
+            <summary>
+              Looks up a localized string similar to Filter.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterAnd">
+            <summary>
+              Looks up a localized string similar to And.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterBoolIsFalse">
+            <summary>
+              Looks up a localized string similar to is false.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterBoolIsTrue">
+            <summary>
+              Looks up a localized string similar to is true.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterClear">
+            <summary>
+              Looks up a localized string similar to Clear Filter.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateEq">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateGe">
+            <summary>
+              Looks up a localized string similar to Is after or equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateGt">
+            <summary>
+              Looks up a localized string similar to Is after.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateLe">
+            <summary>
+              Looks up a localized string similar to Is before or equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateLt">
+            <summary>
+              Looks up a localized string similar to Is before.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterDateNe">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterEnumEq">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterEnumNe">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterForeignKeyEq">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterForeignKeyNe">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberEq">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberGe">
+            <summary>
+              Looks up a localized string similar to Is greater than or equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberGt">
+            <summary>
+              Looks up a localized string similar to Is greater than.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberLe">
+            <summary>
+              Looks up a localized string similar to Is less than or equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberLt">
+            <summary>
+              Looks up a localized string similar to Is less than.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterNumberNe">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterOr">
+            <summary>
+              Looks up a localized string similar to Or.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterSelectValue">
+            <summary>
+              Looks up a localized string similar to -Select value-.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterShowRows">
+            <summary>
+              Looks up a localized string similar to Show rows with value that.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringEndsWith">
+            <summary>
+              Looks up a localized string similar to Ends with.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringEq">
+            <summary>
+              Looks up a localized string similar to Is equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringNe">
+            <summary>
+              Looks up a localized string similar to Is not equal to.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringNotSubstringOf">
+            <summary>
+              Looks up a localized string similar to Does not contain.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringStartsWith">
+            <summary>
+              Looks up a localized string similar to Starts with.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.FilterStringSubstringOf">
+            <summary>
+              Looks up a localized string similar to Contains.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.GroupHint">
+            <summary>
+              Looks up a localized string similar to Drag a column header and drop it here to group by that column.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Insert">
+            <summary>
+              Looks up a localized string similar to Insert.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.NoRecords">
+            <summary>
+              Looks up a localized string similar to No records to display..
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Page">
+            <summary>
+              Looks up a localized string similar to Page .
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.PageOf">
+            <summary>
+              Looks up a localized string similar to of {0}.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Refresh">
+            <summary>
+              Looks up a localized string similar to Refresh.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.SaveChanges">
+            <summary>
+              Looks up a localized string similar to Save changes.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Select">
+            <summary>
+              Looks up a localized string similar to Select.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.SortedAsc">
+            <summary>
+              Looks up a localized string similar to sorted ascending.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.SortedDesc">
+            <summary>
+              Looks up a localized string similar to sorted descending.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.UnGroup">
+            <summary>
+              Looks up a localized string similar to ungroup.
+            </summary>
+        </member>
+        <member name="P:Resources.GridLocalization.Update">
+            <summary>
+              Looks up a localized string similar to Update.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Classes.CustomConversion">
+            <summary>
+                Conversion detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.AffiliateId">
+            <summary>
+                affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Company">
+            <summary>
+                company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.CampaignId">
+            <summary>
+                campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.CampaignName">
+            <summary>
+                campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Date">
+            <summary>
+                conversion date
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.ConversionId">
+            <summary>
+                conversion id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Referrer">
+            <summary>
+                click's referrer
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.URLId">
+            <summary>
+                clicked url's preview id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.URL">
+            <summary>
+                clicked url's preview url
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.UserAgent">
+            <summary>
+                user agent
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.TransactionId">
+            <summary>
+                transaction id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.IPAddress">
+            <summary>
+                Ip address
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Type">
+            <summary>
+                type
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.SubIds">
+            <summary>
+                click's sub ids
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Cost">
+            <summary>
+                cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Revenue">
+            <summary>
+                revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Source">
+            <summary>
+                click source
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Status">
+            <summary>
+                status
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.StatusDescription">
+            <summary>
+                status description
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Postback_IPAddress">
+            <summary>
+                post back ip address
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Pixel">
+            <summary>
+                conversion's pixel
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Postback">
+            <summary>
+                conversion's postback date time
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Action">
+            <summary>
+                action name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Country">
+            <summary>
+                conversion's country
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.UserAgentId">
+            <summary>
+                conversion's user agent id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.DeviceId">
+            <summary>
+                device id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.IsSmartphone">
+            <summary>
+                is device a smartphone
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.IsiOS">
+            <summary>
+                is device IOS
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.IsAndroid">
+            <summary>
+                is device Android
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.OS">
+            <summary>
+                device's installed os detail, like Android 5.0
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Browser">
+            <summary>
+                used browser
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Device_os">
+            <summary>
+                device's os provider, like Android
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Pointing_method">
+            <summary>
+                device's pointin method, like touchscreen/mouse
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Is_tablet">
+            <summary>
+                id device tablet
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Model_name">
+            <summary>
+                device build model name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Device_os_version">
+            <summary>
+                device's installed os detail, like Android 5.0 where 5.0 is the version
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Is_wireless_device">
+            <summary>
+                is device wireless
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Brand_name">
+            <summary>
+                device brand/manufacturer name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Marketing_name">
+            <summary>
+                device marketing name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Is_assign_phone_number">
+            <summary>
+                is device with a phone number
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Xhtmlmp_mime_type">
+            <summary>
+                device's xhtmlmp mime type
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Xhtml_support_level">
+            <summary>
+                device's xhtml support level
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Resolution_height">
+            <summary>
+                device display resolution height
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Resolution_width">
+            <summary>
+                device display resolution width
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Canvas_support">
+            <summary>
+                device's canvas support
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Viewport_width">
+            <summary>
+                device's viewport width
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Html_preferred_dtd">
+            <summary>
+                device's html preferred dtd
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Isviewport_supported">
+            <summary>
+                does device support view port
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Ismobileoptimized">
+            <summary>
+                is device mobile optimized
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Isimage_inlining">
+            <summary>
+                Is image inlining
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Ishandheldfriendly">
+            <summary>
+                Is handheld friendly
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Is_smarttv">
+            <summary>
+                Is device smart tv
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.CustomConversion.Isux_full_desktop">
+            <summary>
+                Is device ux full desktop
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility">
+            <summary>
+            Helper methods for working with <see cref="T:System.Guid"/>.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility.Create(System.Guid,System.String)">
+            <summary>
+            Creates a name-based UUID using the algorithm from RFC 4122 §4.3.
+            </summary>
+            <param name="namespaceId">The ID of the namespace.</param>
+            <param name="name">The name (within that namespace).</param>
+            <returns>A UUID derived from the namespace and name.</returns>
+            <remarks>See <a href="http://code.logos.com/blog/2011/04/generating_a_deterministic_guid.html">Generating a deterministic GUID</a>.</remarks>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility.Create(System.Guid,System.String,System.Int32)">
+            <summary>
+            Creates a name-based UUID using the algorithm from RFC 4122 §4.3.
+            </summary>
+            <param name="namespaceId">The ID of the namespace.</param>
+            <param name="name">The name (within that namespace).</param>
+            <param name="version">The version number of the UUID to create; this value must be either
+            3 (for MD5 hashing) or 5 (for SHA-1 hashing).</param>
+            <returns>A UUID derived from the namespace and name.</returns>
+            <remarks>See <a href="http://code.logos.com/blog/2011/04/generating_a_deterministic_guid.html">Generating a deterministic GUID</a>.</remarks>
+        </member>
+        <member name="F:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility.DnsNamespace">
+            <summary>
+            The namespace for fully-qualified domain names (from RFC 4122, Appendix C).
+            </summary>
+        </member>
+        <member name="F:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility.UrlNamespace">
+            <summary>
+            The namespace for URLs (from RFC 4122, Appendix C).
+            </summary>
+        </member>
+        <member name="F:CpaTicker.Areas.admin.Classes.Helpers.GuidUtility.IsoOidNamespace">
+            <summary>
+            The namespace for ISO OIDs (from RFC 4122, Appendix C).
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.LimeLightHelper.NewLimeLightOrder(CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository,CpaTicker.Areas.admin.Classes.Customer,System.String,System.Int32,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Throws exception if errors were found
+            </summary>
+            <param name="customer"></param>
+            <param name="productid"></param>
+            <param name="customer_email">Email of the customer</param>
+            <returns></returns>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.Helpers.CpaTickerConfiguration.MailTo">
+            <summary>
+            support@clickticker.com
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.GetCustomerId(System.Uri)">
+            <summary>
+            Throw 404 not found exception if the customer isn’t found.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.GetFirstOperation(System.Int32)">
+            <summary>
+            Get the min date from a customer impression, click or conversion
+            </summary>
+            <param name="customerid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.DefaultAction(CpaTicker.Areas.admin.Classes.Campaign)">
+            <summary>
+            Returns the first action for the specified campaign if no action is found it creates
+            a default action using the campaign data (GetDefaultAction) stores it and returns it
+            </summary>
+            <param name="campaign"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.DefaultURL(CpaTicker.Areas.admin.Classes.Campaign)">
+            <summary>
+            Returns the default url (previewid = 1) for the specified campaign if no url is found it creates
+            a default url using the campaign data (GetDefaultUrl) stores it and returns it
+            </summary>
+            <param name="campaign"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.GetUserCampaigns">
+            <summary>
+            Return the all user-customer campaign that are not hidden for the specific user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.ICpaTickerRepository.DefaultAction(System.Int32)">
+            <summary>
+            Returns the firts(default) action for the specified campaign. Assumes that the campaign has actions.
+            For internal use.
+            </summary>
+            <param name="campaignid">Id field of the campaign table</param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.ClickQuery(System.DateTime,System.DateTime,CpaTicker.Areas.admin.Classes.UserProfile,System.Int32[],System.Nullable{System.Int32},System.String)">
+            <summary>
+            Auxiliar feauture just return an action based on the campaign data
+            </summary>
+            <param name="campaign"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.DailyReport(System.DateTime,System.DateTime,CpaTicker.Areas.admin.Classes.UserProfile,System.TimeZoneInfo)">
+            <summary>
+            Daily report shows all days
+            </summary>
+            <param name="fdate"></param>
+            <param name="tdate"></param>
+            <param name="up"></param>
+            <param name="tzi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.HourlyReport(System.DateTime,CpaTicker.Areas.admin.Classes.UserProfile,System.TimeZoneInfo)">
+            <summary>
+            Hourly report shows all 24 hours
+            </summary>
+            <param name="fdate"></param>
+            <param name="up"></param>
+            <param name="tzi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.AffiliateUsers(System.Int32,System.Int32)">
+            <summary>
+            Return the userprofile according the parameters
+            </summary>
+            <param name="affiliateid"></param>
+            <param name="customerid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.GetUserCampaigns(CpaTicker.Areas.admin.Classes.UserProfile)">
+            <summary>
+            Return the all user-customer campaign that are not hidden for the specific user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.IsHidden(System.Int32)">
+            <summary>
+            The Campaign.CampaignId not the Campaign.Id field
+            </summary>
+            <param name="campaignid"> The Campaign.CampaignId not the Campaign.Id field</param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.EFCpatickerRepository.GetNotifyTickerData(System.Int32,System.String,System.String,System.Int32)">
+            *
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.Extensions.ToSelectList``1(``0)">
+            <summary>
+            Return a SelectList from an Enum object. Convert an enum object into a SelectList ready
+            to create a Dropdownlist list. This feature is used in the card type ddl.
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <param name="enumObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.Extensions.CheckboxListForEnum``1(System.Web.Mvc.HtmlHelper,System.String,``0)">
+            <summary>
+            Convert an Enum to checkbox
+            </summary>
+            <typeparam name="T">Enum</typeparam>
+            <param name="htmlhelper"></param>
+            <param name="name">Name of the checkbox property</param>
+            <param name="modelItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.Extensions.CheckBoxesForEnumModel``1(System.Web.Mvc.HtmlHelper{``0})">
+            <summary>
+            TModel must be an Enum otherwise exception. Convert enum to checkbox
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="htmlHelper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.LimeLightLib.LimeLightResponse.errorFound">
+            <summary>
+            Get if there has been errors from newordercall
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.LimeLightLib.LimeLightResponse.errorMessage">
+            <summary>
+            Get the errormessage from neworder if the call fails
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.LimeLightLib.LimeLightResponse.response_code">
+            <summary>
+            Get the response codes from order_update
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Classes.LimeLightLib.LimeLightStatus">
+            <summary>
+            class to get reports from limelight using this class in limelightresponse actionresult
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced">
+            <summary>
+            This class uses a symmetric key algorithm (Rijndael/AES) to encrypt and
+            decrypt data. As long as it is initialized with the same constructor
+            parameters, the class will use the same key. Before performing encryption,
+            the class can prepend random bytes to plain text and generate different
+            encrypted values from the same plain text, encryption key, initialization
+            vector, and other parameters. This class is thread-safe.
+            </summary>
+            <remarks>
+            Be careful when performing encryption and decryption. There is a bug
+            ("feature"?) in .NET Framework, which causes corruption of encryptor/
+            decryptor if a cryptographic exception occurs during encryption/
+            decryption operation. To correct the problem, re-initialize the class
+            instance when a cryptographic exception occurs.
+            </remarks>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption with 256-bit key, derived using 1 password iteration,
+            hashing without salt, no initialization vector, electronic codebook
+            (ECB) mode, SHA-1 hashing algorithm, and 4-to-8 byte long salt.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <remarks>
+            This constructor is not recommended because it does not use
+            initialization vector and uses the ECB cipher mode, which is less
+            secure than the CBC mode.
+            </remarks>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption with 256-bit key, derived using 1 password iteration,
+            hashing without salt, cipher block chaining (CBC) mode, SHA-1
+            hashing algorithm, and 4-to-8 byte long salt.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption with 256-bit key, derived using 1 password iteration,
+            hashing without salt, cipher block chaining (CBC) mode, SHA-1 
+            hashing algorithm, and 0-to-8 byte long salt.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption with 256-bit key, derived using 1 password iteration,
+            hashing without salt, cipher block chaining (CBC) mode, SHA-1
+            hashing algorithm. Use the minSaltLen and maxSaltLen parameters to
+            specify the size of randomly generated salt.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+            <param name="maxSaltLen">
+            Max size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is negative or greater than 255, the default max value will be
+            used (currently 8 bytes). If max value is 0 (zero) or if it is smaller
+            than the specified min value (which can be adjusted to default value),
+            salt will not be used and plain text value will be encrypted as is.
+            In this case, salt will not be processed during decryption either.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption using the key derived from 1 password iteration,
+            hashing without salt, cipher block chaining (CBC) mode, and
+            SHA-1 hashing algorithm.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+            <param name="maxSaltLen">
+            Max size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is negative or greater than 255, the default max value will be 
+            used (currently 8 bytes). If max value is 0 (zero) or if it is smaller
+            than the specified min value (which can be adjusted to default value),
+            salt will not be used and plain text value will be encrypted as is.
+            In this case, salt will not be processed during decryption either.
+            </param>
+            <param name="keySize">
+            Size of symmetric key (in bits): 128, 192, or 256.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption using the key derived from 1 password iteration, hashing 
+            without salt, and cipher block chaining (CBC) mode.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+            <param name="maxSaltLen">
+            Max size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is negative or greater than 255, the default max value will be
+            used (currently 8 bytes). If max value is 0 (zero) or if it is smaller
+            than the specified min value (which can be adjusted to default value),
+            salt will not be used and plain text value will be encrypted as is.
+            In this case, salt will not be processed during decryption either.
+            </param>
+            <param name="keySize">
+            Size of symmetric key (in bits): 128, 192, or 256.
+            </param>
+            <param name="hashAlgorithm">
+            Hashing algorithm: "MD5" or "SHA1". SHA1 is recommended.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption using the key derived from 1 password iteration, and
+            cipher block chaining (CBC) mode.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+            <param name="maxSaltLen">
+            Max size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is negative or greater than 255, the default max value will be
+            used (currently 8 bytes). If max value is 0 (zero) or if it is smaller
+            than the specified min value (which can be adjusted to default value),
+            salt will not be used and plain text value will be encrypted as is.
+            In this case, salt will not be processed during decryption either.
+            </param>
+            <param name="keySize">
+            Size of symmetric key (in bits): 128, 192, or 256.
+            </param>
+            <param name="hashAlgorithm">
+            Hashing algorithm: "MD5" or "SHA1". SHA1 is recommended.
+            </param>
+            <param name="saltValue">
+            Salt value used for password hashing during key generation. This is
+            not the same as the salt we will use during encryption. This parameter
+            can be any string.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Use this constructor if you are planning to perform encryption/
+            decryption with the key derived from the explicitly specified
+            parameters.
+            </summary>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived.
+            The derived password will be used to generate the encryption key
+            Passphrase can be any string. In this example we assume that the
+            passphrase is an ASCII string. Passphrase value must be kept in
+            secret.
+            </param>
+            <param name="initVector">
+            Initialization vector (IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long. IV value does not have to be kept
+            in secret.
+            </param>
+            <param name="minSaltLen">
+            Min size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is less than 4, the default min value will be used (currently 4
+            bytes).
+            </param>
+            <param name="maxSaltLen">
+            Max size (in bytes) of randomly generated salt which will be added at
+            the beginning of plain text before encryption is performed. When this
+            value is negative or greater than 255, the default max value will be
+            used (currently 8 bytes). If max value is 0 (zero) or if it is smaller
+            than the specified min value (which can be adjusted to default value),
+            salt will not be used and plain text value will be encrypted as is.
+            In this case, salt will not be processed during decryption either.
+            </param>
+            <param name="keySize">
+            Size of symmetric key (in bits): 128, 192, or 256.
+            </param>
+            <param name="hashAlgorithm">
+            Hashing algorithm: "MD5" or "SHA1". SHA1 is recommended.
+            </param>
+            <param name="saltValue">
+            Salt value used for password hashing during key generation. This is
+            not the same as the salt we will use during encryption. This parameter
+            can be any string.
+            </param>
+            <param name="passwordIterations">
+            Number of iterations used to hash password. More iterations are
+            considered more secure but may take longer.
+            </param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.Encrypt(System.String)">
+            <summary>
+            Encrypts a string value generating a base64-encoded string.
+            </summary>
+            <param name="plainText">
+            Plain text string to be encrypted.
+            </param>
+            <returns>
+            Cipher text formatted as a base64-encoded string.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.Encrypt(System.Byte[])">
+            <summary>
+            Encrypts a byte array generating a base64-encoded string.
+            </summary>
+            <param name="plainTextBytes">
+            Plain text bytes to be encrypted.
+            </param>
+            <returns>
+            Cipher text formatted as a base64-encoded string.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.EncryptToBytes(System.String)">
+            <summary>
+            Encrypts a string value generating a byte array of cipher text.
+            </summary>
+            <param name="plainText">
+            Plain text string to be encrypted.
+            </param>
+            <returns>
+            Cipher text formatted as a byte array.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.EncryptToBytes(System.Byte[])">
+            <summary>
+            Encrypts a byte array generating a byte array of cipher text.
+            </summary>
+            <param name="plainTextBytes">
+            Plain text bytes to be encrypted.
+            </param>
+            <returns>
+            Cipher text formatted as a byte array.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.Decrypt(System.String)">
+            <summary>
+            Decrypts a base64-encoded cipher text value generating a string result.
+            </summary>
+            <param name="cipherText">
+            Base64-encoded cipher text string to be decrypted.
+            </param>
+            <returns>
+            Decrypted string value.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.Decrypt(System.Byte[])">
+            <summary>
+            Decrypts a byte array containing cipher text value and generates a
+            string result.
+            </summary>
+            <param name="cipherTextBytes">
+            Byte array containing encrypted data.
+            </param>
+            <returns>
+            Decrypted string value.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.DecryptToBytes(System.String)">
+            <summary>
+            Decrypts a base64-encoded cipher text value and generates a byte array
+            of plain text data.
+            </summary>
+            <param name="cipherText">
+            Base64-encoded cipher text string to be decrypted.
+            </param>
+            <returns>
+            Byte array containing decrypted value.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.DecryptToBytes(System.Byte[])">
+            <summary>
+            Decrypts a base64-encoded cipher text value and generates a byte array
+            of plain text data.
+            </summary>
+            <param name="cipherTextBytes">
+            Byte array containing encrypted data.
+            </param>
+            <returns>
+            Byte array containing decrypted value.
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.AddSalt(System.Byte[])">
+            <summary>
+            Adds an array of randomly generated bytes at the beginning of the
+            array holding original plain text value.
+            </summary>
+            <param name="plainTextBytes">
+            Byte array containing original plain text value.
+            </param>
+            <returns>
+            Either original array of plain text bytes (if salt is not used) or a
+            modified array containing a randomly generated salt added at the 
+            beginning of the plain text bytes. 
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.GenerateSalt">
+            <summary>
+            Generates an array holding cryptographically strong bytes.
+            </summary>
+            <returns>
+            Array of randomly generated bytes.
+            </returns>
+            <remarks>
+            Salt size will be defined at random or exactly as specified by the
+            minSlatLen and maxSaltLen parameters passed to the object constructor.
+            The first four bytes of the salt array will contain the salt length
+            split into four two-bit pieces.
+            </remarks>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.RijndaelEnhanced.GenerateRandomNumber(System.Int32,System.Int32)">
+            <summary>
+            Generates random integer.
+            </summary>
+            <param name="minValue">
+            Min value (inclusive).
+            </param>
+            <param name="maxValue">
+            Max value (inclusive).
+            </param>
+            <returns>
+            Random integer value between the min and max values (inclusive).
+            </returns>
+            <remarks>
+            This methods overcomes the limitations of .NET Framework's Random
+            class, which - when initialized multiple times within a very short
+            period of time - can generate the same "random" number.
+            </remarks>
+        </member>
+        <member name="F:CpaTicker.Areas.admin.Classes.SecurityLib.SecureCard.cardType">
+            <summary>
+            this fied is all calculated by the number so in the future it may be remove
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Classes.SecurityLib.SSTCryptographer">
+            <summary>
+            Summary description for SSTCryptographer
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.SSTCryptographer.Encrypt(System.String)">
+            <summary>
+            Encrypt the given string using the default key.
+            </summary>
+            <param name="strToEncrypt">The string to be encrypted.</param>
+            <returns>The encrypted string.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.SSTCryptographer.Decrypt(System.String)">
+            <summary>
+            Decrypt the given string using the default key.
+            </summary>
+            <param name="strEncrypted">The string to be decrypted.</param>
+            <returns>The decrypted string.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.SSTCryptographer.Encrypt(System.String,System.String)">
+            <summary>
+            Encrypt the given string using the specified key.
+            </summary>
+            <param name="strToEncrypt">The string to be encrypted.</param>
+            <param name="strKey">The encryption key.</param>
+            <returns>The encrypted string.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.SecurityLib.SSTCryptographer.Decrypt(System.String,System.String)">
+            <summary>
+            Decrypt the given string using the specified key.
+            </summary>
+            <param name="strEncrypted">The string to be decrypted.</param>
+            <param name="strKey">The decryption key.</param>
+            <returns>The decrypted string.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.XmlResult.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CpaTicker.Areas.admin.Classes.Helpers.XmlResult"/> class.
+            </summary>
+            <param name="objectToSerialize">The object to serialize to XML.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.XmlResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Serialises the object that was passed into the constructor to XML and writes the corresponding XML to the result stream.
+            </summary>
+            <param name="context">The controller context for the current request.</param>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.Helpers.XmlResult.ObjectToSerialize">
+            <summary>
+            Gets the object to be serialized to XML.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Controllers.HelperController.DisplayTicker">
+            <summary>
+            This is the method that creates the default ticker for a user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Controllers.HelperController.GetCampaignsByTrackingType(CpaTicker.Areas.admin.Classes.TrackingType)">
+            <summary>
+            Get campaigns who default action is match tracking type
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.admin.Classes.Helpers.CPAHelper.GetAffiliateId(System.Int32)">
+            <summary>
+            Get the affiliateid it should exist since i only call this from a user that 
+            belongs to the Affiliate role thats why there is no validation if the affiliateid hasvalue
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.CampaignName">
+            <summary>
+            campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.Cost">
+            <summary>
+            total campaign cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.Revenue">
+            <summary>
+            total campaign revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.OldClicks">
+            <summary>
+            total old click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.OldImpressions">
+            <summary>
+            total old impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Classes.TickerItem.OldConversions">
+            <summary>
+            total old conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Name">
+            <summary>
+            ad/banner name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.CampaignName">
+            <summary>
+            campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.BannerId">
+            <summary>
+            ad/banner id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.CampaignId">
+            <summary>
+            campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.AdCampaignView.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.admin.Models.ConversionStatusView">
+            <summary>
+            conversion status details
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.Company">
+            <summary>
+                company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.CampaignName">
+            <summary>
+                campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.GrossConversions">
+            <summary>
+                total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.ApprovedConversions">
+            <summary>
+                total approved conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.RejectedConversions">
+            <summary>
+                total rejected conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.NetPayout">
+            <summary>
+                total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.NetRevenue">
+            <summary>
+                total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.AffiliateId">
+            <summary>
+                affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.CampaignId">
+            <summary>
+                campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.admin.Models.ConversionStatusView.Country">
+            <summary>
+                country name
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,CpaTicker.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.RequestInfoDescription">
+            <summary>
+            Additional documentation for the request.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:CpaTicker.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,CpaTicker.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,CpaTicker.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(CpaTicker.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:CpaTicker.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},CpaTicker.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:CpaTicker.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:CpaTicker.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:CpaTicker.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleKey.#ctor(CpaTicker.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CpaTicker.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,CpaTicker.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CpaTicker.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:CpaTicker.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CpaTicker.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CpaTicker.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Daily(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by date (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 512-Country)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Affiliate(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by affiliate (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional,any among options: 512-Country, 524288-Campaign, 16777216-Source)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Campaign(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by campaign (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, any among options: 1048576-Affiliate, 512-Country, 8388608-URLId, 16777216-Source)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Hourly(System.Nullable{System.DateTime},System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by hour (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="dataview">data for statistics(Optional, options: 512-Country)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Conversion(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign's conversion details (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Details list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.ConversionStatus(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Conversion status details (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, no use)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Detail list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.AdCampaign(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by ad/banner (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, no use)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Detail list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Traffic(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign's traffic details (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 512-Country)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.CustomReport(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Int32[],System.Int32[],System.Int32[],System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Custom report (user should be authorized)
+            </summary>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics in number(Optional, any among options: 2-Clicks, 4-Conversions, 1-Impressions, 524288-Campaign, 1048576-Affiliate, 4194304-URL, 274877906944-ParentURL, 549755813888-CTR, 1073741824-PAGE, 2147483648-Redirect, 2199023255552-IsSmartphone, 35184372088832-Browser, 1024-ClickDate, 2048-ConversionDate, 4096-ImpressionDate; default: considers Clicks, Conversions, Impressions)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <param name="QDate">include date(Optional, default: false)</param>
+            <param name="QHour">include hour(Optional, default: false)</param>
+            <param name="QCampaign">include campaign(Optional, default: false)</param>
+            <param name="QAffiliate">include affiliate(Optional, default: false)</param>
+            <param name="QURL">include url(Optional, default: false)</param>
+            <param name="QCountry">include country(Optional, default: false)</param>
+            <param name="QStatus">include status(Optional, default: false)</param>
+            <param name="QPixel">include pixel(Optional, default: false)</param>
+            <param name="QPostback">include postback(Optional, default: false)</param>
+            <param name="QIP">include ip(Optional, default: false)</param>
+            <param name="QTransactionID">include transaction id(Optional, default: false)</param>
+            <param name="QConversionType">include conversion's type(Optional, default: false)</param>
+            <param name="QReferrer">include referrer(Optional, default: false)</param>
+            <param name="QStatusDescription">include status description(Optional, default: false)</param>
+            <param name="QSource">include source(Optional, default: false)</param>
+            <param name="QActionName">include action name(Optional, default: false)</param>
+            <param name="QBanner">include banner(Optional, default: false)</param>
+            <param name="QParentURL">include parrent url(Optional, default: false)</param>
+            <param name="QCTR">include ctr(Optional, default: false)</param>
+            <param name="QDeviceId">include device id(Optional, default: false)</param>
+            <param name="QIsSmartphone">include is smartphone(Optional, default: false)</param>
+            <param name="QIsiOS">include is device IOS(Optional, default: false)</param>
+            <param name="QIsAndroid">include is device IOS(Optional, default: false)</param>
+            <param name="QOS">include device's os name(Optional, default: false)</param>
+            <param name="QBrowser">include device's browser(Optional, default: false)</param>
+            <param name="QDevice_os">include device's os provider(Optional, default: false)</param>
+            <param name="QPointing_method">include device'r pointing method</param>
+            <param name="QIs_tablet">include is device tablet(Optional, default: false)</param>
+            <param name="QModel_name">include device's model name(Optional, default: false)</param>
+            <param name="QDevice_os_version">include device's os version(Optional, default: false)</param>
+            <param name="QIs_wireless_device">include is device wireless(Optional, default: false)</param>
+            <param name="QBrand_name">include device's brand name(Optional, default: false)</param>
+            <param name="QMarketing_name">include device's marketing name(Optional, default: false)</param>
+            <param name="QResolution_height">include device's display resolution height(Optional, default: false)</param>
+            <param name="QResolution_width">include device's display resolution width(Optional, default: false)</param>
+            <param name="QCanvas_support">include device's canvas support(Optional, default: false)</param>
+            <param name="QViewport_width">include device's viewport width(Optional, default: false)</param>
+            <param name="QIsviewport_supported">include does device support viewport (Optional, default: false)</param>
+            <param name="QIsmobileoptimized">include is device mobile optimized(Optional, default: false)</param>
+            <param name="QIshandheldfriendly">include is device handheld friendly(Optional, default: false)</param>
+            <param name="QIs_smarttv">include is device smart tv(Optional, default: false)</param>
+            <param name="QIsux_full_desktop">include is device ux full desktop(Optional, default: false)</param>
+            <param name="QClickDate">include click date(Optional, default: false)</param>
+            <param name="QConversionDate">include conversion date(Optional, default: false)</param>
+            <param name="QImpressionDate">include impression date(Optional, default: false)</param>
+            <param name="QPAGE">include page detail(Optional, default: false)</param>
+            <param name="QRedirect">include redirect detail(Optional, default: false)</param>
+            <param name="Vdeviceid">no use</param>
+            <param name="Vdeviceos">no use</param>
+            <param name="Vbrowser">no use</param>
+            <param name="Vos">no use</param>
+            <param name="Vmodelname">no use</param>
+            <param name="Vbrandname">no use</param>
+            <param name="Vmarketingname">no use</param>
+            <param name="Vresolution">no use</param>
+            <param name="UserAgent">no use</param>
+            <param name="ReportID">no use</param>
+            <returns>
+            detail list
+            </returns> 
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Daily(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by date (accessed via API key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>     
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 512)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Affiliate(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by affiliate (accessed via API Key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>     
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any among options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 512, 524288, 16777216)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>        
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Campaign(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by campaign (accessed via API Key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 1048576, 512, 8388608, 16777216)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Hourly(System.String,System.Nullable{System.DateTime},System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by hour (accessed via API key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="dataview">data for statistics(Optional, options: 512)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Conversion(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign's conversion details (accessed via API Key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Details list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.ConversionStatus(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Conversion status details (accessed via API Key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, no use)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Detail list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.AdCampaign(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign details by ad/banner (accessed via API Key)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, no use)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>Detail list</returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.Traffic(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Int32[],System.Nullable{System.Int32})">
+            <summary>
+            Campaign's traffic details (user should be authorized)
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics(Optional, options: 512)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.ReportsController.CustomReport(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.Nullable{System.Int64},System.Int32[],System.Int32[],System.Int32[],System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Custom report (accessed via API Key)) 
+            </summary>
+            <param name="apiKey">user's api key(required)</param>
+            <param name="FromDate">details from date (Optional, by default Today)</param>
+            <param name="ToDate">details until date (Optional, by default Today)</param>
+            <param name="timezone">user timezone name (Optional)</param>
+            <param name="viewdata">data for duration(Optional, any where options: Today, Yesterday, Last 7 Days, This Month, Last Month, Last Six Months, All Time on reports. By default today.)</param>
+            <param name="dataview">data for statistics in number(Optional, options: 2-Clicks, 4-Conversions, 1-Impressions, 524288-Campaign, 1048576-Affiliate, 4194304-URL, 274877906944-ParentURL, 549755813888-CTR, 1073741824-PAGE, 2147483648-Redirect, 2199023255552-IsSmartphone, 35184372088832-Browser, 1024-ClickDate, 2048-ConversionDate, 4096-ImpressionDate; default: considers Clicks, Conversions, Impressions)</param>
+            <param name="cp">campaign id (Optional, by default considering all campaign)</param>
+            <param name="af">affiliate ids (Optional, by default considering all affiliates</param>
+            <param name="ct">country id (Optional, by default considering all countries</param>
+            <param name="QDate">include date(Optional, default: false)</param>
+            <param name="QHour">include hour(Optional, default: false)</param>
+            <param name="QCampaign">include campaign(Optional, default: false)</param>
+            <param name="QAffiliate">include affiliate(Optional, default: false)</param>
+            <param name="QURL">include url(Optional, default: false)</param>
+            <param name="QCountry">include country(Optional, default: false)</param>
+            <param name="QStatus">include status(Optional, default: false)</param>
+            <param name="QPixel">include pixel(Optional, default: false)</param>
+            <param name="QPostback">include postback(Optional, default: false)</param>
+            <param name="QIP">include ip(Optional, default: false)</param>
+            <param name="QTransactionID">include transaction id(Optional, default: false)</param>
+            <param name="QConversionType">include conversion's type(Optional, default: false)</param>
+            <param name="QReferrer">include referrer(Optional, default: false)</param>
+            <param name="QStatusDescription">include status description(Optional, default: false)</param>
+            <param name="QSource">include source(Optional, default: false)</param>
+            <param name="QActionName">include action name(Optional, default: false)</param>
+            <param name="QBanner">include banner(Optional, default: false)</param>
+            <param name="QParentURL">include parrent url(Optional, default: false)</param>
+            <param name="QCTR">include ctr(Optional, default: false)</param>
+            <param name="QDeviceId">include device id(Optional, default: false)</param>
+            <param name="QIsSmartphone">include is smartphone(Optional, default: false)</param>
+            <param name="QIsiOS">include is device IOS(Optional, default: false)</param>
+            <param name="QIsAndroid">include is device IOS(Optional, default: false)</param>
+            <param name="QOS">include device's os name(Optional, default: false)</param>
+            <param name="QBrowser">include device's browser(Optional, default: false)</param>
+            <param name="QDevice_os">include device's os provider(Optional, default: false)</param>
+            <param name="QPointing_method">include device'r pointing method</param>
+            <param name="QIs_tablet">include is device tablet(Optional, default: false)</param>
+            <param name="QModel_name">include device's model name(Optional, default: false)</param>
+            <param name="QDevice_os_version">include device's os version(Optional, default: false)</param>
+            <param name="QIs_wireless_device">include is device wireless(Optional, default: false)</param>
+            <param name="QBrand_name">include device's brand name(Optional, default: false)</param>
+            <param name="QMarketing_name">include device's marketing name(Optional, default: false)</param>
+            <param name="QResolution_height">include device's display resolution height(Optional, default: false)</param>
+            <param name="QResolution_width">include device's display resolution width(Optional, default: false)</param>
+            <param name="QCanvas_support">include device's canvas support(Optional, default: false)</param>
+            <param name="QViewport_width">include device's viewport width(Optional, default: false)</param>
+            <param name="QIsviewport_supported">include does device support viewport (Optional, default: false)</param>
+            <param name="QIsmobileoptimized">include is device mobile optimized(Optional, default: false)</param>
+            <param name="QIshandheldfriendly">include is device handheld friendly(Optional, default: false)</param>
+            <param name="QIs_smarttv">include is device smart tv(Optional, default: false)</param>
+            <param name="QIsux_full_desktop">include is device ux full desktop(Optional, default: false)</param>
+            <param name="QClickDate">include click date(Optional, default: false)</param>
+            <param name="QConversionDate">include conversion date(Optional, default: false)</param>
+            <param name="QImpressionDate">include impression date(Optional, default: false)</param>
+            <param name="QPAGE">include page detail(Optional, default: false)</param>
+            <param name="QRedirect">include redirect detail(Optional, default: false)</param>
+            <param name="Vdeviceid">no use</param>
+            <param name="Vdeviceos">no use</param>
+            <param name="Vbrowser">no use</param>
+            <param name="Vos">no use</param>
+            <param name="Vmodelname">no use</param>
+            <param name="Vbrandname">no use</param>
+            <param name="Vmarketingname">no use</param>
+            <param name="Vresolution">no use</param>
+            <param name="UserAgent">no use</param>
+            <param name="ReportID">no use</param>
+            <returns>
+            detail list
+            </returns>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.DailyReportVm">
+            <summary>
+            Daily report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Date">
+            <summary>
+            click's date mm/dd/yyyy
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.SubId1">
+            <summary>
+            click's sub id. Included when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.DailyReportVm.SubId2">
+            <summary>
+            click's sub id. Included when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.AffiliateReportVm">
+            <summary>
+            Affiliate report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.AffiliateId">
+            <summary>
+            affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Company">
+            <summary>
+            company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.CampaignId">
+            <summary>
+            campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.CampaignName">
+            <summary>
+            campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.Source">
+            <summary>
+            click's source name 
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.SubId1">
+            <summary>
+            click's sub id. Included, when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.AffiliateReportVm.SubId2">
+            <summary>
+            click's sub id. Included, when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.CampaignReportVm">
+            <summary>
+            Campaign report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.AffiliateId">
+            <summary>
+            affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Company">
+            <summary>
+            company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.URLPreviewId">
+            <summary>
+            url's PreviewId id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.OfferUrl">
+            <summary>
+            url's offer url
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.CampaignId">
+            <summary>
+            campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.CampaignName">
+            <summary>
+            campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.Source">
+            <summary>
+            click's source name 
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.SubId1">
+            <summary>
+            click's sub id. Included, when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CampaignReportVm.SubId2">
+            <summary>
+            click's sub id. Included, when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.HourlyReportVm">
+            <summary>
+            Daily report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Hour">
+            <summary>
+            click's hour hh
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.SubId1">
+            <summary>
+            click's sub id. Included when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.HourlyReportVm.SubId2">
+            <summary>
+            click's sub id. Included when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.TrafficReportVm">
+            <summary>
+            Traffic report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.AffiliateId">
+            <summary>
+            affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Company">
+            <summary>
+            company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Cost">
+            <summary>
+            total cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Revenue">
+            <summary>
+            total revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.Country">
+            <summary>
+            country name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.URLPreviewId">
+            <summary>
+            url's PreviewId id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.OfferUrl">
+            <summary>
+            url's offer url
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.CampaignId">
+            <summary>
+            campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.CampaignName">
+            <summary>
+            campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.SubId1">
+            <summary>
+            click's sub id. Included, when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.TrafficReportVm.SubId2">
+            <summary>
+            click's sub id. Included, when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Controllers.ReportsController.CustomReportVm">
+            <summary>
+                Custom report detail
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Impressions">
+            <summary>
+            total impression
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Conversions">
+            <summary>
+            total conversion
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Clicks">
+            <summary>
+            total click
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Cost">
+            <summary>
+                cost
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Revenue">
+            <summary>
+                revenue
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Hour">
+            <summary>
+            click/conversion/impression hour:hh
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Date">
+            <summary>
+            click/conversion/impression date:mm/dd/yyyy 
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.CDatetime">
+            <summary>
+            click/conversion/impression datetime
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ClickDate">
+            <summary>
+            click datetime
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ImpressionDate">
+            <summary>
+            impression datetime
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ConversionDate">
+            <summary>
+            conversion datetime
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ConversionID">
+            <summary>
+                conversion id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.CampaignId">
+            <summary>
+                campaign id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.CampaignName">
+            <summary>
+                campaign name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.AffiliateId">
+            <summary>
+                affiliate id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Company">
+            <summary>
+                company name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.PAGEId">
+            <summary>
+                clicked url's preview id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.PAGEURL">
+            <summary>
+                clicked url's preview url
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.RedirectId">
+            <summary>
+                clicked url's preview id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.RedirectURL">
+            <summary>
+                clicked url's preview url
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Country">
+            <summary>
+                conversion's country
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Status">
+            <summary>
+                status
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Pixel">
+            <summary>
+                conversion's pixel
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Postback">
+            <summary>
+                conversion's postback date time
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.IP">
+            <summary>
+                Ip address
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.TransactionID">
+            <summary>
+                transaction id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ConversionType">
+            <summary>
+                conversion type
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Referrer">
+            <summary>
+                click's referrer
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.StatusDescription">
+            <summary>
+                status description
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Source">
+            <summary>
+                click source
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ActionName">
+            <summary>
+                action name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ActionId">
+            <summary>
+                action id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ActionType">
+            <summary>
+                action type
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Banner">
+            <summary>
+            banner
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.ParentURL">
+            <summary>
+            parent url id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.CTR">
+            <summary>
+            ctr
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.DeviceId">
+            <summary>
+                device id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.IsSmartphone">
+            <summary>
+                is device a smartphone
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.IsiOS">
+            <summary>
+                is device IOS
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.IsAndroid">
+            <summary>
+                is device Android
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.OS">
+            <summary>
+                device's installed os detail, like Android 5.0
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Browser">
+            <summary>
+                used browser
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Device_os">
+            <summary>
+                device's os provider, like Android
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Pointing_method">
+            <summary>
+                device's pointin method, like touchscreen/mouse
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Is_tablet">
+            <summary>
+                id device tablet
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Model_name">
+            <summary>
+                device build model name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Device_os_version">
+            <summary>
+                device's installed os detail, like Android 5.0 where 5.0 is the version
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Is_wireless_device">
+            <summary>
+                is device wireless
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Brand_name">
+            <summary>
+                device brand/manufacturer name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Marketing_name">
+            <summary>
+                device marketing name
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Resolution_height">
+            <summary>
+                device display resolution height
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Resolution_width">
+            <summary>
+                device display resolution width
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Canvas_support">
+            <summary>
+                device's canvas support
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Viewport_width">
+            <summary>
+                device's viewport width
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Isviewport_supported">
+            <summary>
+                does device support view port
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Ismobileoptimized">
+            <summary>
+                is device mobile optimized
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Ishandheldfriendly">
+            <summary>
+                Is handheld friendly
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Is_smarttv">
+            <summary>
+                Is device smart tv
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.Isux_full_desktop">
+            <summary>
+                Is device ux full desktop
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.SubId1">
+            <summary>
+            click's sub id. Included, when query string with key SubId1, where 1 is the click's sub id
+            </summary>
+        </member>
+        <member name="P:CpaTicker.Controllers.ReportsController.CustomReportVm.SubId2">
+            <summary>
+            click's sub id. Included, when query string with key SubId2, where 2 is the click's sub id
+            </summary>
+        </member>
+        <member name="M:CpaTicker.Controllers.TickersController.Api(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            campaign details
+            </summary>
+            <param name="apiKey">user’s api key (required)</param>
+            <param name="fromdate">campaign details from datetime(not required)</param>
+            <param name="todate">campaign details until datetime(not required)</param>
+            <param name="offset">user timzone offset from UTC(not required)</param>
+            <param name="affiliateid">user's affiliate id(not required)</param>
+            <param name="subid"> click's sub value(not required)</param>
+            <returns>
+            list of campaign detail
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.TickerController.API(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            GET: campaign details
+            </summary>
+            <param name="api">user’s api key (required)</param>
+            <param name="fromdate">campaign details from datetime(not required)</param>
+            <param name="todate">campaign details until datetime(not required)</param>
+            <param name="offset">user timzone offset from UTC(not required)</param>
+            <param name="affiliateid">user's affiliate id(not required)</param>
+            <param name="subid"> click's sub value(not required)</param>
+            <returns>
+            list of campaign detail, 
+            where
+                CampaignName:   campaign name
+                Clicks:         total click
+                Impressions:    total impression
+                Conversions:    total conversion
+                OldClicks:      total old click
+                OldImpressions: total old impression
+                OldConversions: total old conversion 
+                Cost:           total campaign cost
+                Revenue:        total campaign revenue
+            </returns>
+        </member>
+        <member name="M:CpaTicker.Controllers.TickerController.API_v2(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            GET: campaign details
+            </summary>
+            <param name="api">user’s api key (required)</param>
+            <param name="fromdate">campaign details from datetime(not required)</param>
+            <param name="todate">campaign details until datetime(not required)</param>
+            <param name="offset">user timzone offset from UTC(not required)</param>
+            <param name="affiliateid">user's affiliate id(not required)</param>
+            <param name="subid"> click's sub value(not required)</param>
+            <returns>
+            list of campaign detail, 
+            where
+                CampaignName:   campaign name
+                Company:        company name
+                AffiliateId:    affiliate id
+                Clicks:         total click
+                Impressions:    total impression
+                Conversions:    total conversion
+                OldClicks:      total old click
+                OldImpressions: total old impression
+                OldConversions: total conversion 
+                Cost:           total campaign cost
+                Revenue:        total campaign revenue
+            </returns>
+        </member>
+        <member name="T:CpaTicker.Core.RequestInfoAttribute">
+            <summary>
+            additional request documentation for api's at api help page
+            </summary>
+        </member>
+        <member name="T:CpaTicker.Core.AdditionalInfoAttribute">
+            <summary>
+            additional documentation for model property's at api help page
+            </summary>
+        </member>
+        <member name="T:CpaTicker.PostReceiveHook">
+            <summary>
+            Summary description for PostReceiveHook
+            </summary>
+        </member>
+    </members>
+</doc>

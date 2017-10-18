@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="18px" viewBox="0 0 10 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>right arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="entypo/untitled2" transform="translate(-5.000000, -1.000000)">
+            <rect id="Rectangle-path" x="0" y="0" width="20" height="20"></rect>
+            <path d="M5.231,17.506 C4.966,17.774 4.966,18.207 5.231,18.475 C5.496,18.742 5.925,18.743 6.19,18.475 L13.942,10.645 C14.207,10.377 14.207,9.944 13.942,9.676 L6.19,1.846 C5.925,1.578 5.496,1.578 5.231,1.846 C4.966,2.114 4.966,2.547 5.231,2.815 L12.301,10.161 L5.231,17.506 L5.231,17.506 Z" id="Shape" fill="#000000" fill-rule="evenodd"></path>
+        </g>
+    </g>
+</svg>

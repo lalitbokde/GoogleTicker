@@ -1,0 +1,796 @@
+﻿
+.tickerContainer {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+}
+
+.ticker {
+    position: absolute;
+}
+
+    .ticker .asc {
+        background-image: url("../../Images/arrow-up.png");
+    }
+
+    .ticker .desc {
+        background-image: url("../../Images/arrow-down.png");
+    }
+
+    .ticker table {
+        margin: auto;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .ticker td {
+        padding: 0 5px;
+        white-space: nowrap;
+    }
+
+td.arrow {
+    background-repeat: no-repeat;
+    padding: 0;
+}
+
+.mtickerContainer .ticker {
+    margin-top: 2px;
+}
+
+.mtickerContainer {
+    background-color: #4d4d4d;
+}
+
+#mv2tk {
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+.tickerContainer table {
+    background: black none repeat scroll 0 0;
+    border: medium none;
+}
+
+    .tickerContainer table td {
+        color: white;
+        font-size: 7px;
+        line-height: 1.0;
+        text-align: center;
+    }
+
+table tr.even, table tr.alt, table tr:nth-of-type(2n) {
+    background-color: black;
+}
+
+#mv1tk table {
+    background: #4d4d4d none repeat scroll 0 0;
+    border: medium none;
+}
+
+#mv2tk table {
+    background: white none repeat scroll 0 0;
+    border: medium none;
+}
+
+    #mv2tk table td {
+        color: black;
+    }
+
+#mv3tk table {
+    background: #4d4d4d none repeat scroll 0 0;
+    border: medium none;
+}
+
+#mv1tk table tr.even, #mv1tk table tr.alt, #mv1tk table tr:nth-of-type(2n) {
+    background-color: #4d4d4d;
+}
+
+#mv2tk table tr.even, #mv2tk table tr.alt, #mv2tk table tr:nth-of-type(2n) {
+    background: white none repeat scroll 0 0;
+}
+
+#mv3tk table tr.even, #mv3tk table tr.alt, #mv3tk table tr:nth-of-type(2n) {
+    background-color: #4d4d4d;
+}
+
+
+
+@media (min-width: 992px) {
+    #bwtk {
+        font-size: 8px;
+        font-weight: 500;
+        height: 9%;
+        left: 40%;
+        line-height: 1.19;
+        top: 12.8%;
+        width: 52.1%;
+    }
+
+        #bwtk .lb {
+            font-size: 4px;
+        }
+
+        #bwtk .val {
+            font-size: 13px;
+        }
+
+        #bwtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 20px;
+        }
+
+    #lptk {
+        font-size: 6px;
+        font-weight: 500;
+        height: 6%;
+        left: 18%;
+        line-height: 1.19;
+        top: 56%;
+        width: 33.3%;
+    }
+
+        #lptk .lb {
+            font-size: 2px;
+        }
+
+        #lptk .val {
+            font-size: 8px;
+        }
+
+        #lptk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 14px;
+        }
+
+    #bwtk2 {
+        font-size: 5px;
+        font-weight: 500;
+        height: 8%;
+        left: 28.6%;
+        line-height: 1.5;
+        top: 10.4%;
+        width: 55%;
+    }
+
+        #bwtk2 .lb {
+            font-size: 4px;
+        }
+
+        #bwtk2 .val {
+            font-size: 8px;
+        }
+
+        #bwtk2 td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 17px;
+        }
+
+    #tbtk {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8%;
+        left: 75%;
+        line-height: 0.5;
+        top: 40.9%;
+        width: 18.9%;
+    }
+
+        #tbtk .lb {
+            font-size: 4px;
+        }
+
+        #tbtk .val {
+            font-size: 7px;
+        }
+
+        #tbtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 14px;
+        }
+
+    .mtickerContainer {
+        font-size: 4px;
+        font-weight: 500;
+        height: 7%;
+        left: 43.7%;
+        line-height: 1.2;
+        width: 14%;
+    }
+
+        .mtickerContainer .lb {
+            font-size: 5px;
+        }
+
+        .mtickerContainer .val {
+            font-size: 8px;
+        }
+
+        .mtickerContainer td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 20px;
+        }
+
+    #mv1tk {
+        top: 61.3%;
+    }
+
+    #mv2tk {
+        top: 68.3%;
+    }
+
+    #mv3tk {
+        top: 75.5%;
+    }
+
+    .rgt_banner_cont {
+        text-align: right;
+    }
+
+    .gfbtn {
+        text-align: left;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #bwtk {
+        font-size: 8px;
+        font-weight: 500;
+        height: 9%;
+        left: 40%;
+        line-height: 1.19;
+        top: 12.8%;
+        width: 52.1%;
+    }
+
+        #bwtk .lb {
+            font-size: 3px;
+        }
+
+        #bwtk .val {
+            font-size: 13px;
+        }
+
+        #bwtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 17px;
+        }
+
+    #lptk {
+        font-size: 6px;
+        font-weight: 500;
+        height: 6%;
+        left: 18%;
+        line-height: 1.19;
+        top: 56%;
+        width: 33.3%;
+    }
+
+        #lptk .lb {
+            font-size: 2px;
+        }
+
+        #lptk .val {
+            font-size: 8px;
+        }
+
+        #lptk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 10px;
+        }
+
+    #bwtk2 {
+        font-size: 5px;
+        font-weight: 500;
+        height: 8.1%;
+        left: 28.3%;
+        line-height: 1.19;
+        top: 9.4%;
+        width: 55.4%;
+    }
+
+        #bwtk2 .lb {
+            font-size: 4px;
+        }
+
+        #bwtk2 .val {
+            font-size: 8px;
+        }
+
+        #bwtk2 td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 17px;
+        }
+
+    #tbtk {
+        font-size: 4px;
+        font-weight: 500;
+        height: 7%;
+        left: 74.5%;
+        line-height: 1.19;
+        top: 40.4%;
+        width: 19.3%;
+    }
+
+        #tbtk .lb {
+            font-size: 4px;
+        }
+
+        #tbtk .val {
+            font-size: 7px;
+        }
+
+        #tbtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 14px;
+        }
+
+    .mtickerContainer {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8.5%;
+        left: 43.7%;
+        line-height: 1;
+        width: 13.7%;
+    }
+
+        .mtickerContainer .lb {
+            font-size: 5px;
+        }
+
+        .mtickerContainer .val {
+            font-size: 10px;
+        }
+
+        .mtickerContainer td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 20px;
+        }
+
+    #mv1tk {
+        top: 59.3%;
+    }
+
+    #mv2tk {
+        top: 67.8%;
+    }
+
+    #mv3tk {
+        top: 76.2%;
+    }
+
+    .rgt_banner_cont {
+        text-align: right;
+    }
+
+    .gfbtn {
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #bwtk {
+        font-size: 8px;
+        font-weight: 500;
+        height: 8%;
+        left: 40%;
+        line-height: 1;
+        top: 11.5%;
+        width: 51.1%;
+    }
+
+        #bwtk .lb {
+            font-size: 2px;
+        }
+
+        #bwtk .val {
+            font-size: 7px;
+        }
+
+        #bwtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 11px;
+        }
+
+    #lptk {
+        font-size: 6px;
+        font-weight: 500;
+        height: 6%;
+        left: 19%;
+        line-height: 1;
+        top: 55%;
+        width: 32.3%;
+    }
+
+        #lptk .lb {
+            font-size: 2px;
+        }
+
+        #lptk .val {
+            font-size: 6px;
+        }
+
+        #lptk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 8px;
+        }
+
+    #bwtk2 {
+        font-size: 1px;
+        font-weight: 500;
+        height: 8.1%;
+        left: 27.8%;
+        line-height: 1;
+        top: 10.8%;
+        width: 55.4%;
+    }
+
+        #bwtk2 .lb {
+            font-size: 3px;
+        }
+
+        #bwtk2 .val {
+            font-size: 7px;
+        }
+
+        #bwtk2 td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 17px;
+        }
+
+    #tbtk {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8.5%;
+        left: 74.6%;
+        line-height: 1;
+        top: 40.4%;
+        width: 19%;
+    }
+
+        #tbtk .lb {
+            font-size: 3px;
+        }
+
+        #tbtk .val {
+            font-size: 7px;
+        }
+
+        #tbtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 14px;
+        }
+
+    .mtickerContainer {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8.5%;
+        left: 43.5%;
+        line-height: 1;
+        width: 13.7%;
+    }
+
+        .mtickerContainer .lb {
+            font-size: 3px;
+        }
+
+        .mtickerContainer .val {
+            font-size: 6px;
+        }
+
+        .mtickerContainer td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 20px;
+        }
+
+    #mv1tk {
+        top: 59.2%;
+    }
+
+    #mv2tk {
+        top: 67.8%;
+    }
+
+    #mv3tk {
+        top: 76%;
+    }
+
+    .rgt_banner_cont {
+        text-align: right;
+    }
+
+    .gfbtn {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+    #bwtk2 {
+        font-size: 0;
+        font-weight: 500;
+        height: 9%;
+        left: 27.9%;
+        line-height: 1;
+        top: 10.5%;
+        width: 55%;
+    }
+
+        #bwtk2 .lb {
+            font-size: 3px;
+        }
+
+        #bwtk2 .val {
+            font-size: 7px;
+        }
+
+        #bwtk2 td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 11px;
+        }
+
+    #bwtk {
+        font-size: 8px;
+        font-weight: 500;
+        height: 8%;
+        left: 43.9%;
+        line-height: 1.1;
+        top: 10.5%;
+        width: 31.4%;
+    }
+
+        #bwtk .lb {
+            font-size: 3px;
+        }
+
+        #bwtk .val {
+            font-size: 7px;
+        }
+
+        #bwtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 11px;
+        }
+
+    #lptk {
+        font-size: 6px;
+        font-weight: 500;
+        height: 6%;
+        left: 30.5%;
+        line-height: 1;
+        top: 54.7%;
+        width: 20.3%;
+    }
+
+        #lptk .lb {
+            font-size: 2px;
+        }
+
+        #lptk .val {
+            font-size: 7px;
+        }
+
+        #lptk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 7px;
+        }
+
+    #tbtk {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8.5%;
+        left: 74%;
+        line-height: 1.19;
+        top: 40.3%;
+        width: 19%;
+    }
+
+        #tbtk .lb {
+            font-size: 2px;
+        }
+
+        #tbtk .val {
+            font-size: 8px;
+        }
+
+        #tbtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 6px;
+        }
+
+    .mtickerContainer {
+        font-size: 4px;
+        font-weight: 500;
+        height: 8.7%;
+        left: 43.9%;
+        line-height: 1;
+        width: 13.3%;
+    }
+
+        .mtickerContainer .lb {
+            font-size: 3px;
+        }
+
+        .mtickerContainer .val {
+            font-size: 7px;
+        }
+
+        .mtickerContainer td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 10px;
+        }
+
+    #mv1tk {
+        top: 58%;
+    }
+
+    #mv2tk {
+        top: 66.7%;
+    }
+
+    #mv3tk {
+        top: 75.4%;
+    }
+
+    .rgt_banner_cont {
+        text-align: center;
+    }
+
+    .gfbtn {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .tickerContainer table td {
+        font-size: 5px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+
+    #bwtk2 {
+        font-size: 0;
+        font-weight: 500;
+        height: 7%;
+        left: 27.9%;
+        line-height: 1;
+        top: 10%;
+        width: 55.6%;
+    }
+
+    #bwtk {
+        font-weight: 500;
+        height: 9%;
+        left: 43.9%;
+        line-height: 1;
+        top: 10.5%;
+        width: 30.4%;
+    }
+
+        #bwtk .lb {
+            font-size: 3px;
+        }
+
+        #bwtk .val {
+            font-size: 3px;
+        }
+
+        #bwtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 3px;
+        }
+
+    #lptk {
+        font-weight: 500;
+        height: 6%;
+        left: 31.5%;
+        line-height: 1;
+        top: 54.7%;
+        width: 19.3%;
+    }
+
+        #lptk .lb {
+            font-size: 2px;
+        }
+
+        #lptk .val {
+            font-size: 2px;
+        }
+
+        #lptk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 4px;
+        }
+
+    #tbtk {
+        font-size: 2px;
+        font-weight: 500;
+        height: 7.5%;
+        left: 74%;
+        line-height: 1.19;
+        top: 40.3%;
+        width: 20%;
+    }
+
+        #tbtk .lb {
+            font-size: 5px;
+        }
+
+        #tbtk .val {
+            font-size: 6px;
+        }
+
+        #tbtk td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 4px;
+        }
+
+    .mtickerContainer {
+        font-weight: 500;
+        height: 8.7%;
+        left: 43.5%;
+        line-height: 1.19;
+        width: 14%;
+    }
+
+        .mtickerContainer .lb {
+            font-size: 5px;
+        }
+
+        .mtickerContainer .val {
+            font-size: 5px;
+        }
+
+        .mtickerContainer td.arrow {
+            background-position: 100% 40%;
+            background-size: 75% auto;
+            min-width: 4px;
+        }
+
+    #mv1tk {
+        top: 59%;
+    }
+
+    #mv2tk {
+        top: 67.7%;
+    }
+
+    #mv3tk {
+        top: 76.4%;
+    }
+
+    .rgt_banner_cont {
+        text-align: center;
+    }
+
+    .gfbtn {
+        margin-top: 5px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,61 @@
+﻿ <section>
+                                        
+    <label class="label">Sound:</label>
+    <div class="inline-group">
+
+            @Html.CheckBoxSmart("clickSound", "Click", false)
+            @Html.CheckBoxSmart("convSound", "Conversion", false)
+           @* <label class="checkbox">
+                <input id="clickSound" name="clickSound" type="checkbox", checked="checked">
+                <i></i>
+                Clicks
+            </label>*@
+    </div>
+</section>
+
+<script type="text/javascript">
+       
+
+    $("#clickSound").change(function (e) {
+        
+        var value = $(this).is(':checked') ? 1 : 0;
+        $.cookie("ct_sound", value, { expires: 365 });
+        
+    });
+
+    $("#convSound").change(function (e) {
+
+        var value = $(this).is(':checked') ? 1 : 0;
+        $.cookie("ct_cv_sound", value, { expires: 365 });
+    });
+
+
+    var initialiseSound = function () {
+
+        var playsound = $.cookie("ct_sound");
+
+        if (typeof playsound === 'undefined') {
+            playsound = 1;
+            $.cookie("ct_sound", playsound, { expires: 365 });
+        }
+
+        var playConsound = $.cookie("ct_cv_sound");
+
+        if (typeof playConsound === 'undefined') {
+            playConsound = 1;
+            $.cookie("ct_cv_sound", playConsound, { expires: 365 });
+        }
+        
+        if (playsound == 1) {
+            $("#clickSound").prop("checked", true);
+            
+        }
+        if (playConsound == 1) {
+            $("#convSound").prop("checked", true);
+        }
+        
+
+    };
+    initialiseSound();
+
+</script>

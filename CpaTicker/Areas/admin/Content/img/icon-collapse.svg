@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>minus2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="entypo/minus2" transform="translate(-1.000000, -1.000000)">
+            <rect id="Rectangle-path" x="0" y="0" width="20" height="20"></rect>
+            <path d="M9.814,1.615 C5.221,1.615 1.498,5.339 1.498,9.932 C1.498,14.525 5.222,18.249 9.814,18.249 C14.408,18.249 18.131,14.525 18.131,9.932 C18.132,5.339 14.408,1.615 9.814,1.615 L9.814,1.615 Z M14.814,8.92 L14.814,10.944 L4.814,10.944 L4.814,8.92 L14.814,8.92 L14.814,8.92 Z" id="Shape" fill="#5B67BE" fill-rule="evenodd"></path>
+        </g>
+    </g>
+</svg>

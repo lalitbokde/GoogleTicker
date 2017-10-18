@@ -1,0 +1,1201 @@
+/* Large desktops and laptops */
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+
+}
+@media (min-width: 992px) {
+ul.topslsec{	
+	margin:18px 0 11px 0;
+	float:right;	
+}
+.home_top_sec{
+		height:624px;
+		}
+.navbar-default{
+		background:none;
+		border:none;}
+.navbar-nav{
+		background:#020100;
+	}
+.navbar-nav > li:last-child, .navbar-nav > li:last-child:hover a{
+	border:none;
+	}
+.navbar-nav{
+	float:right;
+	margin-top:8px;
+	}
+.navbar-nav > li {	
+	display:block;
+	margin:0 5px 0 0;
+}
+.navbar-nav > li > a {
+	font-size:14px;	
+	display:block;
+	padding:15px 20px 15px 20px;
+	color:#fff;
+} 
+.navbar-nav > li > a:hover,  .navbar-nav > li > a.active{	
+	display:block;
+	background:#038bbc;
+	color:#fff;
+} 
+.navbar-nav > li:last-child a{
+	padding:8px 15px;
+	}
+.navbar-nav > li.sign_in{
+	border-radius:45px;
+	background:#fff;
+	margin:7px 10px 0 5px!important;
+	color:#161616;	
+	}
+.navbar-nav > li:last-child a.sign_in{
+	color:#161616;
+	border-radius:45px;
+	background:#fff;
+	margin:7px 10px 0 5px!important;	
+	}
+.navbar-nav > li a.sign_in:hover{
+	text-decoration:none;
+	color:#fff;
+    background:#038bbc;
+	color:#161616;
+}
+
+.navbar-nav > li:last-child a.sugnup{
+	color:#fff;
+	border-radius:45px;
+	background:#038bbc ;
+	margin:7px 10px 0 5px!important;	
+	}
+.navbar-nav > li a.sugnup:hover{
+	text-decoration:none;
+	color:#fff;
+    background:#999999;
+	color:#161616;
+}
+.lft_img{
+	margin:2% auto 0 auto;
+	
+}
+.rgt_banner_cont{
+	text-align:right;
+	padding:8% 10% 0 0;}
+.banner_para1{
+	font-size:40px;
+	line-height:45px;
+}
+.banner_para2{
+	font-size:37px;
+	line-height:65px;
+}
+.banner_para3{
+	font-size:14px;
+	line-height:18px;
+	padding:3% 0 0 0;	
+}
+.banner_para1, .banner_para2, .banner_para3{
+	text-align:right;
+}
+.banner{
+	/*margin-top:100px;*/
+	}
+.banner_btn{
+	float:left;
+	display:table;
+	margin:5% 0 0 17%;
+	width:400px;}
+.free_sign_up a, .learn_more a{
+	padding: 10px 25px;	
+}
+.sec1lftimg{
+	margin:0 0 0 0;
+}
+ul.sec1list{
+	margin:0 0 0 7%;
+}
+
+ul.sec1list li{
+	font-size:14px;
+	text-align:left;
+	line-height:19px;
+	padding-left:14%;
+	margin:6% 0 0 0;
+}
+ul.sec1list li span{	
+	font-size:18px;
+	line-height:25px;
+}
+.testimonialimg{
+	float:left;
+	margin:0 4% 0 0;
+	width:20%;
+}
+.testimonialtxt1{
+	 font-size:18px;
+	 line-height:20px;
+	 text-align:left;
+	 padding:20px 0 0 0;
+	 
+}
+.testimonialtxt1 span{
+	font-size:16px;
+	line-height:16px;
+}
+.testimonialtxt2{
+	font-size:18px;
+	line-height:22px;
+	text-align:left;
+}
+.bottom_sec{
+	padding:1% 0 1% 0;}
+.btm_para{	
+	font-size:18px;
+	line-height:20px;
+	padding:2% 0 2% 0;
+}
+.btn1{
+	margin:8% auto 0 auto;
+	display:block;
+}
+.newsletter{
+	 font-family: 'ProximaNovaBold';
+	text-transform:uppercase;
+	color:#fff;
+	background:url(../images/newsletter.png) left top no-repeat;
+    background-size:28%;
+	line-height:40px;
+	padding:0 0 12px 33%;
+	font-size:20px;
+}
+.btm_cont{
+	padding:5% 0 0 2%;
+	}
+.social_icon{
+	padding-top:20px;
+	padding-top:8%;}
+.social_icon a{
+	padding:0 5px;}
+.social_icon a:first-child{
+	padding-left:0;}
+ul.contactdetail{	
+	padding:3% 0 0 2%;
+	margin:0;
+}
+ul.contactdetail li{ 
+	padding:0 0 0 10%;	
+}
+ul.contactdetail li.support{	
+	background-size:7%;	
+}
+ul.contactdetail li.mail{	
+	background-size:7%;	
+}
+ul.contactdetail li.phone{	
+	background-size:7%;	
+}
+ul.contactdetail li.address{	
+	background-size:7%;	
+}
+.txtfld{
+	font-size:14px;		
+	padding:12px;
+	margin:7% 0 0 0;	
+	}
+
+.submit{
+	padding:10px 25px;	
+	margin:20px 24px 0 0;
+	}
+/* start about page */
+.abt_top_sec{
+	height:580px;
+	background:url(../images/about_banner.jpg) no-repeat center top;
+	}
+.abt_bnrtxt1{
+	padding:3% 0 0 0;		
+	font-size:67px;	
+	line-height:67px;	
+}
+.abt_bnrtxt2{	
+	font-size:30px;	
+	line-height:30px;	
+}		
+.abtsec1img{
+	width:100%;
+}		
+.abtmidtxt1, .abtmidtxt2{
+	padding:5% 0 0 4%;
+	text-align:left;
+	font-size:16px;	
+	line-height:20px;
+}
+.abtmidtxt2{
+	padding:8% 8% 0 0;
+}
+.abtmidtxt1	span, .abtmidtxt2 span{
+	font-size:20px;
+	line-height:45px;
+}		
+/* end about page */	
+		
+/* start pricing page */		
+.pricetopbox{
+	height:161px;
+	background:url(../images/pricingtop.jpg) center top no-repeat;
+	background-size:100%;
+}
+.pricetoptxt{
+	padding:3% 3% 0 16%;
+	font-size:16px;	
+	line-height:19px;	
+}
+ul.pricebtn{
+	width:80%;	
+	padding:0 0 0 0;	
+	clear:both;
+	margin:2% 0 0 16%;
+	height:47px;
+}
+ul.pricebtn li{
+	width:33%;
+	float:left;
+	display:inline-block;
+	margin-left:1px;
+	height:47px;
+}
+ul.pricebtn li.green{
+	border-radius:5px 0 0 5px;
+}
+ul.pricebtn li.red{
+	border-radius:0 0 0 0;	
+}
+ul.pricebtn li.blue{
+	border-radius:0 5px 5px 0;
+}
+.pricebtnimg{
+	margin:3% auto;
+	width:90%;
+}
+.pribox{
+	background:url(../images/pricebox.jpg) center top no-repeat;
+	height:584px;
+	background-size:100%;
+}
+.lftbox{
+	width:82%;
+	float:right;
+	margin:19.5% 3% 0 0;
+}
+.lftboxhding{
+	font-family: 'ProximaNovaBold';
+	font-size:34px;
+	color:#fff;
+	text-align:center;
+	line-height:38px;
+	text-transform:uppercase;
+	padding:2% 0 0 0;
+	margin:0 auto;
+}
+.lftboxhding span{
+	font-size:52px;
+	line-height:56px;
+}
+ul.lftbxlist{
+	padding:29.5% 0 0 5%;
+	margin:0;
+}
+ul.lftbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:15px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 40% no-repeat;
+	background-size:6%;
+	padding:3.8% 0 5% 11%;
+	list-style:none;
+}
+.lftbxtrybtn{
+	display:block;
+	margin:12.5% auto;
+	width:60%;
+}
+.midbox{
+	width:100%;
+	float:none;
+	margin:11.5% auto 0 auto;
+
+}
+ul.midbxlist{
+	padding:27% 5% 0 5%;
+	margin:0;
+}
+ul.midbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:15px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 55% no-repeat;
+	background-size:6%;
+	padding:5% 0 5% 11%;
+	list-style:none;
+}
+.midbxtrybtn{
+	display:block;
+	margin:11% auto;
+	width:54%;
+}
+.rgtbox{
+	width:82%;
+	float:left;
+	margin:19.5% 0 0 3%;
+}
+ul.rgtbxlist{
+	padding:29% 0 0 5%;
+	margin:0;
+}
+ul.rgtbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:15px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 45% no-repeat;
+	background-size:6%;
+	padding:4% 0 5.3% 11%;
+	list-style:none;
+}
+.rgtbxtrybtn{
+	display:block;
+	margin:10% auto;
+	width:60%;
+}
+/* end pricing page */
+/* start contact page */
+.contlft, .contmid, .contrgt{
+	height:210px;
+}
+.cont_tophding{
+	font-size:20px;	
+	line-height:65px;
+}
+.cont_tophding.phone{
+	background:url(../images/contphone.png) 32% 42% no-repeat;
+	background-size:9%;
+	padding-left:1%;
+}
+.cont_tophding.mail{
+	background:url(../images/contmail.png) 32% 42% no-repeat;
+	background-size:9%;
+	padding-left:1%;
+}
+.cont_tophding.address{
+	background:url(../images/contaddress.png) 32% 42% no-repeat;
+	background-size:12%;
+	padding-left:7%;
+}
+.conttoptxt{	
+	font-size:18px;	
+	line-height:24px;
+	padding:0% 5% 5% 10%;
+    text-align: center;
+}
+/* end contact page */
+
+
+}
+
+
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+ul.topslsec{	
+	margin:10px 0 10px 0;
+	float:right;
+}	
+.navbar-default{
+	background:none;
+	border:none;}
+.navbar-nav{
+	background:#020100;
+	margin:10px 0 0 0;
+	}
+.navbar-nav > li:last-child, .navbar-nav > li:last-child:hover a{
+	border:none;
+	}
+.navbar-nav{
+	float:right;
+	margin-top:8px;
+	}
+.navbar-nav > li {	
+	display:block;
+	margin:0 2px 0 0;
+}
+.navbar-nav > li > a {
+	font-size:12px;	
+	display:block;
+	padding:10px 10px 10px 10px;
+} 
+.navbar-nav > li > a:hover,  .navbar-nav > li > a.active{	
+	display:block;
+	background:#038bbc;
+} 
+.navbar-nav > li:last-child a{
+	padding:4px 10px;
+	}
+.navbar-nav > li.sign_in{
+	border-radius:45px;
+	background:#fff;
+	margin:7px 10px 0 5px!important;
+	color:#161616;	
+	}
+.navbar-nav > li:last-child a.sign_in{
+	color:#161616;
+	border-radius:45px;
+	background:#fff;
+	margin:7px 10px 0 5px!important;	
+	}
+.navbar-nav > li a.sign_in:hover{
+	text-decoration:none;
+	color:#fff;
+    background:#038bbc;
+	color:#161616;
+}
+		
+.navbar-default .navbar-nav > li > a{
+	font-size:14px;}
+
+.navbar-nav{
+	float:right;
+	margin-right:0px;
+	margin-top:10px;}
+	
+.top_sec{
+	height:200px;}
+	/*.logo{
+		width:70%;}*/
+
+.banner_para1, .banner_para2, .banner_para3{
+	text-align:right;}
+.banner_para2{
+	font-size:50px;
+	line-height:50px;
+	text-align:right;}
+.banner_para3{
+	font-size:17px;
+	width:100%;
+	line-height:18px;
+	padding:2% 0 5% 0;
+	
+}
+.banner{
+	margin-top:50px;
+	padding-bottom:30px;
+	}
+.banner_btn{
+	float:right;
+	display:table;}
+.free_sign_up a, .learn_more a{
+	padding: 8px 20px;	
+}
+.sec1lftimg{
+	margin:8% 0 0 0;
+}
+ul.sec1list{
+	margin:0 0 0 4%;
+}
+
+ul.sec1list li{
+	font-size:13px;
+	text-align:left;
+	line-height:17px;
+	padding-left:14%;
+	margin:4% 0 0 0;
+}
+ul.sec1list li span{	
+	font-size:15px;
+	line-height:20px;
+}	
+.testimonialimg{
+	float:left;
+	margin:0 4% 3% 0;
+	width:20%;
+}
+.testimonialtxt1{
+	 font-size:18px;
+	 line-height:20px;
+	 text-align:left;
+}
+.testimonialtxt1 span{
+	font-size:16px;
+	line-height:16px;
+}
+.testimonialtxt2{
+	font-size:16px;
+	line-height:22px;
+	text-align:left;
+}
+.bottom_sec{
+	padding:1% 0 1% 0;}
+.btm_para{	
+	font-size:16px;
+	line-height:18px;
+	padding:2% 0 2% 0;
+}
+.btn1{
+	margin:6.5% auto 0 auto;
+	display:block;
+}
+.newsletter{
+	 font-family: 'ProximaNovaBold';
+	text-transform:uppercase;
+	color:#fff;
+	background:url(../images/newsletter.png) left top no-repeat;
+    background-size:28%;
+	line-height:40px;
+	padding:0 0 12px 33%;
+	font-size:20px;
+}
+.btm_cont{
+	padding:5% 0 0 2%;
+	}
+.social_icon{
+	padding-top:20px;
+	}	
+
+	
+ul.contactdetail{	
+	padding:3% 0 0 0;
+	margin:0;
+}
+ul.contactdetail li{ 
+	padding:0 0 0 16%;	
+}
+ul.contactdetail li.support{	
+	background-size:5%;	
+}
+ul.contactdetail li.mail{	
+	background-size:5%;	
+}
+ul.contactdetail li.phone{	
+	background-size:5%;	
+}
+ul.contactdetail li.address{	
+	background-size:5%;	
+}
+.txtfld{
+	font-size:14px;		
+	padding:12px;
+	margin:7% 0 0 0;	
+	}
+.submit{
+	padding:10px 25px;	
+	margin:20px 24px 0 0;
+	}
+/* start about page */
+.abt_top_sec{
+	height:580px;
+	background:url(../images/about_banner.jpg) no-repeat center top;
+	}
+.abt_bnrtxt1{
+	padding:15% 0 0 0;		
+	font-size:67px;	
+	line-height:67px;	
+}
+.abt_bnrtxt2{	
+	font-size:30px;	
+	line-height:30px;
+	padding:0 0 10% 0;	
+}		
+.abtsec1img{
+	width:100%;
+}		
+.abtmidtxt1, .abtmidtxt2{
+	padding:5% 0 0 4%;
+	text-align:left;
+	font-size:15px;	
+	line-height:18px;
+}
+.abtmidtxt2{
+	padding:3% 8% 0 0;
+}
+.abtmidtxt1	span, .abtmidtxt2 span{
+	font-size:18px;
+	line-height:40px;
+}
+/* start pricing page */		
+.pricetopbox{
+	height:131px;
+	background:url(../images/pricingtop.jpg) center top no-repeat;
+	background-size:100%;
+}
+.pricetoptxt{
+	padding:2.5% 2% 0 16%;
+	font-size:14px;	
+	line-height:17px;	
+}
+ul.pricebtn{
+	width:80%;	
+	padding:0 0 0 0;
+	clear:both;
+	margin:2% 0 0 16%;
+	height:36px;
+}
+ul.pricebtn li{
+	float:left;
+	display:inline-block;
+	margin-left:1px;
+	height:36px;
+	width:33%;
+}
+ul.pricebtn li.green{
+	border-radius:5px 0 0 5px;	
+}
+ul.pricebtn li.red{
+	border-radius:0 0 0 0;
+}
+ul.pricebtn li.blue{
+	border-radius:0 5px 5px 0;
+}
+.pricebtnimg{
+	margin:3% auto;
+	width:90%;
+}
+.pribox{
+	background:url(../images/pricebox.jpg) center top no-repeat;
+	height:434px;
+	background-size:100%;
+}
+.lftbox{
+	width:82%;
+	float:right;
+	margin:19.5% 3% 0 0;
+}
+.lftboxhding{
+	font-family: 'ProximaNovaBold';
+	font-size:24px;
+	color:#fff;
+	text-align:center;
+	line-height:28px;
+	text-transform:uppercase;
+	padding:2% 0 0 0;
+	margin:0 auto;
+}
+.lftboxhding span{
+	font-size:42px;
+	line-height:46px;
+}
+ul.lftbxlist{
+	padding:32% 0 0 2%;
+	margin:0;
+}
+ul.lftbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:12px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 55% no-repeat;
+	background-size:6%;
+	padding:3.8% 0 4% 11%;
+	list-style:none;
+}
+.lftbxtrybtn{
+	display:block;
+	margin:31.5% auto;
+	width:60%;
+}
+.midbox{
+	width:100%;
+	float:none;
+	margin:18% auto 0 auto;
+}
+ul.midbxlist{
+	padding:22% 5% 0 2%;
+	margin:0;
+}
+ul.midbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:12px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 55% no-repeat;
+	background-size:6%;
+	padding:5% 0 4.5% 11%;
+	list-style:none;
+}
+.midbxtrybtn{
+	display:block;
+	margin:11.5% auto;
+	width:54%;
+}
+.rgtbox{
+	width:82%;
+	float:left;
+	margin:19.5% 0 0 0;
+}
+ul.rgtbxlist{
+	padding:32% 0 0 1%;
+	margin:0;
+}
+ul.rgtbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:11px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) left 45% no-repeat;
+	background-size:6%;
+	padding:3.8% 0 5.5% 11%;
+	list-style:none;
+}
+.rgtbxtrybtn{
+	display:block;
+	margin:10.5% auto;
+	width:60%;
+}
+/* end pricing page */
+/* start contact page */
+.contlft, .contmid, .contrgt{
+	height:210px;
+}
+.cont_tophding{
+	font-size:20px;	
+	line-height:45px;
+}
+.cont_tophding.phone{
+	background:url(../images/contphone.png) 32% 42% no-repeat;
+	background-size:12%;
+	padding-left:8%;
+}
+.cont_tophding.mail{
+	background:url(../images/contmail.png) 32% 42% no-repeat;
+	background-size:12%;
+	padding-left:8%;
+}
+.cont_tophding.address{
+	background:url(../images/contaddress.png) 32% 42% no-repeat;
+	background-size:12%;
+	padding-left:15%;
+}
+.conttoptxt{	
+	font-size:14px;	
+	line-height:20px;
+	padding:8% 3% 5% 10%;
+}
+
+.banner_para3 {
+    line-height: 1 !important;
+    text-align: center !important;
+    font-size: 15px;
+}
+.banner_para2 {
+    font-size: 37px;
+}
+
+/* end contact page */
+			
+
+}
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+ul.topslsec{
+	margin:10px auto 10px auto;
+	float:none;
+	display:block;
+}
+.logo{
+	width:50%;
+	}	
+.navbar-header{
+		background:none;		
+		}
+.navbar-nav > li {
+border-bottom: 1px solid #000;
+background:#CCC;
+}
+.navbar-nav > li:first-child{
+	margin:-8px 0 0 0;}
+.navbar-nav > li:last-child{
+	border-bottom:none;}
+.navbar-default{
+	background:none;
+	}
+
+.navbar-default .navbar-toggle{
+	margin-top:15px;
+	}
+.sign_in{
+	background:#fff;
+	}
+.navbar-nav > li.sign_in{
+	background:#fff;
+	color:#161616;	
+	}
+.navbar-nav > li:last-child a.sign_in{
+	color:#161616;
+	background:#fff;	
+	}
+.navbar-nav > li a.sign_in:hover{
+	text-decoration:none;
+	color:#fff;
+    background:#038bbc;
+	color:#161616;
+}	
+.navbar-default{
+	border:none;
+	}
+.banner_para1{
+	
+	font-size:30px;
+	text-align:center;
+}
+.banner_para2{
+	text-align:center;
+	font-size:40px;
+	line-height:45px;	
+
+}
+.banner_para3{	
+	text-align:center;
+	padding:0% 0 2% 0;
+}
+.banner{
+	padding-bottom:20px;}
+.banner_btn {
+	display: table;
+	margin: 0 auto;
+	float:none;
+	}
+.free_sign_up a, .learn_more a{
+	padding: 6px 15px;
+}	
+.lft_img{
+	width:60%;
+	margin:3% auto 0 auto;}
+
+ul.sec1list{
+	margin:0 0 0 0;
+}
+
+ul.sec1list li{
+	font-size:14px;
+	text-align:left;
+	line-height:19px;
+	padding-left:17%;
+	margin:6% 0 0 0;
+}
+ul.sec1list li span{	
+	font-size:18px;
+	line-height:22px;
+}
+.testimonialimg{
+	float:none;
+	margin:0 auto 1% auto;
+	display:block;
+	width:30%;
+}
+.testimonialtxt1{
+	 font-size:18px;
+	 line-height:20px;
+	 text-align:center;
+}
+.testimonialtxt1 span{
+	font-size:16px;
+	line-height:16px;
+}
+.testimonialtxt2{
+	font-size:16px;
+	line-height:22px;
+	text-align:center;
+}
+.bottom_sec{
+	padding:3% 0 3% 0;}
+.btn1{
+	margin:3% auto 2% auto;
+	display:block;
+}
+.newsletter{
+	 font-family: 'ProximaNovaBold';
+	text-transform:uppercase;
+	color:#fff;
+	background:url(../images/newsletter.png) left top no-repeat;
+    background-size:14%;
+	line-height:36px;
+	padding:0 0 12px 18%;
+	font-size:20px;
+}
+.social_icon{
+	padding-top:20px;
+	}	
+
+	
+ul.contactdetail{	
+	padding:3% 0 0 0;
+	margin:0;
+}
+ul.contactdetail li{ 
+	padding:0 0 0 10%;	
+}
+ul.contactdetail li.support{	
+	background-size:5%;	
+}
+ul.contactdetail li.mail{	
+	background-size:5%;	
+}
+ul.contactdetail li.phone{	
+	background-size:5%;	
+}
+ul.contactdetail li.address{	
+	background-size:5%;	
+}
+.txtfld{
+	font-size:14px;		
+	padding:12px;
+	margin:7% 0 0 0;	
+	}
+
+.submit{
+	padding:10px 25px;	
+	margin:20px 24px 10px 0;
+	float:left;
+	}
+/* start about page */
+.abt_top_sec{
+	height:330px;
+	background:url(../images/about_banner_640.jpg) center top no-repeat;
+	background-size:100%;
+	}
+.abt_bnrtxt1{
+	padding:8% 0 0 0;		
+	font-size:28px;	
+	line-height:28px;	
+}
+.abt_bnrtxt2{	
+	font-size:16px;	
+	line-height:16px;
+	padding:0 0 10% 0;	
+}
+.abtsec1img{
+	width:40%;
+}		
+.abtmidtxt1, .abtmidtxt2{
+	padding:3% 0 4% 4%;
+	text-align:center;
+	font-size:16px;	
+	line-height:20px;
+}
+.abtmidtxt1	span, .abtmidtxt2 span{	
+	font-size:20px;
+	line-height:45px;
+}		
+/* start pricing page */		
+.pricetopbox{
+	height:auto;
+	background:#f1f1f1;
+	border:1px solid #CCC;
+	width:90%;
+	margin:0 5%;
+	display:table;
+}
+.pricetoptxt{
+	padding:2.5% 2% 0 4%;
+	font-size:14px;	
+	line-height:17px;	
+}
+ul.pricebtn{
+	width:260px;	
+	padding:5px 0 5px 0;
+	clear:both;
+	margin:2% auto;
+	height:auto;
+	display:block;
+}
+ul.pricebtn li{	
+	margin-top:10px;
+	margin-bottom:5px;
+	height:auto;
+	width:260px;
+	height:42px;
+}
+ul.pricebtn li.green{
+	border-radius:5px;	
+}
+ul.pricebtn li.red{
+	border-radius:5px;	
+}
+ul.pricebtn li.blue{	
+	border-radius:5px;
+}
+.pricebtnimg{
+	display:block;
+	margin:0 auto 0 auto;
+	padding:6px 0 0 0;
+	width:80%;
+}
+.pribox{
+	background:none;
+	height:auto;
+}
+.lftbox{
+	width:80%;
+	float:none;
+	margin:3% auto 3% auto;
+	border:1px solid #2593c1;
+	border-radius:7px;
+	background:url(../images/pricebox-bg.png) left top repeat;
+}
+.lftboxhding{
+	font-family: 'ProximaNovaBold';
+	font-size:34px;
+	color:#fff;
+	text-align:center;
+	line-height:38px;
+	text-transform:uppercase;
+	padding:2% 0 2% 0;
+	margin:0 auto;
+	background:#0ec5ef;
+}
+.lftboxhding span{
+	font-size:52px;
+	line-height:56px;
+}
+ul.lftbxlist{
+	padding:12% 0 0 0;
+	margin:0;
+}
+ul.lftbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:16px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+	padding:3.8% 0 4% 16%;
+	list-style:none;
+}
+ul.lftbxlist li.grey{
+	background:#eeeeee url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+}
+.lftbxtrybtn{
+	display:block;
+	margin:5% auto 5% auto;
+	width:54%;
+}
+.midbox{
+	width:80%;
+	float:none;
+	margin:3% auto 3% auto;
+	border:1px solid #2593c1;
+	border-radius:7px;
+	background:url(../images/pricebox-bg.png) left top repeat;
+}
+ul.midbxlist{
+	padding:14% 0 0 0;
+	margin:0;
+}
+ul.midbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:16px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+	padding:5% 0 4% 16%;
+	list-style:none;
+}
+ul.midbxlist li.grey{
+	background:#eeeeee url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+}
+.midbxtrybtn{
+	display:block;
+	margin:5% auto;
+	width:54%;
+}
+.rgtbox{
+	width:80%;
+	float:none;
+	margin:3% auto 3% auto;
+	border:1px solid #2593c1;
+	border-radius:7px;
+	background:url(../images/pricebox-bg.png) left top repeat;
+}
+ul.rgtbxlist{
+	padding:12% 0 0 0;
+	margin:0;
+}
+ul.rgtbxlist li{
+	font-family: 'ProximaNovaSemibold';
+	font-size:16px;
+	color:#323232;
+	text-align:left;
+	background:url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+	padding:3.8% 0 4.2% 16%;
+	list-style:none;
+}
+ul.rgtbxlist li.grey{
+	background:#eeeeee url(../images/tik.png) 5% 55% no-repeat;
+	background-size:6%;
+}
+.rgtbxtrybtn{
+	display:block;
+	margin:5% auto;
+	width:54%;
+}
+/* end pricing page */
+/* start contact page */
+.contlft, .contmid, .contrgt{
+	height:auto;	
+}
+.cont_tophding{
+	font-size:20px;	
+	line-height:65px;
+	
+}
+.cont_tophding.phone{
+	background:url(../images/contphone.png) 32% 42% no-repeat;
+	background-size:9%;
+	padding-left:1%;
+}
+.cont_tophding.mail{
+	background:url(../images/contmail.png) 32% 42% no-repeat;
+	background-size:9%;
+	padding-left:1%;
+}
+.cont_tophding.address{
+	background:url(../images/contaddress.png) 32% 42% no-repeat;
+	background-size:7%;
+	padding-left:6%;
+}
+.conttoptxt{	
+	font-size:14px;	
+	line-height:20px;
+	padding:1% 3% 3% 5%;
+	text-align:center;
+}
+    
+/* end contact page */
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+.abt_bnrtxt1{
+	padding:16% 0 0 0;	
+	
+}
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+.navbar-header {
+    width: 20%;
+}
+.img-responsive {
+    width: 100%;
+    margin-top: 5px;
+}
+}
+.banner_para3 {
+        line-height: 1.4;
+        text-align: justify;
+}
+
+

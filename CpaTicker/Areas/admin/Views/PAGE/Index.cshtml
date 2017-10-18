@@ -1,0 +1,279 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.PAGE>
+    @using CpaTicker.Areas.admin.Classes;
+    @{
+        ViewBag.Title = "Pages";
+        Layout = null;
+    }
+
+    <div class="row tspark">
+        @Html.Partial("_Sparks")
+    </div>
+
+    <section id="widget-grid">
+
+        <div class="row">
+
+            <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="table-content">
+                    <div class="table-title">Customer Pages</div>
+
+                    <!-- NEW WIDGET START -->
+                    <article>
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+                                <!-- widget content -->
+                                <div class="dataTables_overlay"></div>
+                                <div class="widget-body no-padding">
+                                    <div class="col-md-4 smart-form " style=" margin-left: 25%;margin-top: 6px;position: absolute;z-index: 1;">
+                                        <label class="select">
+                                            @Html.DropDownList("filter", ((PageFilter)ViewBag.filter).ToSelectList(), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </div>
+                                    @*<div class="widget-body-toolbar">
+
+                                            <nav style="margin-left:190px;padding:1px 0px;float:right;">
+                                                <a href="@Url.Action("index", "campaign")" class="btn btn-default">Back</a>
+                                                <a href="@Url.Action("create", new { id = ViewBag.Campaign.Id })" class="btn btn-primary">
+                                                    <i class="fa fa-plus"></i>
+                                                    Add URL
+                                                </a>
+                                            </nav>
+                                            <div style="clear: right;"></div>
+
+                                        </div>*@
+
+
+
+                                    <table class="table table-hover" id="dt_basic">
+                                        <thead>
+                                            <tr>
+                                                <th data-class="expand">@Html.DisplayNameFor(model => model.Id)</th>
+                                                <th data-class="expand">@Html.DisplayNameFor(model => model.Name)</th>
+                                                <th data-hide="phone,tablet">@Html.DisplayNameFor(model => model.OfferUrl)</th>
+                                                <th data-class="expand">@Html.DisplayNameFor(model => model.Status)</th>
+                                                <th>@Html.DisplayNameFor(model => model.PayoutType)</th>
+                                                <th>@Html.DisplayNameFor(model => model.RevenueType)</th>
+                                                <th data-hide="phone,tablet">@Html.DisplayNameFor(model => model.ParentURLId)</th>
+                                                <th data-hide="phone,tablet"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.PreviewId)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.OfferUrl)</td>
+                                        <td>
+                                            <div class="page-status @item.Status.DisplayValue().ToLower()">
+                                                @item.Status.DisplayValue()
+                                            </div>
+                                        </td>
+                                        <td>@item.PayoutType.DisplayValue()</td>
+                                        <td>@item.RevenueType.DisplayValue()</td>
+                                        <td>
+                                            @item.ParentURLId
+                                            @*@if (item.ParentURLId.HasValue)
+                                                {
+                                                    @( item.ParentUrl.CampaignId == item.CampaignId ? item.ParentUrl.PreviewId.ToString() :
+
+                                                       string.Format("{0} - {1}", item.ParentUrl.Campaign.CampaignId, item.ParentUrl.PreviewId)
+
+                                                    )
+                                                }*@
+                                        </td>
+                                        <td>
+                                            <nav>
+                                                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "editPAGE"))
+                                                {
+                                                    @Html.ActionLink("Edit", "edit", new { id = item.Id }, new { @class = "doajax" })
+                                                }|
+                                                <a href="@item.PreviewUrl" target="_blank">Preview</a> |
+                                            </nav>
+                                            <nav style="display:inline;">
+                                                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "indexRedirect"))
+                                                {
+                                                    @Html.ActionLink("Redirects", "index", "redirect", new { id = item.Id }, null)
+                                                }
+                                                    @*@Html.ActionLink("Generate Link", "details", "campaign", new { id = item.Campaign.CampaignId, id2 = item.Id }, null)*@
+                                                </nav>
+
+                                                @*@if (@item.PreviewId != 1)
+                                                    {
+                                                        @:|
+                                                        @Html.ActionLink("Delete", "deleteurl", "helper", new { id = item.Id }, new { @class = "rlink" })
+                                                    }*@
+
+                                            </td>
+                                        </tr>
+                                }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+
+                    </article>
+                </div>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+
+        // PAGE RELATED SCRIPTS
+        updateBreadCrumb('Page');
+
+        //loadDataTables();
+        loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                    loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+                });
+            });
+        });
+        $("#filter").change(function () {
+
+            // refresh the content with the filter campaigns
+            //$('#content').load('@Url.Action("index", "page")?filter=' + this.value);
+            $('.dataTables_overlay').show();
+            var cpurl = '@Url.Action("index", "page")?filter=' + this.value;
+            $.ajax({
+                type: "GET",
+                url: cpurl,
+                dataType: 'html',
+                cache: false,
+                success: function (data) {
+
+                    //container.html(data);
+
+                    if (checkReportUrl(cpurl)) {
+                        $('#content').html(data);
+                        $('.dataTables_overlay').hide();
+                    }
+
+                },
+                async: true
+            });
+
+        });
+
+        function runDataTables() {
+
+            var responsiveHelper_dt_basic = undefined;
+
+            $('#dt_basic').dataTable({
+
+                "bInfo": false, // disable info
+                "bPaginate": false, // disable pagination
+                "aoColumnDefs": [
+                     { 'bVisible': false, 'aTargets': [0] },
+                    //{ 'bSortable': false, 'aTargets': [6] },
+                    //{ "bSearchable": false, "aTargets": [6] }
+                ]
+                , "sDom": "<'dt-toolbar'<'col-xs-10 col-sm-6 col-md-4 col-lg-4 npadding-right'f><'col-xs-2 col-sm-6 col-md-8 col-lg-8 npadding-left'<'toolbar'>>r>" +
+                        "t"
+                //+
+                //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+                //,"autoWidth" : true
+                //, "preDrawCallback": function () {
+                //    // Initialize the responsive datatables helper once.
+                //    if (!responsiveHelper_dt_basic) {
+                //        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+                //    }
+                //}
+                //, "rowCallback" : function(nRow) {
+                //    responsiveHelper_dt_basic.createExpandIcon(nRow);
+                //}
+                //, "drawCallback": function (oSettings) {
+                //    responsiveHelper_dt_basic.respond();
+                //}
+
+
+            });
+
+            // custom toolbar
+            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "createPAGE"))
+        {
+            <text>
+            $("div.toolbar")
+                .append('<div>\
+                        <nav class="pull-right">\
+                            <a href="@Url.Action("create")" class="btn btn-primary">\
+                                <i class="fa fa-plus"></i><span class="atext"> Add Page</span>\
+                            </a>\
+                            <a href="#" onclick="manageCategories()" class="btn btn-primary">\
+                                <i class="fa fa-plus"></i><span class="atext"> Manage Categories</span>\
+                            </a>\
+                        </nav>\
+                    </div>');
+            </text>
+        }
+        else
+         {
+             <text>$("div.toolbar").html('<div><nav class="pull-right"></nav></div>');</text>
+         }
+
+        }
+
+        $('.rlink').click(function (e) {
+            e.preventDefault();
+
+            //////doAjax = 0;
+            //url = $(this).attr('href');
+            //container = $('#content');
+            //loadURL(url, container);
+
+
+        });
+
+
+
+        function manageCategories() {
+            $('#managePageCategory')
+                .off('shown.bs.modal')
+                .on('shown.bs.modal', function () {
+                    bindCategoryViewModel();
+                })
+                .modal();
+        }
+    </script>
+    <div class="modal fade" style="display:none" id="managePageCategory" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Manage Categories</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("_CreateCategory")
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

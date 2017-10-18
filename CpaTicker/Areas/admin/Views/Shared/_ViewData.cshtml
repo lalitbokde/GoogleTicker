@@ -1,0 +1,189 @@
+﻿@{
+    List<string> dataview = new List<string>() { "", "Today", "Yesterday", "Last 7 Days", "This Month", "Last Month", "Last Six Months", "All Time on reports" };
+}
+
+<div class="form-horizontal">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-2">
+
+            <div class="form-group">
+                <!-- <label for="selectedview" class="col-xs-3 control-label mlabel">View:</label> -->
+                <div class="col-xs-12 col-sm-10">
+                    <div class="select ">
+                        <label for="selectedview" class="control-label">All time on reports</label>
+                        @Html.DropDownList("selectedview", new SelectList(dataview, ViewBag.ViewData), new { @class = "form-control" })
+                        <i class="glyphicon glyphicon-menu-down"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-2">
+
+            <div class="form-group report-datetime-control">
+                <!-- <label for="fromdate" class="col-xs-3 control-label mlabel">From:</label> -->
+                <div class="input-group">
+
+                    <input name="fromdate" value="@ViewBag.FromDate" class="form-control text rtimepicker" id="fromdate" style="" />
+                    <span class="input-group-addon">
+                        <i class="fa icon-calendar"></i>
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="col-xs-12 col-sm-1 datetime-range-label">
+            TO
+        </div>
+       
+
+        <div class="col-xs-12 col-sm-2">
+
+            <div class="form-group report-datetime-control">
+                <!-- <label for="todate" class="col-xs-3 control-label mlabel">To:</label> -->
+                <div class="input-group">
+
+                    <input name="todate" value="@ViewBag.ToDate" class="form-control text rtimepicker" id="todate" style="position: relative; z-index: 1000;" />
+
+                    <span class="input-group-addon">
+                        <i class="fa icon-calendar"></i>
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-2">
+            <div class="form-group">
+                @*&nbsp; Run Report*@
+                <div class="btn-refresh" id="run">
+                    <i class="icon-refresh"></i>
+                </div>
+
+                @*&nbsp; Export to CSV*@
+                <div class="btn-download" id="export">
+                    <i class="icon-download"></i>
+                </div>
+
+                <div class="report-save-button-container">
+                    <a href="#myModal" role="button" class="btn btn-large btn-primary btn-save" data-toggle="modal"> Save Report</a>
+                </div>
+            </div>
+
+        </div>
+
+        @*
+        <div class="col-xs-12 col-sm-2 report-save-button-container">
+            <a href="#myModal" role="button" class="btn btn-large btn-primary btn-save" data-toggle="modal"> Save Report</a>
+        </div>
+        *@
+    </div>
+
+</div>
+
+<script>
+
+    $('.rtimepicker').each(function () {
+        var $this = $(this);
+        $this.datetimepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            closeOnDateSelect: true,
+            onSelectDate: function (dateText, inst) {
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/SignalRNotify/NotificationChangeDatepicker",
+                //    data: "{timezone:'" + $('#rzone').val() + "',viewdata:'" + $('#selectedview').val() + "',fromdate:'" + $('#fromdate').val() + "',todate:'" + $('#todate').val() + "',dataview:'testing'}",
+                //    contentType: "application/json; charset=utf-8",
+                //    dataType: "json",
+                //    success: function (data) {
+                //    }
+                //});
+                $('#selectedview').val('');
+                $('.dataTables_overlay').show();
+                refreshTable();
+            },
+            onSelectTime: function (dateText, inst) {
+
+                $('#selectedview').val('');
+                $('.dataTables_overlay').show();
+                refreshTable();
+            }
+        });
+    });
+
+
+    $('#selectedview').change(function () {
+        var SelectView = $('#selectedview').val().toLowerCase().trim();
+        var ViewFromDate = "";
+        var ViewToDate = "";
+        switch (SelectView) {
+            case "today":
+                ViewFromDate = '@DateTime.Today.Date.ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@DateTime.Today.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "yesterday":
+                ViewFromDate = '@DateTime.Today.Date.AddDays(-1).ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@DateTime.Today.AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "last 7 days":
+                ViewFromDate = '@DateTime.Today.Date.AddDays(-6).ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@DateTime.Today.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "this month":
+                @{
+                    DateTime today = DateTime.Today;
+                    int daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+
+                    DateTime startOfMonth = new DateTime(today.Year, today.Month, 1);
+                    DateTime endOfMonth = new DateTime(today.Year, today.Month, daysInMonth);
+
+                }
+
+                ViewFromDate = '@startOfMonth.ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@endOfMonth.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "last month":
+                @{
+                     DateTime FromDate = new DateTime(DateTime.Now.Month - 1 <= 0 ? DateTime.Now.Year - 1 : DateTime.Now.Year, DateTime.Now.Month - 1 <= 0 ? 12 : DateTime.Now.Month - 1, 1);
+                     DateTime ToDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1);
+                }
+                ViewFromDate = '@FromDate.ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@ToDate.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "last six months":
+                @{
+                     FromDate = new DateTime(DateTime.Now.Month - 5 <= 0 ? DateTime.Now.Year - 1 : DateTime.Now.Year, DateTime.Now.Month - 5 <= 0 ? 12 + (DateTime.Now.Month - 5) : DateTime.Now.Month - 5, 1);
+                }
+                ViewFromDate = '@FromDate.ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@DateTime.Today.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+            case "all time on reports":
+                @{
+                    //ICpaTickerRepository repo = new EFCpatickerRepository();
+                    //int customerId = repo.GetCurrentCustomerId();
+                    //FromDate = repo.GetFirstOperation(customerId); //CPAHelper.GetFirstOperation(customerId);   
+
+                    FromDate = (DateTime)ViewBag.FirstOperation;
+                     
+                }
+                ViewFromDate = '@FromDate.ToString("MM/dd/yyyy HH:mm")';
+                ViewToDate = '@DateTime.Today.Date.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")';
+                break;
+        }
+        $('#fromdate').val(ViewFromDate);
+        $('#todate').val(ViewToDate);
+        // alert("change");
+        $('.dataTables_overlay').show();
+        refreshTable();
+     
+    });
+
+</script>

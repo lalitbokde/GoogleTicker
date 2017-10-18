@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.EmployeeIP>
+
+@*<div class="widget-body-toolbar">
+    <nav style="margin-left: 190px; padding: 1px 0px; float: right;">
+        @Html.ActionLink("Add IP", "addEmployeeIp", "Settings", null, new { @class = "btn btn-primary btn-sm" }) 
+    </nav>
+    <div style="clear: right;"></div>
+</div>*@
+<table class="table table-hover simple-dt" id="table_eip">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.IPAddress)</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.IPAddress
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveEmployeeIp", new { ip = item.IPAddress }, new { @class = "btn btn-danger btn-xs rlink" }) 
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>

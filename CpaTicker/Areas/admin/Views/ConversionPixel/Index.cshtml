@@ -1,0 +1,212 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.ConversionPixel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+    
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Conversion Pixels</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-togglebutton="false" data-widget-collapsed="false" data-widget-editbutton="false">
+                        <div class="dataTables_overlay"></div>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @* <div class="widget-body-toolbar">
+
+                                        <nav style="margin-left:190px;padding:1px 0px;float:right;">
+                                            <a href="@Url.Action("create")" class="btn btn-primary">
+                                                <i class="fa fa-plus"></i> Add Pixel
+                                            </a>
+                                        </nav>
+                                        <div style="clear: right;"></div>
+
+                                    </div>*@
+
+
+                                <div class="widget-body-toolbar">
+                                    <div class="row">
+                                        <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4 smart-form npadding-right">
+                                            @if (!ViewBag.isaffiliateuser)
+                                            {
+                                                <label class="select">
+                                                    @Html.DropDownList("filter", ((CpaTicker.Areas.admin.Classes.PixelFilter)ViewBag.filter).ToSelectList())
+
+                                                    <i></i>
+                                                </label>
+                                            }
+                                        </div>
+                                        <div class="col-xs-3 col-sm-6 col-md-8 col-lg-8 npadding-leftt">
+                                            <nav style="float:right;">
+                                                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "createConversionPixel"))
+                                                {
+                                                    <a href="@Url.Action("create")" class="btn btn-primary">
+                                                        <i class="fa fa-plus"></i>
+                                                        <span class="atext"> Add Pixel</span>
+                                                    </a>
+                                                }
+
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.Id)</th>
+                                            <th>@Html.DisplayNameFor(model => model.AffiliateId)</th>
+                                            <th>Affiliate Name</th>
+                                            <th>@Html.DisplayNameFor(model => model.TrackingType)</th>
+                                            @*<th>@Html.DisplayNameFor(model => model.PixelStatus)</th>*@
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Affiliate.AffiliateId)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Affiliate.Company)
+                                                </td>
+                                                <td>
+                                                    @item.TrackingType.DisplayValue()
+                                                </td>
+
+                                                @* <td>
+                                                         @Html.DisplayFor(modelItem => item.PixelStatus)
+                                                    </td>*@
+                                                <td style=" text-align: center;">
+                                                    <nav style="display:inline;">
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editConversionPixel"))
+                                                        {
+                                                            @Html.ActionLink("Edit", "edit", new { id = item.Id }) @:|
+                                                }
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "campaignsConversionPixel"))
+                                                        {
+                                                            @Html.ActionLink("Campaigns", "campaigns", new { id = item.Id }) @:|
+                                                }
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "actionsConversionPixel"))
+                                                        {
+                                                            @Html.ActionLink("Actions", "actions", new { id = item.Id }) @:|
+                                                }
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "deleteConversionPixel"))
+                                                        {
+                                                            @Html.ActionLink("Delete", "delete", new { id = item.Id })
+                                                        }
+
+
+
+
+                                                    </nav>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Conversion Pixels');
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            //"bFilter": false,
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [3] },
+                { "bSearchable": false, "aTargets": [3] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        //  $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("create")" class="btn btn-primary"><i class="fa fa-plus"></i> Add Pixel</a></nav></div>');
+    }
+    $("#filter").change(function () {
+
+        // refresh the content with the filter campaigns
+        //$('#content').load('@Url.Action("index", "campaign")?filter=' + this.value);
+        $('.dataTables_overlay').show();
+        var cpurl = '@Url.Action("Index", "ConversionPixel")?filter=' + this.value;
+        $.ajax({
+            type: "GET",
+            url: cpurl,
+            dataType: 'html',
+            cache: false,
+            success: function (data) {
+
+                //container.html(data);
+                $('#content').html(data);
+                $('.dataTables_overlay').hide();
+                //if (checkReportUrl(cpurl)) {
+                //    $('#content').html(data);
+                //}
+
+            },
+            async: true
+        });
+
+    });
+</script>

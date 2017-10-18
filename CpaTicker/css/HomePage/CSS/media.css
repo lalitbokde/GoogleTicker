@@ -1,0 +1,121 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4 Aug, 2015, 4:16:52 PM
+    Author     : jitendra
+*/
+
+
+@media only screen {
+}
+
+@media only screen and (max-width: 40em) {
+
+    #banner .pc {
+        width: 100%;
+        background-size: 100%;
+    }
+
+    #banner h1, #banner h2 {
+        text-align: center;
+    }
+
+    #banner h1 {
+        font-size: 22px;
+    }
+
+    #banner h2 {
+        font-size: 15px;
+    }
+
+    #banner #frm-box .frm-container {
+        border: 1px solid #dedede;
+    }
+
+    #features .feature-1 img {
+        margin: 0;
+        float: left;
+        margin-right: 7px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #features h3 {
+        text-align: left;
+        padding: 0;
+        font-size: 14px;
+        display: table;
+    }
+
+    #features .columns {
+        margin: 15px 0;
+    }
+
+    #features h1 {
+        display: block;
+        text-align: center;
+    }
+
+    #features h1 {
+        font-size: 29px;
+    }
+}
+
+
+@media only screen and (min-width: 40.063em) {
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    #banner .pc {
+        width: 100%;
+        background-size: 100%;
+        height: auto;
+    }
+
+    #banner h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #banner h2 {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    #features h3 {
+        padding: 0;
+    }
+
+    #banner #frm-box h2 {
+        font-size: 25px;
+    }
+
+    #features h3 {
+        font-size: 15px;
+    }
+
+    #features p {
+        font-size: 13px;
+    }
+
+    .inline-list > li {
+        margin-left: 0.375rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .iss-television video {
+        padding-left: 4%;
+        padding-right: 8%;
+        padding-top: 4.8%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .tickerContainer table td {
+        font-size: 5px;
+    }
+}

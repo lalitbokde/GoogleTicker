@@ -1,0 +1,267 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Campaign>
+    @using CpaTicker.Areas.admin.Classes;
+
+    @{
+        ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+        Layout = null;
+        var usercampaigns = (IEnumerable<Campaign>)ViewBag.UserCampaigns;
+    }
+
+    <div class="row">
+        @Html.Partial("_Sparks")
+    </div>
+
+    <section id="widget-grid">
+
+        <div class="row">
+
+            <!-- NEW WIDGET START -->
+            <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="table-content">
+                    <div class="table-title">Campaigns</div>
+                    
+                    <article>
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="wid-id-0" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+
+                            <div class="dataTables_overlay"></div>
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+
+
+                                    @*<nav class="btns">
+                                <a href="@Url.Action("create")" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Add Campaign
+                                </a>
+                            </nav>
+                            <div style="clear:right;"></div>*@
+
+                                    <div class="widget-body-toolbar">
+
+
+                                        <div class="row">
+                                            <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4 smart-form npadding-right">
+                                                <label class="select">
+                                                    @Html.DropDownList("filter", ((CampaignFilter)ViewBag.filter).ToSelectList())
+                                                    <i></i>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-xs-3 col-sm-6 col-md-8 col-lg-8 npadding-left">
+                                                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "createCampaign"))
+                                        {
+                                                    <nav style="float:right;">
+                                                        <a href="@Url.Action("create")" class="btn btn-primary">
+
+                                                            <i class="fa fa-plus"></i>
+                                                            <span class="atext"> Add Campaign </span>
+                                                        </a>
+                                                    </nav>
+                                        }
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <table class="table table-hover ctable" id="dt_basic">
+                                        <thead>
+                                            <tr>
+                                                <th>@Html.DisplayNameFor(model => model.CampaignName)</th>
+                                                <th>Id</th>
+                                                @*<th>Type</th>*@
+                                                <th style="text-align:center;">Status</th>
+                                                <th style="text-align:center;">@*Actions*@</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                    {
+                                                <tr>
+                                                    <td>
+                                                        @item.CampaignName
+                                                    </td>
+                                                    <td>
+                                                        @item.CampaignId
+                                                    </td>
+                                                    @* <td>
+                                                @item.RevenueType
+                                            </td>*@
+                                                    <td style="text-align:center;">
+
+                                                        @if ((CampaignFilter)ViewBag.filter == CampaignFilter.all
+                    &&
+                    !usercampaigns.Any(c => c.Id == item.Id))
+                                                {
+                                                    // this is when the campaign is hidden for this user
+                                                    <div class="camp-status blocked">
+                                                        Blocked
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+
+                                                            <div class="camp-status @item.Status.ToString().ToLower()">
+                                                                @item.Status
+                                                            </div>
+                                                }
+                                                    </td>
+                                                    <td style="text-align:center;">
+                                                        <nav>
+                                                            @if (ViewBag.IsAdmin)
+                                                    {
+                                                        if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editCampaign"))
+                                                        {
+                                                                    @Html.ActionLink("Edit", "edit", new { id = item.CampaignId }) @:|
+                                                    }
+
+                                                    }
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "indexAction"))
+                                                    {
+                                                                @Html.ActionLink("Actions", "index", "action", new { id = item.Id }, null) @:|
+                                                }
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "overridepayoutCampaign"))
+                                                    {
+                                                                @Html.ActionLink("Payout Override", "overridepayout", new { id = item.Id }) @:|
+                                                         }
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "detailsCampaign"))
+                                                    {
+                                                                @Html.ActionLink("Generate Links", "details", new { id = item.CampaignId }) @:|
+                                                             }
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "affiliatepayoutCampaign"))
+                                                    {
+                                                                @Html.ActionLink("Affiliate Cost", "AffiliatePayout", new { id = item.Id })
+                                                    }
+
+
+
+
+
+                                                        </nav>
+                                                    </td>
+                                                </tr>
+                                    }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+
+                    </article>
+                </div>
+            </div>
+            <!-- WIDGET END -->
+
+        </div>
+
+    </section>
+
+    <input type="hidden" id="testlbl" value="0" />
+
+    <script type="text/javascript">
+
+        var count = 0;
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+
+        // PAGE RELATED SCRIPTS
+        updateBreadCrumb('Campaigns');
+
+
+        $("#filter").change(function () {
+
+            // refresh the content with the filter campaigns
+            //$('#content').load('@Url.Action("index", "campaign")?filter=' + this.value);
+            $('.dataTables_overlay').show();
+            var cpurl = '@Url.Action("index", "campaign")?filter=' + this.value;
+            $.ajax({
+                type: "GET",
+                url: cpurl,
+                dataType: 'html',
+                cache: false,
+                success: function (data) {
+
+                    //container.html(data);
+
+                    if (checkReportUrl(cpurl)) {
+                        $('#content').html(data);
+                        $('.dataTables_overlay').hide();
+                    }
+
+                },
+                async: true
+            });
+
+        });
+
+
+        // load related plugins
+
+        loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                    loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+                });
+            });
+        });
+
+        function runDataTables() {
+
+            /*
+             * BASIC
+             */
+            $('#dt_basic').dataTable({
+                //"sPaginationType": "bootstrap_full",
+
+                "bFilter": false, // disable filter
+                "bInfo": false, // disable info
+                "bPaginate": false, // disable pagination
+                "aoColumnDefs": [
+
+                    { 'bSortable': false, 'aTargets': [3] },
+                    { "bSearchable": false, "aTargets": [3] }
+                ],
+                "aaSorting": [[1, "asc"]]
+                 , "sDom": "" +
+                        "t"
+                //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+
+            });
+        }
+
+        @*function NotifySparks() {
+        //alert();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CallNotify","Campaign")',
+            //data: "{ID:'" + ID + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+
+            }
+        });
+    }*@
+
+    </script>

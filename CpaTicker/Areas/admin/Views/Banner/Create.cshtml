@@ -1,0 +1,125 @@
+﻿@model CpaTicker.Areas.admin.Classes.Banner
+
+@{
+    ViewBag.hash = Url.Action("Index");
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<div class="row tspark">
+	@Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid" class="">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Add Banner</div>
+                
+                <!-- NEW COL START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("create", "banner", FormMethod.Post, new { @id = "AddBanner", enctype = "multipart/form-data", @class = "smart-form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button">
+                                                <i class="fa fa-check"></i>
+                                                Add Banner
+                                            </button>
+                                            @Html.ActionLink("Back", "index", null, new { @class = "btn btn-default", @id = "back_button" })
+                                        </nav>
+                                    </footer>
+
+                                    <div class="fieldset">
+                                        <div class="row">
+                                            <section class="col col-4">
+                                                @Html.LabelFor(model => model.CampaignId, new { @class = "label" })
+                                                <label class="select">
+                                                    @*@Html.DropDownListFor(model => model.CampaignId, CPAHelper.GetCustomerCampaigns(CPAHelper.GetCustomerId(WebSecurity.CurrentUserId)), "-- select --")*@
+                                                    @Html.DropDownListFor(model => model.CampaignId, new SelectList(ViewBag.Campaigns, "Value", "Text"), new { @class = "select2" })
+                                                    <i></i>
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.CampaignId)
+                                            </section>
+
+                                            <section class="col col-8">
+                                                <label class="label">File input</label>
+                                                <label for="file" class="input input-file">
+                                                    <div class="button"><input type="file" name="image" id="image" onchange="this.parentNode.nextSibling.value = this.value">Browse</div><input type="text" placeholder="Include a file" readonly="">
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Image)
+                                            </section>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                }
+
+
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- END COL -->
+
+            </div>
+       </div>
+       <!-- END ROW -->
+
+    </div>
+</section>
+
+
+
+ <script type="text/javascript">
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+        
+     // PAGE RELATED SCRIPTS
+        updateBreadCrumb('Banner/Create');
+
+        $('#submit_button').click(function (e) {
+            e.preventDefault();
+            var f = this.form;
+            container = $('#content');
+            
+            $.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+            if ($(f).valid()) {
+                pajaxSubmit(f, container, '@ViewBag.hash');
+            }
+        });
+</script>

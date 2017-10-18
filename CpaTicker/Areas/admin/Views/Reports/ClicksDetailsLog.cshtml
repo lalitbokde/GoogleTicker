@@ -1,0 +1,1181 @@
+﻿@model CpaTicker.Controllers.ReportsController.InnerLogDisp
+@using CpaTicker.Areas.admin.Models
+
+@{
+    Layout = null;
+    IEnumerable<TimeZoneInfo> TimeZones = TimeZoneInfo.GetSystemTimeZones();
+    var subids = (IEnumerable<int>)ViewBag.Subids;
+
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-table"></i>
+            Clicks Log
+        </h1>
+    </div>
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    <div class="row">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-togglebutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                    <h2> Clicks Log<span id="filtertitle"></span></h2>
+                    <div class="widget-toolbar">
+                        <div class="jarviswidget-ctrls">
+                            <a href="javascript:void(0);" class="txt-color-white" id="ropts" data-placement="bottom" title="" rel="tooltip" data-original-title="Report Options">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- widget div-->
+                <div>
+                    <div class="dataTables_overlay"></div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+
+                        <div class="smart-form">
+                            <section>
+                                <label class="label">TimeZone:</label>
+                                <label class="select">
+                                    <i></i>
+                                    @Html.DropDownList("rzone", new SelectList(@ViewBag.CustomTimeZone, "Value", "Text", ViewBag.TimeZone), new { @class = "select2" })
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">Statistics:</label>
+                                <div class="inline-group" id="statics">
+
+                                    @Html.CheckBoxSmart("CampaignId", "CampaignId", Model.StatisticsEnum.HasFlag(StatisticsEnum.Campaign), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Campaign })
+                                    @Html.CheckBoxSmart("AffiliateId", "AffiliateId", Model.StatisticsEnum.HasFlag(StatisticsEnum.Affiliate), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Affiliate })
+                                    @Html.CheckBoxSmart("BannerId", "BannerId", Model.StatisticsEnum.HasFlag(StatisticsEnum.Banner), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Banner })
+                                    @Html.CheckBoxSmart("ClickDate", "ClickDate", Model.StatisticsEnum.HasFlag(StatisticsEnum.Date), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Date })
+                                    @Html.CheckBoxSmart("UserAgent", "UserAgent", Model.StatisticsEnum.HasFlag(StatisticsEnum.UserAgent), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.UserAgent })
+                                    @Html.CheckBoxSmart("IPAddress", "IPAddress", Model.StatisticsEnum.HasFlag(StatisticsEnum.IP), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.IP })
+                                    @Html.CheckBoxSmart("Referrer", "Referrer", Model.StatisticsEnum.HasFlag(StatisticsEnum.ParentURL), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.ParentURL })
+                                    @Html.CheckBoxSmart("Source", "Source", Model.StatisticsEnum.HasFlag(StatisticsEnum.Source), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Source })
+                                    @Html.CheckBoxSmart("TransactionId", "TransactionId", Model.StatisticsEnum.HasFlag(StatisticsEnum.TransactionID), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.TransactionID })
+                                    @Html.CheckBoxSmart("Country", "Country", Model.StatisticsEnum.HasFlag(StatisticsEnum.Country), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Country })
+                                    @Html.CheckBoxSmart("Cost", "Cost", Model.StatisticsEnum.HasFlag(StatisticsEnum.Cost), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Cost })
+                                    @Html.CheckBoxSmart("Revenue", "Revenue", Model.StatisticsEnum.HasFlag(StatisticsEnum.Revenue), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Revenue })
+
+                                    @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                    {
+                                        @Html.CheckBoxSmart("SubId" + i, "SubId" + i, subids.Contains(i), new { @class = "togglerefresh sbid" })
+                                    }
+
+
+
+
+
+
+                                    @Html.CheckBoxSmart("DeviceId", "DeviceId", Model.StatisticsEnum.HasFlag(StatisticsEnum.DeviceId), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.DeviceId })
+                                    @Html.CheckBoxSmart("IsSmartphone", "IsSmartphone", Model.StatisticsEnum.HasFlag(StatisticsEnum.IsSmartphone), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.IsSmartphone })
+                                    @Html.CheckBoxSmart("IsiOS", "IsiOS", Model.StatisticsEnum.HasFlag(StatisticsEnum.IsiOS), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.IsiOS })
+                                    @Html.CheckBoxSmart("IsAndroid", "IsAndroid", Model.StatisticsEnum.HasFlag(StatisticsEnum.IsAndroid), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.IsAndroid })
+                                    @Html.CheckBoxSmart("OS", "OS", Model.StatisticsEnum.HasFlag(StatisticsEnum.OS), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.OS })
+                                    @Html.CheckBoxSmart("Browser", "Browser", Model.StatisticsEnum.HasFlag(StatisticsEnum.Browser), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Browser })
+                                    @Html.CheckBoxSmart("Device_os", "Device_os", Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Device_os })
+                                    @Html.CheckBoxSmart("Pointing_method", "Pointing_method", Model.StatisticsEnum.HasFlag(StatisticsEnum.Pointing_method), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Pointing_method })
+                                    @Html.CheckBoxSmart("Is_tablet", "Is_tablet", Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_tablet), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Is_tablet })
+                                    @Html.CheckBoxSmart("Model_name", "Model_name", Model.StatisticsEnum.HasFlag(StatisticsEnum.Model_name), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Model_name })
+                                    @Html.CheckBoxSmart("Device_os_version", "Device_os_version", Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os_version), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Device_os_version })
+                                    @Html.CheckBoxSmart("Is_wireless_device", "Is_wireless_device", Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_wireless_device), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Is_wireless_device })
+                                    @Html.CheckBoxSmart("Brand_name", "Brand_name", Model.StatisticsEnum.HasFlag(StatisticsEnum.Brand_name), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Brand_name })
+                                    @Html.CheckBoxSmart("Marketing_name", "Marketing_name", Model.StatisticsEnum.HasFlag(StatisticsEnum.Marketing_name), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Marketing_name })
+                                    @Html.CheckBoxSmart("Resolution_height", "Resolution_height", Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_height), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Resolution_height })
+                                    @Html.CheckBoxSmart("Resolution_width", "Resolution_width", Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_width), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Resolution_width })
+                                    @Html.CheckBoxSmart("Canvas_support", "Canvas_support", Model.StatisticsEnum.HasFlag(StatisticsEnum.Canvas_support), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Canvas_support })
+                                    @Html.CheckBoxSmart("Viewport_width", "Viewport_width", Model.StatisticsEnum.HasFlag(StatisticsEnum.Viewport_width), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Viewport_width })
+                                    @Html.CheckBoxSmart("Isviewport_supported", "Isviewport_supported", Model.StatisticsEnum.HasFlag(StatisticsEnum.Isviewport_supported), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Isviewport_supported })
+                                    @Html.CheckBoxSmart("Ismobileoptimized", "Ismobileoptimized", Model.StatisticsEnum.HasFlag(StatisticsEnum.Ismobileoptimized), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Ismobileoptimized })
+                                    @Html.CheckBoxSmart("Ishandheldfriendly", "Ishandheldfriendly", Model.StatisticsEnum.HasFlag(StatisticsEnum.Ishandheldfriendly), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Ishandheldfriendly })
+                                    @Html.CheckBoxSmart("Is_smarttv", "Is_smarttv", Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_smarttv), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Is_smarttv })
+                                    @Html.CheckBoxSmart("Isux_full_desktop", "Isux_full_desktop", Model.StatisticsEnum.HasFlag(StatisticsEnum.Isux_full_desktop), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.Isux_full_desktop })
+
+
+
+                                </div>
+                            </section>
+
+
+                            <section id="Logfilter">
+                                <label class="label">Filter:</label>
+
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("campaignfilter", "Campaign", ((int?)ViewBag.SelectedCampaignId).HasValue, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="cpfilter" @if (ViewBag.SelectedCampaignId == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }>
+
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlCampaignId", new SelectList(ViewBag.CustomerCampaigns, "Value", "Text", ViewBag.SelectedCampaignId), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("Affiliatefilter", "Affiliate", ((bool)ViewBag.SelectedAffiliateId), new { @class = "filter" })
+                                    </section>
+                                    <div id="afffilter" class="col col-6">
+
+                                        <section>
+
+                                            <div class="inline-group">
+                                                <label class="radio">
+                                                    <input type="radio" name="showall" id="showall1" @if ((bool)ViewBag.ShowAll) { @: checked
+                                                                                                                                                                                                                	                        }>
+                                                    <i></i>Show All
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" name="showall" id="showall2" @if (!(bool)ViewBag.ShowAll) { @: checked
+                                                                                                                                                                                                                	                        }>
+                                                    <i></i>Show Active Only
+                                                </label>
+                                            </div>
+
+                                            @*<label class="select">
+                    @Html.DropDownList("AffiliateId", new SelectList(ViewBag.CustomerAffiliates, "Value", "Text", ViewBag.SelectedAffiliateId))
+                    <i></i>
+                </label>*@
+
+                                            <label class="select">
+                                                @*@Html.DropDownList("AffiliateId", new SelectList(ViewBag.CustomerAffiliates, "Value", "Text"), new { @multiple = "multiple", @class = "select2" })*@
+                                                <select name="AffiliateId" id="chkAffiliateId" class="select2" multiple>
+                                                    @foreach (var item in ViewBag.CustomerAffiliates)
+                                                    {
+                                                        <option value="@item.Value" @if (item.Selected) { @: selected
+                                                                                                                                                                                                                                                                                        }>
+                                                            @item.Text
+                                                        </option>
+                                                    }
+                                                </select>
+                                            </label>
+
+                                        </section>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("Sourcefilter", "Source", ((int?)ViewBag.SelectedSource).HasValue, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="srcfilter" @if (ViewBag.SelectedSource == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }>
+
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlSource", new SelectList(ViewBag.Sources, "Value", "Text", ViewBag.SelectedSource), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("DeviceIDfilter", "DeviceID", (ViewBag.SelectedDeviceID != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="didfilter" @if (ViewBag.SelectedDeviceID == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlDeviceID", new SelectList(ViewBag.DeviceID, "Value", "Text", ViewBag.SelectedDeviceID), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("DeviceOSfilter", "DeviceOS", (ViewBag.SelectedDeviceOS != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dosfilter" @if (ViewBag.SelectedDeviceOS == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlDeviceOS", new SelectList(ViewBag.DeviceOS, "Value", "Text", ViewBag.SelectedDeviceOS), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("Browserfilter", "Browser", (ViewBag.SelectedBrowser != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dbrfilter" @if (ViewBag.SelectedBrowser == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlBrowser", new SelectList(ViewBag.Browser, "Value", "Text", ViewBag.SelectedBrowser), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("OSfilter", "OS", (ViewBag.SelectedOS != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dosversionfilter" @if (ViewBag.SelectedOS == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlOS", new SelectList(ViewBag.OS, "Value", "Text", ViewBag.SelectedOS), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("ModelNamefilter", "Model", (ViewBag.SelectedModelName != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dmodnamefilter" @if (ViewBag.SelectedModelName == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlModelName", new SelectList(ViewBag.ModelName, "Value", "Text", ViewBag.SelectedModelName), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("BrandNamefilter", "Brand", (ViewBag.SelectedBrandName != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dbrandnamefilter" @if (ViewBag.SelectedBrandName == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlBrandName", new SelectList(ViewBag.BrandName, "Value", "Text", ViewBag.SelectedBrandName), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("Marketingfilter", "Marketing", (ViewBag.SelectedMarketingName != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dmarketfilter" @if (ViewBag.selectedmarketingname == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlMarketingName", new SelectList(ViewBag.MarketingName, "Value", "Text", ViewBag.SelectedMarketingName), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-1">
+                                        @Html.CheckBoxSmart("Resolutionfilter", "Resolution", (ViewBag.SelectedResolution != null) ? true : false, new { @class = "filter" })
+                                    </section>
+                                    <section class="col col-6" id="dresolutionfilter" @if (ViewBag.selectedresolution == null) { @: style="display:none"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }>
+
+                                        <label class="select">
+                                            @Html.DropDownList("ddlResolution", new SelectList(ViewBag.Resolution, "Value", "Text", ViewBag.SelectedResolution), new { @class = "select2" })
+                                            @*<i></i>*@
+                                        </label>
+                                    </section>
+                                </div>
+
+                            </section>
+                        </div>
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+
+                        <div class="widget-body-toolbar clearfix">
+
+                            @*<div class="form-horizontal rform">
+
+
+                                    <div class="col-xs-12 col-sm-3">
+
+                                        <div class="form-group">
+                                            <label for="fromdate" class="col-xs-3 control-label">From:</label>
+                                            <div class="col-xs-9 input-group">
+
+                                                <input name="fromdate" value="@ViewBag.FromDate" class="form-control text rtimepicker" id="fromdate" style="position: relative; z-index: 1000;" />
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input name="todate" value="@ViewBag.ToDate" class="form-control text rtimepicker" id="todate" style="position: relative; z-index: 1000;" />
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>*@
+                            @Html.Partial("_ViewData")
+                        </div>
+
+                        <table class="table table-striped rtable display wrap" id="clicksdetailslogtbl">
+                            <thead>
+                                <tr>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Campaign)? "min-tablet-p" : "never")" data-class="min-tablet-p">CampaignId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Affiliate)? "min-tablet-p" : "never")" data-class="min-tablet-p">AffiliateId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Banner)? "min-tablet-p" : "never")" data-class="min-tablet-p">BannerId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Date)? "min-tablet-p" : "never")" data-class="min-tablet-p">ClickDate</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.UserAgent)? "min-tablet-p" : "never")" data-class="min-tablet-p">UserAgent</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IP)? "min-tablet-p" : "never")" data-class="min-tablet-p">IPAddress</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.ParentURL)? "min-tablet-p" : "never")" data-class="min-tablet-p referrer">Referrer</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Source)? "min-tablet-p" : "never")" data-class="min-tablet-p">Source</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.TransactionID)? "min-tablet-p" : "never")" data-class="min-tablet-p">TransactionId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Country)? "min-tablet-p" : "never")" data-class="min-tablet-p">Country</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Cost)? "min-tablet-p" : "never")" data-class="min-tablet-p">Cost</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Revenue)? "min-tablet-p" : "never")" data-class="min-tablet-p">Revenue</th>
+                                    @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                    {
+                                        <th class="@(subids.Contains(i) ? "desktop" : "never")" data-class="desktop">@string.Format("SubId{0}", i)</th>
+                                    }
+
+
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.DeviceId)? "min-tablet-p" : "never")" data-class="min-tablet-p">DeviceId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsSmartphone)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsSmartphone</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsiOS)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsiOS</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsAndroid)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsAndroid</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.OS)? "min-tablet-p" : "never")" data-class="min-tablet-p">OS</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Browser)? "min-tablet-p" : "never")" data-class="min-tablet-p">Browser</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Pointing_method)? "min-tablet-p" : "never")" data-class="min-tablet-p">Pointing_method</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_tablet)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_tablet</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Model_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Model_name</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os_version)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os_version</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_wireless_device)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_wireless_device</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Brand_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Brand_name</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Marketing_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Marketing_name</th>
+
+                                    @*<td>Is_assign_phone_number</td>
+                                        <td>Xhtmlmp_mime_type</td>
+                                        <td>Xhtml_support_level</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_height)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_height</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_width</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Canvas_support)? "min-tablet-p" : "never")" data-class="min-tablet-p">Canvas_support</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Viewport_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Viewport_width</th>
+
+                                    @*<td>Html_preferred_dtd</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Isviewport_supported)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isviewport_supported</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Ismobileoptimized)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ismobileoptimized</th>
+
+                                    @*<td>Isimage_inlining</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Ishandheldfriendly)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ishandheldfriendly</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_smarttv)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_smarttv</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Isux_full_desktop)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isux_full_desktop</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Campaign)? "min-tablet-p" : "never")" data-class="min-tablet-p">CampaignId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Affiliate)? "min-tablet-p" : "never")" data-class="min-tablet-p">AffiliateId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Banner)? "min-tablet-p" : "never")" data-class="min-tablet-p">BannerId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Date)? "min-tablet-p" : "never")" data-class="min-tablet-p">ClickDate</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.UserAgent)? "min-tablet-p" : "never")" data-class="min-tablet-p">UserAgent</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IP)? "min-tablet-p" : "never")" data-class="min-tablet-p">IPAddress</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.ParentURL)? "min-tablet-p" : "never")" data-class="min-tablet-p referrer">Referrer</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Source)? "min-tablet-p" : "never")" data-class="min-tablet-p">Source</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.TransactionID)? "min-tablet-p" : "never")" data-class="min-tablet-p">TransactionId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Country)? "min-tablet-p" : "never")" data-class="min-tablet-p">Country</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Cost)? "min-tablet-p" : "never")" data-class="min-tablet-p">Cost</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Revenue)? "min-tablet-p" : "never")" data-class="min-tablet-p">Revenue</th>
+                                    @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                    {
+                                        <th>@string.Format("SubId{0}", i)</th>
+                                    }
+
+
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.DeviceId)? "min-tablet-p" : "never")" data-class="min-tablet-p">DeviceId</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsSmartphone)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsSmartphone</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsiOS)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsiOS</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.IsAndroid)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsAndroid</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.OS)? "min-tablet-p" : "never")" data-class="min-tablet-p">OS</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Browser)? "min-tablet-p" : "never")" data-class="min-tablet-p">Browser</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Pointing_method)? "min-tablet-p" : "never")" data-class="min-tablet-p">Pointing_method</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_tablet)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_tablet</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Model_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Model_name</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Device_os_version)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os_version</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_wireless_device)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_wireless_device</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Brand_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Brand_name</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Marketing_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Marketing_name</th>
+
+                                    @*<td>Is_assign_phone_number</td>
+                                        <td>Xhtmlmp_mime_type</td>
+                                        <td>Xhtml_support_level</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_height)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_height</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Resolution_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_width</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Canvas_support)? "min-tablet-p" : "never")" data-class="min-tablet-p">Canvas_support</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Viewport_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Viewport_width</th>
+
+                                    @*<td>Html_preferred_dtd</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Isviewport_supported)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isviewport_supported</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Ismobileoptimized)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ismobileoptimized</th>
+
+                                    @*<td>Isimage_inlining</td>*@
+
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Ishandheldfriendly)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ishandheldfriendly</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Is_smarttv)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_smarttv</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Isux_full_desktop)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isux_full_desktop</th>
+
+
+                                </tr>
+
+
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+
+
+        </article>
+        <!-- WIDGET END -->
+
+    </div>
+</section>
+
+@*<script type="text/javascript" src="https://raw.githubusercontent.com/phstc/jquery-dateFormat/master/dist/jquery-dateFormat.min.js"></script>*@
+<script type="text/javascript">
+    var table = null;
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Clicks Log');
+    var getURL = function (url) {
+        return url + '?timezone=' + encodeURIComponent($('#rzone').val()) +
+                '&viewdata=' + encodeURIComponent($('#selectedview').val()) +
+                 '&fromdate=' + encodeURIComponent($('#fromdate').val()) +
+                 '&todate=' + encodeURIComponent($('#todate').val()) +SubIdsData()+ getUrlFilterPart();
+    };
+    loadDataTables();
+
+
+    function runDataTables() {
+        apiurl = '/api/reports/ClicksDetailsLog';
+        reporturl = '@Url.Action("ClicksDetailsLog")';
+        //var apiurl = '/api/reports/ClicksDetailsLog?timezone=' + encodeURIComponent($('#rzone').val())
+        //     + '&FromDate=' + $('#fromdate').val();
+        table = $('#clicksdetailslogtbl').DataTable({
+            "ajax": {
+                //"url": '/api/reports/ClicksDetailsLog?timezone=' + encodeURIComponent($('#rzone').val()) + '&FromDate=' + $('#fromdate').val(),
+                "url": getURL(apiurl),
+                "dataSrc": ""
+
+            },
+            responsive: true,
+            aaSorting: [[3, 'asc']],
+            "iDisplayLength": 25,
+            "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25, 50, 100, 500, 1000, "All"]],
+            "deferRender": true,
+            "autoWidth": false, // if true it doesn't get 100%
+            "initComplete": function (settings, json) { // just called once
+
+            },
+            "bFilter": false,
+            "columns": [
+                {
+                    data: null,
+                    name: "CampaignId",
+                    render: function (data, type, full, meta) {
+                        return data.CampaignId
+                    }
+                },
+                 {
+                     data: null,
+                     name: "AffiliateId",
+                     render: function (data, type, full, meta) {
+                         return data.AffiliateId
+                     }
+                 },
+                  {
+                      data: null,
+                      name: "BannerId",
+                      render: function (data, type, full, meta) {
+                          return data.BannerId
+                      }
+                  },
+                  {
+                      data: null,
+                      name: "ClickDate",
+                      render: function (data, type, full, meta) {
+                          return $.format.date(data.ClickDate, "MM/dd/yyyy HH:mm:ss a")
+                          
+                         
+                      }
+
+                  },
+                   {
+                       data: null,
+                       name: "UserAgent",
+                       render: function (data, type, full, meta) {
+                           return data.UserAgent
+                       }
+                   },
+                    {
+                        data: null,
+                        name: "IPAddress",
+                        render: function (data, type, full, meta) {
+                            return data.IPAddress
+                        }
+                    },
+                     {
+                         data: null,
+                         name: "Referrer",
+                         render: function (data, type, full, meta) {
+                             return "<lable class='referrer'>" + data.Referrer + "</lable>";
+                         }
+                     },
+                      {
+                          data: null,
+                          name: "Source",
+                          render: function (data, type, full, meta) {
+                              return data.Source
+                          }
+                      },
+                       {
+                           data: null,
+                           name: "TransactionId",
+                           render: function (data, type, full, meta) {
+                               return data.TransactionId
+                           }
+                       },
+                        {
+                            data: null,
+                            name: "Country",
+                            render: function (data, type, full, meta) {
+                                return data.Country
+                            }
+                        },
+                         {
+                             data: null,
+                             name: "Cost",
+                             render: function (data, type, full, meta) {
+                                 return data.Cost
+                             }
+                         },
+                          {
+                              data: null,
+                              name: "Revenue",
+                              render: function (data, type, full, meta) {
+                                  return data.Revenue
+                              }
+                          },
+
+
+                           @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                      {
+                          var sub = String.Format("SubId{0}", i);
+
+                          <text>
+
+                              {
+                                  data: null,
+                                  name: "@sub",
+                                  render: function (data, type, full, meta) {
+                                      debugger;
+                                      if (data.@sub === undefined) {
+                                          return '';
+                                      }
+                                      return '<div class="wordbreak">' + data.@sub + '</div>';
+                                  }
+                              },
+
+                          </text>
+                      }
+
+
+                          {
+                              data: null,
+                              name: "DeviceId",
+                              render: function (data, type, full, meta) {
+                                  return data.DeviceId
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "IsSmartphone",
+                              render: function (data, type, full, meta) {
+                                  if(data.IsSmartphone==0)
+                                  {
+                                      return "false"
+                                  }
+                                  else if(data.IsSmartphone==1)
+                                  {
+                                      return "true"
+                                  }
+                                  else
+                                  {
+                                      return "";
+                                  }
+
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "IsiOS",
+                              render: function (data, type, full, meta) {
+                                  if(data.IsiOS==0)
+                                  {
+                                      return "false"
+                                  }
+                                  else if(data.IsiOS==1)
+                                  {
+                                      return "true"
+                                  }
+                                  else
+                                  {
+                                      return "";
+                                  }
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "IsAndroid",
+                              render: function (data, type, full, meta) {
+                                  if(data.IsAndroid==0)
+                                  {
+                                      return "false"
+                                  }
+                                  else if(data.IsAndroid==1)
+                                  {
+                                      return "true"
+                                  }
+                                  else
+                                  {
+                                      return "";
+                                  }
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "OS",
+                              render: function (data, type, full, meta) {
+                                  return data.OS
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Browser",
+                              render: function (data, type, full, meta) {
+                                  return data.Browser
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Device_os",
+                              render: function (data, type, full, meta) {
+                                  return data.Device_os
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Pointing_method",
+                              render: function (data, type, full, meta) {
+                                  return data.Pointing_method
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Is_tablet",
+                              render: function (data, type, full, meta) {
+                                  if(data.Is_tablet==0)
+                                  {
+                                      return "false"
+                                  }
+                                  else if(data.Is_tablet==1)
+                                  {
+                                      return "true"
+                                  }
+                                  else
+                                  {
+                                      return "";
+                                  }
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Model_name",
+                              render: function (data, type, full, meta) {
+                                  return data.Model_name
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Device_os_version",
+                              render: function (data, type, full, meta) {
+                                  return data.Device_os_version
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Is_wireless_device",
+                              render: function (data, type, full, meta) {
+                                  if(data.Is_wireless_device==0)
+                                  {
+                                      return "false"
+                                  }
+                                  else if(data.Is_wireless_device==1)
+                                  {
+                                      return "true"
+                                  }
+                                  else
+                                  {
+                                      return "";
+                                  }
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Brand_name",
+                              render: function (data, type, full, meta) {
+                                  return data.Brand_name
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Marketing_name",
+                              render: function (data, type, full, meta) {
+                                  return data.Marketing_name
+                              }
+                          },
+                          //{
+                          //    data: null,
+                          //    name: "Is_assign_phone_number",
+                          //    render: function (data, type, full, meta) {
+                          //        return data.Is_assign_phone_number
+                          //    }
+                          //},
+                          //{
+                          //    data: null,
+                          //    name: "Xhtmlmp_mime_type",
+                          //    render: function (data, type, full, meta) {
+                          //        return data.Xhtmlmp_mime_type
+                          //    }
+                          //},
+                           //{
+                           //    data: null,
+                           //    name: "Xhtml_support_level",
+                           //    render: function (data, type, full, meta) {
+                           //        return data.Xhtml_support_level
+                           //    }
+                           //},
+                              {
+                                  data: null,
+                                  name: "Resolution_height",
+                                  render: function (data, type, full, meta) {
+                                      return data.Resolution_height
+                                  }
+                              },
+                                 {
+                                     data: null,
+                                     name: "Resolution_width",
+                                     render: function (data, type, full, meta) {
+                                         return data.Resolution_width
+                                     }
+                                 },
+                                    {
+                                        data: null,
+                                        name: "Canvas_support",
+                                        render: function (data, type, full, meta) {
+                                            return data.Canvas_support
+                                        }
+                                    },
+                                       {
+                                           data: null,
+                                           name: "Viewport_width",
+                                           render: function (data, type, full, meta) {
+                                               return data.Viewport_width
+                                           }
+                                       },
+                                          //{
+                                          //    data: null,
+                                          //    name: "Html_preferred_dtd",
+                                          //    render: function (data, type, full, meta) {
+                                          //        return data.Html_preferred_dtd
+                                          //    }
+                                          //},
+                                             {
+                                                 data: null,
+                                                 name: "Isviewport_supported",
+                                                 render: function (data, type, full, meta) {
+                                                     if(data.Isviewport_supported==0)
+                                                     {
+                                                         return "false"
+                                                     }
+                                                     else if(data.Isviewport_supported==1)
+                                                     {
+                                                         return "true"
+                                                     }
+                                                     else
+                                                     {
+                                                         return "";
+                                                     }
+                                                 }
+                                             },
+                                                {
+                                                    data: null,
+                                                    name: "Ismobileoptimized",
+                                                    render: function (data, type, full, meta) {
+                                                        if(data.Ismobileoptimized==0)
+                                                        {
+                                                            return "false"
+                                                        }
+                                                        else if(data.Ismobileoptimized==1)
+                                                        {
+                                                            return "true"
+                                                        }
+                                                        else
+                                                        {
+                                                            return "";
+                                                        }
+                                                    }
+                                                },
+
+                                                 //{
+                                                 //    data: null,
+                                                 //    name: "Isimage_inlining",
+                                                 //    render: function (data, type, full, meta) {
+                                                 //        return data.Isimage_inlining
+                                                 //    }
+                                                 //},
+                                                   {
+                                                       data: null,
+                                                       name: "Ishandheldfriendly",
+                                                       render: function (data, type, full, meta) {
+                                                           if(data.Ishandheldfriendly==0)
+                                                           {
+                                                               return "false"
+                                                           }
+                                                           else if(data.Ishandheldfriendly==1)
+                                                           {
+                                                               return "true"
+                                                           }
+                                                           else
+                                                           {
+                                                               return "";
+                                                           }
+                                                       }
+                                                   },
+                                                     {
+                                                         data: null,
+                                                         name: "Is_smarttv",
+                                                         render: function (data, type, full, meta) {
+                                                             if(data.Is_smarttv==0)
+                                                             {
+                                                                 return "false"
+                                                             }
+                                                             else if(data.Is_smarttv==1)
+                                                             {
+                                                                 return "true"
+                                                             }
+                                                             else
+                                                             {
+                                                                 return "";
+                                                             }
+                                                         }
+                                                     },
+                                                       {
+                                                           data: null,
+                                                           name: "Isux_full_desktop",
+                                                           render: function (data, type, full, meta) {
+                                                               if(data.Isux_full_desktop==0)
+                                                               {
+                                                                   return "false"
+                                                               }
+                                                               else if(data.Isux_full_desktop==1)
+                                                               {
+                                                                   return "true"
+                                                               }
+                                                               else
+                                                               {
+                                                                   return "";
+                                                               }
+                                                           }
+                                                       },
+
+
+
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+                $('.dataTables_overlay').hide();
+            }
+
+        });
+
+
+
+    }
+
+    $('.rtimepicker').each(function () {
+        var $this = $(this);
+        $this.datetimepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            closeOnDateSelect: true,
+            onSelectDate: function (dateText, inst) {
+                //var selecteddate = new Date(dateText);
+                //$("#fromdate").val(selecteddate.toLocaleString());
+                $('.dataTables_overlay').show();
+                refreshTable();
+                //clciklogstable.ajax.reload();
+            },
+            onSelectTime: function (dateText, inst) {
+                //var selecteddate = new Date(dateText);
+                //$("#fromdate").val(selecteddate.toLocaleString());
+                $('.dataTables_overlay').show();
+                //clciklogstable.ajax.reload();
+                refreshTable();
+            }
+        });
+    });
+
+    $('.toggle').change(function () {
+        updateHash(getURL(reporturl));
+        toggleColumn(this.name);
+    });
+    $("#rzone").change(function (e) {
+        e.preventDefault();
+        window.location.hash = getURL(reporturl);
+    });
+
+    IsAffiliteChecked();
+
+    function IsAffiliteChecked() {
+        var affilter = $("#afffilter");
+        if ($('#Affiliatefilter').is(':checked')) {
+            affilter.show();
+        }
+        else {
+            affilter.hide();
+        }
+    }
+
+    //showall affiliate changes
+    $("input[name=showall]:radio").change(function () {
+        //console.log($(this).attr('id'));
+        //$this = $(this);
+        if ($(this).attr('id') == "showall1") {
+
+            // if checked load all affiliates
+            loadAllAffiliates(true);
+        }
+        else {
+            // if checked load partial affiliates
+            loadAllAffiliates(false);
+        }
+    });
+
+
+
+    function loadAllAffiliates(all) {
+        $.getJSON('@Url.Action("allaffiliates", "helper")/' + all, function (data) {
+
+            alist = $("#chkAffiliateId");
+            alist.select2('val', '');
+            alist.empty();
+            //console.log(data);
+            $.each(data, function (i, obj) {
+                alist.append($("<option />").val(obj.AffiliateId).text(obj.Company + ' (Affiliate ID: ' + obj.AffiliateId + ')'));
+            });
+
+        });
+    }
+
+    function getUrlFilterPart() {
+        var result = '';
+        if ($('#campaignfilter').is(':checked')) {
+            result += '&cp=' + $("#ddlCampaignId").val();
+        }
+        //if ($('#Affiliatefilter').is(':checked')) {
+        //    result += '&aff=' + $("#ddlAffiliateId").val();
+        //}
+        if ($('#Affiliatefilter').is(':checked')) {
+            //result += '&af=' + $("#chkAffiliateId").val();
+            result += '&showall=' + $('#showall1').is(':checked');
+            $('#chkAffiliateId :selected').each(function (i, selected) {
+                result += '&aff=' + $(selected).val();
+            });
+        }
+
+        if ($('#Sourcefilter').is(':checked')) {
+            result += '&source=' + $("#ddlSource").val();
+        }
+        if ($('#DeviceIDfilter').is(':checked')) {
+            result += '&deviceid=' + $("#ddlDeviceID").val();
+        }
+        if ($('#DeviceOSfilter').is(':checked')) {
+            result += '&deviceos=' + $("#ddlDeviceOS").val();
+        }
+        if ($('#Browserfilter').is(':checked')) {
+            result += '&browser=' + $("#ddlBrowser").val();
+        }
+        if ($('#OSfilter').is(':checked')) {
+            result += '&os=' + $("#ddlOS").val();
+        }
+        if ($('#ModelNamefilter').is(':checked')) {
+            result += '&modelname=' + $("#ddlModelName").val();
+        }
+        if ($('#BrandNamefilter').is(':checked')) {
+            result += '&brandname=' + $("#ddlBrandName").val();
+        }
+        if ($('#Marketingfilter').is(':checked')) {
+            result += '&marketingname=' + $("#ddlMarketingName").val();
+        }
+        if ($('#Resolutionfilter').is(':checked')) {
+            result += '&resolution=' + $("#ddlResolution").val();
+        }
+
+
+
+        return result;
+    }
+
+    function SubIdsData() {
+        var sbids = '';
+
+        $(".sbid").filter(':checked').each(function () {
+            sbids += "&" + this.id + "="
+        });
+
+        return sbids;
+    };
+    $('#campaignfilter').change(function () {
+        if (this.checked)
+            $("#cpfilter").show();  // checked
+        else
+            $("#cpfilter").hide();
+        // setfilter();
+    });
+    $('#Affiliatefilter').change(function () {
+        if (this.checked)
+            $("#afffilter").show();  // checked
+        else
+            $("#afffilter").hide();
+        // setfilter();
+    });
+    $('#Sourcefilter').change(function () {
+        if (this.checked)
+            $("#srcfilter").show();  // checked
+        else
+            $("#srcfilter").hide();
+        // setfilter();
+    });
+    $('#DeviceIDfilter').change(function () {
+        if (this.checked)
+            $("#didfilter").show();  // checked
+        else
+            $("#didfilter").hide();
+        // setfilter();
+    });
+    $('#DeviceIDfilter').change(function () {
+        if (this.checked)
+            $("#didfilter").show();  // checked
+        else
+            $("#didfilter").hide();
+        // setfilter();
+    });
+    $('#DeviceOSfilter').change(function () {
+        if (this.checked)
+            $("#dosfilter").show();  // checked
+        else
+            $("#dosfilter").hide();
+        // setfilter();
+    });
+    $('#Browserfilter').change(function () {
+        if (this.checked)
+            $("#dbrfilter").show();  // checked
+        else
+            $("#dbrfilter").hide();
+        // setfilter();
+    });
+    $('#OSfilter').change(function () {
+        if (this.checked)
+            $("#dosversionfilter").show();  // checked
+        else
+            $("#dosversionfilter").hide();
+        // setfilter();
+    });
+    $('#ModelNamefilter').change(function () {
+        if (this.checked)
+            $("#dmodnamefilter").show();  // checked
+        else
+            $("#dmodnamefilter").hide();
+        // setfilter();
+    });
+    $('#BrandNamefilter').change(function () {
+        if (this.checked)
+            $("#dbrandnamefilter").show();  // checked
+        else
+            $("#dbrandnamefilter").hide();
+        // setfilter();
+    });
+    $('#Marketingfilter').change(function () {
+        if (this.checked)
+            $("#dmarketfilter").show();  // checked
+        else
+            $("#dmarketfilter").hide();
+        // setfilter();
+    });
+    $('#Resolutionfilter').change(function () {
+        if (this.checked)
+            $("#dresolutionfilter").show();  // checked
+        else
+            $("#dresolutionfilter").hide();
+        // setfilter();
+    });
+
+    $('#Logfilter select').change(function () {
+
+        refreshTable();
+    });
+
+    $('.filter').change(function () {
+        $('.dataTables_overlay').show();
+        refreshTable();
+    });
+    $('.togglerefresh').change(function () {
+        $('.dataTables_overlay').show();
+        refreshTable(this.name);
+    });
+
+</script>

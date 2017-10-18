@@ -1,0 +1,179 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Affiliate>
+
+@{
+    ViewBag.Title = "Affiliates";
+    Layout = null;
+    bool IsAdmin = Roles.IsUserInRole("Administrator");
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-user"></i>
+            Affiliates
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    <div class="row">
+       <!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-editbutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-user"></i> </span>
+					<h2>Affiliates</h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+                       
+                        @*<div class="widget-body-toolbar">
+
+                            <nav style="margin-left:190px;padding:1px 0px;float:right;">
+                                <a href="@Url.Action("create")" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Add Affiliate
+                                </a>
+                            </nav>
+                            <div style="clear: right;"></div>
+
+                        </div>*@
+
+						<table class="table table-hover" id="dt_basic">
+							<thead>
+								<tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Company)
+                                    </th>
+                                    <th>Affiliate Id</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Contact</th>
+                                    <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">Actions</th>
+                                </tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+                                {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Company)
+                                            </td>
+                                            <td>
+                                                @item.AffiliateId
+                                            </td>
+                                            <td>
+                                                @item.Address1 @item.Address2
+                                            </td>
+                                            <td>
+                                                @item.City
+                                            </td>
+                                            <td>
+                                                @item.State
+                                            </td>
+                                            <td>
+                                                @item.Phone
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <div class="camp-status @item.Status.ToString().ToLower()">
+                                                    @item.Status
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <nav>
+                                                    @Html.ActionLink("Edit", "edit", new { id = item.AffiliateId }) |
+                                                    @Html.ActionLink("Conversion Pixels", "details", new { id = item.AffiliateId })
+                                                    @if (IsAdmin)
+                                                    {
+                                                        @:|
+                                                        @Html.ActionLink("Users", "users", new { id = item.AffiliateId })
+                                                    }
+                                                </nav>
+                                            </td>
+                                        </tr>
+                                    }
+							</tbody>
+						</table>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+			
+
+		</article>
+		<!-- WIDGET END -->
+    </div>
+</section>
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+	updateBreadCrumb('Affiliates');
+
+	loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+	    loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+	        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+	            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+	        });
+	    });
+	});
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [7] },
+                { "bSearchable": false, "aTargets": [7] }
+            ],
+            "aaSorting": [[1, "asc"]]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+                    //+
+					//"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+        $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("create")" class="btn btn-primary"><i class="fa fa-plus"></i> Add Affiliate</a></nav></div>');
+    }
+
+</script>

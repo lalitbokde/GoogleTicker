@@ -1,0 +1,706 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 Jan, 2015, 3:46:49 PM
+    Author     : jitendra
+*/
+
+body{background-color: #e5e9ec;}
+
+#left{ 
+    background-color: #1b1e24;
+    position: absolute;
+    min-height: 100%;
+    /*z-index: 9999;*/
+}
+
+a:hover, a:focus{ text-decoration: none;}
+table ul{ padding: 0;}
+
+.bg-blue.dker, .bg-blue > .dker, .bg-blue{background-color: transparent !important;}
+select, .input-group .form-control{border-radius: 0 !important;}
+.bg-dark{background-color: #22262e;}
+
+.bg-dark.dker, .bg-dark > .dker{ background-color: #22262e !important;}
+
+.user-wrapper{ padding: 20px 0; height: auto;}
+.user-wrapper .user-wrapper-container{ padding: 0 20px;}
+.user-wrapper .user-wrapper-container img{ width: 80%;}
+.user-wrapper .user-wrapper-container i{ margin-top: 18px;}
+
+#user-details{ padding: 30px;}
+#user-details .img-container{ width: 30%; height: 92px;}
+#user-details .name{ width: 60%;}
+#user-details .name h1{
+    font:21px/1.2 'robotobold';
+    color: #FFF;
+}
+#menu li a:hover{ background-color: #018abd; color: #FFF !important;}
+#menu, #menu ul, #menu li, #menu a{
+    font:15px/1.2 'robotoregular';
+    color: #FFF;
+}
+
+#menu > li.active > a{background-color:#018abd;}
+#menu > li > a{ padding: 15px 0 15px 15px;}
+
+#menu .fa.fa-plus-square{ 
+    float: right;
+    margin-right: 15px;
+    /*margin-top: 5px;*/
+    color: #018abd;
+}
+#menu li a:hover, #menu li a:hover .fa.fa-plus-square{ background-color: #018abd; color: #FFF !important;}
+
+.navbar-inverse{background-color: transparent !important;}
+/*.media-body{ width: 100%;}*/
+
+.user-media .media-body{ float: none; display: inline;}
+
+/*.sidebar-left-mini #menu > li > a .fa .fa-plus-square{ display: none;}*/
+
+.sidebar-left-mini #menu > li > a .fa.fa-plus-square{display: none;}
+.sidebar-left-mini #menu > li > a{ padding: 10px 0 10px 15px; font-size: 14px;}
+
+.sidebar-left-mini #customer-support,.sidebar-left-mini #news-letter{ display: none;}
+
+.sidebar-left-mini #content, .sidebar-left-hidden #content{ margin-left: 0;}
+
+.sidebar-left-mini #content{margin-left: 70px;}
+
+#customer-support, #news-letter{ padding: 30px 20px;}
+#customer-support h1, #news-letter h1{
+    font:24px/1.2 'robotobold';
+    color: #FFF;
+}
+#customer-support h2{
+    font:18px/1.3 'robotobold';
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+#customer-support p, #news-letter p{
+    font:16px/1.2 'robotoregular';
+    color: #FFF;
+}
+
+#news-letter{background-color: #018abd; margin-bottom: 80px;}
+
+#news-letter input[type='submit']{
+    background-color: #1b1e24;
+    font:18px/1.2 'robotoregular';
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.outer{ background-color: transparent; padding: 0;}
+
+#top .navbar{border: none;}
+.navbar-inverse{background-color: #FFF;}
+/*.navbar-brand{ background-color: #22262e; display: block; padding: 30px;}*/
+
+
+.navbar-brand {
+    float: none;
+    /*font-size: 18px;*/
+    height: auto;
+    line-height: 20px;
+    padding: 0;
+}
+
+#logo-bg{
+
+    margin: 5px 0;
+}
+
+/*#top{
+    box-shadow: 1px 1px 3px #acacac;
+}*/
+#top .topnav{
+    float: none;
+    /*text-align: left;*/
+    margin: 0;
+    background-color: #018abd;
+    /*    margin-left: 20px;
+        margin-top: 20px;*/
+}
+
+#top .topnav #left-buttons{
+    margin-top: 5px;
+}
+
+#top .topnav #right-buttons{
+    float: right;
+    text-align: right;
+    margin-top: 10px;
+}
+#top .topnav #right-buttons .btn-group a{
+    font:14px/1.2 'robotoregular';
+    color: #FFF;
+    text-shadow: none;
+}
+.user-media .media-body h5.media-heading{font-size: 16px;}
+.grey-bg{background-color: #4a4a4a;}
+
+#content{ margin-left: 260px; padding: 0; position: relative;}
+
+.margin-content-n{margin-left: 0 !important;}
+.panel-body{padding: 10px;}
+#right-buttons { margin-bottom: 20px;}
+
+#left-buttons .btn{background-color: transparent !important;}
+.navbar{height: auto; min-height: auto;}
+/*Ticker*/
+
+#ticker-bg{
+    background-color: #000;
+    /*padding: 10px;*/
+    margin: 20px 0;
+    /*min-height: 80px;*/
+}
+
+/*Ticker*/
+
+.panel{border-radius: 0;}
+
+.mini-box{ 
+    min-height: 98px;
+    padding: 15px;
+}
+.mini-box .box-icon{
+    display: block;
+    float: left;
+    font-size: 35px;
+    line-height: 65px;
+    margin: 0 15px 0 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 65px;
+    color: #FFF;
+}
+.box-info h2{ margin: 0; padding: 0;}
+.bg-campagin{background-color: #60cd9b;}
+.bg-currency{background-color: #018abd;}
+.bg-calender{background-color: #eec95a;}
+.bg-cart{background-color: #e87352;}
+
+.btn-group .fa-bars, .btn-group .fa-repeat, .btn-group .fa-arrows, .fa-reorder{color: #FFF;}
+
+
+.panel-default > .panel-heading{background-color:#018abd; color: #FFF;}
+/*cursor: move;*/
+.panel-title{font:16px/1.2 'robotobold';}
+.panel-title span{font:16px/1.2 'robotoregular';}
+
+#rgt-icon .fa-minus, #rgt-icon .fa-expand{ color: #FFF; font-size: 16px; line-height: 1;}
+#left-icon{margin-top: 5px;}
+
+.panel-group, .panel{margin-bottom: 10px;}
+
+.view-by {
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    margin: 5px 3px 0;
+    text-align: right;
+    vertical-align: baseline;
+    white-space: nowrap;
+    width: auto;
+}
+
+.smart-form .btn  {
+    box-sizing:  border-box;
+}
+
+.smart-form  {
+    margin:  0px;
+    outline:  0px none;
+    color:  rgb(102,  102,  102);
+    position:  relative;
+}
+
+.smart-form .button,
+.smart-form .checkbox, 
+.smart-form .input,
+.smart-form .radio,
+.smart-form .select, 
+.smart-form .textarea, 
+.smart-form .toggle  {
+    position:  relative;
+    display:  block;
+    font-weight:  400;
+}
+
+.smart-form .input input, 
+.smart-form .select select, 
+.smart-form .textarea textarea  {
+    display:  block;
+    box-sizing:  border-box;
+    width:  100%;
+    height:  32px;
+    padding:  5px 10px;
+    outline:  0px none;
+    border-width:  1px;
+    border-style:  solid;
+    border-radius:  0px;
+    background:  none repeat scroll 0% 0% rgb(255,  255,  255);
+    font:  13px/16px "Open Sans", Helvetica, Arial, sans-serif;
+    color:  rgb(64,  64,  64);
+    -moz-appearance:  none;
+}
+
+.smart-form .select i  {
+    position:  absolute;
+    top:  10px;
+    right:  11px;
+    width:  5px;
+    height:  11px;
+    background:  none repeat scroll 0% 0% rgb(255,  255,  255);
+    box-shadow:  0px 0px 0px 9px rgb(255,  255,  255);
+}
+
+.smart-form .select i:after,  .smart-form .select i:before  {
+    content:  "";
+    position:  absolute;
+    right:  0px;
+    border-right:  4px solid transparent;
+    border-left:  4px solid transparent;
+}
+
+.smart-form .select i:after  {
+    bottom:  0px;
+    border-top:  4px solid rgb(64,  64,  64);
+}
+
+.smart-form .select i:before  {
+    top:  0px;
+    border-bottom:  4px solid rgb(64,  64,  64);
+}
+
+.smart-form .icon-append,
+.smart-form .icon-prepend  {
+    position:  absolute;
+    top:  5px;
+    width:  22px;
+    height:  22px;
+    font-size:  14px;
+    line-height:  22px;
+    text-align:  center;
+}
+
+.smart-form .icon-append  {
+    right:  5px;
+    padding-left:  3px;
+    border-left-width:  1px;
+    border-left-style:  solid;
+}
+
+.smart-form .row  {
+    margin:  0px -15px;
+}
+
+.smart-form .row:after  {
+    content:  "";
+    display:  table;
+    clear:  both;
+}
+
+.smart-form .select select  {
+    padding:  5px;
+}
+
+.smart-form .checkbox i, 
+.smart-form .icon-append, 
+.smart-form .icon-prepend, 
+.smart-form .input input, 
+.smart-form .radio i, 
+.smart-form .select select, 
+.smart-form .textarea textarea, 
+.smart-form .toggle i  {
+    border-color:  rgb(189,  189,  189);
+    transition:  border-color 0.3s ease 0s;
+}
+
+.smart-form .icon-append,  .smart-form .icon-prepend  {
+    color:  #018abd;
+}
+
+.smart-form .checkbox:hover i, 
+.smart-form .input:hover input, 
+.smart-form .radio:hover i,
+.smart-form .select:hover select,
+.smart-form .textarea:hover textarea,
+.smart-form .toggle:hover i  {
+    border-color:  rgb(93,  152,  204);
+}
+
+.smart-form .checkbox input:focus + i, 
+.smart-form .input input:focus, 
+.smart-form .radio input:focus + i, 
+.smart-form .select select:focus,
+.smart-form .textarea textarea:focus, 
+.smart-form .toggle input:focus + i  {
+    border-color:  rgb(50,  118,  177);
+}
+
+.xdsoft_datetimepicker{box-shadow: none; border-color: #018abd;}
+
+footer{ 
+    background-color: #FFF;
+    padding: 20px 0;
+    text-align: center;
+    font:16px/1.2 'robotoregular';
+    color: #5a5a5a;
+    border:1px solid #dedede;
+}
+.btn-group-sm > .btn, .btn-sm{padding: 5px 8px;}
+.panel-title{position: relative;}
+
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'FontAwesome';  
+    content:"\f068";  /* adjust as needed, taken from bootstrap.css */
+    color: white;         /* adjust as needed */
+    vertical-align: middle;
+    line-height: 0;
+    /*margin-top: -10px;*/
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    position: absolute;
+    right: 3%;
+    top: 11px;
+    text-decoration: none;
+}
+.panel-heading .accordion-toggle{text-decoration: none;}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.loadcls{position: absolute; right: 6%;}
+
+
+.panel-heading .accordion-toggle-2:after {
+    /* symbol for "opening" panels */
+    font-family: 'FontAwesome';  
+    content:"\f0c7";  /* adjust as needed, taken from bootstrap.css */
+    color: white;         /* adjust as needed */
+    vertical-align: middle;
+    line-height: 0;
+    /*margin-top: -10px;*/
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    position: absolute;
+    right: 3%;
+    top: 11px;
+    text-decoration: none;
+}
+
+
+.panel-heading .accordion-toggle-2.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f013";    /* adjust as needed, taken from bootstrap.css */
+}
+
+
+#left, #right{ z-index: auto;}
+
+.full-screen-panel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.expand-t:after{
+    font-family: 'FontAwesome';  
+    content:"\f065";  /* adjust as needed, taken from bootstrap.css */
+    color: white; 
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 9999;
+}
+.collapse-t:after{
+    font-family: 'FontAwesome';  
+    content:"\f066";  
+    color: white; 
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 9999;
+    /*display: none;*/
+}
+
+.display{ display: block;}
+.display-n{ display: none;}
+
+.expand-t:hover, .collapse-t:hover{text-decoration: none;}
+
+
+h1{font: 22px/1.2 'robotoregular'; letter-spacing: -1px;}
+h1 a{color: #333333;}
+h1 > span{ font-size: 16px;}   
+
+/*Campaigns Page Style*/
+
+#campaigns{
+    margin: 20px 0;
+}
+
+.camp-status.active {
+    background-color: #81bf27;
+}
+.camp-status.inactive {
+    background-color: #5a5a5a;
+}
+.camp-status{
+    display: block;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px lightgray;
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 3px;
+    text-align: center;
+    width: 60px;
+}
+
+#campaigns-data, .border-table{ 
+    border: 1px solid #dedede;
+    margin-top: 15px;
+}
+
+#campaigns-data ul li{
+    display: inline-block;
+    border-right: 1px solid #dedede;
+    padding:2px 5px;
+}
+#campaigns-data ul li:last-child{border:none;}
+
+.table > tbody > tr > td, .table > tbody > tr > th,
+.table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+    border-top:1px solid #dedede;
+    border-bottom:1px solid #dedede;
+    vertical-align: middle;
+    font:12px/1.2 'robotoregular';
+
+}
+.table > thead{
+    border-top:1px solid #dedede;
+    background-color: #f6f6f6;
+}
+.table > caption + thead > tr:first-child > td,
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child >
+td, .table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th{
+    font:13px/1.2 'robotoregular';
+}
+.table > tbody > tr:hover{background-color: #ecf3f8;}
+
+.smart-form{
+    margin: 0;
+    padding: 0;
+    font:15px/1.2 'robotolight';
+}
+
+.smart-form footer{
+    border: none;
+    background-color: #eff4f4;
+    text-align: right;
+    padding:25px 10px;
+    margin: 0;
+}
+
+.smart-form .label {
+    color: #333;
+    display: block;
+    line-height: 19px;
+    text-align: left;
+    white-space: normal;
+    padding-left: 0;
+    font:15px/1.2 'robotolight';
+}
+
+legend {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-size: 16px;
+    margin: 10px 0;
+    font:17px/1.2 'robotoregular';
+    padding: 10px 0;
+    border-bottom: 1px dashed #cdcdcd;
+}
+
+.smart-form fieldset{
+    display: block;
+    margin: 15px 15px;
+    border: none;
+
+}
+
+
+.smart-form input[type='text'] {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    color: #404040;
+    display: block;
+    height: 32px;
+    outline: 0 none;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.smart-form textArea{max-height: 100px; min-height: 100px;}
+
+.smart-form .note{font-size: 12px;}
+.smart-form .fieldset {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+    border: 0 none;
+    display: block;
+    padding: 25px 0 5px;
+    position: relative;
+}
+
+.smart-form section{ margin-bottom: 15px; position: relative;}
+
+.dataTables_filter .input-group-addon {
+    float: left;
+    height: 34px;
+    margin-top: 0;
+    padding-top: 8px;
+    width: 32px;
+    border-radius: 0;
+}
+
+.dataTables_filter .form-control{
+    width: 80%;
+    float: left;
+    display: inline-block;
+    border-radius: 0;
+}
+
+.smart-form .input .icon-prepend + input, .smart-form .textarea .icon-prepend + textarea {
+    padding-left: 37px;
+}
+.smart-form .icon-prepend {
+    border-right-style: solid;
+    border-right-width: 1px;
+    left: 5px;
+    padding-right: 3px;
+}
+
+#detailbox { padding: 0px 14px 5px; }
+#detailbox label { width: 130px; font-weight: 400; color: rgb(102, 102, 102); font-size: 13px; }
+#detailbox li { padding: 5px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+#detailbox li .camp-status{ display: inline-block;}
+
+
+.smart-form .input-file .button {
+    float: none;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    margin: 0;
+    padding: 0 14px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+.smart-form .input-file .button input {
+    cursor: pointer;
+    font-size: 30px;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.smart-form .button {
+    background-color: #3276b1;
+    opacity: 0.8;
+    transition: opacity 0.2s ease 0s;
+}
+.smart-form .button {
+    border: 0 none;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font: 300 15px/31px "Open Sans",Helvetica,Arial,sans-serif;
+    height: 31px;
+    margin: 10px 0 0 5px;
+    outline: 0 none;
+    overflow: hidden;
+    padding: 0 25px;
+    text-decoration: none;
+}
+
+
+.table th{ font-weight: 400 !important;}
+
+/*Campaigns Page Style*/
+
+.active .fa-plus-square{color: #FFF !important;}
+
+.smart-form .checkbox + .checkbox, .smart-form .radio + .radio { margin-top: 0px; }
+.smart-form { margin: 0px; outline: 0px none; color: rgb(102, 102, 102); position: relative; }
+.smart-form section { margin-bottom: 15px; position: relative; }
+.smart-form .label { display: block; margin-bottom: 6px; line-height: 19px; font-weight: 400; font-size: 13px; color: rgb(51, 51, 51); text-align: left; white-space: normal; }
+.smart-form .button, .smart-form .checkbox, .smart-form .input, .smart-form .radio, .smart-form .select, .smart-form .textarea, .smart-form .toggle { position: relative; display: block; font-weight: 400; }
+.smart-form .input input, .smart-form .select select, .smart-form .textarea textarea { display: block; box-sizing: border-box; width: 100%; height: 32px; padding: 5px 10px; outline: 0px none; border-width: 1px; border-style: solid; border-radius: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); font: 13px/16px "Open Sans",Helvetica,Arial,sans-serif; color: rgb(64, 64, 64); -moz-appearance: none; }
+.smart-form .select i { position: absolute; top: 10px; right: 11px; width: 5px; height: 11px; background: none repeat scroll 0% 0% rgb(255, 255, 255); box-shadow: 0px 0px 0px 9px rgb(255, 255, 255); }
+.smart-form .select i:after, .smart-form .select i:before { content: ""; position: absolute; right: 0px; border-right: 4px solid transparent; border-left: 4px solid transparent; }
+.smart-form .select i:after { bottom: 0px; border-top: 4px solid rgb(64, 64, 64); }
+.smart-form .select i:before { top: 0px; border-bottom: 4px solid rgb(64, 64, 64); }
+.smart-form .checkbox, .smart-form .radio { margin-bottom: 4px; padding-left: 25px; line-height: 25px; color: rgb(64, 64, 64); cursor: pointer; font-size: 13px; }
+.smart-form .checkbox:last-child, .smart-form .radio:last-child { margin-bottom: 0px; }
+.smart-form .checkbox input, .smart-form .radio input { position: absolute; left: -9999px; }
+.smart-form .checkbox i, .smart-form .radio i { position: absolute; top: 3px; left: 0px; display: block; width: 17px; height: 17px; outline: 0px none; border-width: 1px; border-style: solid; background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.smart-form .radio i { border-radius: 50%; }
+.smart-form .checkbox input + i:after, .smart-form .radio input + i:after { position: absolute; opacity: 0; transition: opacity 0.1s ease 0s; }
+.smart-form .radio input + i:after { content: "\f00c"; top: 4px; left: 4px; width: 9px; height: 9px; border-radius: 50%; }
+.smart-form .checkbox input + i:after { content: "\f00c"; top: -1px; left: 1px; width: 15px; height: 15px; font: 400 16px/19px FontAwesome; text-align: center; }
+.smart-form .checkbox input:checked:hover + i:after { content: "\f00c"; }
+.smart-form .checkbox input:checked:disabled:hover + i:after { content: "\f00c"; }
+.smart-form .checkbox input:checked + i:after, .smart-form .radio input:checked + i:after { opacity: 1; }
+.smart-form .inline-group { margin: 0px -15px -4px 0px; }
+.smart-form .inline-group:after { content: ""; display: table; clear: both; }
+.smart-form .inline-group .checkbox, .smart-form .inline-group .radio { 
+    float: left; margin-right: 30px;
+}
+.smart-form .inline-group .checkbox:last-child, .smart-form .inline-group .radio:last-child { margin-bottom: 4px; }
+.smart-form .row { margin: 0px -15px; }
+.smart-form .row:after { content: ""; display: table; clear: both; }
+.smart-form .col { float: left; min-height: 1px; padding-right: 15px; padding-left: 15px; box-sizing: border-box; }
+.smart-form .col-1 { width: 8.33%; }
+.smart-form .col-6 { width: 50%; }
+
+
+.smart-form .radio input+i:after {
+    content: '';
+    top: 4px;
+    left: 4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+.smart-form .radio input+i:after {
+    background-color: #3276B1;
+}
+

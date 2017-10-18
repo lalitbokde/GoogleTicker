@@ -1,0 +1,286 @@
+﻿@*@model CpaTicker.Areas.admin.Classes.Customer*@
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+    Layout = null;
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid" class="">
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="table-content">
+                <div class="table-title">
+                    @if (ViewBag.IsAdmin)
+                {
+                        @:Customer
+                        }
+                else
+                {
+                        @:Affiliate
+                }
+                </div>
+                <!-- NEW WIDGET START -->
+                <article class="">
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @Html.Action("DisplayUserDetails", "helper")
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+        </div>
+        <!-- WIDGET END -->
+
+        <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="table-content">
+                <div class="table-title">Registered domains</div>
+
+                <!-- NEW WIDGET START -->
+                <article class="">
+                    <!-- Widget ID (each widget will need unique ID) Domains-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                @Html.Action("DisplayDomainList", "helper")
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+        </div>
+
+        <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="table-content">
+                <div class="table-title">Custom Fields</div>
+
+                <article>
+                    <!-- Widget ID (each widget will need unique ID) Users -->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                @Html.Action("DisplayCustomFieldList", "helper")
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+        </div>
+
+
+        @if (ViewBag.IsAdmin)
+            {
+            <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="table-content">
+                    <div class="table-title">Users</div>
+
+                    <article>
+                        <!-- Widget ID (each widget will need unique ID) Users -->
+                        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+                                    @Html.Action("DisplayUserList", "helper")
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+                    </article>
+                </div>
+            </div>
+
+            <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="table-content">
+                    <div class="table-title">Employee Ip</div>
+                    <article>
+                        <!-- Widget ID (each widget will need unique ID) Employees IPs -->
+                        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                            <div>
+                                <div class="widget-body no-padding">
+                                    @Html.Action("DisplayEmployeeIPList", "Helper")
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="table-section col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="table-content">
+                    <div class="table-title">CustomTimeZone</div>
+                    <article>
+                        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                            <div>
+                                <div class="widget-body no-padding">
+                                    @Html.Action("CustomTimeZone", "Helper")
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+                    <!-- end widget -->
+                    <!-- WIDGET END -->
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Settings');
+
+    $('.rlink').click(function (e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+        container = $('#content');
+        loadURL(url, container);
+    });
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+
+        // domain table
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "addcustomerdomainSettings"))
+         {
+             <text>tableToolBar('#table_domain', '#dtoolbar', '@Html.ActionLink("Add Domain", "AddCustomerDomain", "settings", null, new { @class = "btn btn-primary bn-sm" })', true);</text>
+         }
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "addcustomfieldSettings"))
+         {
+             <text>tableToolBar('#table_customfields', '#cftoolbar', '@Html.ActionLink("Add Field", "addcustomfield", "settings", null, new { @class = "btn btn-primary btn-sm" })', false);</text>
+         }
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "adduserSettings"))
+         {
+             <text>tableToolBar('#table_users', '#utoolbar', '@Html.ActionLink("Add User", "adduser", "settings", null, new { @class = "btn btn-primary btn-sm" })', false);</text>
+         }
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "addemployeeipSettings"))
+         {
+             <text>tableToolBar('#table_eip', '#eiptoolbar', '@Html.ActionLink("Add IP", "addEmployeeIp", "Settings", null, new { @class = "btn btn-primary btn-sm" })', false);</text>
+         }
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "addcustomtimezoneSettings"))
+         {
+             <text>tableToolBar('#table_timezones', '#tabletimezones', '@Html.ActionLink("Add Timezone", "AddCustomTimeZone", "Settings", null, new { @class = "btn btn-primary btn-sm" })', false);</text>
+         }
+
+
+
+
+
+    }
+
+    function tableToolBar(id, toolbarid, link, checkadmin) {
+        $(id).dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [1] },
+                { "bSearchable": false, "aTargets": [1] }
+            ]
+
+           , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'" + toolbarid + "'>>r>" +
+                   "t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        if (checkadmin) {
+            @if(ViewBag.IsAdmin)
+            {
+                // custom toolbar
+                @: $(toolbarid).html('<div class="text-right"><nav>' + link + '</nav></div>');
+                                                                                                             }
+        }
+        else {
+            $(toolbarid).html('<div class="text-right"><nav>' + link + '</nav></div>');
+        }
+
+    }
+
+
+
+</script>

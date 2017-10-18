@@ -1,0 +1,291 @@
+﻿@{
+    Layout = null;
+}
+    
+<section id="widget-grid" class="">
+    <div class="row">
+
+         <!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-togglebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Daily Report</h2>
+                    <div class="widget-toolbar"> 
+                        <div class="jarviswidget-ctrls">
+                            <a href="javascript:void(0);" class="txt-color-white" id="ropts" data-placement="bottom" title="" rel="tooltip" data-original-title="Report Options">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </div>
+                    </div>
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        
+
+                        <div class="widget-body-toolbar clearfix">
+                            @Html.CheckBoxSmart("country", "Country", false)
+                        </div>
+
+                        <table class="table table-striped rtable" id="rtable" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Country</th>
+                                    <th>Impressions</th>
+                                    <th>Clicks</th>
+                                    <th>Conversions</th>
+                                    <th>CR</th>
+                                    <th>Cost</th>
+                                    <th>CPC</th>
+                                    <th>Revenue</th>
+                                    <th>RPC</th>
+                                    <th>Profit</th>
+                                </tr>
+                            </thead>
+                           <tbody></tbody>
+                           <tfoot>
+
+                                <th>Date</th>
+                                <th>Country</th>
+                                <th>Impressions</th>
+                                <th>Clicks</th>
+                                <th>Conversions</th>
+                                <th>CR</th>
+                                <th>Cost</th>
+                                <th>CPC</th>
+                                <th>Revenue</th>
+                                <th>RPC</th>
+                                <th>Profit</th>
+
+                           </tfoot>
+                        </table>
+
+                    </div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+			
+
+		</article>
+		<!-- WIDGET END -->
+
+    </div>
+</section>
+
+ 
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Daily Report');
+
+    loadDataTables();
+
+    function runDataTables() {       
+
+        var url = "/api/reports/daily?fromdate=01/16/2015&todate=01/30/2015";
+       
+        var oldjson = null;
+        
+        var table = $('#rtable').DataTable({
+            "ajax": {
+                "url": url,
+                "dataSrc": ""
+            },
+            "deferRender": true,
+            "autoWidth": false, // if true doesn't get 100%
+            "initComplete": function(settings, json) {
+                oldjson = json; // just called once
+            },
+            "bFilter": false,
+            "columns": [
+                {
+                    data: "Date",
+                    name: "Date"
+                },
+                {
+                    data: "Country",
+                    name: "Country",
+                    visible: $('#country').is(':checked')
+                },
+                {
+                    data: "Impressions",
+                    name: "Impressions",
+                    render: function (data, type, full, meta) {
+
+                        if (oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Impressions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+                        return data;
+                    }
+                }, 
+                {
+                    data: "Clicks",
+                    name: "Clicks",
+                    render: function (data, type, full, meta) {
+
+                        if (oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Clicks) {
+                             return '<span class="highlight">' + data + '</span>';
+                        }
+                        return data;
+                    }
+                }, 
+                {
+                    data: "Conversions",
+                    name: "Conversions",
+                    render: function (data, type, full, meta) {
+                        
+                        if (oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Conversions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+                        
+                        return data;
+                    }
+                }, 
+                {
+                    data: null, // Conv Rate
+                    name: "CR",
+                    render: function (data, type, full, meta) {
+                        
+                        if (data.Clicks == 0) {
+                            return (data.Conversions * 100).toFixed(2) + '%';
+                        }
+                        //var num = (data.Conversions / data.Clicks) * 100;
+                        //return parseFloat(Math.round(num * 100) / 100).toFixed(2) + '%';
+                        return ((data.Conversions / data.Clicks) * 100).toFixed(2) + '%';
+                    }
+                }, 
+                {
+                    data: "Cost",
+                    name: "Cost",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                }, 
+                {
+                    data: null,
+                    name: "CPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks == 0) {
+                            return '$' + data.Cost.toFixed(2);
+                        }
+                        return '$' + (data.Cost / data.Clicks).toFixed(2);
+                    }
+                }, 
+                {
+                    data: "Revenue",
+                    name: "Revenue",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: null, 
+                    name: "RPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks == 0) {
+                            return '$' + data.Revenue.toFixed(2);
+                        }
+                        return '$' + (data.Revenue / data.Clicks).toFixed(2);
+                    }
+                }, 
+                {
+                    data: null, 
+                    name: "Profit",
+                    render: function (data, type, full, meta) {
+
+                        return '$' + (data.Revenue - data.Cost).toFixed(2);
+                    }
+                } 
+
+              
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+                
+                //if (data.length > 0) {
+                if (end > start) {
+
+                    var api = this.api();
+
+                    var setfooter = function (name, prefix, subfix) {
+
+                        // Total over all pages
+                        total = api
+                            .column(name + ':name')
+                            .data()
+                            .reduce(function (a, b) {
+                                return a + b;
+                            });
+
+                        // Update footer
+                        $(api.column(name + ':name').footer()).html(prefix + total + subfix);
+
+                        return total;
+                    }
+
+                    var totalimpressions = setfooter("Impressions");
+                    var totalclicks = setfooter("Clicks");
+                    var totalconversions = setfooter("Conversions");
+                    var totalcost = setfooter("Cost", '$');
+                    var totalrevenue = setfooter("Revenue", '$');
+
+                    var cr = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalconversions / totalclicks) * 100).toFixed(2);
+                    var cpc = totalclicks == 0 ? (totalcost * 100).toFixed(2) : ((totalcost / totalclicks) * 100).toFixed(2);
+                    var rpc = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalrevenue / totalclicks) * 100).toFixed(2);
+                    var pf = (totalrevenue - totalcost).toFixed(2);
+
+                    // set conversion rate
+                    $(api.column('CR:name').footer()).html(cr + '%');
+                    $(api.column('CPC:name').footer()).html('$' + cpc);
+                    $(api.column('Profit:name').footer()).html('$' + pf);
+                    $(api.column('RPC:name').footer()).html('$' + rpc);
+                }
+                
+            }
+        });
+
+    
+        setInterval(function () {
+            // we can't not change the url because we loose tracking on the oldjson
+            table.ajax.reload(function (json) {
+                oldjson = json;
+            }, false); // user paging is not reset on reload
+
+            //url = "/api/reports/daily?fromdate=01/16/2014&todate=01/21/2015";
+            //table.ajax.url(url).load(null, false);
+        }, 20000);
+
+        $('#country').change(function () {
+            var column = table.column("Country:name");
+            column.visible(!column.visible());
+        });
+
+        
+
+    }
+    
+</script>
+

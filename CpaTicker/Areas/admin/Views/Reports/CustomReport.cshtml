@@ -1,0 +1,1582 @@
+﻿@model CpaTicker.Areas.admin.Models.CustomViewModel
+@using CpaTicker.Areas.admin.Models
+
+@{
+
+    Layout = null;
+    var subids = (IEnumerable<int>)ViewBag.Subids;
+}
+<style>
+    .form-horizontal.rform {
+        float: left;
+        width: 90%;
+    }
+
+    .form-control {
+        padding: 6px 9px;
+    }
+
+    .modal-body {
+        height: 60px;
+        padding: 0;
+        position: relative;
+    }
+
+    .modal-header {
+        background-color: #018abd;
+    }
+
+    .Statisticslbl {
+        color: #018abd !important;
+        font-weight: 600 !important;
+        font-size: medium !important;
+    }
+    .statisticsdiv .checkbox{width:10%;}
+    .CompanyfilterId {
+        cursor: pointer;
+    }
+    .CampaignfilterId {
+        cursor: pointer;
+    }
+</style>
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<!-- Button HTML (to Trigger Modal) -->
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog" style="z-index:10000">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Custom Report</h4>
+            </div>
+            <div class="modal-body">
+                @*<p>Do you want to save changes you made to document before closing?</p>
+                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>*@
+
+                <div class="col-md-12" style="padding-top: 20px;">
+                    <div class="col-md-4 input-group" style="float: left;">Report Name</div>
+                    <div class="col-md-8 input-group"><input type="hidden" id="hdnreportID" /><input type="hidden" id="hdnColumnOrder" /><input type="text" class="form-control" id="txtreportname" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="btnCustomReportSave" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <section id="widget-grid">
+
+        <div class="row">
+
+            <!-- Daily report table -->
+            <div class="table-section report-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="table-content">
+                    <div class="table-title">Daily report</div>
+
+                    <div class="table-toolbar clearfix">
+                        @Html.Partial("_ViewData")
+
+                        @if (ViewBag.ReportData != null)
+                    {
+                        foreach (var item in ViewBag.ReportData)
+                        {
+                                <script>
+                                $("#hdnreportID").val('@item.ID');
+                                $("#txtreportname").val(('@item.ReportName').replace("&#39;","'"));
+                                $("#ttlrptname").html('@item.ReportName');
+                                $("#rptcrubtitle").html('@item.ReportName');
+                                $("#hdnColumnOrder").val('@item.ColumnOrder');
+
+                                updateBreadCrumb(('@item.ReportName').replace("&#39;","'"));
+                                </script>
+                        }
+
+                    }
+                    else
+                    {
+                            <script>
+                            function getParameterByName(name) {
+                                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                                    results = regex.exec(location.href);
+                                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+                            }
+                            //var _PageURL=(window.location.href).toLowerCase();
+                            //var _ReportName= _PageURL.substring(_PageURL.lastIndexOf('/')+1, _PageURL.length)
+                            var _ReportName=getParameterByName('ReportType');
+                            switch(_ReportName) {
+                                case "hourly":
+                                    {
+                                        updateBreadCrumb('Reports/Hourly Report');
+                                        $(".table-section .table-title").html("Hourly report");
+                                    }
+                                    break;
+                                case "daily":
+                                    {
+                                        updateBreadCrumb('Reports/Daily Report');
+                                        $(".table-section .table-title").html("Daily report");
+
+                                    }
+                                    break;
+                                case "affiliate":
+                                    {
+                                        updateBreadCrumb('Reports/Affiliate Report');
+                                        $(".table-section .table-title").html("Affiliate report");
+                                    }
+                                    break;
+                                case "campaign":
+                                    { 
+                                        updateBreadCrumb('Reports/Campaign Report'); 
+                                        $(".table-section .table-title").html("Campaign report");
+                                    }
+                                    break;
+                                case "ctr":
+                                    { 
+                                        updateBreadCrumb('Reports/CTR Report');  
+                                        $(".table-section .table-title").html("CTR Report");
+                                    }
+                                    break;
+                                case "conversion":
+                                    { 
+                                        updateBreadCrumb('Reports/Conversion Report'); 
+                                        $(".table-section .table-title").html("Conversion Report");
+                                    }
+                                    break;
+                                case "clicksdetailslog":
+                                    { 
+                                        updateBreadCrumb('Reports/Clicks Log');  
+                                        $(".table-section .table-title").html("Clicks Log");
+                                    }
+                                    break;
+                                default:
+                                    { 
+                                        updateBreadCrumb('Reports/Custom Report');  
+                                        $(".table-section .table-title").html("Custom Report");
+                                    }
+                            }
+                            $("#hdnreportID").val('0');
+                            $("#txtreportname").val('');
+                            </script>
+                    }
+
+                    </div>
+
+
+                    <!-- NEW WIDGET START -->
+                    <article>
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-togglebutton="false">
+
+                            <!-- widget div-->
+
+                            <div>
+                                <div class="dataTables_overlay"></div>
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+                                    <div class="smart-form">
+
+                                        <div class="row">
+                                            <div class="fieldset">
+
+                                                <section>
+                                                    <label class="label Statisticslbl">Campaign Statistics:</label>
+                                                    <div class="inline-group statisticsdiv">
+                                                        @Html.CheckBoxSmart("Date", "Date", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Date), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Date })
+                                                        @Html.CheckBoxSmart("Hour", "Hour", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Hour), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Hour })
+                                                        @Html.CheckBoxSmart("ClickDate", "ClickDate", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ClickDate), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ClickDate })
+                                                        @Html.CheckBoxSmart("ConversionDate", "ConversionDate", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionDate), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ConversionDate })
+                                                        @Html.CheckBoxSmart("ImpressionDate", "ImpressionDate", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ImpressionDate), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ImpressionDate })
+                                                        @Html.CheckBoxSmart("Campaign", "Campaign", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Campaign), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Campaign })
+
+                                                        @Html.CheckBoxSmart("PAGE", "Page", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.PAGE), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.PAGE })
+                                                        @Html.CheckBoxSmart("Redirect", "Redirect", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Redirect), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Redirect })
+                                                        @*@Html.CheckBoxSmart("URL", "URL", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.URL), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.URL })*@
+                                                        @Html.CheckBoxSmart("Country", "Country", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Country), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Country })
+                                                        @Html.CheckBoxSmart("Status", "Status", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Status), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Status })
+                                                        @Html.CheckBoxSmart("Pixel", "Pixel", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pixel), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Pixel })
+                                                        @Html.CheckBoxSmart("Postback", "Postback", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Postback), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Postback })
+
+                                                        @Html.CheckBoxSmart("IP", "IP", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IP), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.IP })
+                                                        @Html.CheckBoxSmart("TransactionID", "TransactionID", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.TransactionID), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.TransactionID })
+                                                        @Html.CheckBoxSmart("ConversionType", "ConversionType", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionType), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ConversionType })
+                                                        @Html.CheckBoxSmart("Referrer", "Referrer", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Referrer), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Referrer })
+
+                                                        @Html.CheckBoxSmart("StatusDescription", "StatusDescription", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.StatusDescription), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.StatusDescription })
+                                                        @Html.CheckBoxSmart("Source", "Source", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Source), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Source })
+                                                        @Html.CheckBoxSmart("ActionName", "ActionName", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ActionName), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ActionName })
+
+                                                        @Html.CheckBoxSmart("Banner", "Banner", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Banner), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Banner })
+                                                        @Html.CheckBoxSmart("ParentURL", "ParentURL", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ParentURL), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.ParentURL })
+                                                        @Html.CheckBoxSmart("CTR", "CTR", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CTR), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.CTR })
+
+
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <label class="label Statisticslbl">Affiliate Statistics:</label>
+                                                    <div class="inline-group statisticsdiv">
+                                                        @Html.CheckBoxSmart("Affiliate", "Affiliate", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Affiliate), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Affiliate })
+                                                        @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                                    {
+                                                            @Html.CheckBoxSmart("SubId" + i, "SubId" + i, subids.Contains(i), new { @class = "togglerefresh sbid" })
+                                                    }
+                                                    </div>
+                                                </section>
+
+                                                <section>
+                                                    <label class="label Statisticslbl">Device Statistics:</label>
+                                                    <div class="inline-group statisticsdiv">
+                                                        @Html.CheckBoxSmart("IsSmartphone", "Is Smartphone", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsSmartphone), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.IsSmartphone })
+                                                        @Html.CheckBoxSmart("Is_tablet", "Is tablet", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_tablet), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Is_tablet })
+                                                        @Html.CheckBoxSmart("Is_wireless_device", "Is Wireless", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_wireless_device), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Is_wireless_device })
+                                                        @Html.CheckBoxSmart("Isux_full_desktop", "Is Full Desktop", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isux_full_desktop), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Isux_full_desktop })
+                                                        @Html.CheckBoxSmart("Is_smarttv", "Is SmartTV", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_smarttv), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Is_smarttv })
+
+                                                        @Html.CheckBoxSmart("IsiOS", "Is iOS", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsiOS), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.IsiOS })
+                                                        @Html.CheckBoxSmart("IsAndroid", "Is Android", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsAndroid), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.IsAndroid })
+
+                                                        @Html.CheckBoxSmart("Device_os", "Operating System", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Device_os })
+                                                        @Html.CheckBoxSmart("OS", "OS Details", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.OS), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.OS })
+                                                        @Html.CheckBoxSmart("Device_os_version", "OS Version", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os_version), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Device_os_version })
+                                                        @Html.CheckBoxSmart("Browser", "Browser", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Browser), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Browser })
+                                                        @Html.CheckBoxSmart("Pointing_method", "Pointing method", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pointing_method), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Pointing_method })
+
+                                                        @Html.CheckBoxSmart("Brand_name", "Brand", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Brand_name), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Brand_name })
+                                                        @Html.CheckBoxSmart("Marketing_name", "Marketing Name", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Marketing_name), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Marketing_name })
+                                                        @Html.CheckBoxSmart("Model_name", "Model", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Model_name), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Model_name })
+                                                        @Html.CheckBoxSmart("DeviceId", "Device Id", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.DeviceId), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.DeviceId })
+
+                                                        @Html.CheckBoxSmart("Resolution_height", "Res. Height", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_height), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Resolution_height })
+                                                        @Html.CheckBoxSmart("Resolution_width", "Res. Width", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_width), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Resolution_width })
+                                                        @Html.CheckBoxSmart("Viewport_width", "Viewport Method", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Viewport_width), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Viewport_width })
+
+                                                        @Html.CheckBoxSmart("Isviewport_supported", "Viewport Support", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isviewport_supported), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Isviewport_supported })
+                                                        @Html.CheckBoxSmart("Canvas_support", "Canvas Support", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Canvas_support), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Canvas_support })
+
+                                                        @*@Html.CheckBoxSmart("Ismobileoptimized", "MobileOptimized Support", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ismobileoptimized), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Ismobileoptimized })
+                                                        @Html.CheckBoxSmart("Ishandheldfriendly", "HandheldFriendly Support", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ishandheldfriendly), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Ishandheldfriendly })*@
+                                                    </div>
+                                                </section>
+
+                                                <section>
+                                                    <label class="label Statisticslbl">Statistics:</label>
+                                                    <div class="inline-group statisticsdiv" id="statics">
+
+
+                                                        @Html.CheckBoxSmart("Impressions", "Impressions", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Impressions), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Impressions })
+                                                        @Html.CheckBoxSmart("Clicks", "Clicks", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Clicks), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Clicks })
+                                                        @Html.CheckBoxSmart("Conversions", "Conversions", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Conversions), new { @class = "togglerefresh stat groupby", @data_value = (long)CustomStatisticsEnum.Conversions })
+                                                        @Html.CheckBoxSmart("Cost", "Cost", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Cost), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.Cost })
+                                                        @Html.CheckBoxSmart("Revenue", "Revenue", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Revenue), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.Revenue })
+                                                        @Html.CheckBoxSmart("Profit", "Profit", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Profit), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.Profit })
+
+
+                                                    </div>
+                                                </section>
+
+                                                <section>
+                                                    <label class="label Statisticslbl">Calculation:</label>
+                                                    <div class="inline-group statisticsdiv">
+                                                        @Html.CheckBoxSmart("CR", "CR", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CR), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.CR })
+                                                        @Html.CheckBoxSmart("CPC", "CPC", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CPC), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.CPC })
+                                                        @Html.CheckBoxSmart("RPC", "RPC", Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.RPC), new { @class = "toggle stat", @data_value = (long)CustomStatisticsEnum.RPC })
+                                                    </div>
+                                                </section>
+                                                @Html.Partial("_Sound")
+                                                @Html.Partial("_Filter")
+
+                                                @*<div class="row">
+                                                    <label class="label">User Agent:</label>
+                                                    <section class="col col-2">
+                                                        @Html.CheckBoxSmart("UserAgentfilter", "User Agent", (ViewBag.SelectedUserAgent != null) ? true : false, new { @class = "filter" })
+                                                    </section>
+                                                    <section class="col col-6" id="cpfilter" @if (ViewBag.SelectedUserAgent == null) { @: style="display:none"
+                                                                                                                                                               }>
+
+                                                        <label class="select">
+                                                            @Html.DropDownList("ddlUseragentId", new SelectList(ViewBag.UserAgent, "Value", "Text", ViewBag.SelectedUserAgent), new { @class = "select2" })
+                                                            <i></i>
+                                                        </label>
+                                                    </section>
+                                                </div>*@
+
+                                                <section class="col-sm-6 col-md-6">
+                                                    <label class="label Statisticslbl">TimeZone:</label>
+                                                    <label class="select">
+                                                        <i></i>
+                                                        @Html.DropDownList("rzone", new SelectList(@ViewBag.CustomTimeZone, "Value", "Text", ViewBag.TimeZone), new { @class = "select2" })
+                                                    </label>
+                                                </section>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end widget edit box -->
+                                <!-- widget content -->
+                                <div class="widget-body no-padding report-widget">
+
+                                    <table class="table table-striped rtable display dt-responsive wrap" width="100%" id="rtable">
+                                        <thead>
+                                            <tr>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Hour) ? "all" : "never")" data-class="all">Hour</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Date) ? "all" : "never")" data-class="all">Date</th>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ClickDate) ? "all" : "never")" data-class="all">ClickDate</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionDate) ? "all" : "never")" data-class="all">ConversionDate</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ImpressionDate) ? "all" : "never")" data-class="all">ImpressionDate</th>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Campaign) ? "all" : "never")" data-class="all">Campaign</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Affiliate) ? "all" : "never")" data-class="all">Affiliate</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Impressions) ? "all" : "never")" data-class="all">Impressions</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Clicks) ? "all" : "never")" data-class="all">Clicks</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Conversions) ? "all" : "never")" data-class="all">Conversions</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CR) ? "all" : "never")" data-class="all">CR</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Cost) ? "min-tablet-l" : "never")" data-class="min-tablet-l">Cost</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CPC) ? "desktop" : "never")" data-class="desktop">CPC</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Revenue) ? "min-tablet-l" : "never")" data-class="min-tablet-l">Revenue</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.RPC) ? "desktop" : "never")" data-class="desktop">RPC</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Profit) ? "desktop" : "never")" data-class="desktop">Profit</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.URL) ? "min-tablet-p" : "never")" data-class="min-tablet-p">URL</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.PAGE) ? "min-tablet-p" : "never")" data-class="min-tablet-p">Page</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Redirect) ? "min-tablet-p" : "never")" data-class="min-tablet-p">Redirect</th>
+                                                @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                            {
+                                                    <th class="@(subids.Contains(i) ? "desktop" : "never")" data-class="desktop">@string.Format("SubId{0}", i)</th>
+                                            }
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Country) ? "all" : "never")" data-class="all">Country</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Status) ? "desktop" : "never")" data-class="desktop">Status</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pixel) ? "desktop" : "never")" data-class="desktop">Pixel</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Postback) ? "desktop" : "never")" data-class="desktop">Postback</th>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IP) ? "desktop" : "never")" data-class="desktop">IP</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.TransactionID) ? "desktop" : "never")" data-class="desktop">TransactionID</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionType) ? "desktop" : "never")" data-class="desktop">Type</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Referrer) ? "desktop" : "never")" data-class="desktop">Referrer</th>
+
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.StatusDescription) ? "desktop" : "never")" data-class="desktop">StatusDescription</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Source) ? "desktop" : "never")" data-class="desktop">Source</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ActionName) ? "desktop" : "never")" data-class="desktop">ActionName</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ParentURL) ? "desktop" : "never")" data-class="desktop">ParentURL</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CTR) ? "desktop" : "never")" data-class="desktop">CTR</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CTR) ? "desktop" : "never")" data-class="desktop">PreviewID</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Banner) ? "desktop" : "never")" data-class="desktop">Banner</th>
+
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.DeviceId)? "min-tablet-p" : "never")" data-class="min-tablet-p">DeviceId</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsSmartphone)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsSmartphone</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsiOS)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsiOS</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsAndroid)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsAndroid</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.OS)? "min-tablet-p" : "never")" data-class="min-tablet-p">OS</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Browser)? "min-tablet-p" : "never")" data-class="min-tablet-p">Browser</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pointing_method)? "min-tablet-p" : "never")" data-class="min-tablet-p">Pointing_method</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_tablet)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_tablet</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Model_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Model_name</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os_version)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os_version</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_wireless_device)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_wireless_device</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Brand_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Brand_name</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Marketing_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Marketing_name</th>
+
+                                                @*<td>Is_assign_phone_number</td>
+                                                <td>Xhtmlmp_mime_type</td>
+                                                <td>Xhtml_support_level</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_height)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_height</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_width</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Canvas_support)? "min-tablet-p" : "never")" data-class="min-tablet-p">Canvas_support</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Viewport_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Viewport_width</th>
+
+                                                @*<td>Html_preferred_dtd</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isviewport_supported)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isviewport_supported</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ismobileoptimized)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ismobileoptimized</th>
+
+                                                @*<td>Isimage_inlining</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ishandheldfriendly)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ishandheldfriendly</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_smarttv)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_smarttv</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isux_full_desktop)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isux_full_desktop</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Hour) ? "all" : "never")" data-class="all">Hour</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Date) ? "all" : "never")" data-class="all">Date</th>
+                                                <th class="@((Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ClickDate) || Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionDate) || Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ImpressionDate)) ? "all" : "never")" data-class="all">ClickDate</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Campaign) ? "all" : "never")" data-class="all">Campaign</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Affiliate) ? "all" : "never")" data-class="all">Affiliate</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Impressions) ? "all" : "never")" data-class="all">Impressions</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Clicks) ? "all" : "never")" data-class="all">Clicks</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Conversions) ? "all" : "never")" data-class="all">Conversions</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CR) ? "all" : "never")" data-class="all">CR</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Cost) ? "min-tablet-l" : "never")" data-class="min-tablet-l">Cost</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CPC) ? "desktop" : "never")" data-class="desktop">CPC</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Revenue) ? "min-tablet-l" : "never")" data-class="min-tablet-l">Revenue</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.RPC) ? "desktop" : "never")" data-class="desktop">RPC</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Profit) ? "desktop" : "never")" data-class="desktop">Profit</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.URL) ? "min-tablet-p" : "never")" data-class="min-tablet-p">URL</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.PAGE) ? "min-tablet-p" : "never")" data-class=" min-tablet-p">PAGE</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Redirect) ? "min-tablet-p" : "never")" data-class=" min-tablet-p">Redirect</th>
+                                                @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                                            {
+                                                    <th class="@(subids.Contains(i) ? "desktop" : "never")" data-class="desktop">@string.Format("SubId{0}", i)</th>
+                                            }
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Country) ? "all" : "never")" data-class="all">Country</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Status) ? "desktop" : "never")" data-class="desktop">Status</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pixel) ? "desktop" : "never")" data-class="desktop">Pixel</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Postback) ? "desktop" : "never")" data-class="desktop">Postback</th>
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IP) ? "desktop" : "never")" data-class="desktop">IP</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.TransactionID) ? "desktop" : "never")" data-class="desktop">TransactionID</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ConversionType) ? "desktop" : "never")" data-class="desktop">Type</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Referrer) ? "desktop" : "never")" data-class="desktop">Referrer</th>
+
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.StatusDescription) ? "desktop" : "never")" data-class="desktop">StatusDescription</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Source) ? "desktop" : "never")" data-class="desktop">Source</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ActionName) ? "desktop" : "never")" data-class="desktop">ActionName</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.ParentURL) ? "desktop" : "never")" data-class="desktop">ParentURL</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CTR) ? "desktop" : "never")" data-class="desktop">CTR</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.CTR) ? "desktop" : "never")" data-class="desktop">PreviewID</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Banner) ? "desktop" : "never")" data-class="desktop">Banner</th>
+
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.DeviceId)? "min-tablet-p" : "never")" data-class="min-tablet-p">DeviceId</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsSmartphone)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsSmartphone</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsiOS)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsiOS</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.IsAndroid)? "min-tablet-p" : "never")" data-class="min-tablet-p">IsAndroid</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.OS)? "min-tablet-p" : "never")" data-class="min-tablet-p">OS</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Browser)? "min-tablet-p" : "never")" data-class="min-tablet-p">Browser</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Pointing_method)? "min-tablet-p" : "never")" data-class="min-tablet-p">Pointing_method</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_tablet)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_tablet</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Model_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Model_name</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Device_os_version)? "min-tablet-p" : "never")" data-class="min-tablet-p">Device_os_version</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_wireless_device)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_wireless_device</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Brand_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Brand_name</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Marketing_name)? "min-tablet-p" : "never")" data-class="min-tablet-p">Marketing_name</th>
+
+                                                @*<td>Is_assign_phone_number</td>
+                                                <td>Xhtmlmp_mime_type</td>
+                                                <td>Xhtml_support_level</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_height)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_height</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Resolution_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Resolution_width</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Canvas_support)? "min-tablet-p" : "never")" data-class="min-tablet-p">Canvas_support</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Viewport_width)? "min-tablet-p" : "never")" data-class="min-tablet-p">Viewport_width</th>
+
+                                                @*<td>Html_preferred_dtd</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isviewport_supported)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isviewport_supported</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ismobileoptimized)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ismobileoptimized</th>
+
+                                                @*<td>Isimage_inlining</td>*@
+
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Ishandheldfriendly)? "min-tablet-p" : "never")" data-class="min-tablet-p">Ishandheldfriendly</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Is_smarttv)? "min-tablet-p" : "never")" data-class="min-tablet-p">Is_smarttv</th>
+                                                <th class="@(Model.CustomStatisticsEnum.HasFlag(CustomStatisticsEnum.Isux_full_desktop)? "min-tablet-p" : "never")" data-class="min-tablet-p">Isux_full_desktop</th>
+
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+
+
+
+                    </article>
+                    <!-- WIDGET END -->
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script type="text/javascript">
+
+    var ColumnOrderText=$("#hdnColumnOrder").val();
+    var ColumnOrder=ColumnOrderText.split(',');
+    if(ColumnOrder.length==1)
+    {
+        var TotalCoumn=54 + parseInt('@ViewBag.MaxSubId');
+        ColumnOrder.pop();
+        for(var a=0;a<=TotalCoumn;a++)
+        {ColumnOrder.push(a);}
+    }
+
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    //updateBreadCrumb('Custom Report');
+    //var table = null;
+
+    //LoadDataTablesCustomReport();
+    loadScript("/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js", function () {
+        loadScript("/Content/js/plugin/datatables/dataTables.bootstrap.min.js", function () {
+            loadScript("/Content/js/plugin/DataTableReorder/dataTables.colReorder.min.js", function () {
+                loadScript("/Content/js/plugin/datatable-responsive/datatables.responsive.nightly.min.js", runDataTables)
+            });
+        });
+    });
+
+    var getURL = function (url) {
+        return url + '?timezone=' + encodeURIComponent($('#rzone').val()) +
+                 '&viewdata=' + encodeURIComponent($('#selectedview').val()) +
+                 '&fromdate=' + encodeURIComponent($('#fromdate').val()) +
+                 '&todate=' + encodeURIComponent($('#todate').val()) +
+                 '&dataview=' + getDataView() + additionalData() +additionalGroupByData()+
+                getUrlFilterPart();
+        // +getUrlFilterPartForUserAgent()
+    };
+
+    var additionalData = function () {
+        var sbids = '';
+
+        $(".sbid").filter(':checked').each(function () {
+            sbids += "&" + this.id + "="
+        });
+
+        return sbids;
+    };
+    var additionalGroupByData = function () {
+        var GroupByData = '';
+        $(".groupby").filter(':checked').each(function () {
+            var Result=$("#"+this.id).prop('checked');
+            GroupByData += "&Q" + this.id + "="+Result
+        });
+
+        return GroupByData;
+    };
+
+    var getDataView = function () {
+
+        var result = 0;
+
+        $('.stat').filter(':checked').each(function () {
+            result += $(this).data("value");
+        });
+        return result;
+
+    };
+    //function getUrlFilterPartForUserAgent() {
+    //    var result = '';
+    //    if ($('#UserAgentfilter').is(':checked')) {
+    //        result += '&UserAgent=' + $("#ddlUseragentId").val();
+    //    }
+
+    //    return result;
+    //}
+
+   
+
+    function runDataTables() {
+        //if(table!=null){table.destroy();}
+        oldjson = null;
+        compare = false;
+
+        apiurl = '/api/reports/CustomReport';
+        reporturl = '@Url.Action("CustomReport")';
+
+        table = $('#rtable').DataTable({
+            "ajax": {
+                "url": getURL(apiurl),
+                "dataSrc": ""
+
+            },
+            //colReorder: true,
+            colReorder: {
+                order: ColumnOrder
+            },
+            // responsive: true,
+            "iDisplayLength": 25,
+            "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25,50, 100, 500, 1000, "All"]],
+            "deferRender": true,
+            "autoWidth": false, // if true it doesn't get 100%
+            "initComplete": function (settings, json) { // just called once
+                oldjson = json;
+                oldfilter = getUrlFilterPart();
+                compare = true;
+                //console.log("initComplete.");
+                table.columns('.never').visible(false);
+            },
+            "bFilter": false,
+            "columns": [
+                 {
+                     data: null,
+                     name: "Hour",
+                     render: function (data, type, full, meta) {
+                         if (data.Hour === undefined) {
+                             return '';
+                         }
+                         return data.Hour;
+                     }
+                 },
+                  {
+                      data: null,
+                      name: "Date",
+                      render: function (data, type, full, meta) {
+                          if (data.Date === undefined) {
+                              return '';
+                          }
+                          return data.Date;
+                      }
+                  },
+                  {
+                      data: null,
+                      name: "ClickDate",
+                      render: function (data, type, full, meta) {
+                          if (data.ClickDate === undefined) {
+                              return '';
+                          }
+                          return $.format.date(data.ClickDate, "MM/dd/yyyy HH:mm:ss a");  // commented by njhones
+                      }
+                  },
+                  {
+                      data: null,
+                      name: "ConversionDate",
+                      render: function (data, type, full, meta) {
+                          if (data.ConversionDate === undefined) {
+                              return '';
+                          }
+                          return $.format.date(data.ConversionDate, "MM/dd/yyyy HH:mm:ss a");  // commented by njhones
+                      }
+                  },
+                  {
+                      data: null,
+                      name: "ImpressionDate",
+                      render: function (data, type, full, meta) {
+                          if (data.ImpressionDate === undefined) {
+                              return '';
+                          }
+                          return $.format.date(data.ImpressionDate, "MM/dd/yyyy HH:mm:ss a");  // commented by njhones
+                      }
+                  },
+                {
+                    data: null,
+                    name: "Campaign",
+                    render: function (data, type, full, meta) {
+                        if (data.CampaignId === undefined) {
+                            return '';
+                        }
+                        //return '<a href="/admin/campaign/details/' + data.CampaignId + '">' + data.CampaignId + ' - ' + data.CampaignName + '</a>';
+                        return '<div class="CampaignfilterId" >' + data.CampaignId + ' - ' + data.CampaignName + '</div>';
+                    }
+                },
+
+               {
+                   data: null,
+                   name: "Affiliate",
+                   render: function (data, type, full, meta) {
+                       if (data.AffiliateId === undefined) {
+                           return '';
+                       }
+                       //return '<a href="/admin/affiliate/details/' + data.AffiliateId + '">' + data.AffiliateId + ' - ' + data.Company + '</a>';
+
+                       return '<div class="CompanyfilterId" >' + data.AffiliateId + ' - ' + data.Company + '</div>';
+                   }
+               },
+                {
+                    data: "Impressions",
+                    name: "Impressions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Impressions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: "Clicks",
+                    name: "Clicks",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null) {
+
+                            if (oldjson[meta.row] === undefined) {
+                                // hightlight the entire row
+
+                                //this.rows(meta.row)
+                                //            .nodes()
+                                //            .to$()
+                                //            .addClass('highlight');
+                                clickchange = true;
+                                var playsound = $.cookie("ct_sound");
+                                if (playsound == "1")
+                                    playClick();
+                                return data;
+                            }
+                            else if (data > oldjson[meta.row].Clicks) {
+                                clickchange = true;
+                                var playsound = $.cookie("ct_sound");
+                                if (playsound == "1")
+                                    playClick();
+                                return '<span class="highlight">' + data + '</span>';
+
+                                
+                            }
+
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: "Conversions",
+                    name: "Conversions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].Conversions) {
+                            convchange = true;
+                            var playConsound = $.cookie("ct_cv_sound");
+                            if (playConsound == "1")
+                                playConversion();
+                            return '<span class="highlight">' + data + '</span>';
+
+                            
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: null, // Conv Rate
+                    name: "CR",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks === undefined || data.Clicks == 0) {
+                            return (data.Conversions * 100).toFixed(2) + '%';
+                        }
+                        return ((data.Conversions / data.Clicks) * 100).toFixed(2) + '%';
+                    }
+                },
+                {
+                    data: "Cost",
+                    name: "Cost",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "CPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks === undefined || data.Clicks == 0) {
+                            return '$' + data.Cost.toFixed(2);
+                        }
+                        return '$' + (data.Cost / data.Clicks).toFixed(2);
+                    }
+                },
+                {
+                    data: "Revenue",
+                    name: "Revenue",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "RPC",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Clicks === undefined || data.Clicks == 0) {
+                            return '$' + data.Revenue.toFixed(2);
+                        }
+                        return '$' + (data.Revenue / data.Clicks).toFixed(2);
+                    }
+                },
+                {
+                    data: null,
+                    name: "Profit",
+                    render: function (data, type, full, meta) {
+
+                        return '$' + (data.Revenue - data.Cost).toFixed(2);
+                    }
+                },
+
+
+                 {
+                     data: null,
+                     name: "URL",
+                     render: function (data, type, full, meta) {
+                         if (data.OfferUrl === undefined) {
+                             return '';
+                         }
+                         return data.OfferUrl;
+                     }
+                 },
+                  {
+                      data: null,
+                      name: "PAGE",
+                      render: function (data, type, full, meta) {
+                          if (data.PAGEId === undefined) {
+                              return '';
+                          }
+                          return data.PAGEId +"--"+ data.PAGEURL;
+                      }
+                  },
+
+                  {
+                      data: null,
+                      name: "Redirect",
+                      render: function (data, type, full, meta) {
+                          if (data.RedirectId === undefined) {
+                              return '';
+                          }
+                          return data.RedirectId +"--"+ data.RedirectURL;
+                      }
+                  },
+
+                  @for (int i = 1; i <= ViewBag.MaxSubId; i++)
+                  {
+                      var sub = String.Format("SubId{0}", i);
+
+                 <text>
+
+                     {
+                         data: null,
+                         name: "@sub",
+                         render: function (data, type, full, meta) {
+                             if (data.@sub === undefined) {
+                                 return '';
+                             }
+                             return '<div class="wordbreak">' + data.@sub + '</div>';
+                         }
+                     },
+
+                 </text>
+                  }
+                {
+                    data: null,
+                    name: "Country",
+                    render: function (data, type, full, meta) {
+                        if (data.Country === undefined) {
+                            return '';
+                        }
+                        return data.Country;
+                    }
+                },
+                {
+                    data: null,
+                    name: "Status",
+                    render: function (data, type, full, meta) {
+
+                        if (data.Status === undefined) {
+                            return '';
+                        }
+                        if (data.Status == 1) {
+                            if(data.ConversionID !== undefined && data.Conversions >0)
+                            { return 'Approved (<a id="' + data.ConversionID + '" href="#" class="togglestatus">Reject</a>)';}
+                            return 'Approved';
+                        }
+                        else if(data.Status == 0)
+                            return '';
+                    }
+                },
+                 {
+                     data: null,
+                     name: "Pixel",
+                     render: function (data, type, full, meta) {
+
+                         if (data.Pixel === undefined) {
+                             return '';
+                         }
+                         return $.format.date(data.Pixel, "MM/dd/yyyy HH:mm:ss a");
+                     }
+                 }, {
+                     data: null,
+                     name: "Postback",
+                     render: function (data, type, full, meta) {
+
+                         if (data.Postback === undefined) {
+                             return '';
+                         }
+                         return $.format.date(data.Postback, "MM/dd/yyyy HH:mm:ss a");
+                     }
+                 },
+                 {
+                     data: null,
+                     name: "IP",
+                     render: function (data, type, full, meta) {
+
+                         if (data.IP === undefined) {
+                             return '';
+                         }
+                         return data.IP;
+                     }
+                 },
+                 {
+                     data: null,
+                     name: "TransactionID",
+                     render: function (data, type, full, meta) {
+
+                         if (data.TransactionID === undefined) {
+                             return '';
+                         }
+                         return data.TransactionID;
+                     }
+                 },
+                 {
+                     data: null,
+                     name: "ConversionType",
+                     render: function (data, type, full, meta) {
+
+                         if (data.ConversionType === undefined) {
+                             return '';
+                         }
+                         return data.ConversionType;
+                     }
+                 },
+                 {
+                     data: null,
+                     name: "Referrer",
+                     render: function (data, type, full, meta) {
+
+                         if (data.Referrer === undefined) {
+                             return '';
+                         }
+                         return '<div class="wordbreak">' + data.Referrer + '</div>';
+                     }
+                 },
+                {
+                    data: null,
+                    name: "StatusDescription",
+                    render: function (data, type, full, meta) {
+                        if (data.StatusDescription === undefined) {
+                            return '';
+                        }
+                        return data.StatusDescription;
+                    }
+                },
+                {
+                    data: null,
+                    name: "Source",
+                    render: function (data, type, full, meta) {
+                        if (data.Source === undefined) {
+                            return '';
+                        }
+                        return data.Source;
+                    }
+                },
+                {
+                    data: null,
+                    name: "ActionName",
+                    render: function (data, type, full, meta) {
+                        if (data.ActionName === undefined) {
+                            return '';
+                        }
+                        if(data.ActionId!=0)
+                        {
+                            var actionstring=data.ActionId +"-"+ data.ActionName  ;
+                            if(data.ActionType==1){actionstring +=' - Sale' }else if(data.ActionType==2){actionstring +=' - Lead'  }else if(data.ActionType==3){actionstring +=' - Other' }else if(data.ActionType==4){actionstring +=' - Clickthrough' }
+
+                            return actionstring;
+                        }
+                        else{return '';}
+                    }
+                },
+
+                {
+                    data: null,
+                    name: "ParentURL",
+                    render: function (data, type, full, meta) {
+                        if (data.ParentURL === undefined || data.ParentURL == 0) {
+                            return '';
+                        }
+                        return data.ParentURL;
+                    }
+                },
+                 {
+                     data: null,
+                     name: "CTR",
+                     render: function (data, type, full, meta) {
+                         if (data.CTR === undefined) {
+                             return '';
+                         }
+                         return data.CTR;
+                     }
+                 },
+                  {
+                      data: null,
+                      name: "URLID",
+                      render: function (data, type, full, meta) {
+                          if (data.URLPreviewId === undefined) {
+                              return '';
+                          }
+                          return data.URLPreviewId;
+                      }
+                  },
+                 {
+                     data: null,
+                     name: "Banner",
+                     render: function (data, type, full, meta) {
+                         if (data.Banner === undefined) {
+                             return '';
+                         }
+                         return data.Banner;
+                     }
+                 },
+
+
+
+                 {
+                     data: null,
+                     name: "DeviceId",
+                     render: function (data, type, full, meta) {
+                         if (data.DeviceId === undefined) {
+                             return '';
+                         }
+                         return data.DeviceId;
+                     }
+                 },
+                          {
+                              data: null,
+                              name: "IsSmartphone",
+                              render: function (data, type, full, meta) {
+                                  if (data.IsSmartphone === undefined) {
+                                      return '';
+                                  }
+                                  if(data.IsSmartphone=="1")
+                                  {return "Yes";}
+                                  return "No";
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "IsiOS",
+                              render: function (data, type, full, meta) {
+                                  if (data.IsiOS === undefined) {
+                                      return '';
+                                  }
+                                  if(data.IsiOS=="1")
+                                  {return "Yes";}
+                                  return "No";
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "IsAndroid",
+                              render: function (data, type, full, meta) {
+                                  if (data.IsAndroid === undefined) {
+                                      return '';
+                                  }
+                                  if(data.IsAndroid=="1")
+                                  {return "Yes";}
+                                  return "No";
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "OS",
+                              render: function (data, type, full, meta) {
+                                  if (data.OS === undefined) {
+                                      return '';
+                                  }
+                                  return data.OS;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Browser",
+                              render: function (data, type, full, meta) {
+                                  if (data.Browser === undefined) {
+                                      return '';
+                                  }
+                                  return data.Browser;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Device_os",
+                              render: function (data, type, full, meta) {
+                                  if (data.Device_os === undefined) {
+                                      return '';
+                                  }
+                                  return data.Device_os;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Pointing_method",
+                              render: function (data, type, full, meta) {
+                                  if (data.Pointing_method === undefined) {
+                                      return '';
+                                  }
+                                  return data.Pointing_method;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Is_tablet",
+                              render: function (data, type, full, meta) {
+                                  if (data.Is_tablet === undefined) {
+                                      return '';
+                                  }
+                                  if(data.Is_tablet=="1")
+                                  {return "Yes";}
+                                  return "No";
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Model_name",
+                              render: function (data, type, full, meta) {
+                                  if (data.Model_name === undefined) {
+                                      return '';
+                                  }
+                                  return data.Model_name;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Device_os_version",
+                              render: function (data, type, full, meta) {
+                                  if (data.Device_os_version === undefined) {
+                                      return '';
+                                  }
+                                  return data.Device_os_version;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Is_wireless_device",
+                              render: function (data, type, full, meta) {
+                                  if (data.Is_wireless_device === undefined) {
+                                      return '';
+                                  }
+                                  if(data.Is_wireless_device=="1")
+                                  {return "Yes";}
+                                  return "No";
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Brand_name",
+                              render: function (data, type, full, meta) {
+                                  if (data.Brand_name === undefined) {
+                                      return '';
+                                  }
+                                  return data.Brand_name;
+                              }
+                          },
+                          {
+                              data: null,
+                              name: "Marketing_name",
+                              render: function (data, type, full, meta) {
+                                  if (data.Marketing_name === undefined) {
+                                      return '';
+                                  }
+                                  return data.Marketing_name;
+                              }
+                          },
+                          //{
+                          //    data: null,
+                          //    name: "Is_assign_phone_number",
+                          //    render: function (data, type, full, meta) {
+                          //        return data.Is_assign_phone_number
+                          //    }
+                          //},
+                          //{
+                          //    data: null,
+                          //    name: "Xhtmlmp_mime_type",
+                          //    render: function (data, type, full, meta) {
+                          //        return data.Xhtmlmp_mime_type
+                          //    }
+                          //},
+                           //{
+                           //    data: null,
+                           //    name: "Xhtml_support_level",
+                           //    render: function (data, type, full, meta) {
+                           //        return data.Xhtml_support_level
+                           //    }
+                           //},
+                              {
+                                  data: null,
+                                  name: "Resolution_height",
+                                  render: function (data, type, full, meta) {
+                                      if (data.Resolution_height === undefined) {
+                                          return '';
+                                      }
+                                      return data.Resolution_height;
+                                  }
+                              },
+                                 {
+                                     data: null,
+                                     name: "Resolution_width",
+                                     render: function (data, type, full, meta) {
+                                         if (data.Resolution_width === undefined) {
+                                             return '';
+                                         }
+                                         return data.Resolution_width;
+                                     }
+                                 },
+                                    {
+                                        data: null,
+                                        name: "Canvas_support",
+                                        render: function (data, type, full, meta) {
+                                            if (data.Canvas_support === undefined) {
+                                                return '';
+                                            }
+                                            return data.Canvas_support;
+                                        }
+                                    },
+                                       {
+                                           data: null,
+                                           name: "Viewport_width",
+                                           render: function (data, type, full, meta) {
+                                               if (data.Viewport_width === undefined) {
+                                                   return '';
+                                               }
+                                               return data.Viewport_width;
+                                           }
+                                       },
+                                          //{
+                                          //    data: null,
+                                          //    name: "Html_preferred_dtd",
+                                          //    render: function (data, type, full, meta) {
+                                          //        return data.Html_preferred_dtd
+                                          //    }
+                                          //},
+                                             {
+                                                 data: null,
+                                                 name: "Isviewport_supported",
+                                                 render: function (data, type, full, meta) {
+                                                     if (data.Isviewport_supported === undefined) {
+                                                         return '';
+                                                     }
+                                                     if(data.Isviewport_supported=="1")
+                                                     {return "Yes";}
+                                                     return "No";
+                                                 }
+                                             },
+                                                {
+                                                    data: null,
+                                                    name: "Ismobileoptimized",
+                                                    render: function (data, type, full, meta) {
+                                                        if (data.Ismobileoptimized === undefined) {
+                                                            return '';
+                                                        }
+                                                        if(data.Ismobileoptimized=="1")
+                                                        {return "Yes";}
+                                                        return "No";
+                                                    }
+                                                },
+
+                                                 //{
+                                                 //    data: null,
+                                                 //    name: "Isimage_inlining",
+                                                 //    render: function (data, type, full, meta) {
+                                                 //        return data.Isimage_inlining
+                                                 //    }
+                                                 //},
+                                                   {
+                                                       data: null,
+                                                       name: "Ishandheldfriendly",
+                                                       render: function (data, type, full, meta) {
+                                                           if (data.Ishandheldfriendly === undefined) {
+                                                               return '';
+                                                           }
+                                                           if(data.Ishandheldfriendly=="1")
+                                                           {return "Yes";}
+                                                           return "No";
+                                                       }
+                                                   },
+                                                     {
+                                                         data: null,
+                                                         name: "Is_smarttv",
+                                                         render: function (data, type, full, meta) {
+                                                             if (data.Is_smarttv === undefined) {
+                                                                 return '';
+                                                             }
+                                                             if(data.Is_smarttv=="1")
+                                                             {return "Yes";}
+                                                             return "No";
+                                                         }
+                                                     },
+                                                       {
+                                                           data: null,
+                                                           name: "Isux_full_desktop",
+                                                           render: function (data, type, full, meta) {
+                                                               if (data.Isux_full_desktop === undefined) {
+                                                                   return '';
+                                                               }
+                                                               if(data.Isux_full_desktop=="1")
+                                                               {return "Yes";}
+                                                               return "No";
+                                                           }
+                                                       },
+
+
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+
+                setTimeout(function(){
+                    // toggle back after 1 second
+                    $('.highlight').removeClass('highlight');  
+                },5000);
+
+                $('.dataTables_overlay').hide();
+                oldjson = data;
+                var api = this.api();
+                if (data.length > 0) {
+                    //if (end > start) {
+
+                    var setfooter = function (name, formatter) {
+                        // Total over all pages
+                        total = api
+                            .column(name + ':name')
+                            .data()
+                            .reduce(function (a, b) {
+                                return a + b;
+                            });
+
+                        // Update footer
+                        ftotal = total;
+                        if (formatter) {
+                            ftotal = formatter(total);
+                        }
+                        $(api.column(name + ':name').footer()).html(ftotal);
+
+                        return total;
+                    }
+
+                    var priceformatter = function (val) {
+                        return '$' + val.toFixed(2);
+                    }
+
+                    var totalimpressions = setfooter("Impressions");
+                    var totalclicks = setfooter("Clicks");
+                    var totalconversions = setfooter("Conversions");
+                    var totalcost = setfooter("Cost", priceformatter);
+                    var totalrevenue = setfooter("Revenue", priceformatter);
+
+
+                    var cr = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalconversions / totalclicks) * 100).toFixed(2);
+                    var cpc = totalclicks == 0 ? (totalcost * 100).toFixed(2) : ((totalcost / totalclicks) * 100).toFixed(2);
+                    var rpc = totalclicks == 0 ? (totalconversions * 100).toFixed(2) : ((totalrevenue / totalclicks) * 100).toFixed(2);
+                    var pf = (totalrevenue - totalcost).toFixed(2);
+
+                    // set conversion rate
+                    $(api.column('CR:name').footer()).html(cr + '%');
+                    $(api.column('CPC:name').footer()).html('$' + cpc);
+                    $(api.column('Profit:name').footer()).html('$' + pf);
+                    $(api.column('RPC:name').footer()).html('$' + rpc);
+                }
+                else {
+
+                    // clear all tfoot
+                    api.columns().eq(0).each(function (idx) {
+                        var column = api.column(idx);
+                        var name = $(column.header()).html();
+
+                        if (idx == 0)
+                        { $(column.footer()).html("Totals"); }
+                        else { $(column.footer()).html(""); }
+                    });
+                }
+            }
+
+        });
+
+
+        $('#run').click(function (e) {
+            //e.preventDefault();
+            //window.location.hash = getURL(reporturl);
+            $('.dataTables_overlay').show();
+            refreshTable();
+        });
+        $("#rzone").change(function(e)
+        {
+            $('.dataTables_overlay').show();
+            refreshTable();
+            //e.preventDefault();
+            //window.location.hash = getURL(reporturl);
+        });
+        $('#export').click(function (e) {
+            e.preventDefault();
+            window.location = getURL(reporturl) + '&state=1';
+        });
+        $('#btnCustomReportSave').click(function (e) {
+            if(ValidateReportname())
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/SignalRNotify/SaveCustomReport",
+                    data: "{ReportName:'" + $('#txtreportname').val().replace("'", "singleqoute") + "',ReportData:'" + getURL('') + "',ColumOrder:'" + table.colReorder.order() + "',ReportId:'" + $("#hdnreportID").val() + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $(".customreportsMenu").remove();
+                        //$("#ManageReportTab").empty();
+                        //$("#ManageReportTab").append("<li><a href='/admin/reports/ManageReport'>Manage Reports</a></li>");
+                        for(var a=0;a<data.length;a++)
+                        {
+                            var URLdesc = "admin#/admin/reports/CustomReport" + data[a].ReportData + "&ReportID=" + data[a].ID;
+                            $("#MainMenu").append("<li class='customreportsMenu'><a target='_top' href='"+URLdesc+"'>"+data[a].ReportName+" <i class='fa fa-lg fa-fw fa-file-text nav-icon'></i></a></li>");
+                        }
+                        $("#myModal").modal('hide');
+                    }
+                });
+            }
+
+        });
+
+
+        $('.togglerefresh').change(function () {
+            $('.dataTables_overlay').show();
+            refreshTable(this.name);
+        });
+
+        $('.toggle').change(function () {
+            updateHash(getURL(reporturl));
+            toggleColumn(this.name);
+        });
+        $('#rtable').on('click', '.togglestatus', function (e) {
+
+            e.preventDefault();
+            $this = $(this);
+            var status = $this.text() == 'Approve' ? 0 : 1;
+
+            var conversion_id = $this.attr('id');
+
+            if (status == 0) {
+                var msg = 'Are you sure you want to approve this Conversion?';
+            } else {
+                var msg = 'Are you sure you want to reject this Conversion?';
+            }
+            if (confirm(msg)) {
+                $('.dataTables_overlay').show();
+                var url = '@Url.Action("statuschange", "helper")?status=' + status + '&conversionid=' + conversion_id;
+
+                $.get(url, function (data) {
+                    table.ajax.reload(function () {
+
+                    }, false);
+                });
+            }
+
+            return false;
+        });
+
+
+        $('#UserAgentfilter').change(function () {
+            if (this.checked)
+                $("#ddlUseragentId").show();  // checked
+            else
+                $("#ddlUseragentId").hide();
+            // setfilter();
+        });
+
+        $('#rtable').on('click', '.CompanyfilterId', function (e) {
+            var SelectedCompanyId=($(this).html()).substr(0, 4);
+          
+            $("#chkaffiliatesection").empty();
+            $("#chkaffiliatesection").append('<label class="checkbox"><input type="checkbox" value="Affiliate Report" class="filter" id="affiliatefilter" name="affiliatefilter" checked="checked"><i></i>Affiliate</label>');
+         
+            $("#affilter").show();
+            $('select[id="AffiliateId"] option[value='+SelectedCompanyId+']').attr("selected","selected");
+
+            $("#AffiliateId").select2({
+               
+            });
+            $('#affiliatefilter').click(function () {
+                if (this.checked)
+                    $("#affilter").show();  // checked
+                else
+                    $("#affilter").hide();
+                setfilter();
+                $('.dataTables_overlay').show();
+                refreshTable();
+            });
+            $('.dataTables_overlay').show();
+            refreshTable();
+        });
+
+        $('#rtable').on('click', '.CampaignfilterId', function (e) {
+            var SelectedCampaignId=($(this).html()).substr(0, 4);
+          
+            $("#chkcampaignsection").empty();
+            $("#chkcampaignsection").append('<label class="checkbox"><input type="checkbox" name="campaignfilter" id="campaignfilter" class="filter" value="Daily Report" checked="checked"><i></i>Campaign</label>');
+         
+            $("#cpfilter").show();
+            $('select[id="CampaignId"] option[value='+SelectedCampaignId+']').attr("selected","selected");
+
+            $("#CampaignId").select2({
+               
+            });
+            $('#campaignfilter').click(function () {
+                if (this.checked)
+                    $("#cpfilter").show();  // checked
+                else
+                    $("#cpfilter").hide();
+                setfilter();
+                $('.dataTables_overlay').show();
+                refreshTable();
+            });
+            $('.dataTables_overlay').show();
+            refreshTable();
+        });
+        
+        //  setReportTimer();
+
+    }
+    //var getURL = function (url) {
+    //    return url + '?timezone=' + encodeURIComponent($('#rzone').val()) +
+    //            '&viewdata=' + encodeURIComponent($('#selectedview').val()) +
+    //            '&fromdate=' + encodeURIComponent($('#fromdate').val()) +
+    //            '&todate=' + encodeURIComponent($('#todate').val()) +
+    //            '&dataview=' + getDataView() + additionalData() +
+    //           getUrlFilterPart();
+    //};
+    //var getDataView = function () {
+
+    //    var result = 0;
+
+    //    $('.stat').filter(':checked').each(function () {
+    //        result += $(this).data("value");
+    //    });
+    //    return result;
+
+    //};
+    function ValidateReportname()
+    {
+        if($("#txtreportname").val()!="")
+        {return true;}
+        $("#txtreportname").css("border","1px solid red");
+        return false;
+    }
+
+
+</script>

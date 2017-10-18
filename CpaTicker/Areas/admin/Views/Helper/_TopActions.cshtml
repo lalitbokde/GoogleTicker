@@ -1,0 +1,37 @@
+﻿<div class="top-actions">
+        <div class="row">
+            @*<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 smart-form ">
+                        
+                <div class="">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 leftlabel labelfst">Time Zone:</label>
+
+                    <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="margin-bottom: 10px;">
+                        <label class="select">
+                            @Html.DropDownList("selectedzone", new SelectList(TimeZoneInfo.GetSystemTimeZones(), "Id", "DisplayName", ViewBag.UserCurrentTimeZone))
+                            <i></i>
+                        </label>
+                    </section>
+
+                </div>
+                
+            </div>*@
+                    
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="pull-right">
+                    <a id="refresh" class="btn btn-primary"
+                       data-reset-msg="Would you like to RESET all your saved widgets and clear LocalStorage?"
+                       data-html="true"
+                       @*data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." *@
+                       data-placement="bottom"
+                       @*rel="tooltip"*@
+                       data-title="refresh"
+                       data-action="resetWidgets">
+                        <i class="fa fa-refresh"></i> Reset Settings
+                    </a>
+                    <nav style="display: inline;"><a href="@Url.Action("index", "ticker")" class="btn btn-primary bg-color-grayDark"><i class="fa fa-cog"></i> Manage Tickers</a></nav>
+                   @* <a class="btn btn-default" id="togglesound"><i class="fa"></i> Toggle Sound</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+

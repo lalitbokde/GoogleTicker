@@ -1,0 +1,186 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Banner>
+
+@{
+    Layout = null;
+    ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+    string defaultdomain = CPAHelper.GetDefaultDomain(CPAHelper.GetCustomerId(WebSecurity.CurrentUserId)).DomainName;
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Banners</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-togglebutton="false" data-widget-collapsed="false" data-widget-editbutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.BannerDate)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CampaignId)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th style="text-align:center;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                {
+
+                                            <tr>
+                                                <td>
+                                                    @CPAHelper.ConvertFromUtc(item.BannerDate, ViewBag.tzi)
+                                                </td>
+                                                <td>
+                                                    <nav>@Html.ActionLink(item.CampaignId.ToString(), "details", "campaign", new { id = item.CampaignId }, null)</nav>
+                                                </td>
+                                                <td>
+                                                    <div class="bannerthumb">
+                                                        @Html.DisplayFor(modelItem => item.Name)
+                                                        <span>
+                                                            @if (CPAHelper.BannerIsImage(item.Name))
+                                                    {
+                                                                <img style="max-width: 100%;width: 100%;" src="@Url.Action("preview", "cpa", new { area = "", id = item.Id })" alt="@item.Name" />
+                                                    }
+                                                    else
+                                                    {
+                                                                <video controls class="videoInsert">
+                                                                    <source src="@Url.Action("preview", "cpa", new { area = "", id = item.Id })" type="@CPAHelper.BannerContentType(item.Name)">
+                                                                    I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+                                                                </video>
+                                                    }
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;">
+                                                    @if (ViewBag.IsAdmin)
+                                            {
+                                                        <nav style="display:inline;">
+
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editBanner"))
+                                                    {
+                                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+                                                    }
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "detailsBanner"))
+                                                    {
+                                                                @Html.ActionLink("Details", "Details", new { id = item.BannerId }) @:|
+                                                    }
+                                                        </nav>
+                                                if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "removeBanner"))
+                                                    {
+                                                            @Html.ActionLink("Delete", "Remove", new { id = item.Id }, new { @class = "rlink" })
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                        <nav style="display:inline;">
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "detailsBanner"))
+                                                    {
+                                                                @Html.ActionLink("Details", "Details", new { id = item.BannerId })
+                                                    }
+                                                        </nav>
+                                            }
+
+                                                </td>
+                                            </tr>
+                                }
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Banners');
+
+    $('.rlink').click(function (e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+        container = $('#content');
+        loadURL(url, container);
+    });
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [3] },
+                { "bSearchable": false, "aTargets": [3] }
+            ],
+            "aaSorting": [[1, "asc"]]
+            , "sDom": "<'dt-toolbar'<'col-xs-10 col-sm-6 col-md-4 npadding'f><'col-xs-2 col-sm-6 col-md-8'<'toolbar'>>r>" +
+					"t"
+            //+ "<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        @if(ViewBag.IsAdmin)
+        {
+
+            // custom toolbar
+            @: $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("create")" class="btn btn-primary"><i class="fa fa-plus"></i><span class="atext"> Add Banner </span></a></nav></div>');
+                         }
+    }
+
+</script>

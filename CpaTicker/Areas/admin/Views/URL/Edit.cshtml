@@ -1,0 +1,343 @@
+﻿@model CpaTicker.Areas.admin.Classes.URL
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.hash = Url.Action("index", new { id = Model.CampaignId });
+}
+
+<div class="row tspark">
+	@Html.Partial("_Sparks")
+</div>
+
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Edit URL <strong>@Model.PreviewId</strong> from Campaign <strong>@Model.Campaign.CampaignId</strong></div>
+
+                <!-- NEW COL START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("edit", "url", FormMethod.Post, new { @id = "editurl", @class = "smart-form" }))
+                                {
+                                    @*@Html.AntiForgeryToken()*@
+                                    @Html.ValidationSummary(true)
+
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.CampaignId)
+                                    @Html.HiddenFor(model => model.PreviewId)
+
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button"> <i class="fa fa-save"></i> Save URL </button>
+                                            @Html.ActionLink("Back", "index", new { id = Model.CampaignId }, new { @class = "btn btn-default", @id = "back_button" })
+                                        </nav>
+                                    </footer>
+
+                                    <div class="fieldset">
+
+                                        <div class="row">
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.Name, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-globe"></i>
+                                                    @Html.TextBoxFor(model => model.Name)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Name)
+                                            </section>
+
+                                        </div>
+
+                                        <section>
+                                            @Html.LabelFor(model => model.OfferUrl, new { @class = "label" })
+                                            <label class="input">
+                                                <i class="icon-append fa fa-globe"></i>
+                                                @Html.TextBoxFor(model => model.OfferUrl)
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.OfferUrl)
+                                            <div class="note" style="text-align:right;">
+                                                @*<strong>Note:</strong>*@
+                                                <small>
+                                                    <a href="#" id="var_info">Optional Variables</a>
+                                                </small>
+                                            </div>
+                                        </section>
+
+                                        @Html.Partial("_PlaceHolderInfo")
+
+                                        <div class="row">
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.PreviewUrl, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-globe"></i>
+                                                    @Html.TextBoxFor(model => model.PreviewUrl)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.PreviewUrl)
+                                            </section>
+
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.ParentURLId, new { @class = "label" })
+                                                <label class="select">
+                                                    @Html.DropDownList("ParentURLId", "")
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                        </div>
+
+                                    </div>
+
+                                    <fieldset>
+                                        <legend>Revenue</legend>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.RevenueType, new { @class = "label" })
+                                                <label class="select">
+                                                    @Html.EnumDropDownListFor(model => model.RevenueType)
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                            <section class="col col-3" id="rmoney">
+                                                @Html.LabelFor(model => model.Revenue, new { @class = "label", id = "rlabel" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-money"></i>
+                                                    @Html.TextBoxFor(model => model.Revenue, new { @placeholder = "$ 0.00" })
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Revenue)
+                                                <div class="note" id="rmnote">The amount paid by advertisers per conversion.</div>
+                                            </section>
+                                            <section class="col col-3" id="rpercent">
+                                                @Html.LabelFor(model => model.RevenuePercent, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-money"></i>
+                                                    @Html.TextBoxFor(model => model.RevenuePercent, new { @placeholder = "0.0 %" })
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.RevenuePercent)
+                                                <div class="note" id="rpnote">The percentage of a sale per conversion paid by advertisers.</div>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>Payout</legend>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.PayoutType, new { @class = "label", @placeholder = "0.00" })
+                                                <label class="select">
+                                                    @Html.EnumDropDownListFor(model => model.PayoutType)
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                            <section class="col col-3" id="cmoney">
+                                                @Html.LabelFor(model => model.Payout, new { @class = "label", id = "clabel" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-money"></i>
+                                                    @Html.TextBoxFor(model => model.Payout, new { @placeholder = "$ 0.00" })
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Payout)
+                                                <div class="note" id="cmnote">The amount paid to affiliates per conversion.</div>
+                                            </section>
+                                            <section class="col col-3" id="cpercent">
+                                                @Html.LabelFor(model => model.PayoutPercent, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-money"></i>
+                                                    @Html.TextBoxFor(model => model.PayoutPercent, new { @placeholder = "0.0 %" })
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.PayoutPercent)
+                                                <div class="note" id="cpnote">The percentage of sale per conversion paid to affiliates.</div>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+
+                                }
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- END COL -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+        
+        // PAGE RELATED SCRIPTS
+        updateBreadCrumb('URL/Edit');
+
+        $('#submit_button').click(function (e) {
+            e.preventDefault();
+            var f = this.form;
+            container = $('#content');
+            $.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+            if ($(f).valid()) {
+                pajaxSubmit(f, container, '@ViewBag.hash');
+            }
+            return false; // keeps the page from not refreshing 
+        });
+
+    $('#PayoutType').change(function () {
+        Payout(this.value);
+    });
+
+    $('#RevenueType').change(function () {
+        Revenue(this.value);
+    });
+
+    Payout($('#PayoutType').val());
+    function Payout(valueSelected) {
+        switch (valueSelected) {
+            case "CPA":
+                $('#cmoney').show();
+                $('#cpercent').hide();
+                $("#cmnote").text("The amount paid to affiliates per conversion.");
+                $("#clabel").text("Cost per Conversion");
+                break;
+            case "CPS":
+                $('#cmoney').hide();
+                $('#cpercent').show();
+                $("#cmnote").text("The amount paid to affiliates per conversion.");
+                $("#clabel").text("Cost per Conversion");
+                break;
+            case "CPA_CPS":
+                $('#cmoney').show();
+                $('#cpercent').show();
+                $("#cmnote").text("The amount paid to affiliates per conversion.");
+                $("#clabel").text("Cost per Conversion");
+                break;
+            case "CPC":
+                $('#cmoney').show();
+                $('#cpercent').hide();
+                $("#cmnote").text("The amount paid to affiliates per click.");
+                $("#clabel").text("Cost per Click");
+                break;
+            default: // CPM
+                $('#cmoney').show();
+                $('#cpercent').hide();
+                $("#cmnote").text("The amount paid to affiliates per thousand impressions.");
+                $("#clabel").text("Cost per Thousand Impressions");
+                break;
+        }
+    }
+
+    Revenue($('#RevenueType').val());
+    function Revenue(valueSelected) {
+        switch (valueSelected) {
+            case "RPA":
+                $('#rmoney').show();
+                $('#rpercent').hide();
+                $("#rmnote").text("The amount paid by advertisers per conversion.");
+                $("#rlabel").text("Revenue per Conversion");
+                break;
+            case "RPS":
+                $('#rmoney').hide();
+                $('#rpercent').show();
+                $("#rmnote").text("The amount paid by advertisers per conversion.");
+                $("#rlabel").text("Revenue per Conversion");
+                break;
+            case "RPA_RPS":
+                $('#rmoney').show();
+                $('#rpercent').show();
+                $("#rmnote").text("The amount paid by advertisers per conversion.");
+                $("#rlabel").text("Revenue per Conversion");
+                break;
+            case "RPC":
+                $('#rmoney').show();
+                $('#rpercent').hide();
+                $("#rmnote").text("The amount paid by advertisers per click.");
+                $("#rlabel").text("Revenue per Click");
+                break;
+            default: // RPM
+                $('#rmoney').show();
+                $('#rpercent').hide();
+                $("#rmnote").text("The amount paid by advertisers per thousand impressions.");
+                $("#rlabel").text("Revenue per Thousand Impressions");
+                break;
+        }
+    }
+
+    /******************** Custom Validation ***************************/
+
+    jQuery.validator.addMethod('requirediftype', function (value, element, params) {
+        var propertyId = $(element).attr('data-val-requirediftype-property');
+        //get the element by id
+        var ddlValue = $('#' + propertyId).first().val();
+        var expected = $(element).attr('data-val-requirediftype-expected');
+
+        if (propertyId == "PayoutType") {
+            if (ddlValue == 'CPS' || ddlValue == 'CPA_CPS') {
+                return value; // return if value has data
+            }
+            return true;
+        }
+        else {
+            if (ddlValue == 'RPS' || ddlValue == 'RPA_RPS') {
+                return value; // return if value has data
+            }
+            return true;
+        }
+
+    }, '');
+
+    jQuery.validator.unobtrusive.adapters.add('requirediftype', {}, function (options) {
+        options.rules['requirediftype'] = true;
+        options.messages['requirediftype'] = options.message;
+    });
+
+    jQuery.validator.addMethod('requiredifnot', function (value, element, params) {
+        var propertyId = $(element).attr('data-val-requiredifnot-property');
+        //get the element by id
+        var ddlValue = $('#' + propertyId).first().val();
+        var expected = $(element).attr('data-val-requiredifnot-expected');
+
+        if (ddlValue !== expected) {
+            return value; // if value is empty or null then must return false
+        }
+
+        return true;
+
+    }, '');
+
+    jQuery.validator.unobtrusive.adapters.add('requiredifnot', {}, function (options) {
+        options.rules['requiredifnot'] = true;
+        options.messages['requiredifnot'] = options.message;
+    });
+
+    /******************** Custom Validation ***************************/
+
+</script>

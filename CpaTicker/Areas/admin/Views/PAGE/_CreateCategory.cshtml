@@ -1,0 +1,46 @@
+﻿<div id="categoryManagerContainer">
+    <div class="row" data-bind="with:currentCategory">
+        <div><span class="label">Category Name</span></div>
+        <div class="col-md-9">
+            <input type="text" id="categoryName" class="form-control" data-bind="value:Name,valueUpdate:'keyup'" />
+        </div>
+        <div class="col-md-3">
+            <input type="button" class="btn btn-primary" value="Save" data-bind="click:$parent.save" />
+            <span class="glyphicon glyphicon-time" data-bind="visible:$parent.isRequestInProgress()"></span>
+        </div>
+    </div>
+    <div class="row" style="margin-top:18px;max-height:240px;overflow:auto">
+        <table class="table table-striped table-condensed table-hover">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </tbody>
+            <tbody data-bind="foreach:categories,visible:categories().length>0">
+                <tr>
+                    <td>
+                        <span data-bind="text:Name"></span>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" data-bind="click:$parent.edit">
+                            <span class="fa fa-edit"></span>
+                        </a>
+                        <a class="btn btn-danger btn-sm" data-bind="click:$parent.remove">
+                            <span class="fa fa-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pageCategoryUrls = {
+        loadUrl: '@Url.Action("GetPageCategories","PAGE")',
+        saveUrl: '@Url.Action("SavePageCategory", "PAGE")',
+        removeUrl: '@Url.Action("RemovePageCategory", "PAGE")',
+    };
+</script>
+<script type="text/javascript" src="~/Scripts/Custom/category.js"></script>

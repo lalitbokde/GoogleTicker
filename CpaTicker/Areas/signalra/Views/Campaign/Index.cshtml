@@ -1,0 +1,292 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Campaign>
+@using CpaTicker.Areas.admin.Classes;
+
+@{
+    ViewBag.IsAdmin = Roles.IsUserInRole("Administrator");
+    Layout = null;
+    var usercampaigns = (IEnumerable<Campaign>)ViewBag.UserCampaigns;
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-bar-chart-o fa-fw"></i>
+            Campaigns
+        </h1>
+    </div>
+    @Html.Partial("_SignalR")
+    @*@Html.Partial("_Sparks")*@
+
+</div>
+
+<section id="widget-grid" class="">
+    <div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="wid-id-0" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Campaigns</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+
+                        @*<nav class="btns">
+                                <a href="@Url.Action("create")" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Add Campaign
+                                </a>
+                            </nav>
+                            <div style="clear:right;"></div>*@
+
+                        <div class="widget-body-toolbar">
+
+
+                            <div class="row">
+                                <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4 smart-form npadding-right">
+                                    <label class="select">
+                                        @Html.DropDownList("filter", ((CampaignFilter)ViewBag.filter).ToSelectList())
+                                        <i></i>
+                                    </label>
+                                </div>
+
+                                <div class="col-xs-3 col-sm-6 col-md-8 col-lg-8 npadding-left">
+
+                                    <nav style="float:right;">
+                                        <a href="@Url.Action("create")" class="btn btn-primary">
+
+                                            <i class="fa fa-plus"></i>
+                                            <span class="atext"> Add Campaign </span>
+                                        </a>
+                                    </nav>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <table class="table table-hover ctable" id="dt_basic">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.CampaignName)</th>
+                                    <th>Id</th>
+                                    @*<th>Type</th>*@
+                                    <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">@*Actions*@</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.CampaignName
+                                        </td>
+                                        <td>
+                                            @item.CampaignId
+                                        </td>
+                                        @* <td>
+                                                @item.RevenueType
+                                            </td>*@
+                                        <td style="text-align:center;">
+
+                                            @if ((CampaignFilter)ViewBag.filter == CampaignFilter.all
+                                                    &&
+                                                    !usercampaigns.Any(c => c.Id == item.Id))
+                                            {
+                                                // this is when the campaign is hidden for this user
+                                                <div class="camp-status blocked">
+                                                    Blocked
+                                                </div>
+
+                                            }
+                                            else
+                                            {
+
+                                                <div class="camp-status @item.Status.ToString().ToLower()">
+                                                    @item.Status
+                                                </div>
+                                            }
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <nav>
+                                                @if (ViewBag.IsAdmin)
+                                                {
+                                                    @Html.ActionLink("Edit", "edit", new { id = item.CampaignId }) @:|
+                                                    }
+                                                @Html.ActionLink("URLs", "index", "url", new { id = item.Id }, null) |
+                                                @Html.ActionLink("Actions", "index", "action", new { id = item.Id }, null) |
+                                                @Html.ActionLink("Affiliate Payouts", "overridepayout", new { id = item.Id }) |
+                                                @Html.ActionLink("Generate Links", "details", new { id = item.CampaignId })
+                                            </nav>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+
+
+        </article>
+        <!-- WIDGET END -->
+    </div>
+</section>
+<input type="hidden" id="testlbl" value="0" />
+@*<script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+        });
+
+    </script>*@
+
+<script type="text/javascript">
+
+    var count = 0;
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Campaigns');
+
+
+    //skmodel = new Spark();
+    //ko.cleanNode(document.getElementById("sparks"));
+    //ko.applyBindings(skmodel, document.getElementById("sparks"));
+    //setSparkTimer(skmodel);
+   
+    //var job = $.connection.trickerHub;
+    ////debugger;
+
+    //job.client.displaySparks = function () {
+    //    count = count + 1;
+    //    $("#testlbl").val(count);
+
+    //    ko.cleanNode(document.getElementById("sparks"));
+    //    ko.applyBindings(skmodel, document.getElementById("sparks"));
+    //    skmodel.loadData();
+    //    NotifySparks();
+    //    // table.ajax.reload();
+    //};
+
+    //if ($.connection.hub.state == 3 || $.connection.hub.state == 4) {
+    //    // Start the connection
+    //    $.connection.hub.start();
+    //}
+    //NotifySparks();
+    //debugger;
+    //job.client.
+
+    $("#filter").change(function () {
+
+        // refresh the content with the filter campaigns
+        //$('#content').load('@Url.Action("index", "campaign")?filter=' + this.value);
+
+        var cpurl = '@Url.Action("index", "campaign")?filter=' + this.value;
+        $.ajax({
+            type: "GET",
+            url: cpurl,
+            dataType: 'html',
+            cache: false,
+            success: function (data) {
+
+                //container.html(data);
+
+                if (checkReportUrl(cpurl)) {
+                    $('#content').html(data);
+                }
+
+            },
+            async: true
+        });
+
+    });
+
+
+    // load related plugins
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+
+        /*
+		 * BASIC
+		 */
+        $('#dt_basic').dataTable({
+            //"sPaginationType": "bootstrap_full",
+
+            "bFilter": false, // disable filter
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+
+                { 'bSortable': false, 'aTargets': [3] },
+	            { "bSearchable": false, "aTargets": [3] }
+            ],
+            "aaSorting": [[1, "asc"]]
+             , "sDom": "" +
+					"t"
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+
+        });
+    }
+
+    @*function NotifySparks() {
+        //alert();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CallNotify","Campaign")',
+            //data: "{ID:'" + ID + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+
+            }
+        });
+    }*@
+
+</script>

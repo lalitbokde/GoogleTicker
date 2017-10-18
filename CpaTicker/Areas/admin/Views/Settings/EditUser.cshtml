@@ -1,0 +1,203 @@
+﻿@model CpaTicker.Areas.admin.Controllers.EditUserVM
+
+@{
+    ViewBag.Title = "Edit User";
+    ViewBag.hash = Url.Action("Index");
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Edit User</div>
+
+                <!-- NEW COL START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @using (Html.BeginForm("EditUser", "settings", FormMethod.Post, new { @id = "edituser", @class = "smart-form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(md => md.UserId)
+
+                                    <footer>
+                                        <nav>
+                                            <button class="btn btn-primary" type="submit" id="submit_button"><i class="fa fa-save"></i> Save</button>
+                                            <button class="btn btn-default" onclick="window.history.back();" type="button">Back </button>
+                                        </nav>
+                                    </footer>
+
+                                    <div class="fieldset">
+
+                                        <div class="row">
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.UserName, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-lock"></i>
+                                                    @Html.EditorFor(model => model.UserName)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.UserName)
+                                            </section>
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.Email, new { @class = "label" })
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    @Html.EditorFor(model => model.Email)
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Email)
+                                            </section>
+
+                                            <section class="col col-6">
+                                                @Html.LabelFor(model => model.AffiliateId, new { @class = "label" })
+                                                <label class="select">
+                                                    <i></i>
+                                                    <select name="AffiliateId" id="AffiliateId" class="select2" multiple>
+                                                        @foreach (var item in ViewBag.CustomerAffiliates)
+                                                        {
+                                                            <option value="@item.Value" @if (item.Selected) { @: selected
+                                                                                                                                                                                                                                                                                                                }>
+                                                                @item.Text
+                                                            </option>
+                                                        }
+                                                    </select>
+
+
+
+                                                    @* @Html.DropDownListFor(model => model.AffiliateId, new SelectList(Model.AffiliateList, "AffiliateId", "Company"), "")*@
+                                                </label>
+                                                <div class="note">
+                                                    <i class="fa fa-info"></i>
+                                                    If the user is set to not have an affiliate then he becomes admin with all the privileges.
+                                                </div>
+                                            </section>
+
+                                            <section class="col col-4">
+                                                <label class="label">&nbsp;</label>
+                                                <label class="toggle">
+                                                    <input type="checkbox" id="api" name="hasapi" @( Model.HasAPIKey ? "checked" : string.Empty)>
+                                                    <i data-swchoff-text="NO" data-swchon-text="YES"></i>
+                                                    HasAPIKey
+                                                </label>
+                                                <label class="checkbox" id="send" style="display: none;">
+                                                    <input type="checkbox" name="send" @(Model.SendEmail ? "checked" : string.Empty)>
+                                                    <i></i>
+                                                    Send the key by e-mail
+                                                </label>
+                                            </section>
+                                        </div>
+
+                                    </div>
+
+                                }
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- END COL -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script type="text/javascript">
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Settings/Edit User');
+
+    container = $('#content');
+    $.validator.unobtrusive.parse(container);
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+        var ListAff = "";
+        $('#AffiliateId :selected').each(function (i, selected) {
+            ListAff += '&aff=' + $(selected).val();
+        });
+        var f = this.form;
+        //container = $('#content');
+        //$.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+        if ($(f).valid()) {
+            pajaxSubmitUsers(f, container, '@ViewBag.hash', ListAff);
+        }
+        return false; // keeps the page from not refreshing
+    });
+
+    $('#api').change(function (e) {
+        if ($(this).is(":checked")) {
+            $('#send').fadeIn();
+        }
+        else {
+            $('#send').fadeOut();
+        }
+
+    });
+    function pajaxSubmitUsers(f, container, hash, ListAff) {
+        var URLParam = $(f).serialize() + ListAff
+
+        $.ajax({
+            type: "POST",
+            url: f.action,
+            data: URLParam,
+
+            beforeSend: function () {
+                // cog placed
+                //var ttop = updateSparkPos() + 20;
+                //container.html('<h1><i class="fa fa-cog fa-spin" style="position:absolute;margin-top:' + ttop + 'px;"></i> Loading...</h1>');
+                container.html('<h1><i class="fa fa-cog fa-spin"></i> Loading...</h1>');
+            },
+            success: function (data) {
+
+                if ($(data).find('#' + f.id).length) {
+                    // do nothing
+                }
+                else {
+                    // update hash and avoid a third request since i already have 2 request
+                    // i'm updating the content!
+                    doAjax = 0;
+                    //console.log(url);
+                    window.location.hash = hash;
+                }
+                container.css({
+                    opacity: '0.0'
+                }).html(data).delay(50).animate({
+                    opacity: '1.0'
+                }, 300);
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Page not found.</h4>');
+            }
+        });
+
+
+    }
+</script>

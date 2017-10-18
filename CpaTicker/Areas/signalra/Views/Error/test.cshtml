@@ -1,0 +1,161 @@
+﻿@*@model IEnumerable<CpaTicker.Areas.admin.Models.EditTickerViewModel>*@
+
+
+@{
+    ViewBag.Title = "test";
+}
+
+<section id="widget-grid" class="">
+
+
+	<!-- START ROW -->
+
+	<div class="row">
+
+		<!-- NEW COL START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+					<h2>Edit Conversion Pixel</h2>				
+					
+				</header>
+
+				<!-- widget div-->
+				<div>
+					
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+                        @*<div class="play">Play</div>*@
+                        <button class="btn btn-primary play" type="button"> Play  </button>
+                        <button class="btn btn-primary stop" type="button"> Stop  </button>
+                       @* <div class="pause">Stop</div>*@
+                            
+                            <table class="table">
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Text</th>
+                                    <th>Selected</th>
+                                </tr>
+                                @foreach (var item in ViewBag.Affiliates)
+	                            {
+		                            <tr>
+                                        <td>@item.Value</td>
+                                        <td>@item.Text</td>
+                                        <td>@item.Selected</td>
+		                            </tr>
+	                            }
+                                <tr>
+                                    <td><div style="word-break:break-all">dsdsdsdsdsddsdsdsdsdsdsadasdasdasdaddsdsdsdsdsddsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadasadasdasdasdadadsdsdsdsdsddsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadasadasdasdasdadadsdsdsdsdsddsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadasadasdasdasdadaadsdsdsdsdsdsadasdasdasdadadsdsdsdsdsdsadasdasdasdadasadasdasdasdada</div></td>
+                                    <td>dsd</td>
+                                    <td>dsd</td>
+                                </tr>
+                            </table>
+                        
+
+					</div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+			
+			
+
+		</article>
+		<!-- END COL -->
+
+	</div>
+
+	<!-- END ROW -->
+
+</section>
+
+
+
+<script type="text/javascript">
+
+    pageSetUp();
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    @*var array = @Html.Raw(
+        Json.Encode(
+            ((IEnumerable<CpaTicker.Areas.admin.Classes.CustomFieldValue>)ViewBag.array)
+             .Select(f => new
+             {
+                 fieldname = f.CustomField.FieldName,
+                 value = f.Value
+             })
+        )
+    );
+    var result = '';
+    $.each(array, function(i, value) {
+        result += '&' + array[i].fieldname + '=' + array[i].value ; 
+    });*@
+
+    //alert(array[0].fieldname);
+
+    //var s;
+    //function f() {
+    //    return 5;
+    //}
+    //s = f();
+
+    //var s;
+    //s = function () {
+    //    return 5;
+    //}
+    //s = f();
+
+
+    @*var cfield = cfields();
+    function cfields()
+    {
+        var array = @Html.Raw(
+                        Json.Encode(
+                            ((IEnumerable<CpaTicker.Areas.admin.Classes.CustomFieldValue>)ViewBag.array)
+                             .Select(f => new
+                             {
+                                 fieldname = f.CustomField.FieldName,
+                                 value = f.Value
+                             })
+                        )
+                    );
+        var result = '';
+        $.each(array, function(i, value) {
+            result += '&' + array[i].fieldname + '=' + array[i].value ; 
+        });
+        return result;
+    }
+
+    alert(cfield);*@
+
+    $(document).ready(function () {
+        @*var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '@Url.Content("~/Content/sound/smallbox.mp3")');
+        audioElement.setAttribute('autoplay', 'autoplay');
+        //audioElement.load()
+
+        $.get();
+
+        //audioElement.addEventListener("load", function () {
+        //    audioElement.play();
+        //}, true);
+
+        $('.play').click(function () {
+            //alert('here');
+            audioElement.play();
+        });
+
+        $('.pause').click(function () {
+            audioElement.pause();
+        });*@
+    });
+
+</script>

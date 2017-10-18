@@ -1,0 +1,257 @@
+﻿<section id="filter">
+    <label class="label Statisticslbl">Filter:</label>
+    <div class="row">
+        <section class="col col-1" id="chkcampaignsection">
+            @Html.CheckBoxSmart("campaignfilter", "Campaign", (bool)ViewBag.SelectedCampaignId, new { @class = "filter" })
+        </section>
+        <section class="col col-6" id="cpfilter" @if (!(bool)ViewBag.SelectedCampaignId) { @: style="display:none"
+                                                                                                                                               }>
+            <label class="select">
+                @*@Html.DropDownList("CampaignId", new SelectList(ViewBag.CustomerCampaigns, "Value", "Text", ViewBag.SelectedCampaignId), new { @class = "select2" })*@
+                @*<i></i>*@
+
+
+                <select name="CampaignId" id="CampaignId" class="select2" multiple>
+                    @foreach (var item in ViewBag.CustomerCampaigns)
+                    {
+                        <option value="@item.Value" @if (item.Selected) { @: selected
+                                                                                                                                                                                                                                                            }>
+                            @item.Text
+                        </option>
+                    }
+                </select>
+
+
+
+            </label>
+        </section>
+    </div>
+
+    @*@if (ViewBag.IsAdmin)
+        {*@
+    <div class="row">
+        <section class="col col-1" id="chkaffiliatesection">
+            @Html.CheckBoxSmart("affiliatefilter", "Affiliate", (bool)ViewBag.SelectedAffiliateId, new { @class = "filter" })
+        </section>
+        <div id="affilter" class="col col-6">
+
+            <section>
+
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="showall" id="showall1" @if ((bool)ViewBag.ShowAll) { @: checked
+                                                                                             	                        }>
+                        <i></i>Show All
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="showall" id="showall2" @if (!(bool)ViewBag.ShowAll) { @: checked
+                                                                                             	                        }>
+                        <i></i>Show Active Only
+                    </label>
+                </div>
+
+                @*<label class="select">
+                        @Html.DropDownList("AffiliateId", new SelectList(ViewBag.CustomerAffiliates, "Value", "Text", ViewBag.SelectedAffiliateId))
+                        <i></i>
+                    </label>*@
+
+                <label class="select">
+                    @*@Html.DropDownList("AffiliateId", new SelectList(ViewBag.CustomerAffiliates, "Value", "Text"), new { @multiple = "multiple", @class = "select2" })*@
+                    <select name="AffiliateId" id="AffiliateId" class="select2" multiple>
+                        @foreach (var item in ViewBag.CustomerAffiliates)
+                        {
+                            <option value="@item.Value" @if (item.Selected) { @: selected
+                                                                                                                                                                    }>
+                                @item.Text
+                            </option>
+                        }
+                    </select>
+                </label>
+
+            </section>
+
+        </div>
+    </div>
+    @if (ViewBag.IsAdmin)
+    {
+        <div class="row" id="countryfilter">
+            <section class="col col-1">
+                @Html.CheckBoxSmart("countriesfilter", "Country", ((int?)ViewBag.SelectedCountryId).HasValue, new { @class = "filter" })
+            </section>
+            <section class="col col-6" id="ctfilter" @if (ViewBag.SelectedCountryId == null) { @: style="display:none"
+                                                                                                                                                           }>
+                <label class="select">
+                    <select class="select2" name="CountryId" id="CountryId" multiple>
+                        <option value="" data-abbr=""></option>
+                        @foreach (var item in ViewBag.AffiliateCountries)
+                        {
+                            <option value="@item.Id" data-abbr="@item.CountryAbbreviation" @(item.Id == ViewBag.SelectedCountryId ? "selected" : string.Empty)>@item.Name</option>
+                        }
+                    </select>
+
+                    @* @Html.DropDownList("CountryId", new SelectList(ViewBag.AffiliateCountries, "Id", "Name", ViewBag.SelectedCountryId), "", new { @class = "select2" })*@
+                    @*<i></i>*@
+                </label>
+            </section>
+        </div>
+    }
+
+</section>
+
+<script type="text/javascript">
+
+    IsAffiliteChecked();
+
+    function IsAffiliteChecked() {
+        var affilter = $("#affilter");
+        if ($('#affiliatefilter').is(':checked')) {
+            affilter.show();
+        }
+        else {
+            affilter.hide();
+        }
+    }
+
+    function GetCalculation() {
+        var aux = 0;
+
+        if ($('#CR').is(':checked'))
+            aux = 1;
+        if ($('#CPC').is(':checked'))
+            aux = aux + 2;
+        if ($('#RPC').is(':checked'))
+            aux = aux + 4;
+
+        return aux;
+    }
+
+    //showall affiliate changes
+    $("input[name=showall]:radio").change(function () {
+        //console.log($(this).attr('id'));
+        //$this = $(this);
+        if ($(this).attr('id') == "showall1") {
+
+            // if checked load all affiliates
+            loadAllAffiliates(true);
+        }
+        else {
+            // if checked load partial affiliates
+            loadAllAffiliates(false);
+        }
+    });
+
+
+
+    function loadAllAffiliates(all) {
+        $.getJSON('@Url.Action("allaffiliates", "helper")/' + all, function (data) {
+
+            alist = $("#AffiliateId");
+            alist.select2('val', '');
+            alist.empty();
+            //console.log(data);
+            $.each(data, function (i, obj) {
+                alist.append($("<option />").val(obj.AffiliateId).text(obj.Company + ' (Affiliate ID: ' + obj.AffiliateId + ')'));
+            });
+
+        });
+    }
+
+
+    function getUrlFilterPart() {
+        var result = '';
+        if ($('#campaignfilter').is(':checked')) {
+            $('#CampaignId :selected').each(function (i, selected) {
+                result += '&cp=' + $(selected).val();
+            });
+        }
+        if ($('#affiliatefilter').is(':checked')) {
+            //result += '&af=' + $("#AffiliateId").val();
+            result += '&showall=' + $('#showall1').is(':checked');
+            $('#AffiliateId :selected').each(function (i, selected) {
+                result += '&af=' + $(selected).val();
+            });
+        }
+        if ($('#countriesfilter').is(':checked')) {
+            $('#CountryId :selected').each(function (i, selected) {
+                result += '&ct=' + $(selected).val();
+                //result += '&ct=' + $("#CountryId").val();
+            });
+           
+        }
+
+
+        return result;
+    }
+
+
+
+    $('#countriesfilter').change(function () {
+        if (this.checked)
+            $("#ctfilter").show();  // checked
+        else
+            $("#ctfilter").hide();
+        setfilter();
+    });
+
+    $('#campaignfilter').click(function () {
+        if (this.checked)
+            $("#cpfilter").show();  // checked
+        else
+            $("#cpfilter").hide();
+        setfilter();
+    });
+
+    $('#affiliatefilter').click(function () {
+        if (this.checked)
+            $("#affilter").show();  // checked
+        else
+            $("#affilter").hide();
+        setfilter();
+    });
+
+
+
+    var setfilter = function () {
+
+        var title = "";
+
+        if ($('#campaignfilter').is(":checked")) {
+            //title += ' - Campaign, ' + $('#CampaignId :selected').val();
+            title += ' - Campaign, ' + $("#CampaignId option:selected").map(function () { return this.value }).get().join(", ");
+        }
+
+        if ($('#affiliatefilter').is(":checked")) {
+            title += ' - Affiliate, ' + $("#AffiliateId option:selected").map(function () { return this.value }).get().join(", ");
+        }
+
+        if ($('#countriesfilter').is(":checked")) {
+            //title += ' - Country, ' + $('#CountryId :selected').data("abbr");
+            title += ' - Country, ' + $("#CountryId option:selected").map(function () { return this.value }).get().join(", ");
+        }
+
+        if (title.length > 0) {
+            title = "Active Filters:" + title.slice(2);
+        }
+
+        $("#filtertitle").text(title);
+    };
+
+    $(function () {
+
+        $('#filter select').change(function () {
+            $('.dataTables_overlay').show();
+            setfilter();
+            refreshTable();
+        });
+
+        $('.filter').change(function () {
+            $('.dataTables_overlay').show();
+            refreshTable();
+        });
+
+
+    });
+
+
+
+</script>

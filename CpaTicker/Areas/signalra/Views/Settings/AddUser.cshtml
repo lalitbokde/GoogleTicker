@@ -1,0 +1,197 @@
+﻿@model CpaTicker.Areas.admin.Controllers.AddUserModel
+
+@{
+    ViewBag.hash = Url.Action("Index");
+    Layout = null;
+    
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-wrench fa-fw "></i>
+            @Html.ActionLink("Settings", "index", "settings")
+            <span>
+                >
+                Create User
+            </span>
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+
+	<!-- START ROW -->
+
+	<div class="row">
+
+		<!-- NEW COL START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+					<h2>Add User</h2>				
+				</header>
+
+				<!-- widget div-->
+				<div>
+					
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+						
+					</div>
+					<!-- end widget edit box -->
+					
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+                        @using (Html.BeginForm("adduser", "settings", FormMethod.Post, new { @id = "adduser", @class = "smart-form" }))
+                        { 
+                            @*@Html.AntiForgeryToken()*@
+                            @Html.ValidationSummary(true)
+
+                            <footer>
+                                <nav>
+                                    <button class="btn btn-primary" type="submit" id="submit_button"><i class="fa fa-check"></i> Create User</button>
+                                    @*@Html.ActionLink("Back", "index", null, new { @class = "btn btn-default", @id = "back_button" })*@
+                                    <button class="btn btn-default" type="button" onclick="window.history.back();"> Back </button>
+                                </nav>
+                            </footer>
+                            
+                            <div class="fieldset">
+                                <div class="row">
+									<section class="col col-6">
+                                        @Html.LabelFor(model => model.UserName, new { @class="label"})
+										<label class="input"> <i class="icon-append fa fa-user"></i>
+                                            @Html.EditorFor(model => model.UserName)
+										</label>
+                                        @Html.ValidationMessageFor(model => model.UserName)
+									</section>
+                                    <section class="col col-6">
+                                        @Html.LabelFor(model => model.AffiliateList, new { @class = "label" })
+                                        <label class="select">
+                                            <i></i>
+                                            @Html.DropDownListFor(model => model.SelectedAffiliateId, new SelectList(Model.AffiliateList, "AffiliateId", "Company"), "")
+                                        </label>
+                                        <div class="note">
+                                            <i class="fa fa-info"></i>
+                                            If no affiliate then this user will be considered as admin.
+                                        </div>
+                                    </section>
+									
+                                </div>
+                                <div class="row">
+									<section class="col col-6">
+                                        @Html.LabelFor(model => model.Password, new { @class="label"})
+										<label class="input"> <i class="icon-append fa fa-lock"></i>
+                                            @Html.EditorFor(model => model.Password)
+										</label>
+                                        @Html.ValidationMessageFor(model => model.Password)
+									</section>
+                                   <section class="col col-6">
+                                        @Html.LabelFor(model => model.ConfirmPassword, new { @class="label"})
+										<label class="input"> <i class="icon-append fa fa-lock"></i>
+                                            @Html.EditorFor(model => model.ConfirmPassword)
+										</label>
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+									</section>
+                                </div>
+
+                                <div class="row">
+
+                                    <section class="col col-6">
+                                        @Html.LabelFor(model => model.Email, new { @class="label"})
+										<label class="input"> <i class="icon-append fa fa-envelope"></i>
+                                            @Html.EditorFor(model => model.Email)
+										</label>
+                                        @Html.ValidationMessageFor(model => model.Email)
+									</section>
+                                    
+                                    <section class="col col-4">
+                                        <label class="label">&nbsp;</label>
+                                        <label class="toggle">
+                                             <input type="checkbox" id="api" name="hasapi" @(Model.HasAPIKey? "checked" : string.Empty)>
+                                            <i data-swchoff-text="NO" data-swchon-text="YES"></i>
+                                            Issue API key
+                                        </label>
+
+                                        
+
+                                        <div class="note">
+
+                                            
+                                            <label class="checkbox" id="send" @if(!Model.HasAPIKey){
+                                                                                  @:style="display:none;"
+                                                                              } >
+                                                 <input type="checkbox" name="send" @(Model.SendEmail? "checked" : string.Empty)>
+                                                 <i></i>
+                                                 Send the key by e-mail
+                                             </label>
+
+                                            <i class="fa fa-info"></i>
+                                            I understand I will be billed $29.99 / Month
+                                        </div>
+                                    </section>
+                                   
+                                </div>
+
+                            </div>
+                        
+                        }
+
+					</div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- END COL -->
+
+	</div>
+
+	<!-- END ROW -->
+
+</section>
+
+<script type="text/javascript">
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+        
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Settings/Create User');
+
+    container = $('#content');
+    $.validator.unobtrusive.parse(container);
+
+    $('#submit_button').click(function (e) {
+        e.preventDefault();
+        var f = this.form;
+        container = $('#content');
+        //$.validator.unobtrusive.parse($(f)); // this may be placed better! OJO
+        if ($(f).valid()) {
+            pajaxSubmit(f, container, '@ViewBag.hash');
+        }
+        return false; // keeps the page from not refreshing 
+    });
+
+    $('#api').change(function (e) {
+        
+        if ($(this).is(":checked")) {
+            $('#send').fadeIn();
+        }
+        else {
+            $('#send').fadeOut();
+        }
+
+    });
+
+</script>

@@ -1,0 +1,415 @@
+﻿@model CpaTicker.Areas.admin.Models.ConversionStatusViewModel
+@using CpaTicker.Areas.admin.Models
+@{
+    
+    Layout = null;  
+    
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-table"></i>
+            Conversion Status Report
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+    <div class="row">
+
+         <!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-togglebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Conversion Status Report <span id="filtertitle"></span></h2>
+                    <div class="widget-toolbar"> 
+                        <div class="jarviswidget-ctrls">
+                            <a href="javascript:void(0);" class="txt-color-white" id="ropts" data-placement="bottom" title="" rel="tooltip" data-original-title="Report Options">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </div>
+                    </div>
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+                        <div class="smart-form">
+						    
+							<div class="row">
+                                <div class="fieldset">
+
+                                    <section>
+                                        <label class="label">Statistics:</label>
+                                        <div class="inline-group">
+
+        @Html.CheckBoxSmart("GrossConversions", "Gross Conversions", Model.StatisticsEnum.HasFlag(StatisticsEnum.GrossConversions), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.GrossConversions })
+        @Html.CheckBoxSmart("RejectedConversions", "Rejected Conversions", Model.StatisticsEnum.HasFlag(StatisticsEnum.RejectedConversions), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.RejectedConversions })
+        @Html.CheckBoxSmart("ApprovedConversions", "Approved Conversions", Model.StatisticsEnum.HasFlag(StatisticsEnum.ApprovedConversions), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.ApprovedConversions })
+        
+                                            @Html.CheckBoxSmart("ApprovedPercent", "Approved Percent", Model.StatisticsEnum.HasFlag(StatisticsEnum.ApprovedPercent), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.ApprovedPercent })
+                                            @Html.CheckBoxSmart("RejectedPercent", "Rejected Percent", Model.StatisticsEnum.HasFlag(StatisticsEnum.RejectedPercent), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.RejectedPercent })
+        
+                                            @Html.CheckBoxSmart("NetPayout", "Net Payout", Model.StatisticsEnum.HasFlag(StatisticsEnum.NetPayout), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.NetPayout })
+        
+        @Html.CheckBoxSmart("NetRevenue", "Net Revenue", Model.StatisticsEnum.HasFlag(StatisticsEnum.NetRevenue), new { @class = "toggle stat", @data_value = (long)StatisticsEnum.NetRevenue })
+        @Html.CheckBoxSmart("Country", "Country", Model.StatisticsEnum.HasFlag(StatisticsEnum.Country), new { @class = " toggle stat", @data_value = (long)StatisticsEnum.Country })
+
+
+                                        </div>
+                                    </section>
+                                    @Html.Partial("_Sound")
+                                    @Html.Partial("_Filter")
+                                    <section class="col-sm-6 col-md-6">
+                                        <label class="label">TimeZone:</label>
+                                        <label class="select">
+                                            <i></i>
+                                            @Html.DropDownList("rzone", new SelectList(TimeZoneInfo.GetSystemTimeZones(), "Id", "DisplayName", ViewBag.TimeZone), new { @class = "select2" })
+                                        </label>
+                                    </section>
+
+                                </div>
+							</div>
+                           
+                        </div>
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+                        
+                        <div class="widget-body-toolbar clearfix">
+                            @Html.Partial("_ViewData")
+                        </div>
+
+                        <table class="table table-striped rtable display wrap" width="100%" id="rtable">
+                            <thead>
+                                <tr>
+                                    <th class="all">Campaign</th>
+                                    <th class="all">Affiliate</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.Country)? "desktop" : "never")" data-class="desktop">Country</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.GrossConversions)? "desktop" : "never")" data-class="desktop">Gross Conversions</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.RejectedConversions)? "desktop" : "never")" data-class="desktop">Rejected Conversions</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.ApprovedConversions)? "desktop" : "never")" data-class="desktop">Approved Conversions</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.RejectedPercent)? "desktop" : "never")" data-class="desktop">Rejected Percent</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.ApprovedPercent)? "desktop" : "never")" data-class="desktop">Approved Percent</th>
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.NetPayout)? "min-tablet-l" : "never")" data-class="min-tablet-l">Net Payout</th>                                    
+                                    <th class="@(Model.StatisticsEnum.HasFlag(StatisticsEnum.NetRevenue)? "min-tablet-l" : "never")" data-class="min-tablet-l">Net Revenue</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                            </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Campaign</th>
+                                        <th>Affiliate</th>
+                                        <th>Country</th>
+                                        <th>Gross Conversions</th>
+                                        <th>Rejected Conversions</th>
+                                        <th>Approved Conversions</th>
+                                        <th>Rejected Percent</th>
+                                        <th>Approved Percent</th>
+                                        <th>Net Payout</th>                                       
+                                        <th>Net Revenue</th>                                       
+                                    </tr>
+                                </tfoot>
+                        </table>
+
+                            
+						    
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+			
+
+		</article>
+		<!-- WIDGET END -->
+
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+    //var LocalCheck = localStorage.getItem('hourlyreprt');
+    //if (LocalCheck == "0") {
+    //    NotifyHourly();
+    //    localStorage.setItem('hourlyreprt', '1');
+    //}
+
+    NotifyConversionStatus();
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Conversion Status Report');
+    var table = null;
+    loadDataTables();
+
+    var getURL = function (url) {
+        return url + '?timezone=' + encodeURIComponent($('#rzone').val()) +
+                 '&viewdata=' + encodeURIComponent($('#selectedview').val()) +
+                 '&fromdate=' + encodeURIComponent($('#fromdate').val()) +
+                 '&todate=' + encodeURIComponent($('#todate').val()) +
+                 '&dataview=' + getDataView() + additionalData() +
+                getUrlFilterPart();
+    };
+
+    var additionalData = function () {
+        var sbids = '';
+
+        $(".sbid").filter(':checked').each(function () {
+            sbids += "&" + this.id + "="
+        });
+
+        return sbids;
+    };
+
+    var getDataView = function () {
+
+        var result = 0;
+
+        $('.stat').filter(':checked').each(function () {
+            result += $(this).data("value");
+        });
+        return result;
+
+    };
+
+    function runDataTables() {
+
+        oldjson = null;
+        compare = false;
+
+        apiurl = '/api/reports/conversionstatus';
+        reporturl = '@Url.Action("conversionstatus")';
+
+        table = $('#rtable').DataTable({
+            "ajax": {
+                "url": getURL(apiurl),
+                "dataSrc": ""
+
+            },
+            responsive: true,
+            "iDisplayLength": 25,
+            "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25, 50, 100, 500, 1000, "All"]],
+            "deferRender": true,
+            "autoWidth": false, // if true it doesn't get 100%
+            "initComplete": function (settings, json) { // just called once
+                oldjson = json;
+                oldfilter = getUrlFilterPart();
+                compare = true;
+
+            },
+            "bFilter": false,
+            "columns": [
+                {
+                    data: null,
+                    name: "Campaign",
+                    render: function (data, type, full, meta) {
+                        return '<a href="/admin/campaign/details/' + data.CampaignId + '">' + data.CampaignId + ' - ' + data.CampaignName + '</a>';
+                    }
+                },
+                {
+                    data: null,
+                    name: "Affiliate",
+                    render: function (data, type, full, meta) {
+                        return '<a href="/admin/affiliate/details/' + data.AffiliateId + '">' + data.AffiliateId + ' - ' + data.Company + '</a>';
+                    }
+                },             
+                {
+                    data: null,
+                    name: "Country",
+                    render: function (data, type, full, meta) {
+                        if (data.Country === undefined) {
+                            return '';
+                        }
+                        return data.Country;
+                    }
+                },
+                {
+                    data: "GrossConversions",
+                    name: "GrossConversions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].GrossConversions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: "RejectedConversions",
+                    name: "RejectedConversions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].RejectedConversions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: "ApprovedConversions",
+                    name: "ApprovedConversions",
+                    render: function (data, type, full, meta) {
+
+                        if (compare && oldjson != null && oldjson[meta.row] != undefined && data > oldjson[meta.row].ApprovedConversions) {
+                            return '<span class="highlight">' + data + '</span>';
+                        }
+
+                        return data;
+                    }
+                },
+                {
+                    data: null, 
+                    name: "RejectedPercent",
+                    render: function (data, type, full, meta) {
+
+                        if (data.GrossConversions == 0) {
+                            return '0.00%';
+                        }
+                        return ((data.RejectedConversions / data.GrossConversions) * 100).toFixed(2) + '%';
+                    }
+                },
+                {
+                    data: null,
+                    name: "ApprovedPercent",
+                    render: function (data, type, full, meta) {
+                        if (data.GrossConversions == 0) {
+                            return '0.00%';
+                        }
+                        return ((data.ApprovedConversions / data.GrossConversions) * 100).toFixed(2) + '%';
+                    }
+                },
+                {
+                    data: "NetPayout",
+                    name: "NetPayout",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                },
+                {
+                    data: "NetRevenue",
+                    name: "NetRevenue",
+                    render: function (data, type, full, meta) {
+                        return '$' + data.toFixed(2);
+                    }
+                }
+
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+
+                var api = this.api();
+                if (data.length > 0) {
+                    //if (end > start) {
+
+                    var setfooter = function (name, formatter) {
+                        // Total over all pages
+                        total = api
+                            .column(name + ':name')
+                            .data()
+                            .reduce(function (a, b) {
+                                return a + b;
+                            });
+
+                        // Update footer
+                        ftotal = total;
+                        if (formatter) {
+                            ftotal = formatter(total);
+                        }
+                        $(api.column(name + ':name').footer()).html(ftotal);
+
+                        return total;
+                    }
+
+                    var priceformatter = function (val) {
+                        return '$' + val.toFixed(2);
+                    }
+
+                    var totalGrossConversions = setfooter("GrossConversions");
+                    var totalApprovedConversions = setfooter("ApprovedConversions");
+                    var totalRejectedConversions = setfooter("RejectedConversions");
+                    var totalNetPayout = setfooter("NetPayout", priceformatter);
+                    var totalNetRevenue = setfooter("NetRevenue", priceformatter);
+
+                    var ap = totalGrossConversions == 0 ? (0 * 100).toFixed(2) : ((totalApprovedConversions / totalGrossConversions) * 100).toFixed(2);
+                    var rp = totalGrossConversions == 0 ? (0 * 100).toFixed(2) : ((totalRejectedConversions / totalGrossConversions) * 100).toFixed(2);
+                                                            
+                    $(api.column('RejectedPercent:name').footer()).html(rp + '%');
+                    $(api.column('ApprovedPercent:name').footer()).html(ap + '%');
+                   
+                }
+                else {
+
+                    // clear all tfoot
+                    api.columns().eq(0).each(function (idx) {
+                        var column = api.column(idx);
+                        var name = $(column.header()).html();
+
+                        if (idx == 0)
+                        { $(column.footer()).html("Totals"); }
+                        else { $(column.footer()).html(""); }
+                    });
+                }
+            }
+
+        });
+
+
+        $('#run').click(function (e) {
+            e.preventDefault();
+            window.location.hash = getURL(reporturl);
+        });
+
+        $('#export').click(function (e) {
+            e.preventDefault();
+            window.location = getURL(reporturl) + '&state=1';
+        });
+
+        $('.togglerefresh').change(function () {
+            refreshTable(this.name);
+        });
+
+        $('.toggle').change(function () {
+            updateHash(getURL(reporturl));
+            toggleColumn(this.name);
+
+            console.log(this.name);
+        });
+
+      //  setReportTimer();
+
+    }
+
+    function NotifyConversionStatus() {
+        apiurl = '/SignalRNotify/NotifyConversionStatus';
+        $.ajax({
+            type: "POST",
+            url: apiurl,
+            data: "{timezone:'" + $('#rzone').val() + "',viewdata:'" + $('#selectedview').val() + "',fromdate:'" + $('#fromdate').val() + "',todate:'" + $('#todate').val() + "',dataview:'testing'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+
+            }
+        });
+
+    }
+</script>

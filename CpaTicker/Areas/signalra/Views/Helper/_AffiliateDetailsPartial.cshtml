@@ -1,0 +1,69 @@
+﻿@model CpaTicker.Areas.admin.Classes.Affiliate
+
+<div class="widget-body-toolbar">
+<nav>
+    <p>
+        @Html.ActionLink("Edit Details", "Edit", "Affiliate", new { id=Model.AffiliateId }, new { @class = "btn btn-primary btn-sm" }) 
+        @Html.ActionLink("Change password",  "changepwd", "settings", null, new { @class = "btn btn-primary btn-sm" })
+        @if (ViewBag.User.OrderId != null)
+        {
+            @Html.ActionLink("Email API Key", "email", "settings", new { id = ViewBag.User.UserId }, new { @class = "btn btn-primary btn-sm" })
+        }
+    </p>
+</nav>
+</div>
+
+<table class="table"><tbody>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Company)</th>
+        <td>@Html.DisplayFor(model => model.Company)</td>
+    </tr>
+   <tr>
+        <th>Email</th>
+        <td>@ViewBag.User.Email</td>
+    </tr>
+    @if (ViewBag.User.OrderId != null)
+    {
+        <tr>
+            <th>APIKey</th>
+            <td>@ViewBag.User.APIKey</td>
+        </tr>
+    }
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Address1)</th>
+        <td>@Html.DisplayFor(model => model.Address1)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Address2)</th>
+        <td>@Html.DisplayFor(model => model.Address2)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <td>@Html.DisplayFor(model => model.City)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Country)</th>
+        <td>@Html.DisplayFor(model => model.Country.Name)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.State)</th>
+        <td>@Html.DisplayFor(model => model.State)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.PostalCode)</th>
+        <td>@Html.DisplayFor(model => model.PostalCode)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+        <td>@Html.DisplayFor(model => model.Phone)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Fax)</th>
+        <td>@Html.DisplayFor(model => model.Fax)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+        <td>@Html.DisplayFor(model => model.Status)</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,159 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.RedirectPAGE>
+
+@{
+    ViewBag.Title = "Redirects";
+    Layout = null;
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">PAGE <strong>@ViewBag.PAGE.Id</strong> redirects.</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                @*<div class="widget-body-toolbar">
+
+                                        <nav style="margin-left:190px;padding:1px 0px;float:right;">
+                                            <a href="@Url.Action("index", "url", new { id = ViewBag.URL.CampaignId })" class="btn btn-default">Back</a>
+                                            <a href="@Url.Action("create", new { id = ViewBag.URL.Id })" class="btn btn-primary">
+                                                <i class="fa fa-plus"></i>
+                                                Add Redirect
+                                            </a>
+                                        </nav>
+                                        <div style="clear: right;"></div>
+
+                                    </div>*@
+
+
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.RedirectPage)</th>
+                                            <th>Target Countries</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+
+                                                <td>@Html.DisplayFor(modelItem => item.RedirectPage)</td>
+                                                <td>
+
+                                                    @foreach (var country in ((IEnumerable<CpaTicker.Areas.admin.Classes.RedirectTargetPage>)ViewBag.Countries).Where(c => c.RedirectPageId == item.Id))
+                                                    {
+                                                        <span>@country.IP2Country.Name</span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <nav style="display: inline;">
+                                                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editRedirect"))
+                                                        {
+                                                            @Html.ActionLink("Edit", "edit", new { id = item.Id })@:|
+                                                    }
+
+                                                    </nav>
+                                                    @Html.ActionLink("Delete", "DeleteRedirectPage", "helper", new { id = item.Id }, new { @class = "rlink" })
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb("Redirects");
+
+    $('.rlink').click(function (e) {
+        e.preventDefault();
+        //doAjax = 0;
+        url = $(this).attr('href');
+        container = $('#content');
+        loadURL(url, container);
+        //window.location.hash = '@Url.Action("index", new { id = ViewBag.PAGE.Id })';
+    });
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false, // disable pagination
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [2] },
+                { "bSearchable": false, "aTargets": [2] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "createRedirect"))
+        {
+           <text>  $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("index", "page",null)" class="btn btn-default">Back</a><a href="@Url.Action("create", new { id = ViewBag.PAGE.Id })" class="btn btn-primary"><i class="fa fa-plus"></i> Add Redirect</a></nav></div>');</text>
+        }
+
+        else
+        {
+           <text>  $("div.toolbar").html('<div class="text-right"><nav><a href="@Url.Action("index", "page",null)" class="btn btn-default">Back</a></nav></div>');</text>
+        }
+        // custom toolbar
+
+    }
+
+</script>

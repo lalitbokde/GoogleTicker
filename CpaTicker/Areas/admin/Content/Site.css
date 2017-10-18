@@ -1,0 +1,1326 @@
+﻿body {
+    font-family: "Open Sans", Verdana, Helvetica, Sans-Serif;
+    background-color: #efefef;
+}
+
+#header {
+    background-color: #0771bc;
+    position: absolute;
+    left: -1px;
+    top: 0px;
+    width: 100%;
+    height: 50px;
+}
+
+#logo {
+    background: url('/images/cpaticker_logo_small.png');
+    position: absolute;
+    left: 27px;
+    top: 12px;
+    width: 100px;
+    height: 32px;
+}
+
+#account {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0771bc;
+    border-radius: 4px;
+    background-color: #0771bc;
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    min-width: 161px;
+    height: 60px;
+    overflow: hidden;
+}
+
+#profile_pic {
+    background-image: url("/images/profile_pic.png");
+    position: absolute;
+    right: 165px;
+    top: 13px;
+    width: 27px;
+    height: 27px;
+    z-index: 10;
+}
+
+#account_name {
+    font-size: 13px;
+    color: white;
+    line-height: 2;
+    text-align: left;
+    position: absolute;
+    right: 25px;
+    top: 4px;
+    white-space: nowrap;
+    z-index: 5;
+    font-weight: bold;
+}
+
+    #account_name li {
+        list-style: none;
+        padding: 0px;
+        position: relative;
+        top: -10px;
+    }
+
+.username {
+    color: #8fd7d4;
+    text-decoration: none;
+}
+
+#downarrow {
+    position: relative;
+    float: right;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    top: 16px;
+    right: 8px;
+}
+
+#menu_bg {
+    background-color: #0265b0;
+    position: absolute;
+    left: -1px;
+    top: 50px;
+    width: 100%;
+    height: 60px;
+    z-index: 3;
+}
+
+#menu {
+    font-size: 14px;
+    line-height: 1.625;
+    text-align: left;
+    position: absolute;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    top: 2px;
+    z-index: 10;
+}
+
+    #menu ul li {
+        float: left;
+        padding-right: 23px;
+        padding-left: 23px;
+    }
+
+        #menu ul li a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 auto;
+        }
+
+    #menu ul ul {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+.menu_highlight {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #025799;
+    border-radius: 4px;
+    background-color: #025799;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 23px;
+    padding-left: 23px;
+}
+
+#tickerContainer {
+    position: relative;
+    top: 120px;
+    width: 99%;
+    overflow: hidden;
+    padding-top: 4px;
+    height: 45px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb( 220, 220, 220 );
+    border-radius: 4px;
+    background-color: rgb( 7, 37, 60 );
+}
+
+#ticker {
+    position: absolute;
+    top: -5px;
+    white-space: nowrap;
+    height: 14px;
+}
+
+    #ticker .v {
+        font-size: 36px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #ticker .l {
+        font-size: 32px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #ticker .d {
+        color: #ccc;
+    }
+
+    #ticker .c {
+        color: #ff0;
+    }
+
+    #ticker .im {
+        color: #fff;
+    }
+
+    #ticker .cl {
+        color: #0ff;
+    }
+
+    #ticker .co {
+        color: #e80c4d;
+    }
+
+    #ticker .cs {
+        color: #dd5600;
+    }
+
+    #ticker .pf {
+        color: #669533;
+    }
+
+#controls {
+    float: left;
+    position: absolute;
+    top: 180px;
+    background-color: #0265b0;
+    border-radius: 5px;
+    height: 21px;
+    width: 48px;
+}
+
+#refresh {
+    float: left;
+    position: absolute;
+    background: url('/images/refresh.png');
+    width: 14px;
+    height: 14px;
+    top: 183px;
+    left: 15px;
+    cursor: pointer;
+}
+
+#pause {
+    float: left;
+    position: absolute;
+    background: url('/images/pause.png');
+    width: 12px;
+    height: 12px;
+    top: 184px;
+    left: 35px;
+    cursor: pointer;
+}
+
+#play {
+    float: left;
+    position: absolute;
+    background: url('/images/play.png');
+    width: 12px;
+    height: 12px;
+    top: 184px;
+    left: 35px;
+    cursor: pointer;
+}
+
+
+
+/* menu */
+#adminMenu {
+    height: 100%;
+}
+
+    #adminMenu li a {
+        text-decoration: none;
+    }
+
+    #adminMenu li {
+        height: 100%;
+        width: 150px;
+        text-align: center;
+        list-style: none;
+        white-space: nowrap;
+        float: left;
+        padding-right: 10px;
+        text-align: left;
+       
+    }
+
+    #adminMenu ul li {
+        width: 200px;
+        padding: 1px;
+        clear: both;
+        text-align: left;
+        
+    }
+
+
+    #adminMenu ul {
+        display: none;
+        background-color: #0265b0;
+        padding: 5px;
+        position: absolute;
+    }
+
+#heading {
+    display: block;
+    position: relative;
+    font-size: 22px;
+    color: #494949;
+    font-weight: 600;
+    top: 150px;
+}
+
+#breadcrumbs {
+    background: #e3e3e3;
+    width: 98%;
+    border-radius: 5px;
+    display: block;
+    position: relative;
+    font-size: 11px;
+    top: 160px;
+    padding: 10px;
+}
+
+#maincontent {
+    position: relative;
+    top: 180px;
+}
+
+#dailychart {
+    position: relative;
+    top: 190px;
+    background: #fff;
+    float: left;
+    border-radius: 4px;
+    width: 95%;
+    height: 250px;
+    left: 15px;
+    border-style: double;
+    border-color: rgba(0,0,0,0.05);
+    border-width: 10px;
+}
+
+#grossincome {
+    position: relative;
+    top: 190px;
+    background: #fff;
+    float: left;
+    border-radius: 4px;
+    width: 95%;
+    height: 250px;
+    left: 15px;
+    border-style: double;
+    border-color: rgba(0,0,0,0.05);
+    border-width: 10px;
+}
+
+#piechartrevenue {
+    position: relative;
+    top: 190px;
+    background: #fff;
+    float: left;
+    border-radius: 4px;
+    width: 48%;
+    height: 250px;
+    left: 15px;
+    /*border-style :double;
+    border-color :rgba(0,0,0,0.05);
+    border-width : 10px;*/
+}
+
+#piechartcost {
+    position: relative;
+    top: 190px;
+    background: #fff;
+    float: left;
+    border-radius: 4px;
+    width: 48%;
+    height: 250px;
+    left: 15px;
+    /*border-style :double;
+    border-color :rgba(0,0,0,0.05);
+    border-width : 10px;*/
+}
+
+#mainactions, .buttons {
+    float: right;
+    padding-right: 1%;
+}
+
+/* grid */
+.subtitle {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.subheading, .tooltip {
+    font-size: 10px;
+}
+
+.adminGrid a, #breadcrumbs a {
+    color: #0265b0;
+    text-decoration: none;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #e3e3e3;
+}
+
+.adminGrid th.center, .center {
+    text-align: center;
+}
+
+.adminGrid th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+
+.adminGrid {
+    font-size: 12px;
+    margin: 0 auto;
+    background-color: #fff;
+    width: 99%;
+    padding: 10px;
+  
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+    .adminGrid li {
+        list-style-type: square;
+    }
+
+div#columnone {
+    float: left;
+    width: 32%;
+}
+
+div#columntwo {
+    float: left;
+    width: 32%;
+    padding-left: 5px;
+}
+
+div#columnthree {
+    float: left;
+    width: 32%;
+    padding-left: 5px;
+}
+
+div#shortercolumnone {
+    float: left;
+    width: 16%;
+    line-height: 30px;
+}
+
+div#longercolumntwo {
+    float: left;
+    width: 32%;
+    padding-left: 5px;
+}
+
+div#longercolumnthree {
+    float: left;
+    width: 48%;
+    padding-left: 15px;
+}
+
+/* banners */
+
+#create-banner:hover {
+    border: solid lightgray 1px;
+}
+
+#create-banner {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 160px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#add-banner:hover {
+    border: solid lightgray 1px;
+}
+
+#add-banner {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 140px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#manage-banner:hover {
+    border: solid lightgray 1px;
+}
+
+#manage-banner {
+    background-color: #fff;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+/* campaigns */
+#create-campaign:hover {
+    border: solid lightgray 1px;
+}
+
+#create-campaign {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 165px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#add-campaign:hover {
+    border: solid lightgray 1px;
+}
+
+#add-campaign {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 145px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#manage-campaign:hover {
+    border: solid lightgray 1px;
+}
+
+#manage-campaign {
+    background-color: #fff;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 180px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#edit-campaign:hover {
+    border: solid lightgray 1px;
+}
+
+#edit-campaign {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+
+/* Affiliates */
+#create-affiliate:hover {
+    border: solid lightgray 1px;
+}
+
+#create-affiliate {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 160px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#add-affiliate:hover {
+    border: solid lightgray 1px;
+}
+
+#add-affiliate {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 140px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#manage-affiliate:hover {
+    border: solid lightgray 1px;
+}
+
+#manage-affiliate {
+    background-color: #fff;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#edit-affiliate:hover {
+    border: solid lightgray 1px;
+}
+
+#edit-affiliate {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+
+/* pixels */
+#add-pixel:hover {
+    border: solid lightgray 1px;
+}
+
+#add-pixel {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 110px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-right: 100px;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+.edit-pixel:hover {
+    border: solid lightgray 1px;
+}
+
+.edit-pixel {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #707070;
+    padding: 5px;
+    border-radius: 4px;
+    width: 180px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+.view-pixel {
+    border: solid lightgray 1px;
+}
+
+.view-pixel {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #707070;
+    padding: 5px;
+    border-radius: 4px;
+    width: 180px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+.previewcontainer {
+    padding: 10px;
+}
+
+.preview {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 30px;
+}
+
+/* status */
+.status {
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 3px;
+    width: 60px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+.active {
+    background-color: #81bf27;
+}
+
+.paused {
+    background-color: #ffcb08;
+}
+
+.pending {
+    background-color: #ffcb08;
+}
+
+.paused {
+    background-color: #e3e3e3;
+}
+
+.deleted, .blocked, .rejected {
+    background-color: #eb6d5e;
+}
+
+fieldset {
+    background-color: #fff;
+}
+
+.clear {
+    clear: both;
+}
+
+/* textboxes & inputs */
+
+.adminGrid input, .adminGrid textarea, .adminGrid select, #fromdate, #todate {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 -1px 0 rgba(0,0,0,0.05) inset;
+    background-color: #f7f7f7;
+    border: solid 1px;
+    border-radius: 3px;
+}
+
+    .adminGrid textarea.html {
+        width: 500px;
+        height: 100px;
+    }
+
+    .adminGrid input.extralong {
+        width: 400px;
+    }
+
+    .adminGrid input.long, .adminGrid select.long, .adminGrid textarea.long {
+        width: 300px;
+    }
+
+    .adminGrid input.short {
+        width: 70px;
+    }
+
+#accountmenu {
+    height: 100%;
+    z-index: 20;
+}
+
+    #accountmenu li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #accountmenu li {
+        height: 100%;
+        width: 120px;
+        text-align: right;
+        list-style: none;
+        white-space: nowrap;
+        float: left;
+        padding-right: 3px;
+    }
+
+    #accountmenu ul li {
+        width: 150px;
+        padding: 1px;
+        clear: both;
+        text-align: center;
+    }
+
+
+    #accountmenu ul {
+        display: none;
+        background-color: #0265b0;
+        padding: 5px;
+    }
+
+.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+#dateselector {
+    position: absolute;
+    top: 180px;
+    float: left;
+    left: 100px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+    #dateselector div {
+        float: left;
+        padding-left: 10px;
+    }
+
+#fromdate, #todate {
+    width: 80px;
+    font-size: 12px;
+}
+
+/*******************SETTINGS SECTION***************************/
+#customer-index {
+    width: 50%;
+    font-size: 12px;
+    float: left;
+}
+
+.customer-details {
+    width: 50%;
+    font-size: 12px;
+    float: left;
+}
+
+
+#edittable {
+    /*background-color: #E3E3E3;*/
+}
+
+#Edit-Settings:hover {
+    border: solid lightgray 1px;
+}
+
+#Edit-Settings {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 145px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#Add-Domain:hover {
+    border: solid lightgray 1px;
+}
+
+#Add-Domain {
+    background-color: #81bf27;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 145px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#Index-Settings:hover {
+    border: solid lightgray 1px;
+}
+
+#Index-Settings {
+    background-color: #fff;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 180px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#edit-setting:hover {
+    border: solid lightgray 1px;
+}
+
+#edit-setting {
+    background-color: #e3e3e3;
+    font-weight: bold;
+    color: #707070;
+    padding: 10px;
+    border-radius: 4px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px lightgray;
+}
+
+#dateselectorfordailychart {
+    position: relative;
+    top: 190px;
+    font-weight: bold;
+    float: left;
+    border-radius: 4px;
+    width: 100%;
+    height: 95%;
+    left: 15px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#dateselectorforrevenuepie {
+    position: relative;
+    top: 190px;
+    float: left;
+    border-radius: 4px;
+    width: 100%;
+    height: 95%;
+    left: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+#dateselectorforcostpie {
+    position: relative;
+    top: 190px;
+    float: left;
+    border-radius: 4px;
+    width: 100%;
+    height: 95%;
+    left: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+#dateselectorforgrossincome {
+    position: relative;
+    top: 190px;
+    float: left;
+    border-radius: 4px;
+    width: 100%;
+    height: 95%;
+    left: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+    #dateselectorforgrossincome div {
+        float: left;
+        padding-left: 10px;
+    }
+
+#dateselectorfordailychart div {
+    float: left;
+    padding-left: 10px;
+}
+
+#dateselectorforrevenuepie div {
+    float: left;
+    padding-left: 10px;
+}
+
+#dateselectorforcostpie div {
+    float: left;
+    padding-left: 10px;
+}
+
+#selecttimezone {
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 170px;
+    font-weight: bold;
+    float: left;
+    border-radius: 4px;
+    width: 100%;
+    height: 95%;
+    left: 15px;
+    font-size :x-large;
+}
+
+/*************************************** yasel code css ********************************************/
+#selectedzone {
+    width: 350px;
+   
+}
+
+#selectedview {
+    width: 150px;
+}
+
+#Dataview {
+    font-size: 18px;
+    z-index : 1;
+    position: relative;
+    top: 170px;
+    font-weight: bold;
+    float: left;
+    /*border-radius: 4px;*/
+    width: 98%;
+    height: 95%;
+    /*background-color: #0771BC;*/
+    /*color: #FFFFFF;*/
+    text-align:left;
+    /*left: 15px;*/
+ 
+    /*border-radius: 5px 5px 5px 5px;*/
+    display: block;
+ 
+    padding: 10px;
+   
+ 
+   
+}
+  
+#TimeZone {
+    font-size:12px;
+    z-index : 20;
+    position: relative;
+    /*top : 30px;*/
+    font-weight: bold;
+    float: left;
+    border-radius: 4px;
+    width: 98%;
+    height: 95%;
+    left: 15px;
+    border:thin;
+    /*border-color :#025799;*/
+   
+}
+
+#Interval {
+    font-size:12px;
+    z-index : 20;
+    position: relative;
+    /*top : 30px;*/
+    font-weight: bold;
+    float: left;
+    /*border-radius: 4px;*/
+    width: 98%;
+    height: 95%;
+    left: 15px;
+    border:thin;
+    /*border-color :#025799;*/
+   
+}
+div#Interval label {
+   
+    font-weight: bold;
+     float: left;
+    clear: left;
+
+}
+
+div#Interval li {
+    float: left;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    width: 12%;
+     font-weight: normal;
+}
+
+div#Interval ol {
+    margin: 0;
+    list-style: none;
+    float: left;
+    clear: both;
+    font-weight: normal;
+    padding: 10px;
+    width: 50%;
+}
+#Calculation {
+    font-size:12px;
+    z-index : 20;
+    position: relative;
+    /*top : 30px;*/
+    font-weight: bold;
+    float: left;
+    /*border-radius: 4px;*/
+    width: 98%;
+    height: 95%;
+    left: 15px;
+    border:thin;
+    /*border-color :#025799;*/
+   
+}
+div#Calculation label {
+   
+    font-weight: bold;
+     float: left;
+    clear: left;
+
+}
+
+div#Calculation li {
+    float: left;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    width: 12%;
+     font-weight: normal;
+}
+
+div#Calculation ol {
+    margin: 0;
+    list-style: none;
+    float: left;
+    clear: both;
+    font-weight: normal;
+    padding: 10px;
+    width: 50%;
+}
+#Statistics {
+    font-size:12px;
+    z-index : 20;
+    position: relative;
+    /*top : 30px;*/
+    font-weight: bold;
+    float: left;
+    /*border-radius: 4px;*/
+    width: 98%;
+    height: 95%;
+    left: 15px;
+  border:thin;
+    /*border-color :#025799;*/
+   
+}
+div#Statistics label {
+   
+    font-weight: bold;
+     float: left;
+    clear: left;
+
+}
+
+div#Statistics li {
+    float: left;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    width: 8%;
+     font-weight: normal;
+}
+
+div#Statistics ol {
+    margin: 0;
+    list-style: none;
+    float: left;
+    clear: both;
+    font-weight: normal;
+    padding: 10px;
+    width: 100%;
+}
+#Filter {
+    font-size:12px;
+    z-index : 20;
+    position: relative;
+    /*top : 30px;*/
+    font-weight: bold;
+    float: left;
+    /*border-radius: 4px;*/
+    width: 98%;
+    height: 95%;
+    left: 15px;
+    border:thin;
+    /*border-color :#025799;*/
+   
+}
+div#Filter label {
+   
+    font-weight: bold;
+     float: left;
+    clear: left;
+
+}
+
+div#Filter li {
+    float: left;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+     width: 25%;
+     font-weight: normal;
+}
+
+div#Filter ol {
+    margin: 0;
+    list-style: none;
+    float: left;
+    clear: both;
+    font-weight: normal;
+    padding: 10px;
+    width: 50%;
+}
+
+#hourlyreportfromdate 
+{
+    z-index : 40;
+
+}
+
+#showreport
+ {
+    background-color: #0771BC;
+    color: #FFFFFF;
+    font-size:12px;
+    font-weight: bold;
+    height:35px;
+    width : 100px;
+    cursor :pointer;
+}
+
+#exportreport
+ {
+    background-color: #0771BC;
+    color: #FFFFFF;
+    font-size:12px;
+    font-weight: bold;
+    height:35px;
+    width : 100px;
+    cursor :pointer;
+}
+
+#reporttable th, #reporttable td {
+    padding: 2px 4px;
+}
+
+#reporttable td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#reporttable .ac {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+
+
+
+/**********************************************  njhones code css *****************************************/
+.hidden {
+    display:none;
+    visibility:hidden;
+}
+
+.adminGrid input.njh-extralong {
+    width: 100%;
+}
+
+div#longercolumntwo {
+    width: 38%;
+}
+
+div#longercolumnthree {
+    width: 40%;
+    padding-left: 40px;
+}
+
+.adminGrid textarea.html {
+    width: 450px;
+}
+
+div#pck label {
+    /*float: left;
+    clear: left;*/
+}
+
+div#pck li {
+    float: left;
+    padding: 10px 0;
+    text-align: left;
+    width: 25%;
+    list-style-type: none;
+}
+
+div#pck ol {
+    margin: 0;
+    list-style: none;
+    float: left;
+    clear: both;
+    padding: 10px;
+    width: 100%;
+}
+
+div#pck input {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    bottom: -2px;
+}
+
+    div#pck input:active, div#pck input:checked:active {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    div#pck input:checked {
+        background-color: #e9ecee;
+        border: 1px solid #adb8c0;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+        color: #99a1a7;
+    }
+
+        div#pck input:checked:after {
+            content: '\2714';
+            font-size: 14px;
+            position: absolute;
+            top: 0px;
+            left: 3px;
+            color: #99a1a7;
+        }

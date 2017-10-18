@@ -1,0 +1,206 @@
+﻿@model DateTime
+
+@{
+    Layout = null;
+    IEnumerable<TimeZoneInfo> TimeZones = TimeZoneInfo.GetSystemTimeZones();
+    string fromdate = ViewBag.FromDate;
+}
+
+<link href="~/Content/css/general_foundicons.css" rel="stylesheet" />
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-table"></i>
+            Logs Report
+        </h1>
+    </div>
+    @Html.Partial("_Sparks")
+</div>
+<section id="widget-grid" class="">
+    <div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false">
+                <div class="dataTables_overlay"></div>
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                    <h2>Logs Report</h2>
+                    <div class="widget-toolbar">
+                        <div class="jarviswidget-ctrls">
+                            <a href="javascript:void(0);" class="txt-color-white" id="ropts" data-placement="bottom" title="" rel="tooltip" data-original-title="Report Options">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+
+                    <div class="jarviswidget-editbox">
+
+                        <div class="smart-form">
+                            <section>
+                                <label class="label">TimeZone:</label>
+                                <label class="select">
+                                    <i></i>
+                                    @Html.DropDownList("rzone", new SelectList(TimeZones, "Id", "DisplayName", ViewBag.TimeZone))
+                                </label>
+                            </section>
+                        </div>
+                    </div>
+
+
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <div class="widget-body-toolbar clearfix">
+
+                            <div class="form-horizontal rform">
+
+
+                                <div class="col-xs-12 col-sm-3">
+
+                                    <div class="form-group">
+                                        <label for="fromdate" class="col-xs-3 control-label">From:</label>
+                                        <div class="col-xs-9 input-group">
+
+                                            <input name="fromdate" value="@Model.ToString("MM/dd/yyyy")" class="form-control text datepicker" id="fromdate" style="position: relative; z-index: 999;" />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-3">
+
+                                    <div class="col-xs-6 col-sm-6">
+                                        <button type="button" class="btn btn-success pull-right" id="run">
+                                            @*<i class="fa fa-play"></i> *@
+                                            Run Report
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <table class="table table-striped logtable width rtable" id="rtable">
+                            <thead>
+                                <tr>
+
+                                    <th>Logs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @*@for (int i = 0; i < 24; i++)
+                {
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" onclick="cklog(@Model.AddHours(i).Ticks)">
+                                @String.Format("{0} {1}:00", Model.ToString("MM/dd/yyyy"), i)
+                            </a>
+                        </td>
+
+                    </tr>
+                }*@
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- WIDGET END -->
+
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Logs Report');
+
+
+    $('#run').click(function (e) {
+        e.preventDefault();
+        window.location.hash = '@Url.Action("clickslogs")?id=' + encodeURIComponent($('#rzone').val())
+            + '&id2=' + setDate($('#fromdate').val());
+    });
+    
+  
+    @*function cklog(ticks) {
+
+        window.location = '@Url.Action("clickslogs", "helper")?id=' + encodeURIComponent($('#rzone').val())
+            + '&id2=' + ticks;
+
+
+    }*@
+
+    function setDate(date) {
+        return date.replace(/\//g, '-');
+    }
+
+    loadDataTables();
+
+
+
+    function runDataTables() {
+        var apiurl = '/api/reports/ClicksLogs?id=' + encodeURIComponent($('#rzone').val())
+             + '&id2=' + setDate($('#fromdate').val());
+        var clciklogstable = $('#rtable').DataTable({
+            "ajax": {
+                "url": apiurl,
+                "dataSrc": ""
+
+            },
+            responsive: true,
+            "iDisplayLength": 25,
+            "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25, 50, 100, 500, 1000, "All"]],
+            "deferRender": true,
+            "autoWidth": false, // if true it doesn't get 100%
+            "initComplete": function (settings, json) { // just called once
+
+            },
+            "bFilter": false,
+            "columns": [
+                {
+                    data: null,
+                    name: "Date",
+                    render: function (data, type, full, meta) {
+                        return '<a target="_top" class="innerDetails" href="/admin/Reports/ClicksDetailslog?timezone=' + encodeURIComponent($('#rzone').val()) + '&FromDate=' + data.datelist + '">' + data.datelist + '</a>';
+                    }
+                },
+
+
+            ],
+            "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+            "footerCallback": function (row, data, start, end, display) {
+
+            }
+
+        });
+        
+    }
+
+</script>
+

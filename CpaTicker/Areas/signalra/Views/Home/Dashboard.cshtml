@@ -1,0 +1,652 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Ticker>
+
+@{
+    ViewBag.Title = "SignalrAdmin Dashboard";
+    Layout = null;
+    //IEnumerable<TimeZoneInfo> TimeZones = TimeZoneInfo.GetSystemTimeZones();
+    //string currentzone = ViewBag.UserCurrentTimeZone;
+    List<int> listofyear = new List<int>();
+    for (int i = 1900; i <= DateTime.Now.Year; i++)
+    {
+        listofyear.Add(i);
+    }
+    ViewBag.today = DateTime.Today.Date.ToString("MM/dd/yyyy");
+    ViewBag.aweekago = DateTime.Today.Date.AddDays(-6).ToString("MM/dd/yyyy");
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-12">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-fw fa-home"></i>
+            Dashboard
+        </h1>
+    </div>
+    @*@Html.Partial("_SignalR")*@
+    <div id="events">
+
+        <div class="hidden-xs col-sm-6 col-lg-3">
+            <div class="panel mini-box">
+                <span class="box-icon bg-campagin">
+                    <i class="fa fa-bar-chart"></i>
+                </span>
+                <div class="box-info">
+                    @*<h2 style="display:inline;" data-bind="text: campaign()[campaign().length - 1]"></h2>*@
+                    <h2 id="totalCampains">0</h2>
+                    <p>Total Campaigns</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-6 col-lg-3">
+            <div class="panel mini-box">
+                <span class="box-icon bg-currency">
+                    <i class="fa fa-dollar"></i>
+                </span>
+                <div class="box-info">
+                    <h2 id="totalRevenue" style="display:inline;"></h2>
+                    @*<h2>$1710.00</h2>*@
+                    <p>My Revenue</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-6 col-lg-3">
+            <div class="panel mini-box">
+                <span class="box-icon bg-calender">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <div class="box-info">
+                    <h2 id="totalClick" style="display:inline;"></h2>
+                    @*<h2>376</h2>*@
+                    <p>Click Events</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-6 col-lg-3">
+            <div class="panel mini-box">
+                <span class="box-icon bg-cart">
+                    <i class="fa fa-shopping-cart"></i>
+                </span>
+                <div class="box-info">
+                    <h2 id="totalConversion" style="display:inline;"></h2>
+                    @*<h2>38</h2>*@
+                    <p>Conversions</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    @*@Html.Partial("_Sparks")*@
+</div>
+
+
+<section id="widget-grid" class="">
+    <div class="row">       
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Traffic Summary</h2>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <div class="widget-body-toolbar">
+                            <div class="smart-form dashview">
+                                <div class="row">
+
+                                    <div class="pull-left">
+
+                                        <div data-toggle="buttons" class="btn-group">
+
+                                            <label class="view-by pull-left">
+                                                View By:
+                                            </label>
+                                            <label class="btn btn-sm btn-default">
+                                                <input type="radio" name="traffichartmode" value="0">
+                                                Hour
+                                            </label>
+                                            <label class="btn btn-sm btn-default active">
+                                                <input type="radio" name="traffichartmode" value="1">
+                                                Day
+                                            </label>
+                                            <label class="btn btn-sm btn-default">
+                                                <input type="radio" name="traffichartmode" value="2">
+                                                Week
+                                            </label>
+                                            <label class="btn btn-sm btn-default">
+                                                <input type="radio" name="traffichartmode" value="3">
+                                                Month
+                                            </label>
+                                            <label class="btn btn-sm btn-default">
+                                                <input type="radio" name="traffichartmode" value="4">
+                                                Year
+                                            </label>
+                                        </div>
+
+                                        <div class="btn-group date-picker" id="divtfromdate">
+                                            <label class="view-by pull-left">
+                                                From:
+                                            </label>
+                                            <label class="input pull-left">
+                                                @Html.TextBox("fromdate", (string)ViewBag.aweekago, new { @class = "text", @style = "position: relative; z-index: 1999;" })
+                                                <i class="icon-append fa fa-calendar" style="z-index: 1999;"></i>
+                                            </label>
+                                        </div>
+
+                                        <div class="btn-group date-picker" id="divttodate">
+                                            <label class="view-by pull-left">
+                                                To:
+                                            </label>
+                                            <label class="input pull-left">
+                                                @Html.TextBox("todate", (string)ViewBag.today, new { @class = "text", @style = "position: relative; z-index: 1999;" })
+                                                <i class="icon-append fa fa-calendar" style="z-index: 1999;"></i>
+                                            </label>
+                                        </div>
+
+                                        <div class="btn-group date-picker" id="divtyear">
+                                            <label class="view-by pull-left">
+                                                From:
+                                            </label>
+                                            <label class="select pull-left">
+                                                @Html.DropDownList("year", new SelectList(listofyear, listofyear[listofyear.Count - 1]), new { @style = "width: 100%; min-width:70px;" })
+                                                <i></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div id="dailychart"></div>
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+        <header>
+            <span class="widget-icon"> <i class="fa fa-money"></i> </span>
+            <h2>Gross Cost / Revenue</h2>
+        </header>
+
+        <!-- widget div-->
+        <div>
+
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+            </div>
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+                <div class="widget-body-toolbar">
+                    <div class="smart-form dashview">
+                        <div class="row">
+
+                            <div class="pull-left">
+
+                                <div data-toggle="buttons" class="btn-group">
+                                    <label class="view-by pull-left">
+                                        View By:
+                                    </label>
+                                    <label class="btn btn-sm btn-default active">
+                                        <input type="radio" name="grossincomemode" value="0">
+                                        Hour
+                                    </label>
+                                    <label class="btn btn-sm btn-default">
+                                        <input type="radio" name="grossincomemode" value="1">
+                                        Day
+                                    </label>
+                                    <label class="btn btn-sm btn-default">
+                                        <input type="radio" name="grossincomemode" value="2">
+                                        Week
+                                    </label>
+                                    <label class="btn btn-sm btn-default">
+                                        <input type="radio" name="grossincomemode" value="3">
+                                        Month
+                                    </label>
+                                    <label class="btn btn-sm btn-default">
+                                        <input type="radio" name="grossincomemode" value="4">
+                                        Year
+                                    </label>
+                                </div>
+
+                                <div class="btn-group date-picker" id="grossfrom">
+                                    <label class="view-by pull-left">
+                                        From:
+                                    </label>
+                                    <label class="input pull-left">
+                                        @Html.TextBox("grossincomefromdate", (string)ViewBag.aweekago, new { @class = "text" })
+                                        <i class="icon-append fa fa-calendar"></i>
+                                    </label>
+                                </div>
+
+                                <div class="btn-group date-picker" id="grossto">
+                                    <label class="view-by pull-left">
+                                        To:
+                                    </label>
+                                    <label class="input pull-left">
+                                        @Html.TextBox("grossincometodate", (string)ViewBag.today, new { @class = "text" })
+                                        <i class="icon-append fa fa-calendar"></i>
+                                    </label>
+                                </div>
+
+                                <div class="btn-group date-picker" id="grossyear">
+                                    <label class="view-by pull-left">
+                                        From:
+                                    </label>
+                                    <label class="select pull-left">
+                                        @Html.DropDownList("grossincomeyear", new SelectList(listofyear, listofyear[listofyear.Count - 1]), new { @style = "width: 100%; min-width:70px;" })
+                                        <i></i>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="grossincome"></div>
+
+
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-deletebutton="false" data-widget-editbutton="false">
+
+        <header>
+            <span class="widget-icon"> <i class="fa fa-money"></i> </span>
+            <h2>Revenue / Cost by Campaign</h2>
+
+        </header>
+
+        <!-- widget div-->
+        <div>
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+                <div class="widget-body-toolbar">
+                    <div class="smart-form dashview">
+                        <div class="row">
+
+                            <div class="pull-left">
+
+                                <div class="btn-group">
+                                    <label class="view-by pull-left">
+                                        From:
+                                    </label>
+                                    <label class="input pull-left">
+                                        @Html.TextBox("revenuepiefromdate", (string)ViewBag.today, new { @class = "text datepicker" })
+                                        <i class="icon-append fa fa-calendar"></i>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="piecontainer">
+                    <div class="col-lg-6">
+                        <div id="piechartrevenue"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="piechartcost"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+    </article>
+    <!-- WIDGET END -->
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Dashboard');
+
+
+    GetModeforTrafficChart('1');
+    GetModeforgrossincome('0');
+
+    function GetModeforTrafficChart(svalue) {
+        var fromdate = $("#fromdate");
+        var todate = $("#todate");
+        //alert(svalue);
+        switch (svalue) {
+            case '0': // hour
+
+                $("#divttodate").fadeOut(1);
+                $("#divtyear").fadeOut(1);
+                $("#divtfromdate").fadeIn(500);
+
+                fromdate.val('@ViewBag.today');
+                //fromdate.addClass("datetimepicker");
+                fromdate.datepicker("destroy");
+                fromdate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+
+                //todate.val("");
+
+                break;
+            case '1': //day
+                $("#divttodate").fadeIn(500);
+                $("#divtfromdate").fadeIn(500);
+                $("#divtyear").fadeOut(1);
+
+                //fromdate.datepicker('setDate', '@ViewBag.aweekago');
+                //todate.datepicker('setDate', '@ViewBag.today');
+
+
+
+                fromdate.datepicker("destroy");
+                fromdate.val("@System.DateTime.Today.AddDays(-6).ToString("MM/dd/yyyy HH:mm")");
+                fromdate.datetimepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+
+                todate.datepicker("destroy");
+                todate.val("@System.DateTime.Today.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")");
+                todate.datetimepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+
+                break;
+            case '2': // week
+                $("#divttodate").fadeIn(500);
+                $("#divtfromdate").fadeIn(500);
+                $("#divtyear").fadeOut(1);
+
+
+                fromdate.datepicker("destroy");
+                fromdate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+                fromdate.datepicker('setDate', '@ViewBag.aweekago');
+
+                todate.datepicker("destroy");
+                todate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+                todate.datepicker('setDate', '@ViewBag.today');
+                break;
+
+            case '3': // month
+                $("#divttodate").fadeOut(1);
+                $("#divtfromdate").fadeOut(1);
+                $("#divtyear").fadeIn(1);
+                break;
+            case '4': // year
+                $("#divttodate").fadeOut(1);
+                $("#divtfromdate").fadeOut(1);
+                $("#divtyear").fadeOut(1);
+                break;
+        }
+    }
+
+    function GetModeforgrossincome(svalue) {
+
+        var fromdate = $("#grossincomefromdate");
+        var todate = $("#grossincometodate");
+
+        switch (svalue) {
+            case '0': // hour
+                // solo el from todo lo demas se va y porner el from con la fecha de hoy
+                $("#grossto").fadeOut(1);
+                $("#grossyear").fadeOut(1);
+                $("#grossfrom").fadeIn(500);
+
+
+                fromdate.datepicker("destroy");
+                fromdate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+                fromdate.val('@ViewBag.today');
+                break;
+
+            case '1': // day
+                $("#grossto").fadeIn(500);
+                $("#grossfrom").fadeIn(500);
+                $("#grossyear").fadeOut(1);
+
+
+                fromdate.datepicker("destroy");
+                fromdate.val("@System.DateTime.Today.AddDays(-6).ToString("MM/dd/yyyy HH:mm")");
+                fromdate.datetimepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+
+                todate.datepicker("destroy");
+                todate.val("@System.DateTime.Today.AddDays(1).AddSeconds(-1).ToString("MM/dd/yyyy HH:mm")");
+                todate.datetimepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+
+                break;
+            case '2': // week
+                $("#grossto").fadeIn(500);
+                $("#grossfrom").fadeIn(500);
+                $("#grossyear").fadeOut(1);
+
+                fromdate.datepicker("destroy");
+                fromdate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+                fromdate.datepicker('setDate', '@ViewBag.aweekago');
+
+                todate.datepicker("destroy");
+                todate.datepicker({
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                });
+                todate.datepicker('setDate', '@ViewBag.today');
+                break;
+
+            case '3':  // month
+                $("#grossto").fadeOut(1);
+                $("#grossfrom").fadeOut(1);
+                $("#grossyear").fadeIn(1);
+                break;
+            case '4': // year
+                $("#grossto").fadeOut(1);
+                $("#grossfrom").fadeOut(1);
+                $("#grossyear").fadeOut(1);
+                break;
+
+        }
+    }
+
+    // bing bang
+    @* loadScript('@Url.Content("~/Scripts/Highcharts-3.0.1/js/highcharts.js")', loadtraffic);*@
+    loadScript('@Url.Content("~/Scripts/Highcharts-4.0.1/js/highcharts.js")', loadtraffic);
+
+    function loadtraffic() {
+        loadScript('@Url.Content("~/Content/js/traffic.js")', getchartdata);
+    }
+
+    function getchartdata() {
+        rundaily(null, calltogross);
+    }
+
+    function calltogross() {
+        rungross(null, callpies);
+    }
+
+    function callpies() {
+        runpie(null, function () {
+
+            /***************************** Traffic Chart ********************************/
+
+            $("input[name=traffichartmode]:radio").change(function () {
+
+                GetModeforTrafficChart(this.value);
+
+                var url = 'fromdate=' + $('#fromdate').val() + '&todate=' + $('#todate').val() +
+                    '&timezone=' + $('#selectedzone').val() + "&mode=" + this.value + "&year=" + $('#year').val();
+
+                // test using json
+                rundaily(url);
+
+            });
+
+            $("#fromdate").change(function () {
+                var url = 'fromdate=' + $('#fromdate').val() + '&todate=' + $('#todate').val() +
+                    '&timezone=' + $('#selectedzone').val() + "&mode=" + $("input[type=radio][name=traffichartmode]:checked").val() + "&year=" + $('#year').val();
+
+                rundaily(url);
+            });
+
+            $("#todate").change(function () {
+                var url = 'fromdate=' + $('#fromdate').val() + '&todate=' + $('#todate').val() +
+                    '&timezone=' + $('#selectedzone').val() + "&mode=" + $("input[type=radio][name=traffichartmode]:checked").val() + "&year=" + $('#year').val();
+
+                rundaily(url);
+            });
+
+            $("#year").change(function () {
+                var url = 'fromdate=' + $('#fromdate').val() + '&todate=' + $('#todate').val() +
+                    '&timezone=' + $('#selectedzone').val() + "&mode=" + $("input[type=radio][name=traffichartmode]:checked").val() + "&year=" + $('#year').val();
+
+                rundaily(url);
+            });
+
+            /***************************** TimeZoneDDl ********************************/
+
+            $("#selectedzone").change(function () {
+                url = 'fromdate=' + $('#fromdate').val() + '&todate=' + $('#todate').val() + '&timezone=' + $('#selectedzone').val() + "&mode=" + $("#traffichartmode").val() + "&year=" + $('#year').val();
+                rundaily(url, function () {
+
+                    url = 'fromdate=' + $('#grossincomefromdate').val() + '&todate=' + $('#grossincometodate').val() + '&timezone=' + $('#selectedzone').val() + "&mode=" + $("#grossincomemode").val() + "&year=" + $('#grossincomeyear').val();
+                    rungross(url, function () {
+
+                        url = 'fromdate=' + $('#revenuepiefromdate').val() + '&timezone=' + $('#selectedzone').val();
+                        runpie(url);
+
+                    });
+                });
+
+            });
+
+            /***************************** Gross Chart ********************************/
+            $("input[type=radio][name=grossincomemode]").change(function () {
+                GetModeforgrossincome(this.value);
+
+                var url = 'fromdate=' + $('#grossincomefromdate').val() + '&todate=' + $('#grossincometodate').val() + '&timezone=' + $('#selectedzone').val() +
+                    "&mode=" + this.value + "&year=" + $('#grossincomeyear').val();
+                rungross(url);
+            });
+
+            $("#grossincomefromdate").change(function () {
+                var url = 'fromdate=' + $('#grossincomefromdate').val() + '&todate=' + $('#grossincometodate').val() + '&timezone=' + $('#selectedzone').val() +
+                    "&mode=" + $("input[type=radio][name=grossincomemode]:checked").val() + "&year=" + $('#grossincomeyear').val();
+                rungross(url);
+            });
+
+            $("#grossincometodate").change(function () {
+                var url = 'fromdate=' + $('#grossincomefromdate').val() + '&todate=' + $('#grossincometodate').val() + '&timezone=' + $('#selectedzone').val() +
+                    "&mode=" + $("input[type=radio][name=grossincomemode]:checked").val() + "&year=" + $('#grossincomeyear').val();
+                rungross(url);
+            });
+
+            $("#grossincomeyear").change(function () {
+                var url = 'fromdate=' + $('#grossincomefromdate').val() + '&todate=' + $('#grossincometodate').val() + '&timezone=' + $('#selectedzone').val() +
+                    "&mode=" + $("input[type=radio][name=grossincomemode]:checked").val() + "&year=" + $('#grossincomeyear').val();
+                rungross(url);
+            });
+
+            /***************************** Revenue / Cost by Campaign ********************************/
+            $("#revenuepiefromdate").change(function () {
+                url = 'fromdate=' + $('#revenuepiefromdate').val() + '&timezone=' + $('#selectedzone').val();
+                runpie(url);
+            });
+
+
+
+        });
+    }
+
+</script>
+<script type="text/javascript">
+
+    (function ($) {
+
+        //clearTimeout(spktimer); // to prevent multiple in the adjust page
+        //skmodel = new Spark();
+        //ko.cleanNode(document.getElementById("sparks"));
+        //ko.applyBindings(skmodel, document.getElementById("sparks"));
+        //skmodel.loadData();
+        //var job = $.connection.trickerHub;
+
+        //job.client.displayStatus = function () {
+        //    DashCampaigns();
+        //};
+
+    }(jQuery));
+
+</script>
+<script>
+    $(document).ready(function () {
+        
+      //  NotifyCampaigns();
+        
+        DashBoardSparks();        
+    });
+
+    
+</script>

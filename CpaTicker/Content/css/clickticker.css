@@ -1,0 +1,395 @@
+﻿/*body, html {
+    background:url();
+    background-color:#fff;    
+}*/
+
+/*.page-title {
+    font-size: 24px;
+}*/
+
+/*#sparks {
+    padding:0;
+    margin-top:18px;
+}*/
+
+/*.smart-form .input, .smart-form .select  {
+    background-color:#fff;
+}*/
+
+/*.smart-form .input input , .smart-form .select select, .smart-form .textarea textarea   {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}*/
+
+/*.smart-form .mrating {
+    color: #404040;
+    font-size: 13px;
+    line-height: 25px;
+    margin-bottom: 4px;
+}*/
+
+
+/*.smart-form .mrating {
+	margin-bottom: 4px;
+	font-size: 13px;
+	line-height: 25px;
+	color: #404040;
+}
+.smart-form .mrating:last-child {
+	margin-bottom: 0;
+}
+.smart-form .mrating input {
+	position: absolute;
+	left: -9999px;
+}
+.smart-form .mrating label {
+	display: block;
+	float: left;
+	height: 17px;
+	margin-top: 5px;
+	padding: 0 10px 0 2px;
+	font-size: 17px;
+	line-height: 17px;
+	cursor: pointer;
+}*/
+
+/*.smart-form .mrating label {
+  color: #ccc;
+  transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+}
+
+.smart-form .mrating input:checked ~ label {
+  color: #3276B1;
+}*/
+
+.smart-form .rating label {
+    float: left;
+    padding: 0 10px 0 2px;    
+}
+
+.ontop {
+    z-index:1051;
+}
+
+@keyframes blink {
+    from {
+        background: none;
+    }
+
+    to {
+        background: yellow;
+    }
+}
+
+@-webkit-keyframes blink {
+    from {
+        background: none;
+    }
+    to {
+        background: yellow;
+    }
+}
+
+.highlight {
+    font-weight: bold;
+    padding:2px;
+    animation: blink 1s 5 ease;
+    -webkit-animation: blink 1s 5 ease;
+}
+
+
+.select2-hidden-accessible { display:none; }
+
+.field-validation-error span, .field-validation-error {
+    color:red;
+}
+
+.npadding-right {
+    padding-right:0;
+}
+
+.npadding-left {
+    padding-left:0;
+}
+
+/*.view-by h3 {
+    margin: 5px 10px 0 0;
+    font-size:14px;
+}*/
+
+.pull-left .btn-group {
+    padding: 3px 5px 0;
+}
+
+
+   
+.top-actions {
+    float: none;
+    margin-bottom: 0;
+}
+
+/*.dt-toolbar-footer {
+    display:none;
+}*/
+
+/*.smart-form .select i:after, .smart-form .select i:before {
+    border-top: none;
+    border-bottom:none;
+}*/
+
+
+/*.select2-container-multi.select2-container-active .select2-choices {
+	border: none;
+	
+}*/
+/*.select2-container-multi .select2-choices {
+    border:none;
+}*/
+
+/*.jarviswidget-ctrls a i.fa-cog {
+    font-size:20px;
+}*/
+
+.dt-toolbar .smart-form section {
+    margin-bottom: 6px;
+}
+
+table.rtable, table.ctable {
+    margin-top:0px! important;
+}
+
+/***************** REPORTS  ***********************/
+
+table.rtable {
+    /*table-layout:fixed;*/ 
+    width:100%;
+    
+}
+.wordbreak {
+    word-break:break-all;
+    word-wrap:break-word;     
+}
+
+    table.rtable td {
+        word-wrap:break-word;     
+        /*word-break:break-all;*/   
+    }
+
+    .table.rtable > thead > tr > th {
+        vertical-align: middle;
+    }
+
+
+.rtable tfoot tr {
+    font-size:12px;
+    border-top: 2px solid #ccc;
+    background-image: -moz-linear-gradient(center top , #f2f2f2 0px, #fafafa 100%);
+}
+
+
+
+.rform .form-group {
+    /*margin-bottom:0px;*/    
+    margin: 0;
+}
+
+.rform .mlabel {
+    
+    text-align:right;
+}
+
+/***************** TICKER OUT ***********************/
+
+#outsideContent {    
+    /*padding: 15px 30px 0;*/
+    /*padding: 0 14px;*/
+    position:relative;
+    width:100%;
+    /*margin-top:70px;*/
+}
+
+@media (max-width: 767px) {
+
+    #outsideContent {
+        padding-left: 5px;
+        padding-right: 5px;
+    }   
+
+}
+
+#tkcontent {
+    padding-top:0px;
+
+}
+
+
+
+/*.tspark {
+    position:absolute;   
+    width:98%;
+    padding:20px 0 0;
+}*/
+
+/**************************************** ticker **********************************************************************/
+
+/*.tickerContainer {
+    border:none;
+    height: 144px;
+}
+
+.ticker td {
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.ticker td.c {
+    color: #ffffff;
+    font-family: roboto;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    padding: 8px 0;
+    text-align: center;
+    text-transform: uppercase;
+    background: none repeat scroll 0 0 #1278b1;
+}
+
+.ticker td.im, .ticker td.cl, .ticker td.co  {
+    padding: 20px;
+    text-align: center;
+    width: 33%;
+    min-width: 100px;
+}
+
+.ticker div.val {
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px #999 inset;
+    color: #333333;
+    font-family: roboto;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0 10px;
+    text-align: center;
+    width: 100% !important;
+    min-width:80px;
+}
+
+.ticker div.lb {
+    color: #5b5b5b;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 3px;
+}*/
+
+.tickerContainer {
+    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+    text-shadow: 2px 2px 10px #666;
+    height: 120px;
+}
+
+.ticker .lb {
+   font-family: "Roboto",Arial,Helvetica,Sans-Serif;
+   font-size:10px;
+}
+td.arrow {
+    padding:0; 
+    background-repeat: no-repeat;
+    background-size:75%;
+    min-width:30px;
+    background-position: 100% 40%;
+}
+
+.ticker .val {
+    /*font-size:38px;*/
+    font-size:34px;
+}
+
+.ticker .c {
+    /*font-size:20px;*/
+    font-size:16px;
+    padding:3px 0 0;
+    
+}
+
+/*.ticker .cp {
+    background-color:#fff;
+    opacity:0.1;
+    position:relative;
+}*/
+
+/*td.arrow img {
+    width:70%;
+    height:auto;
+    margin-top:-10px;
+}*/
+
+.ticker .asc {
+    background-image:url("../../Images/arrow-up1-img.png");
+}
+.ticker .desc {
+    background-image:url("../../Images/arrow-down.png");
+}
+.ticker .down {
+    background-image:url("../../Images/arrow-down.png");
+}
+
+
+/****************************************  end ticker **********************************************************************/
+
+
+/* Large desktops and laptops */
+@media (min-width: 992px) {
+
+    
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+    .atext {
+        display:none;
+    }
+    .rform .form-group {
+        margin-bottom:10px;    
+    }
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
+    .dashview {
+        padding: 0;
+    }
+
+    .atext {
+        display:none;
+    }
+
+    .rform .form-group {
+        margin-bottom:10px;    
+    }
+
+}
+
+

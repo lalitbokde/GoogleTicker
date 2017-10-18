@@ -1,0 +1,49 @@
+﻿.hdg_top_gold, .hdg_top_plat, .hdg_top {    
+    position:relative;
+    height:145px;
+    z-index:2;
+    padding: 8px 0 0;
+}
+
+.hdg_top_plat {
+    background: url("/images/plat.png") no-repeat;
+}
+
+.hdg_top_gold {
+    background: url("/images/gold.png") no-repeat;
+}
+
+.hdg_top {
+    background: url("/images/diamond1.png") no-repeat;
+}
+
+.pricing_box li img {
+    padding: 10px;
+}
+.tryit{
+    text-align:center;
+    padding:20px;
+}
+
+.pricing_box ul {
+    position:relative;
+    margin-top:-17px;
+    z-index:1;
+}
+
+.pricing_box p {
+      text-shadow: 1px 1px #808080;
+}
+
+.hdg_gb {
+   background-color:#f8f8f8; 
+}
+
+
+.odd {
+   background-color:#f8f8f8; 
+}
+
+.content_area {
+    padding-top:10px;
+}

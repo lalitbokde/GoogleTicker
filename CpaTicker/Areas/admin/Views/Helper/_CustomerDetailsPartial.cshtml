@@ -1,0 +1,92 @@
+﻿@model CpaTicker.Areas.admin.Classes.Customer
+
+<div class="widget-body-toolbar">
+<nav>
+    @Html.ActionLink("Edit Details", "edit", "settings", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Change password", "changepwd", "settings", null, new { @class = "btn btn-primary btn-sm" })
+    @if (ViewBag.User.OrderId != null)
+    {
+        @Html.ActionLink("Email API Key", "email", "settings", new { id = ViewBag.User.UserId }, new { @class = "btn btn-primary btn-sm" })
+    }
+</nav>
+</div>
+
+
+<table class="table">
+    <thead></thead>
+    <tbody>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.AccountId)</th>
+        <td>@Html.DisplayFor(model => model.AccountId)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+        <td>@Html.DisplayFor(model => model.CompanyName)</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@ViewBag.User.Email</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <td>@Html.DisplayFor(model => model.Address)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+        <td>@Html.DisplayFor(model => model.Phone)</td>
+    </tr>
+    @if (ViewBag.User.OrderId != null)
+    {
+        <tr>
+            <th>APIKey</th>
+            <td>@ViewBag.User.APIKey</td>
+        </tr>
+    }
+
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TransactionIdType)</th>
+        <td>@Model.TransactionIdType.DisplayValue()</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TimeZone)</th>
+        <td>@Html.DisplayFor(model => TimeZoneInfo.FindSystemTimeZoneById(model.TimeZone).DisplayName)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <td>@Html.DisplayFor(model => model.FirstName)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+        <td>@Html.DisplayFor(model => model.LastName)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <td>@Html.DisplayFor(model => model.City)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.State)</th>
+        <td>@ViewBag.State</td>
+    </tr>
+     <tr>
+        <th>@Html.DisplayNameFor(model => model.CountryId)</th>
+        <td>@ViewBag.Country</td>
+    </tr>
+
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Zip)</th>
+        <td>@Html.DisplayFor(model => model.Zip)</td>
+    </tr>
+    <tr>
+        <th>Card Type</th>
+        <td>@ViewBag.CardType</td>
+    </tr>
+    <tr>
+        <th>Card Number</th>
+        <td>@ViewBag.CardNumberX</td>
+    </tr>
+    <tr>
+        <th>Expiration Date</th>
+        <td>@ViewBag.ExpDate</td>
+    </tr>
+    </tbody>
+</table>

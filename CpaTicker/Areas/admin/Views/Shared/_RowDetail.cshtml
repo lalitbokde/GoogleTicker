@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Click>
+
+@{
+    Layout = null;
+}
+<div class="col-md-12">
+    <table class="table table-striped logtable width innerclicklogs" id="tblclicksloginner">
+        <thead>
+            <tr>
+                <th>CampaignId</th>
+                <th>AffiliateId</th>
+                <th>BannerId</th>
+                <th>ClickDate</th>
+                <th>UserAgent</th>
+                <th>IPAddress</th>
+                <th>Referrer</th>
+                <th>Source</th>
+                <th>TransactionId</th>
+                <th>Country</th>
+                <th>Cost</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+        {
+                <tr>
+                    <td>@user.CampaignId</td>
+                    <td>@user.AffiliateId</td>
+                    <td>@user.BannerId</td>
+                    <td>@user.ClickDate</td>
+                    <td>@user.UserAgent</td>
+                    <td>@user.IPAddress</td>
+                    <td>@user.Referrer</td>
+                    <td>@user.Source</td>
+                    <td>@user.TransactionId</td>
+                    <td>@user.Country</td>
+                    <td>@user.Cost</td>
+                    <td>@user.Revenue</td>
+                </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<script>
+ 
+
+    $(document).ready(function () {
+        //loadScript("/Content/js/plugin/datatables/js/jquery.dataTables.js", loadinnertable);
+        loadinnertable();
+    });
+
+    function loadinnertable()
+    {
+        //$("#tblclicksloginner").dataTable({
+        //    "sDom": "t<'dt-toolbar-footer'<'col-xs-6'l><'col-xs-6'p>>",
+        //    responsive: true,
+        //    aaSorting : [[3, 'asc']],
+        //    "iDisplayLength": 25,
+        //    "aLengthMenu": [[25, 50, 100, 500, 1000, -1], [25, 50, 100, 500, 1000, "All"]],
+        //    "deferRender": true,
+        //    "autoWidth": false, // if true it doesn't get 100%
+        //    "bJQueryMobileUI": true,
+        //    "bFilter": false,
+        //});
+    }
+</script>

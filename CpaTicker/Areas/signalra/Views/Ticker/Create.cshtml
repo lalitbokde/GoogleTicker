@@ -1,0 +1,271 @@
+﻿@*@model IEnumerable<CpaTicker.Areas.admin.Classes.Campaign>*@
+@model CpaTicker.Areas.admin.Classes.Ticker
+
+@{
+    ViewBag.Title = "Create Ticker";
+    ViewBag.hash = Url.Action("index");
+}
+
+<div class="row tspark">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-ticket fa-fw "></i>
+            @Html.ActionLink("Tickers", "index")
+            <span>
+                >
+                Create
+            </span>
+        </h1>
+    </div>
+	@Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid" class="">
+
+
+	<!-- START ROW -->
+
+	<div class="row">
+
+		<!-- NEW COL START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-deletebutton="false" data-widget-togglebutton="false">
+				
+				<header>
+					<span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+					<h2>Create New Ticker</h2>				
+					
+				</header>
+
+				<!-- widget div-->
+				<div>
+					
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+						
+					</div>
+					<!-- end widget edit box -->
+					
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+                        @using (Html.BeginForm("create", "ticker", FormMethod.Post, new { @id = "createticker" }))
+                        { 
+
+                            <div class="smart-form">
+                                <footer>
+                                    <nav>
+                                        <button class="btn btn-primary" type="submit" id="submit_button"><i class="fa fa-check"></i> Create Ticker </button>
+                                        @Html.ActionLink("Back", "index", null, new { @class = "btn btn-default", @id = "back_button" })
+                                    </nav>
+                                </footer>
+
+                                <fieldset>
+                                    <legend>
+                                        Ticker Campaigns
+                                        @Html.CheckBoxSmart("all", "Toggle All", false)
+                                    </legend>
+                                    <section>
+                                        <div id="pck">
+
+                                            <div class="row">
+                                                @foreach (var item in ViewBag.Campaigns)
+                                                {
+                                                    <label class="checkbox">
+                                                        <input name="cp" type="checkbox" value="@item.Id" /><i></i>@item.CampaignName</label>
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                </fieldset>
+                            </div>
+                            <div class="smart-fieldset">
+                                <fieldset>
+                                    <legend>Ticker Speed</legend>
+                                        
+                                        <div class="row">
+									        <div class="col-sm-12">
+										        <input type="text" class="bslider slider-primary" id="sa5" value="100" name="speed"
+										        data-slider-min="1" 
+										        data-slider-max="1000"  
+										        data-slider-value="100" 
+										        data-slider-selection = "before"
+										        data-slider-handle="round" />
+									        </div>
+								        </div>
+                                        
+                                </fieldset>
+                            </div>
+                            <div class="smart-form" style="padding-bottom:20px;">
+                                <fieldset>
+                                    <legend>Ticker View</legend>
+                                   
+                                    <section>
+                                        <div id="pck2">
+                                            <div class="row">
+                                                 @Html.CheckboxListForEnumBootStrap("views", (CpaTicker.Areas.admin.Classes.TickerView)ViewBag.TickerView)
+                                            </div>
+                                        </div>
+                                    </section>
+                                   
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Ticker Direction</legend>
+                                    <div class="row">
+                                        <div class="col col-2">
+                                            @Html.RadioBoxSmart("dir", "Right to Left", "true", true)
+                                        </div>
+                                        <div class="col col-2">
+                                            @Html.RadioBoxSmart("dir", "Left to Right", "false", false)
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Ticker Colors</legend>
+                                    <div class="row">
+                                        <section class="col col-3">
+                                            @Html.LabelFor(model => model.BackgroundColor, new { @class = "label" })
+                                            <label class="input">
+                                                @Html.TextBoxFor(model => model.BackgroundColor, new { @class = "clpk" })
+                                                <i class="icon-append fa fa-tint"></i>
+                                            </label>
+                                        </section>
+                                        <section class="col col-3">
+                                            @Html.LabelFor(model => model.CampaignColor, new { @class = "label" })
+                                            <label class="input">
+                                                <i class="icon-append fa fa-tint"></i>
+                                                @Html.TextBoxFor(model => model.CampaignColor, new { @class = "clpk" })
+                                            </label>
+                                        </section>
+                                        <section class="col col-3">
+                                            @Html.LabelFor(model => model.ImpressionColor, new { @class = "label" })
+                                            <label class="input">
+                                                <i class="icon-append fa fa-tint"></i>
+                                                @Html.TextBoxFor(model => model.ImpressionColor, new { @class = "clpk" })
+                                            </label>
+                                        </section>
+                                        <section class="col col-3">
+                                            @Html.LabelFor(model => model.ClickColor, new { @class = "label" })
+                                            <label class="input">
+                                                <i class="icon-append fa fa-tint"></i>
+                                                @Html.TextBoxFor(model => model.ClickColor, new { @class = "clpk" })
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-3">
+                                            @Html.LabelFor(model => model.ConversionColor, new { @class = "label" })
+                                            <label class="input">
+                                                @Html.TextBoxFor(model => model.ConversionColor, new { @class = "clpk" })
+                                                <i class="icon-append fa fa-tint"></i>
+                                            </label>
+                                        </section>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        }
+						
+						
+
+					</div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+			
+			
+
+		</article>
+		<!-- END COL -->
+
+	</div>
+
+	<!-- END ROW -->
+
+</section>
+
+
+ <script type="text/javascript">
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+        pageSetUp();
+        
+     // PAGE RELATED SCRIPTS
+        updateBreadCrumb('Ticker/Create');
+
+        $('#submit_button').click(function (e) {
+            e.preventDefault();
+            var f = this.form;
+            container = $('#content');
+            @* there is no validation here !! *@
+            pajaxSubmit(f, container, '@ViewBag.hash');
+            refreshTicker();
+            
+            return false; // keeps the page from not refreshing 
+        });
+
+     $(function () {
+         var labels = $('#pck label');
+
+         ncols = 4;
+         col = 12 / ncols;
+         j = Math.ceil(labels.length / ncols);
+
+         $.each(labels, function (i, el) {
+             if (i % j == 0) {
+                 labels.slice(i, i + j).wrapAll('<div class="col col-' + col + '">');
+             }
+         });
+
+         var allcheckbox = $('legend :checkbox');
+         labels.find(':checkbox').click(function () {
+             if (!this.checked) {
+                 allcheckbox.prop('checked', false);
+             }
+         });
+
+         allcheckbox.on('click', function () {
+             $(this).closest('fieldset').find(':checkbox').prop('checked', this.checked);
+         });
+
+     });
+
+     $(function () {
+         var labels = $('#pck2 label');
+
+         ncols = 6;
+         col = 12 / ncols;
+         j = Math.ceil(labels.length / ncols);
+
+         $.each(labels, function (i, el) {
+             if (i % j == 0) {
+                 labels.slice(i, i + j).wrapAll('<div class="col col-' + col + '">');
+             }
+         });
+     });
+
+     loadScript("@Url.Content("~/Content/js/plugin/bootstrap-slider/bootstrap-slider.js")", function () {
+         if ($.fn.bslider) {
+             $('.bslider').bslider();
+         }
+     });
+
+     loadScript("@Url.Content("~/Content/js/plugin/colorpicker/bootstrap-colorpicker.min.js")", function () {
+         $('.clpk').each(function () {
+             var $this = $(this);
+             $this.colorpicker();
+         });
+     });
+
+
+</script>
+
+
+

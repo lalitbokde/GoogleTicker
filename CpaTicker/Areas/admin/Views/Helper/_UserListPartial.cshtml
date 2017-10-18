@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.UserProfile>
+
+@*<div class="widget-body-toolbar">
+        <nav style="margin-left: 190px; padding: 1px 0px; float: right;">
+            @Html.ActionLink("Add User", "adduser", "settings", null, new { @class = "btn btn-primary btn-sm" })
+        </nav>
+        <div style="clear: right;"></div>
+    </div>*@
+<style>
+    #table_users nav a {
+        margin-top: 3px;
+    }
+</style>
+
+<table class="table table-hover simple-dt" id="table_users">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th />
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+
+                </td>
+                <td>
+                    <nav style="display: inline;">
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "admin_master_loginSettings"))
+                        {
+                            @Html.ActionLink("Login as", "admin_master_login", "settings", new { id = item.UserName }, new { @class = "btn btn-info btn-xs", target = "_blank" })
+                        }
+                       
+                            |
+                            @Html.ActionLink("Edit", "edituser", "settings", new { id = item.UserId }, new { @class = "btn btn-info btn-xs" })
+                        
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "setpermissionsSettings"))
+                        {
+                            @:|
+                            @Html.ActionLink("Permissions", "SetPermissions", "settings", new { id = item.UserId }, new { @class = "btn btn-info btn-xs" })
+                        }
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "resetpwdSettings"))
+                        {
+                            @:|
+                            @Html.ActionLink("Reset Pwd", "resetpwd", "settings", new { id = item.UserId }, new { @class = "btn btn-primary btn-xs" })
+                        }
+
+
+                        @if (item.OrderId.HasValue)
+                        {
+                            if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "emailSettings"))
+                            {
+                                @:|
+                                @Html.ActionLink("Email API Key", "email", "settings", new { id = item.UserId }, new { @class = "btn btn-primary btn-xs" })
+                            }
+
+                        }
+                        |
+                        @Html.ActionLink("Delete", "RemoveCustomerUser", "helper", new { id = item.UserId }, new { @class = "btn btn-danger btn-xs rlink" })
+                    </nav>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

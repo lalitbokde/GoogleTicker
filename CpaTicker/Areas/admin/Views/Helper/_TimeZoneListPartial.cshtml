@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.AddCustomTimeZone>
+
+@*<div class="widget-body-toolbar">
+        <nav style="margin-left: 190px; padding: 1px 0px; float: right;">
+            @Html.ActionLink("Add Timezone", "AddCustomTimeZone", "Settings", null, new { @class = "btn btn-primary btn-sm" })
+        </nav>
+        <div style="clear: right;"></div>
+    </div>*@
+<table class="table table-hover dt-responsive simple-dt" id="table_timezones">
+    <thead>
+        <tr>
+            <th>TimeZone</th>
+            <th>Hour</th>
+            <th>Minute</th>
+            <th>DST Hour</th>
+            <th>DST Minute</th>
+            <th>IS DST Support</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.DisplayName
+
+                </td>
+                <td>
+                    @item.offsetHour
+
+                </td>
+                <td>
+                    @item.offsetMinute
+
+                </td>
+                <td>
+                    @item.dstoffsetHour
+
+                </td>
+                <td>
+                    @item.dstoffsetMinute
+
+                </td>
+                <td>
+                    @item.IsdstSupport
+
+                </td>
+
+                <td>
+                    <nav style="display: inline;">
+                        @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions1, ViewBag.user.AffiliateId != null, "ViewPermission", "editcustomtimezoneSettings"))
+                        {
+                             @Html.ActionLink("Edit", "EditCustomTimeZone", "settings", new { id = item.ID }, new { @class = "btn btn-info btn-xs" })
+                        }
+                       
+
+                    </nav>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

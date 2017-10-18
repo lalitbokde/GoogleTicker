@@ -1,0 +1,139 @@
+﻿@model IEnumerable<CpaTicker.Areas.admin.Classes.Log>
+
+@{
+    ViewBag.Title = "Logs";
+    Layout = null;
+}
+
+<div id="maincontent">
+    <div class="adminGrid">
+        <h2>Logs</h2>
+        <div id="logs">
+            <table class="table rtable" id="dt_basic">
+
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.ID)</td>
+                        <td>@Html.DisplayNameFor(m => m.Date)</td>
+                        <td>@Html.DisplayNameFor(m => m.Level)</td>
+                        <td>@Html.DisplayNameFor(m => m.Logger)</td>
+                        <td>@Html.DisplayNameFor(m => m.Message)</td>
+                        <td>@Html.DisplayNameFor(m => m.FileName)</td>
+                        <td>@Html.DisplayNameFor(m => m.LineNumber)</td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: lookupCollection">
+
+                    <tr>
+                        <td data-bind="text: ID"></td>
+                        <td data-bind="text: Date"></td>
+                        <td data-bind="text: Level"></td>
+                        <td data-bind="text: Logger"></td>
+                        <td data-bind="text: Message"></td>
+                        <td data-bind="text: FileName"></td>
+                        <td data-bind="text: LineNumber"></td>
+                    </tr>
+                    @*<tr>
+                    <td colspan="5">
+                        <strong>Stacktrace</strong>
+                         <span data-bind="text: Exception"></span>
+                        //<span data-bind="if: Exception">
+                          //  <span data-bind="text: Exception.slice(0, 600) + ' ...' "></span>
+                        //</span>
+                    </td>
+                </tr>*@
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <ul class="pagination pagination-alt pagination-lg">
+                                <li>
+                                    <button data-bind="click: previousPage" class="btn">
+                                        <i class="fa fa-angle-left"></i>
+                                    </button>
+                                </li>
+                                <li>Page
+                                <label data-bind="text: currentPage" class="badge"></label>
+                                </li>
+                                <li>
+                                    <button data-bind="click: nextPage" class="btn">
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
+                                </li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+	updateBreadCrumb('Logs');
+	
+	$(function () {
+
+	    var logModel = function () {
+	        var self = this;
+	        self.currentPage = ko.observable(1);
+	        self.lookupCollection = ko.observableArray();
+
+	        self.loadData();
+	    };
+
+	    logModel.prototype = {
+
+	        loadData: function () {
+	            var self = this;
+	            var url = "/api/logs";
+
+	            if (self.currentPage() > 1)
+	                url += "?page=" + self.currentPage();
+
+
+	            $.ajax({
+	                url: url,
+	                dataType: 'json',
+	                async: false,
+	                success: function (data) {
+	                    //stuff
+	                    //...
+	                    self.lookupCollection(data);
+	                }
+	            });
+
+	        },
+
+	        nextPage: function () {
+	            var self = this;
+	            self.currentPage(self.currentPage() + 1);
+	            self.loadData();
+	        },
+
+	        previousPage: function () {
+	            var self = this;
+	            if (self.currentPage() > 1) {
+	                self.currentPage(self.currentPage() - 1);
+	                self.loadData();
+	            }
+
+	        }
+	    };
+
+
+	    var model = new logModel();
+	    ko.applyBindings(model, document.getElementById("logs"));
+	    
+	});
+
+</script>

@@ -1,0 +1,181 @@
+﻿@model CpaTicker.Areas.admin.Classes.ConversionPixel
+
+@{
+    ViewBag.Title = "Campaigns";
+}
+
+<div class="row tspark">
+    @Html.Partial("_Sparks")
+</div>
+
+<section id="widget-grid">
+
+    <div class="row">
+
+        <div class="table-section col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="table-content">
+                <div class="table-title">Conversion Pixel Campaigns</div>
+
+                <!-- NEW WIDGET START -->
+                <article>
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-togglebutton="false">
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <div class="widget-body-toolbar">
+                                    <div class="row">
+                                        <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4 smart-form npadding-right">
+                                            <label class="select">
+                                                @Html.DropDownList("filter", ((CpaTicker.Areas.admin.Classes.PixelFilter)ViewBag.filter).ToSelectList())
+                                                <i></i>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-xs-3 col-sm-6 col-md-8 col-lg-8 npadding-leftt">
+                                            <nav style="float:right;">
+                                                @Html.ActionLink("Back", "index", "conversionpixel", null, new { @class = "btn btn-default" })
+                                                @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "addcampaignConversionPixel"))
+                                                {
+                                                    <a href="@Url.Action("addcampaign", new { id = ViewContext.RouteData.Values["id"] })" class="btn btn-primary">
+                                                        <i class="fa fa-plus"></i>
+                                                        <span class="atext"> Add Campaign </span>
+                                                    </a>
+                                                }
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table class="table table-hover" id="dt_basic">
+                                    <thead>
+                                        <tr>
+                                            <th>Campaign</th>
+                                            <th style="text-align:center;">Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @*@if (Model != null)
+                                            {*@
+
+                                        @if (Model != null)
+                                        {
+                                            foreach (var item in Model.Campaigns.Where(c => !((IEnumerable<int>)ViewBag.HiddenCampaigns).Contains(c.CampaignId)))
+                                            {
+
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink(
+                                                String.Format("{0} - {1}", item.Campaign.CampaignId, item.Campaign.CampaignName), "details",
+                                                "campaign", new { id = item.Campaign.CampaignId }, null)
+                                                    </td>
+                                                    <td>
+                                                        <div class="camp-status @item.PixelStatus.ToString().ToLower()">
+                                                            @Html.DisplayFor(modelItem => item.PixelStatus)
+                                                        </div>
+                                                        @*@Html.DisplayFor(modelItem => item.PixelStatus)*@
+                                                    </td>
+                                                    <td style=" text-align: center;">
+                                                        <nav style="display:inline;">
+                                                            @if (CpaTicker.Areas.admin.Classes.Helpers.Extensions.checkpermissions(ViewBag.user.Permissions, ViewBag.user.AffiliateId != null, "ViewPermissiond", "editstatusConversionPixel"))
+                                                            {
+                                                                @Html.ActionLink("Edit Status", "editstatus", new { id = item.Id }) @:|
+                                                    }
+
+                                                            @Html.ActionLink("Delete", "deletecampaign", "helper", new { id = item.Id }, null)
+
+                                                        </nav>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+    // DO NOT REMOVE : GLOBAL FUNCTIONS!
+    pageSetUp();
+
+    // PAGE RELATED SCRIPTS
+    updateBreadCrumb('Conversion Pixels/Campaigns');
+
+    loadScript("@Url.Content("~/Content/js/plugin/DataTableReorder/jquery.dataTables.min.js")", function () {
+        loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.colVis.min.js")", function () {
+            loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.tableTools.min.js")", function () {
+                loadScript("@Url.Content("~/Content/js/plugin/datatables/dataTables.bootstrap.min.js")", runDataTables);
+            });
+        });
+    });
+
+    function runDataTables() {
+        $('#dt_basic').dataTable({
+
+            "bInfo": false, // disable info
+            "bPaginate": false,// disable pagination
+            //"bFilter": false,
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [2] },
+                { "bSearchable": false, "aTargets": [2] }
+            ]
+            , "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>" +
+					"t"
+            //+
+            //"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        // custom toolbar
+
+    }
+    $("#filter").change(function () {
+
+        // refresh the content with the filter campaigns
+        //$('#content').load('@Url.Action("index", "campaign")?filter=' + this.value);
+
+        var cpurl = '@Url.Action("Campaigns", "ConversionPixel")?filter=' + this.value;
+        $.ajax({
+            type: "GET",
+            url: cpurl,
+            dataType: 'html',
+            cache: false,
+            success: function (data) {
+
+                //container.html(data);
+                $('#content').html(data);
+                //if (checkReportUrl(cpurl)) {
+                //    $('#content').html(data);
+                //}
+
+            },
+            async: true
+        });
+
+    });
+
+</script>

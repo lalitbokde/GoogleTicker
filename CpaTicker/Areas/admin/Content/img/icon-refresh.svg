@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>cycle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="entypo/cycle" transform="translate(-2.000000, -1.000000)">
+            <rect id="Rectangle-path" x="0" y="0" width="20" height="20"></rect>
+            <path d="M5.771,13.718 C3.532,11.31 3.572,7.535 5.898,5.193 C6.85,4.234 8.041,3.661 9.279,3.473 L9.209,1.418 C7.473,1.629 5.792,2.404 4.46,3.745 C1.343,6.885 1.306,11.953 4.338,15.162 L2.615,16.898 L8.07,17.196 L8.054,11.42 L5.771,13.718 L5.771,13.718 Z M12.352,1.878 L12.368,7.654 L14.651,5.354 C16.891,7.762 16.851,11.537 14.525,13.879 C13.573,14.838 12.382,15.41 11.144,15.599 L11.213,17.655 C12.95,17.444 14.631,16.669 15.962,15.328 C19.08,12.188 19.117,7.12 16.084,3.911 L17.807,2.176 L12.352,1.878 L12.352,1.878 Z" id="Shape" fill="#5B67BE" fill-rule="evenodd"></path>
+        </g>
+    </g>
+</svg>
